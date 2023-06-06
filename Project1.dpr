@@ -2,7 +2,7 @@ program Project1;
 
 uses
   Forms,
-  Generic in 'Generic.pas' {Form1},
+  Generic in 'Generic.pas' {HiveView},
   PNGFunc in 'PNGFunc.pas',
   CRCFunc in 'CRCFunc.pas',
   ExplodeFunc in 'ExplodeFunc.pas',
@@ -13,6 +13,6 @@ uses
 
 begin
   Application.Initialize;
-  Application.CreateForm(TForm1, Form1);
+  Application.CreateForm(THiveView, HiveView);
   Application.Run;
 end.

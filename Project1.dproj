@@ -98,7 +98,7 @@
             <MainSource>MainSource</MainSource>
         </DelphiCompile>
         <DCCReference Include="Generic.pas">
-            <Form>Form1</Form>
+            <Form>HiveView</Form>
         </DCCReference>
         <DCCReference Include="PNGFunc.pas"/>
         <DCCReference Include="CRCFunc.pas"/>

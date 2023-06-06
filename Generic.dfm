@@ -1,4 +1,4 @@
-object Form1: TForm1
+object HiveView: THiveView
   Left = 192
   Top = 124
   Caption = 'HiveView'

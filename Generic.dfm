@@ -40,13 +40,13 @@ object HiveView: THiveView
     Font.Style = []
     ParentFont = False
     TabOrder = 1
-    OnChange = menuDrivesChange
+    OnClick = menuDrivesClick
   end
   object memDebug: TMemo
     Left = 0
-    Top = 576
+    Top = 592
     Width = 561
-    Height = 181
+    Height = 165
     TabOrder = 2
   end
   object menuFiles: TFileListBox
@@ -62,7 +62,7 @@ object HiveView: THiveView
     Left = 8
     Top = 359
     Width = 545
-    Height = 211
+    Height = 227
     Caption = 'Raw Image Format'
     TabOrder = 4
     object editW: TLabeledEdit
@@ -97,7 +97,7 @@ object HiveView: THiveView
       ParentFont = False
       TabOrder = 1
     end
-    object editPix: TLabeledEdit
+    object editPixLoc: TLabeledEdit
       Left = 11
       Top = 88
       Width = 100
@@ -195,12 +195,69 @@ object HiveView: THiveView
     end
     object btnReload: TButton
       Left = 435
-      Top = 136
+      Top = 152
       Width = 100
       Height = 65
       Caption = 'Reload Image'
       TabOrder = 8
       OnClick = btnReloadClick
+    end
+    object chkPalette: TCheckBox
+      Left = 14
+      Top = 138
+      Width = 97
+      Height = 17
+      Caption = 'Use Palette'
+      TabOrder = 9
+      OnClick = chkPaletteClick
+    end
+    object editPalLoc: TLabeledEdit
+      Left = 11
+      Top = 176
+      Width = 100
+      Height = 27
+      EditLabel.Width = 74
+      EditLabel.Height = 13
+      EditLabel.Caption = 'Palette Address'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Consolas'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 10
+    end
+    object editPalSize: TLabeledEdit
+      Left = 117
+      Top = 176
+      Width = 100
+      Height = 27
+      EditLabel.Width = 69
+      EditLabel.Height = 13
+      EditLabel.Caption = 'Palette Length'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Consolas'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 11
+    end
+    object editPalBits: TLabeledEdit
+      Left = 223
+      Top = 176
+      Width = 100
+      Height = 27
+      EditLabel.Width = 65
+      EditLabel.Height = 13
+      EditLabel.Caption = 'Bits Per Index'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Consolas'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 12
     end
   end
 end

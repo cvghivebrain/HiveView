@@ -13,8 +13,8 @@ procedure SavePNG(f: string);
 
 var
   PNG: TPNGImage = nil;
-  alpha: PByteArray;
-  alphawidth: integer;
+  pngarray, alpha: PByteArray;
+  scanwidth, alphawidth: integer;
   pic: TImage;
 
 implementation
@@ -25,6 +25,8 @@ procedure InitPNG(w, h: integer);
 begin
   if Assigned(PNG) then PNG.Free; // Clear previous PNG.
   PNG := TPNGImage.CreateBlank(COLOR_RGBALPHA,8,w,h); // Create 32-bit PNG.
+  pngarray := PNG.ScanLine[0]; // Get pointer for pixels.
+  scanwidth := Longint(PNG.ScanLine[1])-Longint(pngarray); // Get scanline width (+ padding).
   alpha := PNG.AlphaScanline[0]; // Pointer for alpha channel.
   alphawidth := Longint(PNG.AlphaScanline[1])-Longint(alpha); // Size of alpha for one line.
 end;
@@ -39,10 +41,14 @@ end;
 { Draw a single pixel on the PNG. }
 
 procedure PixelPNG(r, g, b, a: byte; x, y: integer);
+var p: integer;
 begin
+  p := (y*scanwidth)+(x*3); // Find address for pixel.
   if (PNG.Header.ColorType = COLOR_RGBALPHA) and (x < PNG.Width) and (y < PNG.Height) then // Check pixel is on the image.
     begin
-    PNG.Pixels[x,y] := r+(g shl 8)+(b shl 16); // Write RGB values.
+    pngarray[p] := b; // Write pixel data.
+    pngarray[p+1] := g;
+    pngarray[p+2] := r;
     alpha[(y*alphawidth)+x] := a; // Write alpha value.
     end;
 end;

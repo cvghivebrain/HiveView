@@ -103,6 +103,7 @@ begin
       editPalLoc.Enabled := chkPalette.Checked;
       editPalSize.Enabled := chkPalette.Checked;
       editPalBits.Enabled := chkPalette.Checked;
+      memDebug.Lines.Add('File format found: '+inicontent[i,ininame]);
       formatfound := true;
       break; // Terminate loop when match is found
       end;

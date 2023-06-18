@@ -35,6 +35,8 @@ type
     procedure btnReloadClick(Sender: TObject);
     procedure LoadImage;
     procedure LoadImagePixels;
+    procedure LoadImagePalette;
+    procedure LoadImagePixels2;
     function GetColorRaw(a, len: integer): string;
     procedure chkPaletteClick(Sender: TObject);
     procedure menuDrivesClick(Sender: TObject);
@@ -46,7 +48,8 @@ type
 
 var
   HiveView: THiveView;
-  bitspercolor, bytespercolor, bitsperindex, indicesperbyte, imgw, imgh, iniformats: integer;
+  bitspercolor, bytespercolor, bitsperindex, bytesperindex, indicesperbyte,
+    palsize, imgw, imgh, iniformats: integer;
   inicontent: array[0..200, 0..13] of string;
   palarray: array[0..1024] of byte;
 
@@ -163,13 +166,30 @@ begin
   bitspercolor := Solve(editBPC.Text);
   bytespercolor := bitspercolor div 8;
   bitsperindex := Solve(editPalBits.Text);
+  bytesperindex := bitsperindex div 8;
   indicesperbyte := 8 div bitsperindex;
+  palsize := Solve(editPalSize.Text);
   if (bitspercolor mod 8 > 0) or (bitspercolor = 0) or (bitspercolor > 64) then // Check if colour info is valid.
     begin
     memDebug.Lines.Add('Unable to process '+editBPC.Text+' bits per color.');
     exit;
     end;
-  if chkPalette.Checked = false then LoadImagePixels; // Load actual image pixel data.
+  if palsize*4 > Length(palarray) then // Check if palette fits in array.
+    begin
+    memDebug.Lines.Add('Unable to process '+IntToStr(palsize)+' colors in palette.');
+    exit;
+    end;
+  if bitsperindex and (bitsperindex-1) > 0 then // Check if bitsperindex is a power of 2 (1, 2, 4, 8...).
+    begin
+    memDebug.Lines.Add('Unable to process '+IntToStr(bitsperindex)+' bits per index.');
+    exit;
+    end;
+  if chkPalette.Checked = false then LoadImagePixels // Load actual image pixel data.
+  else
+    begin
+    LoadImagePalette;
+    LoadImagePixels2;
+    end;
   ShowPNG;
   memDebug.Lines.Add('Image is '+IntToStr(imgw)+' × '+IntToStr(imgh)+' pixels.');
 end;
@@ -195,6 +215,48 @@ begin
       pos := pos+bytespercolor; // Next colour.
       if pos >= fs then exit; // Stop drawing if at end of file.
       end;
+end;
+
+procedure THiveView.LoadImagePalette;
+var pos, i, r, g, b, a: integer;
+  c: string;
+  fixedalpha: boolean;
+begin
+  pos := Solve(editPalLoc.Text);
+  fixedalpha := true;
+  if AnsiPos('x',editAlpha.Text) = 0 then a := Solve(editAlpha.Text) // Alpha value doesn't change.
+    else fixedalpha := false; // Alpha value is different for each colour.
+  for i := 0 to palsize-1 do
+    begin
+    c := GetColorRaw(pos,bytespercolor); // Get whole colour.
+    r := Solve(ReplaceStr(editR.Text,'x',c)); // Get each colour channel.
+    g := Solve(ReplaceStr(editG.Text,'x',c));
+    b := Solve(ReplaceStr(editB.Text,'x',c));
+    if fixedalpha = false then a := Solve(ReplaceStr(editAlpha.Text,'x',c));
+    palarray[i*4] := r; // Write to palette array.
+    palarray[(i*4)+1] := g;
+    palarray[(i*4)+2] := b;
+    palarray[(i*4)+3] := a;
+    pos := pos+bytespercolor; // Next colour.
+    if pos >= fs then exit; // Stop drawing if at end of file.
+    end;
+end;
+
+procedure THiveView.LoadImagePixels2; // Load pixels using palette array.
+var pos, i, r, g, b, a, c: integer;
+begin
+  pos := Solve(editPixLoc.Text);
+  for i := 0 to (imgh*imgw)-1 do
+    begin
+    c := GetByte(pos); // Get palette index.
+    r := palarray[c*4]; // Get each colour channel.
+    g := palarray[(c*4)+1];
+    b := palarray[(c*4)+2];
+    a := palarray[(c*4)+3];
+    PixelPNG(r,g,b,a,i mod imgw,i div imgw);
+    pos := pos+bytesperindex; // Next pixel.
+    if pos >= fs then exit; // Stop drawing if at end of file.
+    end;
 end;
 
 function THiveView.GetColorRaw(a, len: integer): string; // Get colour data from file.

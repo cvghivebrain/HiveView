@@ -193,22 +193,13 @@ object HiveView: THiveView
       ParentFont = False
       TabOrder = 7
     end
-    object btnReload: TButton
-      Left = 435
-      Top = 152
-      Width = 100
-      Height = 65
-      Caption = 'Reload Image'
-      TabOrder = 8
-      OnClick = btnReloadClick
-    end
     object chkPalette: TCheckBox
       Left = 14
       Top = 138
       Width = 97
       Height = 17
       Caption = 'Use Palette'
-      TabOrder = 9
+      TabOrder = 8
       OnClick = chkPaletteClick
     end
     object editPalLoc: TLabeledEdit
@@ -225,7 +216,7 @@ object HiveView: THiveView
       Font.Name = 'Consolas'
       Font.Style = []
       ParentFont = False
-      TabOrder = 10
+      TabOrder = 9
     end
     object editPalSize: TLabeledEdit
       Left = 117
@@ -241,7 +232,7 @@ object HiveView: THiveView
       Font.Name = 'Consolas'
       Font.Style = []
       ParentFont = False
-      TabOrder = 11
+      TabOrder = 10
     end
     object editPalBits: TLabeledEdit
       Left = 223
@@ -257,7 +248,30 @@ object HiveView: THiveView
       Font.Name = 'Consolas'
       Font.Style = []
       ParentFont = False
-      TabOrder = 12
+      TabOrder = 11
     end
+  end
+  object btnSave: TButton
+    Left = 443
+    Top = 440
+    Width = 100
+    Height = 65
+    Caption = 'Save Image As...'
+    TabOrder = 5
+    OnClick = btnSaveClick
+  end
+  object btnReload: TButton
+    Left = 443
+    Top = 511
+    Width = 100
+    Height = 65
+    Caption = 'Reload Image'
+    TabOrder = 6
+    OnClick = btnReloadClick
+  end
+  object dlgSave: TSaveDialog
+    Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
+    Left = 568
+    Top = 592
   end
 end

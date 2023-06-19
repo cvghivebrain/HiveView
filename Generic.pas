@@ -28,6 +28,8 @@ type
     editPalLoc: TLabeledEdit;
     editPalSize: TLabeledEdit;
     editPalBits: TLabeledEdit;
+    dlgSave: TSaveDialog;
+    btnSave: TButton;
     procedure FormCreate(Sender: TObject);
     procedure menuFoldersClick(Sender: TObject);
     procedure menuFilesClick(Sender: TObject);
@@ -40,6 +42,7 @@ type
     function GetColorRaw(a, len: integer): string;
     procedure chkPaletteClick(Sender: TObject);
     procedure menuDrivesClick(Sender: TObject);
+    procedure btnSaveClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -48,7 +51,7 @@ type
 
 var
   HiveView: THiveView;
-  bitspercolor, bytespercolor, bitsperindex, bytesperindex, indicesperbyte,
+  bitspercolor, bytespercolor, bitsperindex, bytesperindex,
     palsize, imgw, imgh, iniformats: integer;
   inicontent: array[0..200, 0..13] of string;
   palarray: array[0..1024] of byte;
@@ -127,6 +130,11 @@ begin
   LoadImage;
 end;
 
+procedure THiveView.btnSaveClick(Sender: TObject);
+begin
+  if dlgSave.Execute then SavePNG(ChangeFileExt(dlgSave.FileName,'.png'));
+end;
+
 procedure THiveView.chkPaletteClick(Sender: TObject);
 begin
   editPalLoc.Enabled := chkPalette.Checked;
@@ -167,7 +175,6 @@ begin
   bytespercolor := bitspercolor div 8;
   bitsperindex := Solve(editPalBits.Text);
   bytesperindex := bitsperindex div 8;
-  indicesperbyte := 8 div bitsperindex;
   palsize := Solve(editPalSize.Text);
   if (bitspercolor mod 8 > 0) or (bitspercolor = 0) or (bitspercolor > 64) then // Check if colour info is valid.
     begin
@@ -259,7 +266,7 @@ begin
     bit := bit+bitsperindex;
     if bit = 8 then
       begin
-      pos := pos+bytesperindex; // Next byte.
+      pos := pos+1; // Next byte.
       bit := 0; // Reset bit counter.
       end;
     if pos >= fs then exit; // Stop drawing if at end of file.
@@ -282,6 +289,7 @@ var i: integer;
 label skipini;
 begin
   menuFolders.Directory := ExtractFileDir(Application.ExeName);
+  dlgSave.InitialDir := menuFolders.Directory;
   memDebug.Lines.Add(ExtractFileDir(Application.ExeName));
   DefaultFormat; // Fill in default values for format menu.
   i := -1; // Start at -1 so that first format is 0.

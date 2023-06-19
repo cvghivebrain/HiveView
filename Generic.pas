@@ -179,7 +179,7 @@ begin
     memDebug.Lines.Add('Unable to process '+IntToStr(palsize)+' colors in palette.');
     exit;
     end;
-  if bitsperindex and (bitsperindex-1) > 0 then // Check if bitsperindex is a power of 2 (1, 2, 4, 8...).
+  if (bitsperindex and (bitsperindex-1) > 0) or (bitsperindex > 8) then // Check if bitsperindex is valid.
     begin
     memDebug.Lines.Add('Unable to process '+IntToStr(bitsperindex)+' bits per index.');
     exit;
@@ -243,18 +243,25 @@ begin
 end;
 
 procedure THiveView.LoadImagePixels2; // Load pixels using palette array.
-var pos, i, r, g, b, a, c: integer;
+var pos, bit, i, r, g, b, a, c: integer;
 begin
   pos := Solve(editPixLoc.Text);
+  bit := 0;
   for i := 0 to (imgh*imgw)-1 do
     begin
-    c := GetByte(pos); // Get palette index.
+    c := GetByte(pos) shr (8-bitsperindex-bit); // Get palette index.
+    c := c and ((1 shl bitsperindex)-1); // Read only relevant bits.
     r := palarray[c*4]; // Get each colour channel.
     g := palarray[(c*4)+1];
     b := palarray[(c*4)+2];
     a := palarray[(c*4)+3];
     PixelPNG(r,g,b,a,i mod imgw,i div imgw);
-    pos := pos+bytesperindex; // Next pixel.
+    bit := bit+bitsperindex;
+    if bit = 8 then
+      begin
+      pos := pos+bytesperindex; // Next byte.
+      bit := 0; // Reset bit counter.
+      end;
     if pos >= fs then exit; // Stop drawing if at end of file.
     end;
 end;

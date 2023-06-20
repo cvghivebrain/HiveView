@@ -230,6 +230,7 @@ begin
   if CreateProcess(nil,PChar(command),nil,nil,false,CREATE_NEW_PROCESS_GROUP+NORMAL_PRIORITY_CLASS+CREATE_NO_WINDOW,nil,nil,StartInfo,ProcInfo) then
     begin
     CloseHandle(ProcInfo.hProcess);
+    WaitForSingleObject(ProcInfo.hProcess,INFINITE);
     CloseHandle(ProcInfo.hThread);
     end;
 end;

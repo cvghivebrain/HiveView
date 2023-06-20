@@ -53,8 +53,9 @@ var
   HiveView: THiveView;
   bitspercolor, bytespercolor, bitsperindex, bytesperindex,
     palsize, imgw, imgh, iniformats: integer;
-  inicontent: array[0..200, 0..13] of string;
+  inicontent: array[0..200, 0..14] of string;
   palarray: array[0..1024] of byte;
+  thisfolder, tempfilepath: string;
 
 const
   ini_name: integer = 0;
@@ -71,6 +72,7 @@ const
   ini_palstart: integer = 11;
   ini_palsize: integer = 12;
   ini_palbits: integer = 13;
+  ini_convert: integer = 14;
 
 implementation
 
@@ -84,37 +86,58 @@ begin
 end;
 
 procedure THiveView.menuFilesClick(Sender: TObject);
-var i: integer;
-  formatfound: boolean;
+var i, starttime: integer;
+  c: string;
 begin
   LoadFile(menuFiles.FileName); // Load file to memory.
   memDebug.Lines.Add(menuFiles.FileName+' ('+IntToStr(fs)+' bytes)');
   DefaultFormat; // Use default settings.
-  formatfound := false;
   for i := 0 to iniformats do
     if Solve(inicontent[i,ini_if]) > 0 then // Check file with condition from ini.
       begin
-      editW.Text := inicontent[i,ini_width];
-      editH.Text := inicontent[i,ini_height];
-      editPixLoc.Text := inicontent[i,ini_pixelstart];
-      editBPC.Text := inicontent[i,ini_bpc];
-      editR.Text := inicontent[i,ini_r];
-      editG.Text := inicontent[i,ini_g];
-      editB.Text := inicontent[i,ini_b];
-      editAlpha.Text := inicontent[i,ini_alpha];
-      editPalLoc.Text := inicontent[i,ini_palstart];
-      editPalSize.Text := inicontent[i,ini_palsize];
-      editPalBits.Text := inicontent[i,ini_palbits];
+      if inicontent[i,ini_convert] <> '' then // Check for conversion by external program.
+        begin
+        while FileExists(tempfilepath) do Sleep(200); // Wait until file is deleted.
+        memDebug.Lines.Add('File format found: '+inicontent[i,ini_name]);
+        c := ReplaceStr(inicontent[i,ini_convert],'{file}',menuFiles.FileName);
+        c := ReplaceStr(c,'{tempfile}',tempfilepath);
+        RunCommand(c); // Create temp.png.
+        starttime := GetTickCount;
+        while not FileExists(tempfilepath) do
+          begin
+          if GetTickCount-starttime > 5000 then
+            begin
+            memDebug.Lines.Add('temp.png was not created after 5 seconds.');
+            exit; // File was not created within 5 seconds.
+            end;
+          Sleep(500); // Wait until file appears.
+          end;
+        LoadPNG(tempfilepath);
+        ShowPNG;
+        DeleteFile(tempfilepath); // Delete temp file.
+        exit; // Terminate loop and exit procedure when match is found.
+        end;
+      if inicontent[i,ini_width] <> '' then editW.Text := inicontent[i,ini_width];
+      if inicontent[i,ini_height] <> '' then editH.Text := inicontent[i,ini_height];
+      if inicontent[i,ini_pixelstart] <> '' then editPixLoc.Text := inicontent[i,ini_pixelstart];
+      if inicontent[i,ini_bpc] <> '' then editBPC.Text := inicontent[i,ini_bpc];
+      if inicontent[i,ini_r] <> '' then editR.Text := inicontent[i,ini_r];
+      if inicontent[i,ini_g] <> '' then editG.Text := inicontent[i,ini_g];
+      if inicontent[i,ini_b] <> '' then editB.Text := inicontent[i,ini_b];
+      if inicontent[i,ini_alpha] <> '' then editAlpha.Text := inicontent[i,ini_alpha];
+      if inicontent[i,ini_palstart] <> '' then editPalLoc.Text := inicontent[i,ini_palstart];
+      if inicontent[i,ini_palsize] <> '' then editPalSize.Text := inicontent[i,ini_palsize];
+      if inicontent[i,ini_palbits] <> '' then editPalBits.Text := inicontent[i,ini_palbits];
       if inicontent[i,ini_palenable] = 'yes' then chkPalette.Checked := true
       else chkPalette.Checked := false;
       editPalLoc.Enabled := chkPalette.Checked;
       editPalSize.Enabled := chkPalette.Checked;
       editPalBits.Enabled := chkPalette.Checked;
       memDebug.Lines.Add('File format found: '+inicontent[i,ini_name]);
-      formatfound := true;
-      break; // Terminate loop when match is found
+      LoadImage; // Load image using parameters from ini.
+      exit; // Terminate loop and exit procedure when match is found.
       end;
-  if not formatfound then memDebug.Lines.Add('File format not recognised. Using default settings.');
+  memDebug.Lines.Add('File format not recognised. Using default settings.'); // No match found.
   LoadImage;
 end;
 
@@ -288,9 +311,11 @@ var i: integer;
   s: string;
 label skipini;
 begin
-  menuFolders.Directory := ExtractFileDir(Application.ExeName);
+  thisfolder := ExtractFileDir(Application.ExeName);
+  tempfilepath := thisfolder+'\temp.png';
+  menuFolders.Directory := thisfolder;
   dlgSave.InitialDir := menuFolders.Directory;
-  memDebug.Lines.Add(ExtractFileDir(Application.ExeName));
+  memDebug.Lines.Add(thisfolder);
   DefaultFormat; // Fill in default values for format menu.
   i := -1; // Start at -1 so that first format is 0.
   if not FileExists('HiveView.ini') then // Check for ini file.
@@ -320,10 +345,8 @@ begin
     else if AnsiPos('palette=',s) = 1 then inicontent[i,ini_palenable] := Explode(s,'palette=',1)
     else if AnsiPos('palstart=',s) = 1 then inicontent[i,ini_palstart] := Explode(s,'palstart=',1)
     else if AnsiPos('palsize=',s) = 1 then inicontent[i,ini_palsize] := Explode(s,'palsize=',1)
-    else if AnsiPos('bitsperindex=',s) = 1 then inicontent[i,ini_palbits] := Explode(s,'bitsperindex=',1);
-    if inicontent[i,ini_palstart] = '' then inicontent[i,ini_palstart] := '0';
-    if inicontent[i,ini_palsize] = '' then inicontent[i,ini_palsize] := '0';
-    if inicontent[i,ini_palbits] = '' then inicontent[i,ini_palbits] := '8';
+    else if AnsiPos('bitsperindex=',s) = 1 then inicontent[i,ini_palbits] := Explode(s,'bitsperindex=',1)
+    else if AnsiPos('convert=',s) = 1 then inicontent[i,ini_convert] := Explode(s,'convert=',1);
     end;
   CloseFile(inifile);
 

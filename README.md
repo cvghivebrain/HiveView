@@ -6,10 +6,11 @@ HiveView is an image viewer that can (potentially) open any image file, either b
 
 Ext. | Description | Program
 --- | --- | ---
-DG2 | Sega Digitizer 2 - Used in Sega Saturn games. | raw
+DG2 | Sega Digitizer 2 - Used in Sega Saturn games. | 
 JPEG/JPG | Joint Photographic Experts Group | ImageMagick
-PNG | Portable Network Graphics | [copy](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/copy)
-RGB | Sega RGB format - Used in Sega Saturn games. | raw
+PNG | Portable Network Graphics | [cmd copy](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/copy)
+RGB | Sega RGB format - Used in Sega Saturn games. | 
+WEBP | Google WebP | ImageMagick
 
 ## Credits
 

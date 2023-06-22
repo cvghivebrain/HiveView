@@ -42,13 +42,6 @@ object HiveView: THiveView
     TabOrder = 1
     OnClick = menuDrivesClick
   end
-  object memDebug: TMemo
-    Left = 0
-    Top = 592
-    Width = 561
-    Height = 165
-    TabOrder = 2
-  end
   object menuFiles: TFileListBox
     Left = 280
     Top = 0
@@ -62,7 +55,7 @@ object HiveView: THiveView
     Left = 8
     Top = 359
     Width = 545
-    Height = 227
+    Height = 398
     Caption = 'Raw Image Format'
     TabOrder = 4
     object editW: TLabeledEdit
@@ -98,8 +91,8 @@ object HiveView: THiveView
       TabOrder = 1
     end
     object editPixLoc: TLabeledEdit
-      Left = 11
-      Top = 88
+      Left = 223
+      Top = 40
       Width = 100
       Height = 27
       EditLabel.Width = 63
@@ -114,8 +107,8 @@ object HiveView: THiveView
       TabOrder = 2
     end
     object editBPC: TLabeledEdit
-      Left = 117
-      Top = 88
+      Left = 329
+      Top = 40
       Width = 100
       Height = 27
       EditLabel.Width = 63
@@ -130,9 +123,9 @@ object HiveView: THiveView
       TabOrder = 3
     end
     object editR: TLabeledEdit
-      Left = 223
-      Top = 40
-      Width = 100
+      Left = 11
+      Top = 88
+      Width = 206
       Height = 27
       EditLabel.Width = 20
       EditLabel.Height = 13
@@ -146,9 +139,9 @@ object HiveView: THiveView
       TabOrder = 4
     end
     object editG: TLabeledEdit
-      Left = 329
-      Top = 40
-      Width = 100
+      Left = 11
+      Top = 136
+      Width = 206
       Height = 27
       EditLabel.Width = 29
       EditLabel.Height = 13
@@ -162,9 +155,9 @@ object HiveView: THiveView
       TabOrder = 5
     end
     object editB: TLabeledEdit
-      Left = 435
-      Top = 40
-      Width = 100
+      Left = 11
+      Top = 184
+      Width = 206
       Height = 27
       EditLabel.Width = 21
       EditLabel.Height = 13
@@ -178,9 +171,9 @@ object HiveView: THiveView
       TabOrder = 6
     end
     object editAlpha: TLabeledEdit
-      Left = 223
-      Top = 88
-      Width = 100
+      Left = 11
+      Top = 232
+      Width = 206
       Height = 27
       EditLabel.Width = 27
       EditLabel.Height = 13
@@ -195,7 +188,7 @@ object HiveView: THiveView
     end
     object chkPalette: TCheckBox
       Left = 14
-      Top = 138
+      Top = 274
       Width = 97
       Height = 17
       Caption = 'Use Palette'
@@ -204,7 +197,7 @@ object HiveView: THiveView
     end
     object editPalLoc: TLabeledEdit
       Left = 11
-      Top = 176
+      Top = 312
       Width = 100
       Height = 27
       EditLabel.Width = 74
@@ -220,7 +213,7 @@ object HiveView: THiveView
     end
     object editPalSize: TLabeledEdit
       Left = 117
-      Top = 176
+      Top = 312
       Width = 100
       Height = 27
       EditLabel.Width = 69
@@ -235,8 +228,8 @@ object HiveView: THiveView
       TabOrder = 10
     end
     object editPalBits: TLabeledEdit
-      Left = 223
-      Top = 176
+      Left = 11
+      Top = 360
       Width = 100
       Height = 27
       EditLabel.Width = 65
@@ -253,21 +246,28 @@ object HiveView: THiveView
   end
   object btnSave: TButton
     Left = 443
-    Top = 440
+    Top = 447
     Width = 100
-    Height = 65
+    Height = 58
     Caption = 'Save Image As...'
     TabOrder = 5
     OnClick = btnSaveClick
   end
   object btnReload: TButton
     Left = 443
-    Top = 511
+    Top = 376
     Width = 100
-    Height = 65
+    Height = 58
     Caption = 'Reload Image'
     TabOrder = 6
     OnClick = btnReloadClick
+  end
+  object memDebug: TMemo
+    Left = 231
+    Top = 518
+    Width = 322
+    Height = 239
+    TabOrder = 2
   end
   object dlgSave: TSaveDialog
     Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]

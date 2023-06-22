@@ -120,14 +120,14 @@ begin
   c := ReplaceStr(c,'{tempfile}',tempfilepath);
   RunCommand(c); // Create temp.png.
   starttime := GetTickCount;
-  while not FileExists(tempfilepath) do
+  while (FileExists(tempfilepath) = false) or (FileInUse(tempfilepath) = true) do
     begin
     if GetTickCount-starttime > 5000 then
       begin
-      memDebug.Lines.Add('temp.png was not created after 5 seconds.');
-      exit; // File was not created within 5 seconds.
+      memDebug.Lines.Add('temp.png access timeout after 5 seconds.');
+      exit; // File was not created or is unavailable after 5 seconds.
       end;
-    Sleep(200); // Wait until file appears.
+    Sleep(200); // Wait until file is available.
     end;
   LoadPNG(tempfilepath);
   ShowPNG; // Display temp.png.

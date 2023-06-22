@@ -23,6 +23,7 @@ procedure WriteWordRev(a: integer; w: word);
 procedure WriteDword(a: integer; d: longword);
 procedure WriteDwordRev(a: integer; d: longword);
 procedure RunCommand(command: string);
+function FileInUse(f: string): boolean;
 
 var
   myfile: file;
@@ -229,10 +230,25 @@ begin
   StartInfo.cb := SizeOf(TStartupInfo);
   if CreateProcess(nil,PChar(command),nil,nil,false,CREATE_NEW_PROCESS_GROUP+NORMAL_PRIORITY_CLASS+CREATE_NO_WINDOW,nil,nil,StartInfo,ProcInfo) then
     begin
-    CloseHandle(ProcInfo.hProcess);
-    WaitForSingleObject(ProcInfo.hProcess,INFINITE);
     CloseHandle(ProcInfo.hThread);
+    WaitForSingleObject(ProcInfo.hProcess,INFINITE);
+    CloseHandle(ProcInfo.hProcess);
     end;
+end;
+
+{ Check if a file is in use by another program. }
+
+function FileInUse(f: string): boolean;
+var FileHandle: THandle;
+begin
+  Result := false;
+  try
+    FileHandle := FileOpen(f, fmOpenWrite or fmShareExclusive);  // Attempt to open the file in exclusive mode.
+    if FileHandle <> THandle(-1) then FileClose(FileHandle) // File is not in use, close the handle.
+    else Result := True; // File is in use by another program.
+  except
+    Result := True; // An exception occurred while opening the file.
+  end;
 end;
 
 end.

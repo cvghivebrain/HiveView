@@ -90,7 +90,7 @@ end;
 
 procedure THiveView.menuFilesClick(Sender: TObject);
 var i, starttime: integer;
-  c: string;
+  cond: string;
   matchfound: boolean;
 begin
   LoadFile(menuFiles.FileName); // Load file to memory.
@@ -98,12 +98,15 @@ begin
   DefaultFormat; // Use default settings.
   matchfound := false; // Assume no match.
   for i := 0 to iniformats do
-    if Solve(inicontent[i,ini_if]) > 0 then // Check file with condition from ini.
+    begin
+    cond := ReplaceStr(inicontent[i,ini_if],'{filesize}',IntToStr(fs));
+    if Solve(cond) > 0 then // Check file with condition from ini.
       begin
       if inicontent[i,ini_convert] <> '' then DoConvert(i) // Check for conversion by external program.
         else DoRaw(i); // Load as raw using settings from ini.
       matchfound := true;
       end;
+    end;
   if not matchfound then
     begin
     memDebug.Lines.Add('File format not recognised. Using default settings.'); // No match found.
@@ -116,6 +119,7 @@ var starttime: integer;
   c: string;
 begin
   memDebug.Lines.Add('File format found: '+inicontent[i,ini_name]);
+  memDebug.Lines.Add('Converting with external program...');
   c := ReplaceStr(inicontent[i,ini_convert],'{file}',menuFiles.FileName);
   c := ReplaceStr(c,'{tempfile}',tempfilepath);
   RunCommand(c); // Create temp.png.
@@ -124,7 +128,7 @@ begin
     begin
     if GetTickCount-starttime > 5000 then
       begin
-      memDebug.Lines.Add('temp.png access timeout after 5 seconds.');
+      memDebug.Lines.Add('Failed to create temp.png after 5 seconds.');
       exit; // File was not created or is unavailable after 5 seconds.
       end;
     Sleep(200); // Wait until file is available.

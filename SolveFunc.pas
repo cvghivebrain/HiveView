@@ -114,7 +114,9 @@ var stringaddr, stringmax: int64;
 begin
   if t = 'b' then result := filearray[Solve(s)] // Return byte from file array.
   else if t = 'w' then result := GetWord(Solve(s)) // Return word.
+  else if t = 'W' then result := GetWordRev(Solve(s)) // Return word (byteswapped).
   else if t = 'd' then result := GetDWord(Solve(s)) // Return longword.
+  else if t = 'D' then result := GetDWordRev(Solve(s)) // Return longword (byteswapped).
   else if t = 's' then
     begin
     stringaddr := Solve(Explode(s,',',0));

@@ -3,3 +3,5 @@ Project1.identcache
 __history/*
 *.pdf
 *.rsm
+conv.bat
+*.BMP

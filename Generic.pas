@@ -43,9 +43,9 @@ type
     procedure LoadImagePixels2;
     function GetColorRaw(a, len: integer): string;
     procedure chkPaletteClick(Sender: TObject);
-    procedure menuDrivesClick(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
     procedure ShowImageInfo;
+    procedure menuDrivesClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -82,14 +82,16 @@ implementation
 {$R *.dfm}
 
 procedure THiveView.menuDrivesClick(Sender: TObject);
+var drive: string;
 begin
-  menuFolders.Directory := menuDrives.Drive+':\'; // Show folders on drive.
+  drive := AnsiUpperCase(Explode(menuDrives.Items[menuDrives.ItemIndex],':',0));
+  menuFolders.Directory := drive+':\'; // Show folders on drive.
   menuFiles.Directory := menuFolders.Directory; // Show files in root folder.
   memDebug.Lines.Add(menuFolders.Directory);
 end;
 
 procedure THiveView.menuFilesClick(Sender: TObject);
-var i, starttime: integer;
+var i: integer;
   cond: string;
   matchfound: boolean;
 begin
@@ -136,6 +138,8 @@ begin
   LoadPNG(tempfilepath);
   ShowPNG; // Display temp.png.
   DeleteFile(tempfilepath); // Delete temp.png.
+  imgw := PNG.Width; // Get image width.
+  imgh := PNG.Height; // Get image height.
   ShowImageInfo;
 end;
 

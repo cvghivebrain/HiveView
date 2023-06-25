@@ -15,8 +15,8 @@ object HiveView: THiveView
   PixelsPerInch = 96
   TextHeight = 13
   object imgMain: TImage
-    Left = 567
-    Top = 8
+    Left = 559
+    Top = 0
     Width = 57
     Height = 57
   end

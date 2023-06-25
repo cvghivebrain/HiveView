@@ -12,7 +12,7 @@ BMP | [Windows Bitmap](https://en.wikipedia.org/wiki/BMP_file_format) | ImageMag
 CIN | Kodak [Cineon](https://en.wikipedia.org/wiki/Cineon) | ImageMagick
 CR2 | Canon Digital Camera Raw (TIFF variant) | ImageMagick
 CRW | Canon Digital Camera Raw | ImageMagick
-DG2 | Sega Digitizer 2 - Used in Sega Saturn games. | 
+DG2 | Sega Digitizer 2, used in Sega Saturn games. | 
 DCR | Kodak Digital Camera Raw | ImageMagick
 DDS | Microsoft [DirectDraw Surface](https://en.wikipedia.org/wiki/DirectDraw_Surface) | ImageMagick
 DIB | Device-Independent Bitmap | ImageMagick
@@ -26,7 +26,7 @@ HDR | [Radiance RGBE](https://en.wikipedia.org/wiki/RGBE_image_format) | ImageMa
 HRZ | Slow-scan television | ImageMagick
 JPEG/JPG | Joint Photographic Experts Group | ImageMagick
 PNG | Portable Network Graphics | [cmd copy](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/copy)
-RGB | Sega RGB format - Used in Sega Saturn games. | 
+RGB | Sega RGB format, used in Sega Saturn games. | 
 TIFF/TIF | Tag Image File Format | ImageMagick
 WEBP | Google WebP | ImageMagick
 

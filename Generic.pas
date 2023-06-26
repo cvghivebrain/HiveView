@@ -46,6 +46,7 @@ type
     procedure btnSaveClick(Sender: TObject);
     procedure ShowImageInfo;
     procedure menuDrivesClick(Sender: TObject);
+    procedure FormResize(Sender: TObject);
   private
     { Private declarations }
   public
@@ -136,7 +137,7 @@ begin
     Sleep(200); // Wait until file is available.
     end;
   LoadPNG(tempfilepath);
-  ShowPNG; // Display temp.png.
+  ShowPNG(HiveView.ClientWidth-imgMain.Left,HiveView.ClientHeight-imgMain.Top); // Display temp.png.
   DeleteFile(tempfilepath); // Delete temp.png.
   imgw := PNG.Width; // Get image width.
   imgh := PNG.Height; // Get image height.
@@ -244,7 +245,7 @@ begin
     LoadImagePalette;
     LoadImagePixels2;
     end;
-  ShowPNG;
+  ShowPNG(HiveView.ClientWidth-imgMain.Left,HiveView.ClientHeight-imgMain.Top);
   ShowImageInfo;
 end;
 
@@ -388,7 +389,12 @@ begin
   for i := 0 to (PNG.Width*PNG.Height)-1 do PixelPNG(255,0,0,i div PNG.Width,i mod PNG.Width,i div PNG.Width); // Test pattern.
 
   //MovePNG(20,20); // Change position of PNG.
-  ShowPNG; // Display PNG on form.
+  ShowPNG(HiveView.ClientWidth-imgMain.Left,HiveView.ClientHeight-imgMain.Top); // Display PNG on form.
+end;
+
+procedure THiveView.FormResize(Sender: TObject);
+begin
+  ShowPNG(HiveView.ClientWidth-imgMain.Left,HiveView.ClientHeight-imgMain.Top);
 end;
 
 end.

@@ -1,13 +1,13 @@
 unit PNGFunc;
 
 interface
-uses SysUtils, Dialogs, ExtCtrls, pngimage;
+uses SysUtils, Dialogs, ExtCtrls, Classes, pngimage;
 
 procedure InitPNG(w, h: integer);
 procedure AssignPNG(img: TImage);
 procedure PixelPNG(r, g, b, a: byte; x, y: integer);
 procedure MovePNG(x, y: integer);
-procedure ShowPNG;
+procedure ShowPNG(maxw, maxh: integer);
 procedure LoadPNG(f: string);
 procedure SavePNG(f: string);
 
@@ -63,12 +63,31 @@ end;
 
 { Display the PNG on screen. }
 
-procedure ShowPNG;
+procedure ShowPNG(maxw, maxh: integer);
+var displayw, displayh: integer;
 begin
   pic.Picture := nil; // Reset image.
-  pic.Width := PNG.Width;
-  pic.Height := PNG.Height;
-  pic.Canvas.Draw(0,0,PNG); // Draw on screen.
+  if (PNG.Width > maxw) or (PNG.Height > maxh) then
+    begin
+    if PNG.Width/PNG.Height > maxw/maxh then
+      begin
+      displayw := maxw;
+      displayh := Round(PNG.Height/(PNG.Width/maxw));
+      end
+    else
+      begin
+      displayw := Round(PNG.Width/(PNG.Height/maxh));
+      displayh := maxh;
+      end;
+    end
+  else
+    begin
+    displayw := PNG.Width;
+    displayh := PNG.Height
+    end;
+  pic.Width := displayw;
+  pic.Height := displayh;
+  pic.Canvas.StretchDraw(Rect(0,0,displayw,displayh),PNG);
 end;
 
 { Load PNG from file. }

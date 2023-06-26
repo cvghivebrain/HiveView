@@ -12,10 +12,11 @@ object HiveView: THiveView
   Font.Style = []
   OldCreateOrder = False
   OnCreate = FormCreate
+  OnResize = FormResize
   PixelsPerInch = 96
   TextHeight = 13
   object imgMain: TImage
-    Left = 559
+    Left = 562
     Top = 0
     Width = 57
     Height = 57

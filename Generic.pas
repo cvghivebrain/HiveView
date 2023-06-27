@@ -108,6 +108,7 @@ begin
       if inicontent[i,ini_convert] <> '' then DoConvert(i) // Check for conversion by external program.
         else DoRaw(i); // Load as raw using settings from ini.
       matchfound := true;
+      break; // Stop checking for format matches.
       end;
     end;
   if not matchfound then

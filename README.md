@@ -2,7 +2,7 @@
 
 HiveView is an image viewer that can (potentially) open any image file, either by using the built-in customisable raw image viewer, or using external programs to preconvert images to PNG. Image format definitions can be added to HiveView.ini.
 
-## Supported formats
+## Supported image formats
 
 Ext. | Description | Program
 --- | --- | ---
@@ -12,7 +12,7 @@ BMP | [Windows Bitmap](https://en.wikipedia.org/wiki/BMP_file_format) | ImageMag
 CIN | Kodak [Cineon](https://en.wikipedia.org/wiki/Cineon) | ImageMagick
 CR2 | Canon Digital Camera Raw (TIFF variant) | ImageMagick
 CRW | Canon Digital Camera Raw | ImageMagick
-DG2 | Sega Digitizer 2, used in Sega Saturn games. | 
+DG2 | Sega Digitizer 2, used in Sega Saturn games. | HiveView
 DCR | Kodak Digital Camera Raw | ImageMagick
 DDS | Microsoft [DirectDraw Surface](https://en.wikipedia.org/wiki/DirectDraw_Surface) | ImageMagick
 DIB | Device-Independent Bitmap | ImageMagick
@@ -24,11 +24,26 @@ FF | Farbfeld | ImageMagick
 FL32 | [FilmLight](https://www.filmlight.ltd.uk/) | ImageMagick
 HDR | [Radiance RGBE](https://en.wikipedia.org/wiki/RGBE_image_format) | ImageMagick
 HRZ | Slow-scan television | ImageMagick
-JPEG/JPG | Joint Photographic Experts Group | ImageMagick
-PNG | Portable Network Graphics | [cmd copy](https://learn.microsoft.com/en-us/windows-server/administration/windows-commands/copy)
-RGB | Sega RGB format, used in Sega Saturn games. | 
-TIFF/TIF | Tag Image File Format | ImageMagick
-WEBP | Google WebP | ImageMagick
+JPEG/JPG | [Joint Photographic Experts Group](https://en.wikipedia.org/wiki/Joint_Photographic_Experts_Group) | ImageMagick
+JNG | [JPEG Network Graphics](https://en.wikipedia.org/wiki/JPEG_Network_Graphics) | ImageMagick
+JP2 | [JPEG 2000](https://en.wikipedia.org/wiki/JPEG_2000) | ImageMagick
+J2C/J2K/JPT | JPEG 2000 codestream | ImageMagick
+MAT | [MATLAB](https://en.wikipedia.org/wiki/MATLAB) data file | ImageMagick
+MPC+CACHE | ImageMagick Magick Pixel Cache | ImageMagick
+MRW | Minolta Raw | ImageMagick
+NEF | Nikon Electronic Format (TIFF variant) | ImageMagick
+ORF | [Olympus Raw](https://en.wikipedia.org/wiki/ORF_format) | ImageMagick
+OTB | Nokia [Over the Air Bitmap](https://en.wikipedia.org/wiki/OTA_bitmap) | ImageMagick
+PAM | Portable Arbitrary Map | ImageMagick
+PBM/PGM/PPM/PNM | [Netpbm Portable Bitmap](https://en.wikipedia.org/wiki/Netpbm) | ImageMagick
+PCD | Kodak [Photo CD](https://en.wikipedia.org/wiki/Photo_CD) | ImageMagick
+PDB | Palm Database ImageViewer | ImageMagick
+PEF | Pentax Raw | ImageMagick
+PES | Embroidery file | ImageMagick
+PNG | [Portable Network Graphics](https://en.wikipedia.org/wiki/PNG) | n/a
+RGB | Sega RGB format, used in Sega Saturn games. | HiveView
+TIFF/TIF | [Tag Image File Format](https://en.wikipedia.org/wiki/TIFF) | ImageMagick
+WEBP | Google [WebP](https://en.wikipedia.org/wiki/WebP) | ImageMagick
 
 ## Credits
 
@@ -39,7 +54,7 @@ WEBP | Google WebP | ImageMagick
 ### ImageMagick
 * APNG/GIF animation frames
 * ART (PFS: First Publisher) - tricky detection
-* AVI/AVIF
+* AVI/AVIF/M2V/MPEG
 * AVS X image
 * BAYER
 * BPG - failed on samples from https://bellard.org/bpg/
@@ -51,7 +66,7 @@ WEBP | Google WebP | ImageMagick
 * CUT (Dr. Halo clip mask) - tricky detection
 * DCM - multi page
 * DCX - multi page PCX
-* DJVU/PDF/EPDF/HTML - multi page/embedded images
+* DJVU/EPDF/HTML/MAN/PDF - multi page/embedded images
 * DMR
 * DOT graph format
 * EMF
@@ -64,3 +79,17 @@ WEBP | Google WebP | ImageMagick
 * GRAY/GRAYA
 * HEIC/HEIF
 * HPGL
+* JBIG
+* JXR
+* JXL
+* MIFF - failed on samples from https://telparia.com/fileFormatSamples/image/miff/
+* MONO - no header
+* MNG - multi page
+* MPO - multi page
+* MTV - unusable header
+* MVG - failed on sample
+* ORA - actually a ZIP file containing PNGs
+* P7 - crashed on samples from http://www.cs.ait.ac.th/images/.xvpics/
+* PALM - multi page
+* PCL
+* PCX - displays as negative

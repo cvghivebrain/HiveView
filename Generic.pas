@@ -47,6 +47,7 @@ type
     procedure ShowImageInfo;
     procedure menuDrivesClick(Sender: TObject);
     procedure FormResize(Sender: TObject);
+    procedure DisplayImage;
   private
     { Private declarations }
   public
@@ -128,17 +129,13 @@ begin
   c := ReplaceStr(c,'{tempfile}',tempfilepath);
   RunCommand(c); // Create temp.png.
   starttime := GetTickCount;
-  while (FileExists(tempfilepath) = false) or (FileInUse(tempfilepath) = true) do
+  if not FileExists(tempfilepath) then
     begin
-    if GetTickCount-starttime > 5000 then
-      begin
-      memDebug.Lines.Add('Failed to create temp.png after 5 seconds.');
-      exit; // File was not created or is unavailable after 5 seconds.
-      end;
-    Sleep(200); // Wait until file is available.
+    memDebug.Lines.Add('temp.png not found.');
+    exit;
     end;
   LoadPNG(tempfilepath);
-  ShowPNG(HiveView.ClientWidth-imgMain.Left,HiveView.ClientHeight-imgMain.Top); // Display temp.png.
+  DisplayImage; // Display temp.png.
   DeleteFile(tempfilepath); // Delete temp.png.
   imgw := PNG.Width; // Get image width.
   imgh := PNG.Height; // Get image height.
@@ -246,13 +243,18 @@ begin
     LoadImagePalette;
     LoadImagePixels2;
     end;
-  ShowPNG(HiveView.ClientWidth-imgMain.Left,HiveView.ClientHeight-imgMain.Top);
+  DisplayImage;
   ShowImageInfo;
 end;
 
 procedure THiveView.ShowImageInfo;
 begin
   memDebug.Lines.Add('Image is '+IntToStr(PNG.Width)+' × '+IntToStr(PNG.Height)+' pixels.');
+end;
+
+procedure THiveView.DisplayImage;
+begin
+  ShowPNG(HiveView.ClientWidth-imgMain.Left,HiveView.ClientHeight-imgMain.Top);
 end;
 
 procedure THiveView.LoadImagePixels;
@@ -388,14 +390,12 @@ begin
   InitPNG(100,100); // Create blank 32-bit PNG.
   AssignPNG(imgMain); // Assign PNG to image on form.
   for i := 0 to (PNG.Width*PNG.Height)-1 do PixelPNG(255,0,0,i div PNG.Width,i mod PNG.Width,i div PNG.Width); // Test pattern.
-
-  //MovePNG(20,20); // Change position of PNG.
-  ShowPNG(HiveView.ClientWidth-imgMain.Left,HiveView.ClientHeight-imgMain.Top); // Display PNG on form.
+  DisplayImage; // Display PNG on form.
 end;
 
 procedure THiveView.FormResize(Sender: TObject);
 begin
-  ShowPNG(HiveView.ClientWidth-imgMain.Left,HiveView.ClientHeight-imgMain.Top);
+  DisplayImage;
 end;
 
 end.

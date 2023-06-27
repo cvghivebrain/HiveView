@@ -1,7 +1,7 @@
 unit SolveFunc;
 
 interface
-uses StrUtils, SysUtils, ExplodeFunc, CRCFunc, FileFunc;
+uses StrUtils, SysUtils, System.Math, ExplodeFunc, CRCFunc, FileFunc;
 
 function DoSum(s: string): int64;
 function Solve(s: string): int64;
@@ -49,6 +49,7 @@ begin
   s := ReplaceStr(s,'+','?+');
   s := ReplaceStr(s,'*','?*');
   s := ReplaceStr(s,'/','?/');
+  s := ReplaceStr(s,'\','?\'); // Division rounded up
   s := ReplaceStr(s,'&','?&'); // AND
   s := ReplaceStr(s,'^','?^'); // XOR
   s := ReplaceStr(s,'|','?|'); // OR
@@ -58,6 +59,7 @@ begin
   s := ReplaceStr(s,'-?-','+');
   s := ReplaceStr(s,'*?-','*-');
   s := ReplaceStr(s,'/?-','/-');
+  s := ReplaceStr(s,'\?-','\-');
   s := ReplaceStr(s,'&?-','&-');
   s := ReplaceStr(s,'^?-','^-');
   s := ReplaceStr(s,'|?-','|-');
@@ -74,6 +76,7 @@ begin
     else if Copy(sub,1,1) = '-' then r := r-StrtoInt64(Explode(sub,'-',1))
     else if Copy(sub,1,1) = '*' then r := r*StrtoInt64(Explode(sub,'*',1))
     else if Copy(sub,1,1) = '/' then r := r div StrtoInt64(Explode(sub,'/',1))
+    else if Copy(sub,1,1) = '\' then r := Ceil(r/StrtoInt64(Explode(sub,'\',1)))
     else if Copy(sub,1,1) = '&' then r := r and StrtoInt64(Explode(sub,'&',1))
     else if Copy(sub,1,1) = '|' then r := r or StrtoInt64(Explode(sub,'|',1))
     else if Copy(sub,1,1) = '^' then r := r xor StrtoInt64(Explode(sub,'^',1))

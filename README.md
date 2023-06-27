@@ -38,10 +38,17 @@ PAM | Portable Arbitrary Map | ImageMagick
 PBM/PGM/PPM/PNM | [Netpbm Portable Bitmap](https://en.wikipedia.org/wiki/Netpbm) | ImageMagick
 PCD | Kodak [Photo CD](https://en.wikipedia.org/wiki/Photo_CD) | ImageMagick
 PDB | Palm Database ImageViewer | ImageMagick
-PEF | Pentax Raw | ImageMagick
+PEF | Pentax Raw (TIFF variant) | ImageMagick
 PES | Embroidery file | ImageMagick
+PFM/PHM | Portable Float Map | ImageMagick
+PICON/XPM | [X PixMap Personal Icon](https://en.wikipedia.org/wiki/X_PixMap) | ImageMagick
 PNG | [Portable Network Graphics](https://en.wikipedia.org/wiki/PNG) | n/a
+PS | Adobe [PostScript](https://en.wikipedia.org/wiki/PostScript) | Ghostscript
+PSD/PSB | Adobe [Photoshop](https://en.wikipedia.org/wiki/Adobe_Photoshop) | ImageMagick
+QOI | [Quite OK Image Format](https://en.wikipedia.org/wiki/QOI_(image_format)) | ImageMagick
+RAF | Fujifilm Raw | ImageMagick
 RGB | Sega RGB format, used in Sega Saturn games. | HiveView
+SFW | [Seattle FilmWorks](https://en.wikipedia.org/wiki/Seattle_FilmWorks) | ImageMagick
 TIFF/TIF | [Tag Image File Format](https://en.wikipedia.org/wiki/TIFF) | ImageMagick
 WEBP | Google [WebP](https://en.wikipedia.org/wiki/WebP) | ImageMagick
 
@@ -66,7 +73,7 @@ WEBP | Google [WebP](https://en.wikipedia.org/wiki/WebP) | ImageMagick
 * CUT (Dr. Halo clip mask) - tricky detection
 * DCM - multi page
 * DCX - multi page PCX
-* DJVU/EPDF/HTML/MAN/PDF - multi page/embedded images
+* DJVU/EPDF/HTML/MAN/PDF/POCKETMOD - multi page/embedded images
 * DMR
 * DOT graph format
 * EMF
@@ -93,3 +100,12 @@ WEBP | Google [WebP](https://en.wikipedia.org/wiki/WebP) | ImageMagick
 * PALM - multi page
 * PCL
 * PCX - displays as negative
+* PFA/PFB
+* PICT - failed on samples from http://cd.textfiles.com/cdreview/cdreview66/PCT01_01/PC0101P/
+* PIX - failed on sample from http://fileformats.archiveteam.org/wiki/Alias_PIX
+* PSD/PSB/TIFF layers
+* PTIF - multi page
+* PWP - multi page
+* RAD
+* RAW/RGB - no header
+* RGF - https://mattrajca.com/2016/01/06/legos-rgf-file-format.html

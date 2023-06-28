@@ -48,9 +48,20 @@ PSD/PSB | Adobe [Photoshop](https://en.wikipedia.org/wiki/Adobe_Photoshop) | Ima
 QOI | [Quite OK Image Format](https://en.wikipedia.org/wiki/QOI_(image_format)) | ImageMagick
 RAF | Fujifilm Raw | ImageMagick
 RGB | Sega RGB format, used in Sega Saturn games. | HiveView
+RLE | Utah Raster Toolkit | ImageMagick
+SCT | [Scitex Continuous Tone](https://en.wikipedia.org/wiki/Scitex_CT) | ImageMagick
 SFW | [Seattle FilmWorks](https://en.wikipedia.org/wiki/Seattle_FilmWorks) | ImageMagick
+SGI/BW/RGB | Silicon Graphics IRIX RGB | ImageMagick
+SUN/RAS | [Sun Raster](https://en.wikipedia.org/wiki/Sun_Raster) | ImageMagick
+SVG | [Scalable Vector Graphics](https://en.wikipedia.org/wiki/SVG) | ImageMagick
 TIFF/TIF | [Tag Image File Format](https://en.wikipedia.org/wiki/TIFF) | ImageMagick
+TIM | Sony PlayStation texture | ImageMagick
+VICAR/IMG | NASA Video Image Communication And Retrieval | ImageMagick
+VIFF/XV | Khoros Visualization | ImageMagick
 WEBP | Google [WebP](https://en.wikipedia.org/wiki/WebP) | ImageMagick
+WPG | [WordPerfect Graphics](https://en.wikipedia.org/wiki/WordPerfect) | ImageMagick
+XBM | X Window System Bitmap | ImageMagick
+XCF | GIMP [Experimental Computing Facility](https://en.wikipedia.org/wiki/XCF_(file_format)) | ImageMagick
 
 ## Credits
 
@@ -87,7 +98,7 @@ WEBP | Google [WebP](https://en.wikipedia.org/wiki/WebP) | ImageMagick
 * HEIC/HEIF
 * HPGL
 * JBIG
-* JXR
+* JXR/WDP
 * JXL
 * MIFF - failed on samples from https://telparia.com/fileFormatSamples/image/miff/
 * MONO - no header
@@ -103,9 +114,17 @@ WEBP | Google [WebP](https://en.wikipedia.org/wiki/WebP) | ImageMagick
 * PFA/PFB
 * PICT - failed on samples from http://cd.textfiles.com/cdreview/cdreview66/PCT01_01/PC0101P/
 * PIX - failed on sample from http://fileformats.archiveteam.org/wiki/Alias_PIX
-* PSD/PSB/TIFF layers
+* PSD/PSB/TIFF/XCF layers
 * PTIF - multi page
 * PWP - multi page
 * RAD
-* RAW/RGB - no header
+* RAW/RGB/UYVY/YUV - no header
 * RGF - https://mattrajca.com/2016/01/06/legos-rgf-file-format.html
+* RLA - unhelpful header
+* SID
+* TGA - unhelpful header
+* TTF
+* WBMP - unhelpful header
+* WMF
+* XWD - failed on samples from https://telparia.com/fileFormatSamples/image/xwd/
+* X3F - unsupported?, failed on samples from http://www.rawsamples.ch/index.php/en/sigma

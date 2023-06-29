@@ -5,7 +5,7 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StrUtils, ExtCtrls, StdCtrls, pngimage, PNGFunc, Vcl.ComCtrls,
-  Vcl.FileCtrl, CRCFunc, ExplodeFunc, FileFunc, SolveFunc;
+  Vcl.FileCtrl, IOUtils, CRCFunc, ExplodeFunc, FileFunc, SolveFunc;
 
 type
   THiveView = class(TForm)
@@ -30,10 +30,12 @@ type
     editPalBits: TLabeledEdit;
     dlgSave: TSaveDialog;
     btnSave: TButton;
+    lstSubfiles: TListBox;
     procedure FormCreate(Sender: TObject);
     procedure menuFoldersClick(Sender: TObject);
     procedure menuFilesClick(Sender: TObject);
     procedure DoConvert(i: integer);
+    procedure DoUnpack(i: integer);
     procedure DoRaw(i: integer);
     procedure DefaultFormat;
     procedure btnReloadClick(Sender: TObject);
@@ -48,6 +50,7 @@ type
     procedure menuDrivesClick(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure DisplayImage;
+    procedure CleanTempFolder;
   private
     { Private declarations }
   public
@@ -58,9 +61,9 @@ var
   HiveView: THiveView;
   bitspercolor, bytespercolor, bitsperindex, bytesperindex,
     palsize, imgw, imgh, iniformats: integer;
-  inicontent: array[0..200, 0..14] of string;
+  inicontent: array[0..200, 0..15] of string;
   palarray: array[0..1024] of byte;
-  thisfolder, tempfilepath: string;
+  thisfolder, tempfolder, tempfilepath: string;
 
 const
   ini_name: integer = 0;
@@ -78,6 +81,7 @@ const
   ini_palsize: integer = 12;
   ini_palbits: integer = 13;
   ini_convert: integer = 14;
+  ini_unpack: integer = 15;
 
 implementation
 
@@ -100,12 +104,14 @@ begin
   LoadFile(menuFiles.FileName); // Load file to memory.
   memDebug.Lines.Add(menuFiles.FileName+' ('+IntToStr(fs)+' bytes)');
   DefaultFormat; // Use default settings.
+  CleanTempFolder;
   matchfound := false; // Assume no match.
   for i := 0 to iniformats do
     begin
     cond := ReplaceStr(inicontent[i,ini_if],'{filesize}',IntToStr(fs));
     if Solve(cond) > 0 then // Check file with condition from ini.
       begin
+      if inicontent[i,ini_unpack] <> '' then DoUnpack(i); // Check for unpack/decompress by external program.
       if inicontent[i,ini_convert] <> '' then DoConvert(i) // Check for conversion by external program.
         else DoRaw(i); // Load as raw using settings from ini.
       matchfound := true;
@@ -120,15 +126,13 @@ begin
 end;
 
 procedure THiveView.DoConvert(i: integer);
-var starttime: integer;
-  c: string;
+var c: string;
 begin
   memDebug.Lines.Add('File format found: '+inicontent[i,ini_name]);
   memDebug.Lines.Add('Converting with external program...');
   c := ReplaceStr(inicontent[i,ini_convert],'{file}',menuFiles.FileName);
   c := ReplaceStr(c,'{tempfile}',tempfilepath);
   RunCommand(c); // Create temp.png.
-  starttime := GetTickCount;
   if not FileExists(tempfilepath) then
     begin
     memDebug.Lines.Add('temp.png not found.');
@@ -140,6 +144,21 @@ begin
   imgw := PNG.Width; // Get image width.
   imgh := PNG.Height; // Get image height.
   ShowImageInfo;
+end;
+
+procedure THiveView.DoUnpack(i: integer);
+var c: string;
+  j: integer;
+begin
+  memDebug.Lines.Add('File format found: '+inicontent[i,ini_name]);
+  memDebug.Lines.Add('Unpacking with external program...');
+  c := ReplaceStr(inicontent[i,ini_unpack],'{file}',menuFiles.FileName);
+  c := ReplaceStr(c,'{tempfolder}',tempfolder);
+  RunCommand(c); // Unpack to temp folder.
+  ListFiles(tempfolder,true);
+  for j := 0 to Length(filelist)-1 do lstSubfiles.Items.Add(filelist[j]);
+  if j = 1 then memDebug.Lines.Add(IntToStr(j)+' file extracted.')
+    else memDebug.Lines.Add(IntToStr(j)+' files extracted.');
 end;
 
 procedure THiveView.DoRaw(i: integer);
@@ -345,6 +364,8 @@ var i: integer;
 label skipini;
 begin
   thisfolder := ExtractFileDir(Application.ExeName);
+  tempfolder := thisfolder+'\temp';
+  CleanTempFolder; // Create/empty temp folder.
   tempfilepath := thisfolder+'\temp.png';
   DeleteFile(tempfilepath); // Delete temp file.
   menuFolders.Directory := thisfolder;
@@ -380,6 +401,7 @@ begin
     else if AnsiPos('palstart=',s) = 1 then inicontent[i,ini_palstart] := Explode(s,'palstart=',1)
     else if AnsiPos('palsize=',s) = 1 then inicontent[i,ini_palsize] := Explode(s,'palsize=',1)
     else if AnsiPos('bitsperindex=',s) = 1 then inicontent[i,ini_palbits] := Explode(s,'bitsperindex=',1)
+    else if AnsiPos('unpack=',s) = 1 then inicontent[i,ini_unpack] := Explode(s,'unpack=',1)
     else if AnsiPos('convert=',s) = 1 then inicontent[i,ini_convert] := Explode(s,'convert=',1);
     end;
   CloseFile(inifile);
@@ -396,6 +418,13 @@ end;
 procedure THiveView.FormResize(Sender: TObject);
 begin
   DisplayImage;
+end;
+
+procedure THiveView.CleanTempFolder;
+begin
+  if SysUtils.DirectoryExists(tempfolder) then TDirectory.Delete(tempfolder,true); // Delete temp folder & all contents.
+  CreateDir(tempfolder); // Create temp folder.
+  lstSubfiles.Clear; // Empty list.
 end;
 
 end.

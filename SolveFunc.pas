@@ -24,8 +24,8 @@ begin
   s := ReplaceStr(s,' ',''); // Strip spaces.
   s := ReplaceStr(s,'<<','?L'); // Replace << to avoid clash with <.
   s := ReplaceStr(s,'>>','?R'); // Replace >> to avoid clash with >.
-  s := ReplaceStr(s,'fs',IntToStr(Length(filearray))); // Replace fs with file size.
-  s := ReplaceStr(s,'val',IntToStr(val)); // Replace val with predefined value.
+  //s := ReplaceStr(s,'fs',IntToStr(Length(filearray))); // Replace fs with file size.
+  //s := ReplaceStr(s,'val',IntToStr(val)); // Replace val with predefined value.
   if AnsiPos('>=',s) <> 0 then // Compare sides if string contains gte sign.
     if DoSum(Explode(s,'>=',0)) >= DoSum(Explode(s,'>=',1)) then s := '1' // 1 for greater than or equal.
     else s := '0'; // 0 for less.

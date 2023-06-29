@@ -1,7 +1,7 @@
 unit FileFunc;
 
 interface
-uses Windows, SysUtils;
+uses Windows, SysUtils, Dialogs;
 
 procedure LoadFile(openthis: string);
 procedure SaveFile(savethis: string);
@@ -24,11 +24,14 @@ procedure WriteDword(a: integer; d: longword);
 procedure WriteDwordRev(a: integer; d: longword);
 procedure RunCommand(command: string);
 function FileInUse(f: string): boolean;
+procedure ListFolders(dir: string; subfolders: boolean);
+procedure ListFiles(dir: string; subfolders: boolean);
 
 var
   myfile: file;
   filearray: array of byte;
   fs: integer;
+  folderlist, filelist: array of string;
 
 implementation
 
@@ -233,7 +236,8 @@ begin
     CloseHandle(ProcInfo.hThread);
     WaitForSingleObject(ProcInfo.hProcess,INFINITE);
     CloseHandle(ProcInfo.hProcess);
-    end;
+    end
+  else ShowMessage('Failed to execute command: '+SysErrorMessage(GetLastError));
 end;
 
 { Check if a file is in use by another program. }
@@ -249,6 +253,61 @@ begin
   except
     Result := True; // An exception occurred while opening the file.
   end;
+end;
+
+{ List subfolders in a specified folder; the results are stored in folderlist array. }
+
+procedure ListFolders(dir: string; subfolders: boolean);
+var rec: TSearchRec;
+  i: integer;
+begin
+  SetLength(folderlist,1);
+  folderlist[0] := '\'; // First folder is current one.
+  i := 0;
+  while i < Length(folderlist) do
+    begin
+    if FindFirst(dir+'\'+folderlist[i]+'*.*',faDirectory,rec) = 0 then
+      begin
+      repeat
+      if (rec.Name<>'.') and (rec.Name<>'..') and ((rec.attr and faDirectory)=faDirectory) then
+        begin
+        SetLength(folderlist,Length(folderlist)+1); // Add 1 slot for folder name.
+        folderlist[Length(folderlist)-1] := folderlist[i]+rec.Name+'\'; // Add folder name to array.
+        end;
+      until FindNext(rec) <>0;
+      FindClose(rec);
+      end;
+    Inc(i);
+    if not subfolders then exit; // Only run once if subfolders aren't wanted.
+    end;
+end;
+
+{ List files in a specified folder; the results are stored in filelist array. }
+
+procedure ListFiles(dir: string; subfolders: boolean);
+var rec: TSearchRec;
+  i: integer;
+begin
+  SetLength(filelist,0); // Assume no files.
+  if subfolders then ListFolders(dir,true) // Create list of folders.
+  else
+    begin
+    SetLength(folderlist,1);
+    folderlist[0] := '\'; // Only folder is current one.
+    end;
+  for i := 0 to Length(folderlist)-1 do
+    begin
+    if FindFirst(dir+folderlist[i]+'*.*',faAnyFile-faDirectory,rec) = 0 then
+      begin
+      repeat
+        begin
+        SetLength(filelist,Length(filelist)+1); // Add slot to filelist.
+        filelist[Length(filelist)-1] := folderlist[i]+rec.Name; // Add file name to array.
+        end;
+      until FindNext(rec) <> 0;
+      FindClose(rec);
+      end;
+    end;
 end;
 
 end.

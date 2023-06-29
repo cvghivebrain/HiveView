@@ -24,7 +24,7 @@ object HiveView: THiveView
   object menuFolders: TDirectoryListBox
     Left = 0
     Top = 24
-    Width = 281
+    Width = 186
     Height = 329
     TabOrder = 0
     OnClick = menuFoldersClick
@@ -32,7 +32,7 @@ object HiveView: THiveView
   object menuDrives: TDriveComboBox
     Left = 0
     Top = 0
-    Width = 281
+    Width = 186
     Height = 25
     Font.Charset = ANSI_CHARSET
     Font.Color = clWindowText
@@ -44,9 +44,9 @@ object HiveView: THiveView
     OnClick = menuDrivesClick
   end
   object menuFiles: TFileListBox
-    Left = 280
+    Left = 185
     Top = 0
-    Width = 281
+    Width = 186
     Height = 353
     ItemHeight = 13
     TabOrder = 3
@@ -269,6 +269,14 @@ object HiveView: THiveView
     Width = 322
     Height = 239
     TabOrder = 2
+  end
+  object lstSubfiles: TListBox
+    Left = 370
+    Top = 0
+    Width = 186
+    Height = 353
+    ItemHeight = 13
+    TabOrder = 7
   end
   object dlgSave: TSaveDialog
     Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]

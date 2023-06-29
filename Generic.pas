@@ -51,6 +51,7 @@ type
     procedure FormResize(Sender: TObject);
     procedure DisplayImage;
     procedure CleanTempFolder;
+    procedure lstSubfilesClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -96,6 +97,13 @@ begin
   memDebug.Lines.Add(menuFolders.Directory);
 end;
 
+procedure THiveView.menuFoldersClick(Sender: TObject);
+begin
+  menuFolders.Perform(WM_LBUTTONDBLCLK,0,0); // Simulate double click to load folder on single click.
+  menuFiles.Directory := menuFolders.Directory; // Show files.
+  memDebug.Lines.Add(menuFolders.Directory);
+end;
+
 procedure THiveView.menuFilesClick(Sender: TObject);
 var i: integer;
   cond: string;
@@ -125,10 +133,39 @@ begin
     end;
 end;
 
+procedure THiveView.lstSubfilesClick(Sender: TObject);
+var i: integer;
+  subfilename, subfilepath, cond: string;
+  matchfound: boolean;
+begin
+  subfilename := lstSubfiles.Items[lstSubfiles.ItemIndex];
+  subfilepath := tempfolder+subfilename;
+  LoadFile(subfilepath); // Load file to memory.
+  memDebug.Lines.Add(menuFiles.FileName+subfilename+' ('+IntToStr(fs)+' bytes)');
+  DefaultFormat; // Use default settings.
+  matchfound := false; // Assume no match.
+  for i := 0 to iniformats do
+    begin
+    cond := ReplaceStr(inicontent[i,ini_if],'{filesize}',IntToStr(fs));
+    if Solve(cond) > 0 then // Check file with condition from ini.
+      begin
+      if inicontent[i,ini_convert] <> '' then DoConvert(i) // Check for conversion by external program.
+        else DoRaw(i); // Load as raw using settings from ini.
+      matchfound := true;
+      break; // Stop checking for format matches.
+      end;
+    end;
+  if not matchfound then
+    begin
+    memDebug.Lines.Add('File format not recognised. Using default settings.'); // No match found.
+    LoadImage; // Load as raw using default settings.
+    end;
+end;
+
 procedure THiveView.DoConvert(i: integer);
 var c: string;
 begin
-  memDebug.Lines.Add('File format found: '+inicontent[i,ini_name]);
+  if inicontent[i,ini_unpack] = '' then memDebug.Lines.Add('File format found: '+inicontent[i,ini_name]);
   memDebug.Lines.Add('Converting with external program...');
   c := ReplaceStr(inicontent[i,ini_convert],'{file}',menuFiles.FileName);
   c := ReplaceStr(c,'{tempfile}',tempfilepath);
@@ -157,12 +194,13 @@ begin
   RunCommand(c); // Unpack to temp folder.
   ListFiles(tempfolder,true);
   for j := 0 to Length(filelist)-1 do lstSubfiles.Items.Add(filelist[j]);
-  if j = 1 then memDebug.Lines.Add(IntToStr(j)+' file extracted.')
-    else memDebug.Lines.Add(IntToStr(j)+' files extracted.');
+  if lstSubfiles.Count = 1 then memDebug.Lines.Add(IntToStr(lstSubfiles.Count)+' file extracted.')
+    else memDebug.Lines.Add(IntToStr(lstSubfiles.Count)+' files extracted.');
 end;
 
 procedure THiveView.DoRaw(i: integer);
 begin
+  if inicontent[i,ini_unpack] <> '' then exit; // Don't load as raw if file is an archive.
   if inicontent[i,ini_width] <> '' then editW.Text := inicontent[i,ini_width];
   if inicontent[i,ini_height] <> '' then editH.Text := inicontent[i,ini_height];
   if inicontent[i,ini_pixelstart] <> '' then editPixLoc.Text := inicontent[i,ini_pixelstart];
@@ -181,13 +219,6 @@ begin
   editPalBits.Enabled := chkPalette.Checked;
   memDebug.Lines.Add('File format found: '+inicontent[i,ini_name]);
   LoadImage; // Load image as raw using parameters from ini.
-end;
-
-procedure THiveView.menuFoldersClick(Sender: TObject);
-begin
-  menuFolders.Perform(WM_LBUTTONDBLCLK,0,0); // Simulate double click to load folder on single click.
-  menuFiles.Directory := menuFolders.Directory; // Show files.
-  memDebug.Lines.Add(menuFolders.Directory);
 end;
 
 procedure THiveView.btnReloadClick(Sender: TObject);
@@ -292,7 +323,7 @@ begin
       r := Solve(ReplaceStr(editR.Text,'x',c)); // Get each colour channel.
       g := Solve(ReplaceStr(editG.Text,'x',c));
       b := Solve(ReplaceStr(editB.Text,'x',c));
-      if fixedalpha = false then a := Solve(ReplaceStr(editAlpha.Text,'x',c));
+      if not fixedalpha then a := Solve(ReplaceStr(editAlpha.Text,'x',c));
       PixelPNG(r,g,b,a,j,i);
       pos := pos+bytespercolor; // Next colour.
       if pos >= fs then exit; // Stop drawing if at end of file.

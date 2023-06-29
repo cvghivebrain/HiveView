@@ -277,6 +277,7 @@ object HiveView: THiveView
     Height = 353
     ItemHeight = 13
     TabOrder = 7
+    OnClick = lstSubfilesClick
   end
   object dlgSave: TSaveDialog
     Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]

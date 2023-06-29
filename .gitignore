@@ -5,3 +5,4 @@ __history/*
 *.rsm
 conv.bat
 *.BMP
+temp/*

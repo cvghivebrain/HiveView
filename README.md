@@ -85,6 +85,7 @@ XCF | GIMP [Experimental Computing Facility](https://en.wikipedia.org/wiki/XCF_(
 * DCM - multi page
 * DCX - multi page PCX
 * DJVU/EPDF/HTML/MAN/PDF/POCKETMOD - multi page/embedded images
+* DCR/DNG/NEF - loads as TIFF but better detection needed
 * DMR
 * DOT graph format
 * EMF

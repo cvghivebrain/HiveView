@@ -52,6 +52,7 @@ type
     procedure DisplayImage;
     procedure CleanTempFolder;
     procedure lstSubfilesClick(Sender: TObject);
+    function FindInFile(s: string): string;
   private
     { Private declarations }
   public
@@ -88,6 +89,70 @@ implementation
 
 {$R *.dfm}
 
+procedure THiveView.FormCreate(Sender: TObject);
+var i: integer;
+  inifile: textfile;
+  s: string;
+label skipini;
+begin
+  thisfolder := ExtractFileDir(Application.ExeName);
+  tempfolder := thisfolder+'\temp';
+  CleanTempFolder; // Create/empty temp folder.
+  tempfilepath := thisfolder+'\temp.png';
+  DeleteFile(tempfilepath); // Delete temp file.
+  menuFolders.Directory := thisfolder;
+  dlgSave.InitialDir := menuFolders.Directory;
+  memDebug.Lines.Add(thisfolder);
+  DefaultFormat; // Fill in default values for format menu.
+  i := -1; // Start at -1 so that first format is 0.
+  if not FileExists('HiveView.ini') then // Check for ini file.
+    begin
+    memDebug.Lines.Add('HiveView.ini not found.');
+    goto skipini;
+    end;
+  AssignFile(inifile,'HiveView.ini'); // Open ini file.
+  Reset(inifile);
+  while not eof(inifile) do
+    begin
+    ReadLn(inifile,s);
+    if AnsiPos('[',s) = 1 then
+      begin
+      Inc(i); // Next format.
+      inicontent[i,ini_name] := Explode(Explode(s,'[',1),']',0);
+      end
+    else if AnsiPos('if:',s) = 1 then inicontent[i,ini_if] := Explode(s,'if:',1)
+    else if AnsiPos('width=',s) = 1 then inicontent[i,ini_width] := Explode(s,'width=',1)
+    else if AnsiPos('height=',s) = 1 then inicontent[i,ini_height] := Explode(s,'height=',1)
+    else if AnsiPos('pixelstart=',s) = 1 then inicontent[i,ini_pixelstart] := Explode(s,'pixelstart=',1)
+    else if AnsiPos('bitspercolor=',s) = 1 then inicontent[i,ini_bpc] := Explode(s,'bitspercolor=',1)
+    else if AnsiPos('red=',s) = 1 then inicontent[i,ini_r] := Explode(s,'red=',1)
+    else if AnsiPos('green=',s) = 1 then inicontent[i,ini_g] := Explode(s,'green=',1)
+    else if AnsiPos('blue=',s) = 1 then inicontent[i,ini_b] := Explode(s,'blue=',1)
+    else if AnsiPos('alpha=',s) = 1 then inicontent[i,ini_alpha] := Explode(s,'alpha=',1)
+    else if AnsiPos('palette=',s) = 1 then inicontent[i,ini_palenable] := Explode(s,'palette=',1)
+    else if AnsiPos('palstart=',s) = 1 then inicontent[i,ini_palstart] := Explode(s,'palstart=',1)
+    else if AnsiPos('palsize=',s) = 1 then inicontent[i,ini_palsize] := Explode(s,'palsize=',1)
+    else if AnsiPos('bitsperindex=',s) = 1 then inicontent[i,ini_palbits] := Explode(s,'bitsperindex=',1)
+    else if AnsiPos('unpack=',s) = 1 then inicontent[i,ini_unpack] := Explode(s,'unpack=',1)
+    else if AnsiPos('convert=',s) = 1 then inicontent[i,ini_convert] := Explode(s,'convert=',1);
+    end;
+  CloseFile(inifile);
+
+  skipini:
+  iniformats := i;
+  memDebug.Lines.Add(IntToStr(i+1)+' formats found in HiveView.ini.');
+  memDebug.Lines.Add('Warning: Large images can take several seconds to load.');
+  InitPNG(100,100); // Create blank 32-bit PNG.
+  AssignPNG(imgMain); // Assign PNG to image on form.
+  for i := 0 to (PNG.Width*PNG.Height)-1 do PixelPNG(255,0,0,i div PNG.Width,i mod PNG.Width,i div PNG.Width); // Test pattern.
+  DisplayImage; // Display PNG on form.
+end;
+
+procedure THiveView.FormResize(Sender: TObject);
+begin
+  DisplayImage;
+end;
+
 procedure THiveView.menuDrivesClick(Sender: TObject);
 var drive: string;
 begin
@@ -117,6 +182,7 @@ begin
   for i := 0 to iniformats do
     begin
     cond := ReplaceStr(inicontent[i,ini_if],'{filesize}',IntToStr(fs));
+    cond := FindInFile(cond);
     if Solve(cond) > 0 then // Check file with condition from ini.
       begin
       if inicontent[i,ini_unpack] <> '' then DoUnpack(i); // Check for unpack/decompress by external program.
@@ -147,6 +213,7 @@ begin
   for i := 0 to iniformats do
     begin
     cond := ReplaceStr(inicontent[i,ini_if],'{filesize}',IntToStr(fs));
+    cond := FindInFile(cond);
     if Solve(cond) > 0 then // Check file with condition from ini.
       begin
       if inicontent[i,ini_convert] <> '' then DoConvert(i) // Check for conversion by external program.
@@ -161,6 +228,8 @@ begin
     LoadImage; // Load as raw using default settings.
     end;
 end;
+
+{ Convert file to PNG using external program. }
 
 procedure THiveView.DoConvert(i: integer);
 var c: string;
@@ -183,6 +252,8 @@ begin
   ShowImageInfo;
 end;
 
+{ Unpack archive using external program. }
+
 procedure THiveView.DoUnpack(i: integer);
 var c: string;
   j: integer;
@@ -197,6 +268,8 @@ begin
   if lstSubfiles.Count = 1 then memDebug.Lines.Add(IntToStr(lstSubfiles.Count)+' file extracted.')
     else memDebug.Lines.Add(IntToStr(lstSubfiles.Count)+' files extracted.');
 end;
+
+{ Display file as raw image using menu settings. }
 
 procedure THiveView.DoRaw(i: integer);
 begin
@@ -221,6 +294,32 @@ begin
   LoadImage; // Load image as raw using parameters from ini.
 end;
 
+{ Find a string in the file if the ini condition has a "find:" instruction,
+  and insert its address back into the instruction. }
+
+function THiveView.FindInFile(s: string): string;
+var allinputs, searchstr, foundat: string;
+  startpos, endpos, i: integer;
+begin
+  if AnsiPos('{find:',s) = 0 then
+    begin
+    result := s; // No change if there isn't a "find:" instruction.
+    exit;
+    end;
+  allinputs := Explode(Explode(s,'{find:',1),'}',0); // Get all input parameters.
+  searchstr := Explode(allinputs,'"',1); // Get string to search for.
+  startpos := StrToInt(Explode(allinputs,',',0)); // Address to start searching.
+  endpos := StrToInt(Explode(allinputs,',',1))-Length(searchstr); // Address to stop searching.
+  foundat := '-1'; // Assume it won't be found.
+  for i := startpos to endpos do
+    if GetString(i,Length(searchstr)) = searchstr then
+      begin
+      foundat := IntToStr(i); // Address where string was found.
+      break; // Stop searching.
+      end;
+  result := ReplaceStr(s,'{find:'+allinputs+'}',foundat); // Reconstruct original condition with address.
+end;
+
 procedure THiveView.btnReloadClick(Sender: TObject);
 begin
   LoadImage;
@@ -237,6 +336,8 @@ begin
   editPalSize.Enabled := chkPalette.Checked;
   editPalBits.Enabled := chkPalette.Checked;
 end;
+
+{ Write default values to menu. }
 
 procedure THiveView.DefaultFormat;
 begin
@@ -386,69 +487,6 @@ begin
   for i := 0 to len-1 do
     r := r+IntToHex(GetByte(a+i),2); // Append byte to result.
   result := '$'+r; // Output hex string.
-end;
-
-procedure THiveView.FormCreate(Sender: TObject);
-var i: integer;
-  inifile: textfile;
-  s: string;
-label skipini;
-begin
-  thisfolder := ExtractFileDir(Application.ExeName);
-  tempfolder := thisfolder+'\temp';
-  CleanTempFolder; // Create/empty temp folder.
-  tempfilepath := thisfolder+'\temp.png';
-  DeleteFile(tempfilepath); // Delete temp file.
-  menuFolders.Directory := thisfolder;
-  dlgSave.InitialDir := menuFolders.Directory;
-  memDebug.Lines.Add(thisfolder);
-  DefaultFormat; // Fill in default values for format menu.
-  i := -1; // Start at -1 so that first format is 0.
-  if not FileExists('HiveView.ini') then // Check for ini file.
-    begin
-    memDebug.Lines.Add('HiveView.ini not found.');
-    goto skipini;
-    end;
-  AssignFile(inifile,'HiveView.ini'); // Open ini file.
-  Reset(inifile);
-  while not eof(inifile) do
-    begin
-    ReadLn(inifile,s);
-    if AnsiPos('[',s) = 1 then
-      begin
-      Inc(i); // Next format.
-      inicontent[i,ini_name] := Explode(Explode(s,'[',1),']',0);
-      end
-    else if AnsiPos('if:',s) = 1 then inicontent[i,ini_if] := Explode(s,'if:',1)
-    else if AnsiPos('width=',s) = 1 then inicontent[i,ini_width] := Explode(s,'width=',1)
-    else if AnsiPos('height=',s) = 1 then inicontent[i,ini_height] := Explode(s,'height=',1)
-    else if AnsiPos('pixelstart=',s) = 1 then inicontent[i,ini_pixelstart] := Explode(s,'pixelstart=',1)
-    else if AnsiPos('bitspercolor=',s) = 1 then inicontent[i,ini_bpc] := Explode(s,'bitspercolor=',1)
-    else if AnsiPos('red=',s) = 1 then inicontent[i,ini_r] := Explode(s,'red=',1)
-    else if AnsiPos('green=',s) = 1 then inicontent[i,ini_g] := Explode(s,'green=',1)
-    else if AnsiPos('blue=',s) = 1 then inicontent[i,ini_b] := Explode(s,'blue=',1)
-    else if AnsiPos('alpha=',s) = 1 then inicontent[i,ini_alpha] := Explode(s,'alpha=',1)
-    else if AnsiPos('palette=',s) = 1 then inicontent[i,ini_palenable] := Explode(s,'palette=',1)
-    else if AnsiPos('palstart=',s) = 1 then inicontent[i,ini_palstart] := Explode(s,'palstart=',1)
-    else if AnsiPos('palsize=',s) = 1 then inicontent[i,ini_palsize] := Explode(s,'palsize=',1)
-    else if AnsiPos('bitsperindex=',s) = 1 then inicontent[i,ini_palbits] := Explode(s,'bitsperindex=',1)
-    else if AnsiPos('unpack=',s) = 1 then inicontent[i,ini_unpack] := Explode(s,'unpack=',1)
-    else if AnsiPos('convert=',s) = 1 then inicontent[i,ini_convert] := Explode(s,'convert=',1);
-    end;
-  CloseFile(inifile);
-
-  skipini:
-  iniformats := i;
-  memDebug.Lines.Add(IntToStr(i+1)+' formats found in HiveView.ini.');
-  InitPNG(100,100); // Create blank 32-bit PNG.
-  AssignPNG(imgMain); // Assign PNG to image on form.
-  for i := 0 to (PNG.Width*PNG.Height)-1 do PixelPNG(255,0,0,i div PNG.Width,i mod PNG.Width,i div PNG.Width); // Test pattern.
-  DisplayImage; // Display PNG on form.
-end;
-
-procedure THiveView.FormResize(Sender: TObject);
-begin
-  DisplayImage;
 end;
 
 procedure THiveView.CleanTempFolder;

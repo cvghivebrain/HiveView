@@ -34,7 +34,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure menuFoldersClick(Sender: TObject);
     procedure menuFilesClick(Sender: TObject);
-    procedure DoConvert(i: integer);
+    procedure DoConvert(i: integer; targetfile: string);
     procedure DoUnpack(i: integer);
     procedure DoRaw(i: integer);
     procedure DefaultFormat;
@@ -186,7 +186,7 @@ begin
     if Solve(cond) > 0 then // Check file with condition from ini.
       begin
       if inicontent[i,ini_unpack] <> '' then DoUnpack(i); // Check for unpack/decompress by external program.
-      if inicontent[i,ini_convert] <> '' then DoConvert(i) // Check for conversion by external program.
+      if inicontent[i,ini_convert] <> '' then DoConvert(i,menuFiles.FileName) // Check for conversion by external program.
         else DoRaw(i); // Load as raw using settings from ini.
       matchfound := true;
       break; // Stop checking for format matches.
@@ -216,7 +216,7 @@ begin
     cond := FindInFile(cond);
     if Solve(cond) > 0 then // Check file with condition from ini.
       begin
-      if inicontent[i,ini_convert] <> '' then DoConvert(i) // Check for conversion by external program.
+      if inicontent[i,ini_convert] <> '' then DoConvert(i,subfilepath) // Check for conversion by external program.
         else DoRaw(i); // Load as raw using settings from ini.
       matchfound := true;
       break; // Stop checking for format matches.
@@ -231,12 +231,12 @@ end;
 
 { Convert file to PNG using external program. }
 
-procedure THiveView.DoConvert(i: integer);
+procedure THiveView.DoConvert(i: integer; targetfile: string);
 var c: string;
 begin
   if inicontent[i,ini_unpack] = '' then memDebug.Lines.Add('File format found: '+inicontent[i,ini_name]);
   memDebug.Lines.Add('Converting with external program...');
-  c := ReplaceStr(inicontent[i,ini_convert],'{file}',menuFiles.FileName);
+  c := ReplaceStr(inicontent[i,ini_convert],'{file}',targetfile);
   c := ReplaceStr(c,'{tempfile}',tempfilepath);
   RunCommand(c); // Create temp.png.
   if not FileExists(tempfilepath) then

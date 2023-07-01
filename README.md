@@ -9,11 +9,14 @@ Ext. | Description | Program
 AAI | Dune HD media player image | ImageMagick
 ARW | Sony Digital Camera Alpha Raw (TIFF variant) | ImageMagick
 BMP | [Windows Bitmap](https://en.wikipedia.org/wiki/BMP_file_format) | ImageMagick
+CAL/CT1/RAS | DoD [CALS Raster](https://en.wikipedia.org/wiki/CALS_Raster_file_format) | ImageMagick
 CIN | Kodak [Cineon](https://en.wikipedia.org/wiki/Cineon) | ImageMagick
 CR2 | Canon Digital Camera Raw (TIFF variant) | ImageMagick
 CRW | Canon Digital Camera Raw | ImageMagick
 DG2 | Sega Digitizer 2, used in Sega Saturn games. | HiveView
+DCM | [DICOM](https://en.wikipedia.org/wiki/DICOM) medical image | ImageMagick
 DCR | Kodak Digital Camera Raw | ImageMagick
+DCX | ZSoft Multi-page PCX | ImageMagick
 DDS | Microsoft [DirectDraw Surface](https://en.wikipedia.org/wiki/DirectDraw_Surface) | ImageMagick
 DIB | Device-Independent Bitmap | ImageMagick
 DNG | Adobe [Digital Negative](https://en.wikipedia.org/wiki/Digital_Negative) (TIFF variant) | ImageMagick
@@ -29,6 +32,7 @@ JNG | [JPEG Network Graphics](https://en.wikipedia.org/wiki/JPEG_Network_Graphic
 JP2 | [JPEG 2000](https://en.wikipedia.org/wiki/JPEG_2000) | ImageMagick
 J2C/J2K/JPT | JPEG 2000 codestream | ImageMagick
 MAT | [MATLAB](https://en.wikipedia.org/wiki/MATLAB) data file | ImageMagick
+MNG | [Multiple-image Network Graphics](https://en.wikipedia.org/wiki/Multiple-image_Network_Graphics) | ImageMagick
 MPC+CACHE | ImageMagick Magick Pixel Cache | ImageMagick
 MRW | Minolta Raw | ImageMagick
 NEF | Nikon Electronic Format (TIFF variant) | ImageMagick
@@ -37,6 +41,7 @@ OTB | Nokia [Over the Air Bitmap](https://en.wikipedia.org/wiki/OTA_bitmap) | Im
 PAM | Portable Arbitrary Map | ImageMagick
 PBM/PGM/PPM/PNM | [Netpbm Portable Bitmap](https://en.wikipedia.org/wiki/Netpbm) | ImageMagick
 PCD | Kodak [Photo CD](https://en.wikipedia.org/wiki/Photo_CD) | ImageMagick
+PCX | ZSoft [Picture Exchange](https://en.wikipedia.org/wiki/PCX) | ImageMagick
 PDB | Palm Database ImageViewer | ImageMagick
 PEF | Pentax Raw (TIFF variant) | ImageMagick
 PES | Embroidery file | ImageMagick
@@ -63,8 +68,15 @@ WPG | [WordPerfect Graphics](https://en.wikipedia.org/wiki/WordPerfect) | ImageM
 XBM | X Window System Bitmap | ImageMagick
 XCF | GIMP [Experimental Computing Facility](https://en.wikipedia.org/wiki/XCF_(file_format)) | ImageMagick
 
+## Supported archive formats
+
+Ext. | Description | Program
+--- | --- | ---
+7Z | 7-Zip | 7-Zip
+
 ## Credits
 
+* [7-Zip](https://7-zip.org/)
 * [Ghostscript](https://ghostscript.com)
 * [ImageMagick](https://github.com/ImageMagick/ImageMagick)
 
@@ -77,13 +89,12 @@ XCF | GIMP [Experimental Computing Facility](https://en.wikipedia.org/wiki/XCF_(
 * BAYER
 * BPG - failed on samples from https://bellard.org/bpg/
 * BMP - failed on samples from https://people.math.sc.edu/Burkardt/data/bmp/bmp.html
-* CALS - multi page
+* CALS Type 2 (CT2) - multi page, can't find any examples
 * CIP - write only
 * CMYK/CMYKA - no header?
 * CUR/ICO - multi page
 * CUT (Dr. Halo clip mask) - tricky detection
-* DCM - multi page
-* DCX - multi page PCX
+* DCM - multi page sometimes?; failed on (some) samples from https://telparia.com/fileFormatSamples/image/dicom/
 * DJVU/EPDF/HTML/MAN/PDF/POCKETMOD - multi page/embedded images
 * DCR/DNG/NEF - loads as TIFF but better detection needed
 * DMR
@@ -103,15 +114,14 @@ XCF | GIMP [Experimental Computing Facility](https://en.wikipedia.org/wiki/XCF_(
 * JXL
 * MIFF - failed on samples from https://telparia.com/fileFormatSamples/image/miff/
 * MONO - no header
-* MNG - multi page
-* MPO - multi page
+* MPO - multi page, only first page is loaded
 * MTV - unusable header
 * MVG - failed on sample
 * ORA - actually a ZIP file containing PNGs
 * P7 - crashed on samples from http://www.cs.ait.ac.th/images/.xvpics/
 * PALM - multi page
 * PCL
-* PCX - displays as negative
+* PCX - monochrome images are negative
 * PFA/PFB
 * PICT - failed on samples from http://cd.textfiles.com/cdreview/cdreview66/PCT01_01/PC0101P/
 * PIX - failed on sample from http://fileformats.archiveteam.org/wiki/Alias_PIX

@@ -2,7 +2,7 @@
 
 HiveView is an image viewer that can (potentially) open any image file, either by using the built-in customisable raw image viewer, or using external programs to preconvert images to PNG. Image format definitions can be added to HiveView.ini.
 
-## Supported image formats
+## Supported raster image formats
 
 Ext. | Description | Program
 --- | --- | ---
@@ -21,7 +21,6 @@ DDS | Microsoft [DirectDraw Surface](https://en.wikipedia.org/wiki/DirectDraw_Su
 DIB | Device-Independent Bitmap | ImageMagick
 DNG | Adobe [Digital Negative](https://en.wikipedia.org/wiki/Digital_Negative) (TIFF variant) | ImageMagick
 DPX | SMPTE Digital Moving Picture Exchange | ImageMagick
-EPS | [Encapsulated PostScript](https://en.wikipedia.org/wiki/Encapsulated_PostScript) | Ghostscript
 EXR | Industrial Light & Magic [OpenEXR](https://en.wikipedia.org/wiki/OpenEXR) | ImageMagick
 FF | Farbfeld | ImageMagick
 FL32 | [FilmLight](https://www.filmlight.ltd.uk/) | ImageMagick
@@ -44,11 +43,9 @@ PCD | Kodak [Photo CD](https://en.wikipedia.org/wiki/Photo_CD) | ImageMagick
 PCX | ZSoft [Picture Exchange](https://en.wikipedia.org/wiki/PCX) | ImageMagick
 PDB | Palm Database ImageViewer | ImageMagick
 PEF | Pentax Raw (TIFF variant) | ImageMagick
-PES | Embroidery file | ImageMagick
 PFM/PHM | Portable Float Map | ImageMagick
 PICON/XPM | [X PixMap Personal Icon](https://en.wikipedia.org/wiki/X_PixMap) | ImageMagick
 PNG | [Portable Network Graphics](https://en.wikipedia.org/wiki/PNG) | n/a
-PS | Adobe [PostScript](https://en.wikipedia.org/wiki/PostScript) | Ghostscript
 PSD/PSB | Adobe [Photoshop](https://en.wikipedia.org/wiki/Adobe_Photoshop) | ImageMagick
 QOI | [Quite OK Image Format](https://en.wikipedia.org/wiki/QOI_(image_format)) | ImageMagick
 RAF | Fujifilm Raw | ImageMagick
@@ -58,7 +55,6 @@ SCT | [Scitex Continuous Tone](https://en.wikipedia.org/wiki/Scitex_CT) | ImageM
 SFW | [Seattle FilmWorks](https://en.wikipedia.org/wiki/Seattle_FilmWorks) | ImageMagick
 SGI/BW/RGB | Silicon Graphics IRIX RGB | ImageMagick
 SUN/RAS | [Sun Raster](https://en.wikipedia.org/wiki/Sun_Raster) | ImageMagick
-SVG | [Scalable Vector Graphics](https://en.wikipedia.org/wiki/SVG) | ImageMagick
 TIFF/TIF | [Tag Image File Format](https://en.wikipedia.org/wiki/TIFF) | ImageMagick
 TIM | Sony PlayStation texture | ImageMagick
 VICAR/IMG | NASA Video Image Communication And Retrieval | ImageMagick
@@ -68,11 +64,26 @@ WPG | [WordPerfect Graphics](https://en.wikipedia.org/wiki/WordPerfect) | ImageM
 XBM | X Window System Bitmap | ImageMagick
 XCF | GIMP [Experimental Computing Facility](https://en.wikipedia.org/wiki/XCF_(file_format)) | ImageMagick
 
+## Supported vector image formats
+
+Ext. | Description | Program
+--- | --- | ---
+EPS | [Encapsulated PostScript](https://en.wikipedia.org/wiki/Encapsulated_PostScript) | Ghostscript
+PES | Embroidery file | ImageMagick
+PS | Adobe [PostScript](https://en.wikipedia.org/wiki/PostScript) | Ghostscript
+SVG | [Scalable Vector Graphics](https://en.wikipedia.org/wiki/SVG) | ImageMagick
+
 ## Supported archive formats
 
 Ext. | Description | Program
 --- | --- | ---
-7Z | 7-Zip | 7-Zip
+7Z | [7-Zip](https://en.wikipedia.org/wiki/7-Zip) | 7-Zip
+BZ2 | [bzip2](https://en.wikipedia.org/wiki/Bzip2) | 7-Zip
+CAB | Microsoft [Cabinet](https://en.wikipedia.org/wiki/Cabinet_(file_format)) | 7-Zip
+GZ | [gzip](https://en.wikipedia.org/wiki/Gzip) | 7-Zip
+TAR | [Tape Archive](https://en.wikipedia.org/wiki/Tar_(computing)) | 7-Zip
+XZ | Tukaani [XZ](https://tukaani.org/xz/format.html) | 7-Zip
+ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 
 ## Credits
 

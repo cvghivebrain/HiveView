@@ -13,6 +13,7 @@ CAL/CT1/RAS | DoD [CALS Raster](https://en.wikipedia.org/wiki/CALS_Raster_file_f
 CIN | Kodak [Cineon](https://en.wikipedia.org/wiki/Cineon) | ImageMagick
 CR2 | Canon Digital Camera Raw (TIFF variant) | ImageMagick
 CRW | Canon Digital Camera Raw | ImageMagick
+CUR | Windows Cursor | ImageMagick
 DG2 | Sega Digitizer 2, used in Sega Saturn games. | HiveView
 DCM | [DICOM](https://en.wikipedia.org/wiki/DICOM) medical image | ImageMagick
 DCR | Kodak Digital Camera Raw | ImageMagick
@@ -24,8 +25,10 @@ DPX | SMPTE Digital Moving Picture Exchange | ImageMagick
 EXR | Industrial Light & Magic [OpenEXR](https://en.wikipedia.org/wiki/OpenEXR) | ImageMagick
 FF | Farbfeld | ImageMagick
 FL32 | [FilmLight](https://www.filmlight.ltd.uk/) | ImageMagick
+GIF | [Graphics Interchange Format](https://en.wikipedia.org/wiki/GIF) | ImageMagick
 HDR | [Radiance RGBE](https://en.wikipedia.org/wiki/RGBE_image_format) | ImageMagick
 HRZ | Slow-scan television | ImageMagick
+ICO | [Windows Icon](https://en.wikipedia.org/wiki/ICO_(file_format)) | ImageMagick
 JPEG/JPG | [Joint Photographic Experts Group](https://en.wikipedia.org/wiki/Joint_Photographic_Experts_Group) | ImageMagick
 JNG | [JPEG Network Graphics](https://en.wikipedia.org/wiki/JPEG_Network_Graphics) | ImageMagick
 JP2 | [JPEG 2000](https://en.wikipedia.org/wiki/JPEG_2000) | ImageMagick
@@ -93,7 +96,7 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 
 ## To do
 ### ImageMagick
-* APNG/GIF animation frames
+* APNG animation frames
 * ART (PFS: First Publisher) - tricky detection
 * AVI/AVIF/M2V/MPEG
 * AVS X image
@@ -103,7 +106,7 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * CALS Type 2 (CT2) - multi page, can't find any examples
 * CIP - write only
 * CMYK/CMYKA - no header?
-* CUR/ICO - multi page
+* CUR - failed on some samples from https://telparia.com/fileFormatSamples/image/cur/
 * CUT (Dr. Halo clip mask) - tricky detection
 * DCM - multi page sometimes?; failed on (some) samples from https://telparia.com/fileFormatSamples/image/dicom/
 * DJVU/EPDF/HTML/MAN/PDF/POCKETMOD - multi page/embedded images

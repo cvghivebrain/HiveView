@@ -43,7 +43,7 @@ type
     procedure LoadImagePixels;
     procedure LoadImagePalette;
     procedure LoadImagePixels2;
-    function GetColorRaw(a, len: integer): string;
+    function GetColorVal(a, len: integer): int64;
     procedure chkPaletteClick(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
     procedure ShowImageInfo;
@@ -52,7 +52,6 @@ type
     procedure DisplayImage;
     procedure CleanTempFolder;
     procedure lstSubfilesClick(Sender: TObject);
-    function FindInFile(s: string): string;
   private
     { Private declarations }
   public
@@ -171,7 +170,6 @@ end;
 
 procedure THiveView.menuFilesClick(Sender: TObject);
 var i: integer;
-  cond: string;
   matchfound: boolean;
 begin
   LoadFile(menuFiles.FileName); // Load file to memory.
@@ -181,9 +179,7 @@ begin
   matchfound := false; // Assume no match.
   for i := 0 to iniformats do
     begin
-    cond := ReplaceStr(inicontent[i,ini_if],'{filesize}',IntToStr(fs));
-    cond := FindInFile(cond);
-    if Solve(cond) > 0 then // Check file with condition from ini.
+    if Solve(inicontent[i,ini_if]) > 0 then // Check file with condition from ini.
       begin
       if inicontent[i,ini_unpack] <> '' then DoUnpack(i); // Check for unpack/decompress by external program.
       if inicontent[i,ini_convert] <> '' then DoConvert(i,menuFiles.FileName) // Check for conversion by external program.
@@ -201,7 +197,7 @@ end;
 
 procedure THiveView.lstSubfilesClick(Sender: TObject);
 var i: integer;
-  subfilename, subfilepath, cond: string;
+  subfilename, subfilepath: string;
   matchfound: boolean;
 begin
   subfilename := lstSubfiles.Items[lstSubfiles.ItemIndex];
@@ -212,9 +208,7 @@ begin
   matchfound := false; // Assume no match.
   for i := 0 to iniformats do
     begin
-    cond := ReplaceStr(inicontent[i,ini_if],'{filesize}',IntToStr(fs));
-    cond := FindInFile(cond);
-    if Solve(cond) > 0 then // Check file with condition from ini.
+    if Solve(inicontent[i,ini_if]) > 0 then // Check file with condition from ini.
       begin
       if inicontent[i,ini_convert] <> '' then DoConvert(i,subfilepath) // Check for conversion by external program.
         else DoRaw(i); // Load as raw using settings from ini.
@@ -294,32 +288,6 @@ begin
   LoadImage; // Load image as raw using parameters from ini.
 end;
 
-{ Find a string in the file if the ini condition has a "find:" instruction,
-  and insert its address back into the instruction. }
-
-function THiveView.FindInFile(s: string): string;
-var allinputs, searchstr, foundat: string;
-  startpos, endpos, i: integer;
-begin
-  if AnsiPos('{find:',s) = 0 then
-    begin
-    result := s; // No change if there isn't a "find:" instruction.
-    exit;
-    end;
-  allinputs := Explode(Explode(s,'{find:',1),'}',0); // Get all input parameters.
-  searchstr := Explode(allinputs,'"',1); // Get string to search for.
-  startpos := StrToInt(Explode(allinputs,',',0)); // Address to start searching.
-  endpos := StrToInt(Explode(allinputs,',',1))-Length(searchstr); // Address to stop searching.
-  foundat := '-1'; // Assume it won't be found.
-  for i := startpos to endpos do
-    if GetString(i,Length(searchstr)) = searchstr then
-      begin
-      foundat := IntToStr(i); // Address where string was found.
-      break; // Stop searching.
-      end;
-  result := ReplaceStr(s,'{find:'+allinputs+'}',foundat); // Reconstruct original condition with address.
-end;
-
 procedure THiveView.btnReloadClick(Sender: TObject);
 begin
   LoadImage;
@@ -345,9 +313,9 @@ begin
   editH.Text := '100';
   editPixLoc.Text := '0';
   editBPC.Text := '24';
-  editR.Text := 'x>>16';
-  editG.Text := '(x>>8)&$FF';
-  editB.Text := 'x&$FF';
+  editR.Text := '{val}>>16';
+  editG.Text := '({val}>>8)&$FF';
+  editB.Text := '{val}&$FF';
   editAlpha.Text := '255';
   chkPalette.Checked := false;
   editPalLoc.Text := '0';
@@ -357,6 +325,8 @@ begin
   editPalSize.Enabled := false;
   editPalBits.Enabled := false;
 end;
+
+{ Check menu settings and load image using specified method. }
 
 procedure THiveView.LoadImage;
 begin
@@ -398,55 +368,61 @@ begin
   ShowImageInfo;
 end;
 
+{ Show image stats. }
+
 procedure THiveView.ShowImageInfo;
 begin
   memDebug.Lines.Add('Image is '+IntToStr(PNG.Width)+' × '+IntToStr(PNG.Height)+' pixels.');
 end;
+
+{ Update window so image is actually displayed. }
 
 procedure THiveView.DisplayImage;
 begin
   ShowPNG(HiveView.ClientWidth-imgMain.Left,HiveView.ClientHeight-imgMain.Top);
 end;
 
+{ Load image by drawing pixels directly. }
+
 procedure THiveView.LoadImagePixels;
 var pos, i, j, r, g, b, a: integer;
-  c: string;
   fixedalpha: boolean;
 begin
   pos := Solve(editPixLoc.Text);
   fixedalpha := true;
-  if AnsiPos('x',editAlpha.Text) = 0 then a := Solve(editAlpha.Text) // Alpha value doesn't change.
+  if AnsiPos('{val}',editAlpha.Text) = 0 then a := Solve(editAlpha.Text) // Alpha value doesn't change.
     else fixedalpha := false; // Alpha value is different for each pixel.
   for i := 0 to imgh-1 do
     for j := 0 to imgw-1 do
       begin
-      c := GetColorRaw(pos,bytespercolor); // Get whole colour.
-      r := Solve(ReplaceStr(editR.Text,'x',c)); // Get each colour channel.
-      g := Solve(ReplaceStr(editG.Text,'x',c));
-      b := Solve(ReplaceStr(editB.Text,'x',c));
-      if not fixedalpha then a := Solve(ReplaceStr(editAlpha.Text,'x',c));
+      val := GetColorVal(pos,bytespercolor); // Get whole colour ("val" is SolveFunc variable).
+      r := Solve(editR.Text); // Get each colour channel.
+      g := Solve(editG.Text);
+      b := Solve(editB.Text);
+      if not fixedalpha then a := Solve(editAlpha.Text);
       PixelPNG(r,g,b,a,j,i);
       pos := pos+bytespercolor; // Next colour.
       if pos >= fs then exit; // Stop drawing if at end of file.
       end;
 end;
 
+{ Load palette for image (doesn't draw image). }
+
 procedure THiveView.LoadImagePalette;
 var pos, i, r, g, b, a: integer;
-  c: string;
   fixedalpha: boolean;
 begin
   pos := Solve(editPalLoc.Text);
   fixedalpha := true;
-  if AnsiPos('x',editAlpha.Text) = 0 then a := Solve(editAlpha.Text) // Alpha value doesn't change.
+  if AnsiPos('{val}',editAlpha.Text) = 0 then a := Solve(editAlpha.Text) // Alpha value doesn't change.
     else fixedalpha := false; // Alpha value is different for each colour.
   for i := 0 to palsize-1 do
     begin
-    c := GetColorRaw(pos,bytespercolor); // Get whole colour.
-    r := Solve(ReplaceStr(editR.Text,'x',c)); // Get each colour channel.
-    g := Solve(ReplaceStr(editG.Text,'x',c));
-    b := Solve(ReplaceStr(editB.Text,'x',c));
-    if fixedalpha = false then a := Solve(ReplaceStr(editAlpha.Text,'x',c));
+    val := GetColorVal(pos,bytespercolor); // Get whole colour ("val" is SolveFunc variable).
+    r := Solve(editR.Text); // Get each colour channel.
+    g := Solve(editG.Text);
+    b := Solve(editB.Text);
+    if not fixedalpha then a := Solve(editAlpha.Text);
     palarray[i*4] := r; // Write to palette array.
     palarray[(i*4)+1] := g;
     palarray[(i*4)+2] := b;
@@ -455,6 +431,8 @@ begin
     if pos >= fs then exit; // Stop drawing if at end of file.
     end;
 end;
+
+{ Draw image using palette and indexed pixels. }
 
 procedure THiveView.LoadImagePixels2; // Load pixels using palette array.
 var pos, bit, i, r, g, b, a, c: integer;
@@ -480,14 +458,17 @@ begin
     end;
 end;
 
-function THiveView.GetColorRaw(a, len: integer): string; // Get colour data from file.
+{ Get value of a single colour from the file. }
+
+function THiveView.GetColorVal(a, len: integer): int64;
 var i: integer;
-  r: string;
 begin
+  result := 0;
   for i := 0 to len-1 do
-    r := r+IntToHex(GetByte(a+i),2); // Append byte to result.
-  result := '$'+r; // Output hex string.
+    result := (result shl 8)+GetByte(a+i); // Move previous bytes up and add next one.
 end;
+
+{ Empty temp folder and clear list of subfiles. }
 
 procedure THiveView.CleanTempFolder;
 begin

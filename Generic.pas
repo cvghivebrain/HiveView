@@ -174,6 +174,7 @@ var i: integer;
 begin
   LoadFile(menuFiles.FileName); // Load file to memory.
   memDebug.Lines.Add(menuFiles.FileName+' ('+IntToStr(fs)+' bytes)');
+  if fs = 0 then exit; // Stop if file is 0 bytes.
   DefaultFormat; // Use default settings.
   CleanTempFolder;
   matchfound := false; // Assume no match.
@@ -204,6 +205,7 @@ begin
   subfilepath := tempfolder+subfilename;
   LoadFile(subfilepath); // Load file to memory.
   memDebug.Lines.Add(menuFiles.FileName+subfilename+' ('+IntToStr(fs)+' bytes)');
+  if fs = 0 then exit; // Stop if file is 0 bytes.
   DefaultFormat; // Use default settings.
   matchfound := false; // Assume no match.
   for i := 0 to iniformats do
@@ -226,13 +228,21 @@ end;
 { Convert file to PNG using external program. }
 
 procedure THiveView.DoConvert(i: integer; targetfile: string);
-var c: string;
+var c, c2: string;
+  j: integer;
 begin
   if inicontent[i,ini_unpack] = '' then memDebug.Lines.Add('File format found: '+inicontent[i,ini_name]);
   memDebug.Lines.Add('Converting with external program...');
-  c := ReplaceStr(inicontent[i,ini_convert],'{file}',targetfile);
-  c := ReplaceStr(c,'{tempfile}',tempfilepath);
-  RunCommand(c); // Create temp.png.
+  c := inicontent[i,ini_convert];
+  j := 0;
+  while Explode(c,'&&',j) <> '' do // Multiple commands separated by &&.
+    begin
+    c2 := Trim(Explode(c,'&&',j));
+    c2 := ReplaceStr(c2,'{file}',targetfile);
+    c2 := ReplaceStr(c2,'{tempfile}',tempfilepath);
+    RunCommand(c2); // Create temp.png.
+    Inc(j); // Next command.
+    end;
   if not FileExists(tempfilepath) then
     begin
     memDebug.Lines.Add('temp.png not found.');
@@ -249,14 +259,21 @@ end;
 { Unpack archive using external program. }
 
 procedure THiveView.DoUnpack(i: integer);
-var c: string;
+var c, c2: string;
   j: integer;
 begin
   memDebug.Lines.Add('File format found: '+inicontent[i,ini_name]);
   memDebug.Lines.Add('Unpacking with external program...');
-  c := ReplaceStr(inicontent[i,ini_unpack],'{file}',menuFiles.FileName);
-  c := ReplaceStr(c,'{tempfolder}',tempfolder);
-  RunCommand(c); // Unpack to temp folder.
+  c := inicontent[i,ini_unpack];
+  j := 0;
+  while Explode(c,'&&',j) <> '' do // Multiple commands separated by &&.
+    begin
+    c2 := Trim(Explode(c,'&&',j));
+    c2 := ReplaceStr(c2,'{file}',menuFiles.FileName);
+    c2 := ReplaceStr(c2,'{tempfolder}',tempfolder);
+    RunCommand(c2); // Unpack to temp folder.
+    Inc(j); // Next command.
+    end;
   ListFiles(tempfolder,true);
   for j := 0 to Length(filelist)-1 do lstSubfiles.Items.Add(filelist[j]);
   if lstSubfiles.Count = 1 then memDebug.Lines.Add(IntToStr(lstSubfiles.Count)+' file extracted.')

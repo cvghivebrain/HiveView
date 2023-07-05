@@ -7,6 +7,8 @@ HiveView is an image viewer that can (potentially) open any image file, either b
 Ext. | Description | Program
 --- | --- | ---
 AAI | Dune HD media player image | ImageMagick
+ACE | [Train Simulator](https://en.wikipedia.org/wiki/Train_Simulator_series) texture | NConvert
+ACORN/BIN | Acorn RISC OS Sprite | NConvert
 ARW | Sony Digital Camera Alpha Raw (TIFF variant) | ImageMagick
 BMP | [Windows Bitmap](https://en.wikipedia.org/wiki/BMP_file_format) | ImageMagick
 CAL/CT1/RAS | DoD [CALS Raster](https://en.wikipedia.org/wiki/CALS_Raster_file_format) | ImageMagick
@@ -93,6 +95,7 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * [7-Zip](https://7-zip.org/)
 * [Ghostscript](https://ghostscript.com)
 * [ImageMagick](https://github.com/ImageMagick/ImageMagick)
+* [NConvert](https://www.xnview.com/en/nconvert/)
 
 ## To do
 ### ImageMagick
@@ -153,3 +156,20 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * WMF
 * XWD - failed on samples from https://telparia.com/fileFormatSamples/image/xwd/
 * X3F - unsupported?, failed on samples from http://www.rawsamples.ch/index.php/en/sigma
+
+### NConvert
+* 3DS Max thumbnails - stored in Microsoft Compound Format
+* AAA Logo - no samples
+* ADEX IMG - no samples
+* AOL Instant Messenger greyscale IMA - no samples
+* AIPD - no samples
+* ARF - no samples
+* AT&T Group 4 - no samples
+* AT&T Multigen - no samples
+* AVHRR SST - no samples
+* AVIF - not actually supported?
+* AVT RAW - no samples
+* AWD
+* APX - not actually supported?
+* Access G4 - no samples
+* Aces200 - no samples

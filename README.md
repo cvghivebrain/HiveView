@@ -6,10 +6,14 @@ HiveView is an image viewer that can (potentially) open any image file, either b
 
 Ext. | Description | Program
 --- | --- | ---
+A64 | C64 Wigmore Artist 64 | NConvert
 AAI | Dune HD media player image | ImageMagick
 ACE | [Train Simulator](https://en.wikipedia.org/wiki/Train_Simulator_series) texture | NConvert
 ACORN/BIN | Acorn RISC OS Sprite | NConvert
+AMI | C64 Amica Paint | NConvert
+ART | Atari Art Director | NConvert
 ARW | Sony Digital Camera Alpha Raw (TIFF variant) | ImageMagick
+ATK/CMU | [CMU Andrew Toolkit](https://en.wikipedia.org/wiki/Andrew_Project) | NConvert
 BMP | [Windows Bitmap](https://en.wikipedia.org/wiki/BMP_file_format) | ImageMagick
 CAL/CT1/RAS | DoD [CALS Raster](https://en.wikipedia.org/wiki/CALS_Raster_file_format) | ImageMagick
 CIN | Kodak [Cineon](https://en.wikipedia.org/wiki/Cineon) | ImageMagick
@@ -24,13 +28,17 @@ DDS | Microsoft [DirectDraw Surface](https://en.wikipedia.org/wiki/DirectDraw_Su
 DIB | Device-Independent Bitmap | ImageMagick
 DNG | Adobe [Digital Negative](https://en.wikipedia.org/wiki/Digital_Negative) (TIFF variant) | ImageMagick
 DPX | SMPTE Digital Moving Picture Exchange | ImageMagick
+EPA | Award BIOS Logo | NConvert
 EXR | Industrial Light & Magic [OpenEXR](https://en.wikipedia.org/wiki/OpenEXR) | ImageMagick
 FF | Farbfeld | ImageMagick
 FL32 | [FilmLight](https://www.filmlight.ltd.uk/) | ImageMagick
+FLI/FLC | [Autodesk Animator](https://en.wikipedia.org/wiki/Autodesk_Animator) | NConvert
 GIF | [Graphics Interchange Format](https://en.wikipedia.org/wiki/GIF) | ImageMagick
 HDR | [Radiance RGBE](https://en.wikipedia.org/wiki/RGBE_image_format) | ImageMagick
 HRZ | Slow-scan television | ImageMagick
 ICO | [Windows Icon](https://en.wikipedia.org/wiki/ICO_(file_format)) | ImageMagick
+IFF/LBM | Amiga Interleaved Bitmap | NConvert
+INFO | Amiga Icon | NConvert
 JPEG/JPG | [Joint Photographic Experts Group](https://en.wikipedia.org/wiki/Joint_Photographic_Experts_Group) | ImageMagick
 JNG | [JPEG Network Graphics](https://en.wikipedia.org/wiki/JPEG_Network_Graphics) | ImageMagick
 JP2 | [JPEG 2000](https://en.wikipedia.org/wiki/JPEG_2000) | ImageMagick
@@ -40,6 +48,7 @@ MNG | [Multiple-image Network Graphics](https://en.wikipedia.org/wiki/Multiple-i
 MPC+CACHE | ImageMagick Magick Pixel Cache | ImageMagick
 MRW | Minolta Raw | ImageMagick
 NEF | Nikon Electronic Format (TIFF variant) | ImageMagick
+OCP | [Advanced OCP Art Studio](https://en.wikipedia.org/wiki/OCP_Art_Studio) | NConvert
 ORF | [Olympus Raw](https://en.wikipedia.org/wiki/ORF_format) | ImageMagick
 OTB | Nokia [Over the Air Bitmap](https://en.wikipedia.org/wiki/OTA_bitmap) | ImageMagick
 PAM | Portable Arbitrary Map | ImageMagick
@@ -141,7 +150,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * PCX - monochrome images are negative
 * PFA/PFB
 * PICT - failed on samples from http://cd.textfiles.com/cdreview/cdreview66/PCT01_01/PC0101P/
-* PIX - failed on sample from http://fileformats.archiveteam.org/wiki/Alias_PIX
 * PSD/PSB/TIFF/XCF layers
 * PTIF - multi page
 * PWP - multi page
@@ -173,3 +181,25 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * APX - not actually supported?
 * Access G4 - no samples
 * Aces200 - no samples
+* AdTech ADT - no samples
+* AI - not actually supported?
+* Adobe PhotoParade - no samples
+* AirNav - no samples
+* Album Bebe - ?
+* Alpha Microsystems BMP - no samples
+* Amapi 2D - no samples
+* Amiga IFF - most images load but some don't
+* Amiga INFO icon - doesn't work with NewIcons or GlowIcons formats
+* Amstrad CPC - no samples
+* Apollo HDRU - no samples
+* ArcInfo - no samples
+* Artisan - ?
+* Astronomical Research Network - no samples
+* Atari PCP
+* Aurora SIM - ?
+* Auto F/X
+* AutoCAD DWG/DXF/IMG
+* Autodesk QuickCAD/Sketch thumbnails - no samples
+* Autologic GM - actually a BMP inside an ARJ archive
+* Award BIOS - failed on AWBM files
+* Axialis Screensaver Producer - no samples

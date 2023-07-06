@@ -14,7 +14,9 @@ AMI | C64 Amica Paint | NConvert
 ART | Atari Art Director | NConvert
 ARW | Sony Digital Camera Alpha Raw (TIFF variant) | ImageMagick
 ATK/CMU | [CMU Andrew Toolkit](https://en.wikipedia.org/wiki/Andrew_Project) | NConvert
+BFLI | C64 Big Flexible Line Interpretation | NConvert
 BMP | [Windows Bitmap](https://en.wikipedia.org/wiki/BMP_file_format) | ImageMagick
+BOB | Bob Ray Tracer Bitmap | NConvert
 CAL/CT1/RAS | DoD [CALS Raster](https://en.wikipedia.org/wiki/CALS_Raster_file_format) | ImageMagick
 CIN | Kodak [Cineon](https://en.wikipedia.org/wiki/Cineon) | ImageMagick
 CR2 | Canon Digital Camera Raw (TIFF variant) | ImageMagick
@@ -49,6 +51,7 @@ MPC+CACHE | ImageMagick Magick Pixel Cache | ImageMagick
 MRW | Minolta Raw | ImageMagick
 NEF | Nikon Electronic Format (TIFF variant) | ImageMagick
 OCP | [Advanced OCP Art Studio](https://en.wikipedia.org/wiki/OCP_Art_Studio) | NConvert
+ORA | [OpenRaster](https://en.wikipedia.org/wiki/OpenRaster), actually a ZIP file containing PNGs | 7-Zip
 ORF | [Olympus Raw](https://en.wikipedia.org/wiki/ORF_format) | ImageMagick
 OTB | Nokia [Over the Air Bitmap](https://en.wikipedia.org/wiki/OTA_bitmap) | ImageMagick
 PAM | Portable Arbitrary Map | ImageMagick
@@ -58,6 +61,7 @@ PCX | ZSoft [Picture Exchange](https://en.wikipedia.org/wiki/PCX) | ImageMagick
 PDB | Palm Database ImageViewer | ImageMagick
 PEF | Pentax Raw (TIFF variant) | ImageMagick
 PFM/PHM | Portable Float Map | ImageMagick
+PI | C64 Blazing Paddles | NConvert
 PICON/XPM | [X PixMap Personal Icon](https://en.wikipedia.org/wiki/X_PixMap) | ImageMagick
 PNG | [Portable Network Graphics](https://en.wikipedia.org/wiki/PNG) | n/a
 PSD/PSB | Adobe [Photoshop](https://en.wikipedia.org/wiki/Adobe_Photoshop) | ImageMagick
@@ -68,6 +72,7 @@ RLE | Utah Raster Toolkit | ImageMagick
 SCT | [Scitex Continuous Tone](https://en.wikipedia.org/wiki/Scitex_CT) | ImageMagick
 SFW | [Seattle FilmWorks](https://en.wikipedia.org/wiki/Seattle_FilmWorks) | ImageMagick
 SGI/BW/RGB | Silicon Graphics IRIX RGB | ImageMagick
+SIR | [BYU-MERS SIR](https://scp.byu.edu/software/) | NConvert
 SUN/RAS | [Sun Raster](https://en.wikipedia.org/wiki/Sun_Raster) | ImageMagick
 TIFF/TIF | [Tag Image File Format](https://en.wikipedia.org/wiki/TIFF) | ImageMagick
 TIM | Sony PlayStation texture | ImageMagick
@@ -143,7 +148,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * MPO - multi page, only first page is loaded
 * MTV - unusable header
 * MVG - failed on sample
-* ORA - actually a ZIP file containing PNGs
 * P7 - crashed on samples from http://www.cs.ait.ac.th/images/.xvpics/
 * PALM - multi page
 * PCL
@@ -203,3 +207,14 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Autologic GM - actually a BMP inside an ARJ archive
 * Award BIOS - failed on AWBM files
 * Axialis Screensaver Producer - no samples
+* B3D
+* BIAS FringeProcessor - no samples
+* BMF - no samples
+* BSB/KAP - not supported?; sample on https://www.the-thorns.org.uk/mapping/help/sample.html
+* Bert's Coloring - PCX variant
+* BitFax Bitware - no samples
+* BioRad Confocal - no samples
+* Argonaut Games BRender - not actually supported?
+* Brooktrout 301 - no samples
+* Brother fax - no samples
+* Tilez texture - no samples

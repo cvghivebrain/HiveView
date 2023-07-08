@@ -29,25 +29,30 @@ DG2 | Sega Digitizer 2, used in Sega Saturn games. | HiveView
 DCM | [DICOM](https://en.wikipedia.org/wiki/DICOM) medical image | ImageMagick
 DCR | Kodak Digital Camera Raw | ImageMagick
 DCX | ZSoft Multi-page PCX | ImageMagick
+DD/JJ | C64 Doodle | NConvert
 DDS | Microsoft [DirectDraw Surface](https://en.wikipedia.org/wiki/DirectDraw_Surface) | ImageMagick
 DIB | Device-Independent Bitmap | ImageMagick
 DNG | Adobe [Digital Negative](https://en.wikipedia.org/wiki/Digital_Negative) (TIFF variant) | ImageMagick
 DPX | SMPTE Digital Moving Picture Exchange | ImageMagick
+DRZ/DRP | C64 Draz Paint | NConvert
 EPA | Award BIOS Logo | NConvert
 EXR | Industrial Light & Magic [OpenEXR](https://en.wikipedia.org/wiki/OpenEXR) | ImageMagick
 FF | Farbfeld | ImageMagick
 FL32 | [FilmLight](https://www.filmlight.ltd.uk/) | ImageMagick
 FLI/FLC | [Autodesk Animator](https://en.wikipedia.org/wiki/Autodesk_Animator) | NConvert
+FPG | DIV Games Studio, multi-page | NConvert
 GIF | [Graphics Interchange Format](https://en.wikipedia.org/wiki/GIF) | ImageMagick
 HDR | [Radiance RGBE](https://en.wikipedia.org/wiki/RGBE_image_format) | ImageMagick
 HRZ | Slow-scan television | ImageMagick
 ICO | [Windows Icon](https://en.wikipedia.org/wiki/ICO_(file_format)) | ImageMagick
 IFF/LBM | Amiga Interleaved Bitmap | NConvert
+IMG/XIMG | GEM Raster | NConvert
 INFO | Amiga Icon | NConvert
 JPEG/JPG | [Joint Photographic Experts Group](https://en.wikipedia.org/wiki/Joint_Photographic_Experts_Group) | ImageMagick
 JNG | [JPEG Network Graphics](https://en.wikipedia.org/wiki/JPEG_Network_Graphics) | ImageMagick
 JP2 | [JPEG 2000](https://en.wikipedia.org/wiki/JPEG_2000) | ImageMagick
 J2C/J2K/JPT | JPEG 2000 codestream | ImageMagick
+MAP | DIV Games Studio | NConvert
 MAT | [MATLAB](https://en.wikipedia.org/wiki/MATLAB) data file | ImageMagick
 MNG | [Multiple-image Network Graphics](https://en.wikipedia.org/wiki/Multiple-image_Network_Graphics) | ImageMagick
 MPC+CACHE | ImageMagick Magick Pixel Cache | ImageMagick
@@ -65,6 +70,8 @@ PDB | Palm Database ImageViewer | ImageMagick
 PEF | Pentax Raw (TIFF variant) | ImageMagick
 PFM/PHM | Portable Float Map | ImageMagick
 PI | C64 Blazing Paddles | NConvert
+PI1/PI2/PI3 | Atari ST DEGAS | NConvert
+PI4/PI5 | Atari ST View ST/TT | NConvert
 PICON/XPM | [X PixMap Personal Icon](https://en.wikipedia.org/wiki/X_PixMap) | ImageMagick
 PNG | [Portable Network Graphics](https://en.wikipedia.org/wiki/PNG) | n/a
 PSD/PSB | Adobe [Photoshop](https://en.wikipedia.org/wiki/Adobe_Photoshop) | ImageMagick
@@ -74,6 +81,7 @@ RGB | Sega RGB format, used in Sega Saturn games. | HiveView
 RIX | ColoRIX | NConvert
 RLE | Utah Raster Toolkit | ImageMagick
 SCT | [Scitex Continuous Tone](https://en.wikipedia.org/wiki/Scitex_CT) | ImageMagick
+SD0/SD1/SD2 | Atari ST Dali | NConvert
 SFW | [Seattle FilmWorks](https://en.wikipedia.org/wiki/Seattle_FilmWorks) | ImageMagick
 SGI/BW/RGB | Silicon Graphics IRIX RGB | ImageMagick
 SIR | [BYU-MERS SIR](https://scp.byu.edu/software/) | NConvert
@@ -238,3 +246,15 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Corel Photo-Paint - v6 only?; no samples
 * Nero CoverDesigner - no samples
 * Crayola ART - failed on sample from http://fileformats.archiveteam.org/wiki/Picture_Publisher
+* DBW Render - no samples
+* QRT Ray Tracer/DKB Ray Tracer - not supported?
+* Dali - failed on some samples from https://telparia.com/fileFormatSamples/image/dali/
+* Datacopy - ?
+* DEGAS compressed - header too vague
+* Digital F/X TDIM
+* GEM Raster - doesn't work with non-XIMG files; failed on some samples from https://telparia.com/fileFormatSamples/image/gem/
+* Discorp CMP - no samples
+* DjVu - document with embedded images
+* C64 DolphinEd - no samples
+* Atari ST Doodle - failed on samples from https://telparia.com/fileFormatSamples/image/doodleAtari/
+* Draz Paint - failed on samples with "DRAZPAINT" header from https://telparia.com/fileFormatSamples/image/drazPaint/

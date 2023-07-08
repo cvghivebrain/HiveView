@@ -73,6 +73,8 @@ PI | C64 Blazing Paddles | NConvert
 PI1/PI2/PI3 | Atari ST DEGAS | NConvert
 PI4/PI5 | Atari ST View ST/TT | NConvert
 PICON/XPM | [X PixMap Personal Icon](https://en.wikipedia.org/wiki/X_PixMap) | ImageMagick
+PIX | Alias PIX | NConvert
+PIX | Esm Software PIX (JPEG with header) | Swiss File Knife
 PNG | [Portable Network Graphics](https://en.wikipedia.org/wiki/PNG) | n/a
 PSD/PSB | Adobe [Photoshop](https://en.wikipedia.org/wiki/Adobe_Photoshop) | ImageMagick
 QOI | [Quite OK Image Format](https://en.wikipedia.org/wiki/QOI_(image_format)) | ImageMagick
@@ -122,6 +124,7 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * [Ghostscript](https://ghostscript.com)
 * [ImageMagick](https://github.com/ImageMagick/ImageMagick)
 * [NConvert](https://www.xnview.com/en/nconvert/)
+* [Swiss File Knife](http://stahlworks.com/swiss-file-knife.html)
 
 ## To do
 ### ImageMagick
@@ -258,3 +261,5 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * C64 DolphinEd - no samples
 * Atari ST Doodle - failed on samples from https://telparia.com/fileFormatSamples/image/doodleAtari/
 * Draz Paint - failed on samples with "DRAZPAINT" header from https://telparia.com/fileFormatSamples/image/drazPaint/
+* EA Sports FSH - failed on samples from http://www.nba-live.com/jaosming/
+* ERI - no samples

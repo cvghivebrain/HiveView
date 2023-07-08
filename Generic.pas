@@ -240,6 +240,8 @@ begin
     c2 := Trim(Explode(c,'&&',j));
     c2 := ReplaceStr(c2,'{file}',targetfile);
     c2 := ReplaceStr(c2,'{tempfile}',tempfilepath);
+    c2 := ReplaceStr(c2,'{tempfolder}',tempfolder);
+    //memDebug.Lines.Add(c2);
     RunCommand(c2); // Create temp.png.
     Inc(j); // Next command.
     end;
@@ -488,9 +490,27 @@ end;
 { Empty temp folder and clear list of subfiles. }
 
 procedure THiveView.CleanTempFolder;
+var rec: TSearchRec;
 begin
-  if SysUtils.DirectoryExists(tempfolder) then TDirectory.Delete(tempfolder,true); // Delete temp folder & all contents.
-  CreateDir(tempfolder); // Create temp folder.
+  if SysUtils.DirectoryExists(tempfolder) then // Check if temp folder exists.
+    begin
+    if FindFirst(tempfolder+'\*',faAnyFile,rec) = 0 then // First item in temp folder.
+      begin
+      try
+        repeat
+          if (rec.Name <> '.') and (rec.Name <> '..') then // Exclude current and parent folder.
+          begin
+          if (rec.Attr and faDirectory) = faDirectory then
+            TDirectory.Delete(tempfolder+'\'+rec.Name,true) // Delete folder.
+          else DeleteFile(tempfolder+'\'+rec.Name); // Delete file.
+          end;
+        until FindNext(rec) <> 0; // Repeat for all items.
+      finally
+        FindClose(rec);
+      end;
+      end;
+    end
+  else CreateDir(tempfolder); // Create temp folder.
   lstSubfiles.Clear; // Empty list.
 end;
 

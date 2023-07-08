@@ -36,6 +36,7 @@ DNG | Adobe [Digital Negative](https://en.wikipedia.org/wiki/Digital_Negative) (
 DPX | SMPTE Digital Moving Picture Exchange | ImageMagick
 DRZ/DRP | C64 Draz Paint | NConvert
 EPA | Award BIOS Logo | NConvert
+ESM | Atari ST Enhanced Simplex | NConvert
 EXR | Industrial Light & Magic [OpenEXR](https://en.wikipedia.org/wiki/OpenEXR) | ImageMagick
 FF | Farbfeld | ImageMagick
 FL32 | [FilmLight](https://www.filmlight.ltd.uk/) | ImageMagick
@@ -46,6 +47,7 @@ HDR | [Radiance RGBE](https://en.wikipedia.org/wiki/RGBE_image_format) | ImageMa
 HRZ | Slow-scan television | ImageMagick
 ICO | [Windows Icon](https://en.wikipedia.org/wiki/ICO_(file_format)) | ImageMagick
 IFF/LBM | Amiga Interleaved Bitmap | NConvert
+IFF/TDI | [Maya](https://en.wikipedia.org/wiki/Autodesk_Maya) Image File Format/Thompson Digital Image Explore | NConvert
 IMG/XIMG | GEM Raster | NConvert
 INFO | Amiga Icon | NConvert
 JPEG/JPG | [Joint Photographic Experts Group](https://en.wikipedia.org/wiki/Joint_Photographic_Experts_Group) | ImageMagick
@@ -90,6 +92,7 @@ SIR | [BYU-MERS SIR](https://scp.byu.edu/software/) | NConvert
 SUN/RAS | [Sun Raster](https://en.wikipedia.org/wiki/Sun_Raster) | ImageMagick
 TIFF/TIF | [Tag Image File Format](https://en.wikipedia.org/wiki/TIFF) | ImageMagick
 TIM | Sony PlayStation texture | ImageMagick
+TRP | Atari Falcon EggPaint | NConvert
 VICAR/IMG | NASA Video Image Communication And Retrieval | ImageMagick
 VIFF/XV | Khoros Visualization | ImageMagick
 WEBP | Google [WebP](https://en.wikipedia.org/wiki/WebP) | ImageMagick
@@ -263,3 +266,11 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Draz Paint - failed on samples with "DRAZPAINT" header from https://telparia.com/fileFormatSamples/image/drazPaint/
 * EA Sports FSH - failed on samples from http://www.nba-live.com/jaosming/
 * ERI - no samples
+* Ecchi - no samples
+* Eclipse TILE - no samples
+* EDMICS C4 - no samples
+* Electric Image - no samples
+* BMC embroidery - no samples
+* ECW
+* Eroiica
+* Everex Everfax - no samples

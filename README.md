@@ -15,6 +15,7 @@ ART | Atari Art Director | NConvert
 ARW | Sony Digital Camera Alpha Raw (TIFF variant) | ImageMagick
 ATK/CMU | [CMU Andrew Toolkit](https://en.wikipedia.org/wiki/Andrew_Project) | NConvert
 BFLI | C64 Big Flexible Line Interpretation | NConvert
+BLK/BSG | Prosoft Fontasy Block | NConvert
 BMP | [Windows Bitmap](https://en.wikipedia.org/wiki/BMP_file_format) | ImageMagick
 BOB | Bob Ray Tracer Bitmap | NConvert
 CAL/CT1/RAS | DoD [CALS Raster](https://en.wikipedia.org/wiki/CALS_Raster_file_format) | ImageMagick
@@ -38,10 +39,14 @@ DRZ/DRP | C64 Draz Paint | NConvert
 EPA | Award BIOS Logo | NConvert
 ESM | Atari ST Enhanced Simplex | NConvert
 EXR | Industrial Light & Magic [OpenEXR](https://en.wikipedia.org/wiki/OpenEXR) | ImageMagick
+FBM | Fuzzy Bitmap | NConvert
 FF | Farbfeld | ImageMagick
+FIT/FTS | Flexible Image Transport System | NConvert
 FL32 | [FilmLight](https://www.filmlight.ltd.uk/) | ImageMagick
 FLI/FLC | [Autodesk Animator](https://en.wikipedia.org/wiki/Autodesk_Animator) | NConvert
+FP2/FUN | C64 Funpaint II | NConvert
 FPG | DIV Games Studio, multi-page | NConvert
+FPT | C64 Face Painter | NConvert
 GIF | [Graphics Interchange Format](https://en.wikipedia.org/wiki/GIF) | ImageMagick
 HDR | [Radiance RGBE](https://en.wikipedia.org/wiki/RGBE_image_format) | ImageMagick
 HRZ | Slow-scan television | ImageMagick
@@ -79,6 +84,7 @@ PIX | Alias PIX | NConvert
 PIX | Esm Software PIX (JPEG with header) | Swiss File Knife
 PNG | [Portable Network Graphics](https://en.wikipedia.org/wiki/PNG) | n/a
 PSD/PSB | Adobe [Photoshop](https://en.wikipedia.org/wiki/Adobe_Photoshop) | ImageMagick
+PWC | [Piecewise-Constant Image Model](http://www.caravian.com/research/index.htm) | pwcdecode
 QOI | [Quite OK Image Format](https://en.wikipedia.org/wiki/QOI_(image_format)) | ImageMagick
 RAF | Fujifilm Raw | ImageMagick
 RGB | Sega RGB format, used in Sega Saturn games. | HiveView
@@ -127,6 +133,7 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * [Ghostscript](https://ghostscript.com)
 * [ImageMagick](https://github.com/ImageMagick/ImageMagick)
 * [NConvert](https://www.xnview.com/en/nconvert/)
+* [pwcdecode](http://www.caravian.com/research/index.htm)
 * [Swiss File Knife](http://stahlworks.com/swiss-file-knife.html)
 
 ## To do
@@ -149,7 +156,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * DOT graph format
 * EMF
 * FAX/G3 - no header?
-* FITS - failed on samples
 * FLIF - failed on samples
 * FPX - inconsistent header?
 * FTXT - failed on samples
@@ -274,3 +280,16 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * ECW
 * Eroiica
 * Everex Everfax - no samples
+* FIF
+* FIT - ?
+* FAX/G3 - no header
+* FMF - no samples
+* Faxable PCX/TIFF - no samples
+* FileMagic MAG - no samples
+* Flash Image FI - no samples
+* FlashCam Frame - no samples
+* FlashPix FPX - actually a CFBF archive
+* FITS - failed on some samples from https://telparia.com/fileFormatSamples/image/fits/
+* Fremont Fax96 - no samples
+* Fugawi FX3 - no samples
+* FunPhotor FPR - no samples

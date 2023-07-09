@@ -6,6 +6,7 @@ HiveView is an image viewer that can (potentially) open any image file, either b
 
 Ext. | Description | Program
 --- | --- | ---
+4BT/4BIT | C64 GoDot | NConvert
 A64 | C64 Wigmore Artist 64 | NConvert
 AAI | Dune HD media player image | ImageMagick
 ACE | [Train Simulator](https://en.wikipedia.org/wiki/Train_Simulator_series) texture | NConvert
@@ -47,7 +48,10 @@ FLI/FLC | [Autodesk Animator](https://en.wikipedia.org/wiki/Autodesk_Animator) |
 FP2/FUN | C64 Funpaint II | NConvert
 FPG | DIV Games Studio, multi-page | NConvert
 FPT | C64 Face Painter | NConvert
+GBR | GIMP Brush | NConvert
+GEO/CVT | C64 [GEOS](https://en.wikipedia.org/wiki/GEOS_(8-bit_operating_system)) geoPaint | NConvert
 GIF | [Graphics Interchange Format](https://en.wikipedia.org/wiki/GIF) | ImageMagick
+GUN | C64 Gunpaint | NConvert
 HDR | [Radiance RGBE](https://en.wikipedia.org/wiki/RGBE_image_format) | ImageMagick
 HRZ | Slow-scan television | ImageMagick
 ICO | [Windows Icon](https://en.wikipedia.org/wiki/ICO_(file_format)) | ImageMagick
@@ -70,6 +74,7 @@ ORA | [OpenRaster](https://en.wikipedia.org/wiki/OpenRaster), actually a ZIP fil
 ORF | [Olympus Raw](https://en.wikipedia.org/wiki/ORF_format) | ImageMagick
 OTB | Nokia [Over the Air Bitmap](https://en.wikipedia.org/wiki/OTA_bitmap) | ImageMagick
 PAM | Portable Arbitrary Map | ImageMagick
+PAT | GIMP Pattern | NConvert
 PBM/PGM/PPM/PNM | [Netpbm Portable Bitmap](https://en.wikipedia.org/wiki/Netpbm) | ImageMagick
 PCD | Kodak [Photo CD](https://en.wikipedia.org/wiki/Photo_CD) | ImageMagick
 PCX | ZSoft [Picture Exchange](https://en.wikipedia.org/wiki/PCX) | ImageMagick
@@ -293,3 +298,8 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Fremont Fax96 - no samples
 * Fugawi FX3 - no samples
 * FunPhotor FPR - no samples
+* GRS16 - ?
+* GammaFax - no samples
+* GFA Raytrace - no samples
+* Giga-Paint - failed on samples from https://telparia.com/fileFormatSamples/image/c64HiRes/
+* GIMP Icon - no samples

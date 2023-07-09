@@ -51,9 +51,15 @@ FPT | C64 Face Painter | NConvert
 GBR | GIMP Brush | NConvert
 GEO/CVT | C64 [GEOS](https://en.wikipedia.org/wiki/GEOS_(8-bit_operating_system)) geoPaint | NConvert
 GIF | [Graphics Interchange Format](https://en.wikipedia.org/wiki/GIF) | ImageMagick
+GRB/GRO | [HP-48](https://en.wikipedia.org/wiki/HP_48_series)/49 GROB | NConvert
 GUN | C64 Gunpaint | NConvert
+HBM/HIR | C64 Hires Bitmap | NConvert
 HDR | [Radiance RGBE](https://en.wikipedia.org/wiki/RGBE_image_format) | ImageMagick
+HED | C64 Hi-Eddi | NConvert
+HPI | Hemera Photo-Object | NConvert
+HRU | Unknown | NConvert
 HRZ | Slow-scan television | ImageMagick
+HTA | Hemera Thumbs | NConvert
 ICO | [Windows Icon](https://en.wikipedia.org/wiki/ICO_(file_format)) | ImageMagick
 IFF/LBM | Amiga Interleaved Bitmap | NConvert
 IFF/TDI | [Maya](https://en.wikipedia.org/wiki/Autodesk_Maya) Image File Format/Thompson Digital Image Explore | NConvert
@@ -63,6 +69,7 @@ JPEG/JPG | [Joint Photographic Experts Group](https://en.wikipedia.org/wiki/Join
 JNG | [JPEG Network Graphics](https://en.wikipedia.org/wiki/JPEG_Network_Graphics) | ImageMagick
 JP2 | [JPEG 2000](https://en.wikipedia.org/wiki/JPEG_2000) | ImageMagick
 J2C/J2K/JPT | JPEG 2000 codestream | ImageMagick
+M8 | [Heretic II](https://en.wikipedia.org/wiki/Heretic_II) Mipmap | NConvert
 MAP | DIV Games Studio | NConvert
 MAT | [MATLAB](https://en.wikipedia.org/wiki/MATLAB) data file | ImageMagick
 MNG | [Multiple-image Network Graphics](https://en.wikipedia.org/wiki/Multiple-image_Network_Graphics) | ImageMagick
@@ -92,6 +99,7 @@ PSD/PSB | Adobe [Photoshop](https://en.wikipedia.org/wiki/Adobe_Photoshop) | Ima
 PWC | [Piecewise-Constant Image Model](http://www.caravian.com/research/index.htm) | pwcdecode
 QOI | [Quite OK Image Format](https://en.wikipedia.org/wiki/QOI_(image_format)) | ImageMagick
 RAF | Fujifilm Raw | ImageMagick
+RAW/HST | Image Alchemy HSI Raw | NConvert
 RGB | Sega RGB format, used in Sega Saturn games. | HiveView
 RIX | ColoRIX | NConvert
 RLE | Utah Raster Toolkit | ImageMagick
@@ -301,5 +309,13 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * GRS16 - ?
 * GammaFax - no samples
 * GFA Raytrace - no samples
-* Giga-Paint - failed on samples from https://telparia.com/fileFormatSamples/image/c64HiRes/
+* Giga-Paint - failed on samples from https://telparia.com/fileFormatSamples/image/c64HiRes/ (different from HIR/HBM format?)
 * GIMP Icon - no samples
+* HDRI - ?
+* Rayshade Heightfield - unsupported?
+* HP-49 OpenFire - no samples
+* HPGL2
+* Half-Life model - no samples
+* Hayes JTFax - no samples
+* Hemera Thumbs - failed on sample from https://archive.org/details/photo-clip-art-10000 (too many thumbs?)
+* Homeworld LIF texture - no samples

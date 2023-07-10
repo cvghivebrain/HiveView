@@ -15,6 +15,7 @@ AMI | C64 Amica Paint | NConvert
 ART | Atari Art Director | NConvert
 ARW | Sony Digital Camera Alpha Raw (TIFF variant) | ImageMagick
 ATK/CMU | [CMU Andrew Toolkit](https://en.wikipedia.org/wiki/Andrew_Project) | NConvert
+B&W/B_W | ImageLab/PrintTechnic | NConvert
 BFLI | C64 Big Flexible Line Interpretation | NConvert
 BLK/BSG | Prosoft Fontasy Block | NConvert
 BMP | [Windows Bitmap](https://en.wikipedia.org/wiki/BMP_file_format) | ImageMagick
@@ -62,16 +63,21 @@ HRZ | Slow-scan television | ImageMagick
 HTA | Hemera Thumbs | NConvert
 ICO | [Windows Icon](https://en.wikipedia.org/wiki/ICO_(file_format)) | ImageMagick
 IFF/LBM | Amiga Interleaved Bitmap | NConvert
+IIM | Atari Falcon InShape Image | NConvert
 IFF/TDI | [Maya](https://en.wikipedia.org/wiki/Autodesk_Maya) Image File Format/Thompson Digital Image Explore | NConvert
 IMG/XIMG | GEM Raster | NConvert
 INFO | Amiga Icon | NConvert
+IPH/IPT | C64 Interpaint | NConvert
+ISH/ISM | C64 Image System | NConvert
 JPEG/JPG | [Joint Photographic Experts Group](https://en.wikipedia.org/wiki/Joint_Photographic_Experts_Group) | ImageMagick
 JNG | [JPEG Network Graphics](https://en.wikipedia.org/wiki/JPEG_Network_Graphics) | ImageMagick
 JP2 | [JPEG 2000](https://en.wikipedia.org/wiki/JPEG_2000) | ImageMagick
 J2C/J2K/JPT | JPEG 2000 codestream | ImageMagick
+KPS | IBM KIPS Bitmap | NConvert
 M8 | [Heretic II](https://en.wikipedia.org/wiki/Heretic_II) Mipmap | NConvert
 MAP | DIV Games Studio | NConvert
 MAT | [MATLAB](https://en.wikipedia.org/wiki/MATLAB) data file | ImageMagick
+MIFF/MIF | Magick Multispectral Image File Format | NConvert
 MNG | [Multiple-image Network Graphics](https://en.wikipedia.org/wiki/Multiple-image_Network_Graphics) | ImageMagick
 MPC+CACHE | ImageMagick Magick Pixel Cache | ImageMagick
 MRW | Minolta Raw | ImageMagick
@@ -179,7 +185,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * JBIG
 * JXR/WDP
 * JXL
-* MIFF - failed on samples from https://telparia.com/fileFormatSamples/image/miff/
 * MONO - no header
 * MPO - multi page, only first page is loaded
 * MTV - unusable header
@@ -319,3 +324,19 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Hayes JTFax - no samples
 * Hemera Thumbs - failed on sample from https://archive.org/details/photo-clip-art-10000 (too many thumbs?)
 * Homeworld LIF texture - no samples
+* IBM Printer Page Segment - no samples
+* IM5 - no samples
+* IMNET - no samples
+* IOCA - no samples
+* ISS - ?
+* Icon Library - failed on samples from http://fileformats.archiveteam.org/wiki/Icon_library
+* Image Capture Board - no samples
+* Image Speeder - no samples
+* Image Systems RLC2 Graphic - no samples
+* Imaging Fax G3N - no samples
+* Imaging Technology - no samples
+* Img Software Set - no samples
+* InShape - failed on some samples from https://telparia.com/fileFormatSamples/image/iim/
+* Interleaf - no samples
+* Iris CT - no samples
+* Iris Graphics - ?

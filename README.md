@@ -12,7 +12,7 @@ AAI | Dune HD media player image | ImageMagick
 ACE | [Train Simulator](https://en.wikipedia.org/wiki/Train_Simulator_series) texture | NConvert
 ACORN/BIN | Acorn RISC OS Sprite | NConvert
 AMI | C64 Amica Paint | NConvert
-ART | Atari Art Director | NConvert
+ART | Atari ST Art Director | NConvert
 ARW | Sony Digital Camera Alpha Raw (TIFF variant) | ImageMagick
 ATK/CMU | [CMU Andrew Toolkit](https://en.wikipedia.org/wiki/Andrew_Project) | NConvert
 B&W/B_W | ImageLab/PrintTechnic | NConvert
@@ -69,10 +69,11 @@ IMG/XIMG | GEM Raster | NConvert
 INFO | Amiga Icon | NConvert
 IPH/IPT | C64 Interpaint | NConvert
 ISH/ISM | C64 Image System | NConvert
-JPEG/JPG | [Joint Photographic Experts Group](https://en.wikipedia.org/wiki/Joint_Photographic_Experts_Group) | ImageMagick
+J2C/J2K/JPT | JPEG 2000 codestream | ImageMagick
+JIF | Jeff's Image Format | NConvert
 JNG | [JPEG Network Graphics](https://en.wikipedia.org/wiki/JPEG_Network_Graphics) | ImageMagick
 JP2 | [JPEG 2000](https://en.wikipedia.org/wiki/JPEG_2000) | ImageMagick
-J2C/J2K/JPT | JPEG 2000 codestream | ImageMagick
+JPEG/JPG | [Joint Photographic Experts Group](https://en.wikipedia.org/wiki/Joint_Photographic_Experts_Group) | ImageMagick
 KPS | IBM KIPS Bitmap | NConvert
 M8 | [Heretic II](https://en.wikipedia.org/wiki/Heretic_II) Mipmap | NConvert
 MAP | DIV Games Studio | NConvert
@@ -340,3 +341,10 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Interleaf - no samples
 * Iris CT - no samples
 * Iris Graphics - ?
+* J Wavelet Image Codec
+* JBIG/JBIG2
+* JPEG 8BIM
+* JPEG-LS
+* Jigsaw 2 - samples from http://fileformats.archiveteam.org/wiki/Jigsaw_(Walter_A._Kuhn) look wrong
+* Jovian Logic VI - no samples
+* Just Buttons - only extracts embedded BMP

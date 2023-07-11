@@ -23,6 +23,7 @@ BOB | Bob Ray Tracer Bitmap | NConvert
 CAL/CT1/RAS | DoD [CALS Raster](https://en.wikipedia.org/wiki/CALS_Raster_file_format) | ImageMagick
 CAM | Casio QV-10/100 Camera | NConvert
 CDU | C64 CDU-Paint | NConvert
+CEL+KCF | [Kisekae Set System](https://en.wikipedia.org/wiki/Kisekae_Set_System) Cel | NConvert
 CIN | Kodak [Cineon](https://en.wikipedia.org/wiki/Cineon) | ImageMagick
 CIP | Cisco IP Phone Image | NConvert
 CR2 | Canon Digital Camera Raw (TIFF variant) | ImageMagick
@@ -30,7 +31,7 @@ CRW | Canon Digital Camera Raw | ImageMagick
 CUR | Windows Cursor | ImageMagick
 DG2 | Sega Digitizer 2, used in Sega Saturn games. | HiveView
 DCM | [DICOM](https://en.wikipedia.org/wiki/DICOM) medical image | ImageMagick
-DCR | Kodak Digital Camera Raw | ImageMagick
+DCR | Kodak Digital Camera Raw (TIFF variant) | ImageMagick
 DCX | ZSoft Multi-page PCX | ImageMagick
 DD/JJ | C64 Doodle | NConvert
 DDS | Microsoft [DirectDraw Surface](https://en.wikipedia.org/wiki/DirectDraw_Surface) | ImageMagick
@@ -74,7 +75,11 @@ JIF | Jeff's Image Format | NConvert
 JNG | [JPEG Network Graphics](https://en.wikipedia.org/wiki/JPEG_Network_Graphics) | ImageMagick
 JP2 | [JPEG 2000](https://en.wikipedia.org/wiki/JPEG_2000) | ImageMagick
 JPEG/JPG | [Joint Photographic Experts Group](https://en.wikipedia.org/wiki/Joint_Photographic_Experts_Group) | ImageMagick
+K25 | Kodak DC25 Digital Camera (TIFF variant) | NConvert
+KDC | Kodak DC120 Digital Camera (TIFF variant) | NConvert
+KOA | C64 KoalaPainter | NConvert
 KPS | IBM KIPS Bitmap | NConvert
+KQP/PIC | Konica Picture Show/Pegasus PIC | NConvert
 M8 | [Heretic II](https://en.wikipedia.org/wiki/Heretic_II) Mipmap | NConvert
 MAP | DIV Games Studio | NConvert
 MAT | [MATLAB](https://en.wikipedia.org/wiki/MATLAB) data file | ImageMagick
@@ -171,7 +176,7 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * CUT (Dr. Halo clip mask) - tricky detection
 * DCM - multi page sometimes?; failed on (some) samples from https://telparia.com/fileFormatSamples/image/dicom/
 * DJVU/EPDF/HTML/MAN/PDF/POCKETMOD - multi page/embedded images
-* DCR/DNG/NEF - loads as TIFF but better detection needed
+* DNG/NEF - loads as TIFF but better detection needed
 * DMR
 * DOT graph format
 * EMF
@@ -348,3 +353,10 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Jigsaw 2 - samples from http://fileformats.archiveteam.org/wiki/Jigsaw_(Walter_A._Kuhn) look wrong
 * Jovian Logic VI - no samples
 * Just Buttons - only extracts embedded BMP
+* KONTRON - no samples
+* KinuPix - no samples
+* KiSS Cel - only loads palette if KCF & CEL files have the same name
+* KoalaPainter GG compressed - insufficient header
+* Kodak DC120 Digital Camera - fails on sample from https://telparia.com/fileFormatSamples/image/kodakKDC/
+* Kofax Group 4 - no samples
+* Konica KQP - failed on samples from http://fileformats.archiveteam.org/wiki/KQP

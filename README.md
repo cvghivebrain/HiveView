@@ -6,6 +6,7 @@ HiveView is an image viewer that can (potentially) open any image file, either b
 
 Ext. | Description | Program
 --- | --- | ---
+411 | [Sony Mavica](https://en.wikipedia.org/wiki/Sony_Mavica) Thumbnail | NConvert
 4BT/4BIT | C64 GoDot | NConvert
 A64 | C64 Wigmore Artist 64 | NConvert
 AAI | Dune HD media player image | ImageMagick
@@ -62,6 +63,7 @@ HPI | Hemera Photo-Object | NConvert
 HRU | Unknown | NConvert
 HRZ | Slow-scan television | ImageMagick
 HTA | Hemera Thumbs | NConvert
+ICNS | Mac Icon | NConvert
 ICO | [Windows Icon](https://en.wikipedia.org/wiki/ICO_(file_format)) | ImageMagick
 IFF/LBM | Amiga Interleaved Bitmap | NConvert
 IIM | Atari Falcon InShape Image | NConvert
@@ -81,11 +83,16 @@ KOA | C64 KoalaPainter | NConvert
 KPS | IBM KIPS Bitmap | NConvert
 KQP/PIC | Konica Picture Show/Pegasus PIC | NConvert
 M8 | [Heretic II](https://en.wikipedia.org/wiki/Heretic_II) Mipmap | NConvert
+MAC/PIC/PNTG | [MacPaint](https://en.wikipedia.org/wiki/MacPaint) | NConvert
+MAG | MAKIchan Graphics | NConvert
 MAP | DIV Games Studio | NConvert
 MAT | [MATLAB](https://en.wikipedia.org/wiki/MATLAB) data file | ImageMagick
+MGR | [ManaGeR](https://en.wikipedia.org/wiki/ManaGeR) bitmap | NConvert
 MIFF/MIF | Magick Multispectral Image File Format | NConvert
+MIL | C64 Micro Illustrator | NConvert
 MNG | [Multiple-image Network Graphics](https://en.wikipedia.org/wiki/Multiple-image_Network_Graphics) | ImageMagick
 MPC+CACHE | ImageMagick Magick Pixel Cache | ImageMagick
+MPH | MonkeyPhoto (JPEG variant) | ImageMagick
 MRW | Minolta Raw | ImageMagick
 NEF | Nikon Electronic Format (TIFF variant) | ImageMagick
 OCP | [Advanced OCP Art Studio](https://en.wikipedia.org/wiki/OCP_Art_Studio) | NConvert
@@ -104,6 +111,7 @@ PI | C64 Blazing Paddles | NConvert
 PI1/PI2/PI3 | Atari ST DEGAS | NConvert
 PI4/PI5 | Atari ST View ST/TT | NConvert
 PICON/XPM | [X PixMap Personal Icon](https://en.wikipedia.org/wiki/X_PixMap) | ImageMagick
+PICT/PIC | [QuickDraw](https://en.wikipedia.org/wiki/QuickDraw) [PICT](https://en.wikipedia.org/wiki/PICT) | NConvert
 PIX | Alias PIX | NConvert
 PIX | Esm Software PIX (JPEG with header) | Swiss File Knife
 PNG | [Portable Network Graphics](https://en.wikipedia.org/wiki/PNG) | n/a
@@ -115,6 +123,7 @@ RAW/HST | Image Alchemy HSI Raw | NConvert
 RGB | Sega RGB format, used in Sega Saturn games. | HiveView
 RIX | ColoRIX | NConvert
 RLE | Utah Raster Toolkit | ImageMagick
+SC2 | MSX Screen 2 | NConvert
 SCT | [Scitex Continuous Tone](https://en.wikipedia.org/wiki/Scitex_CT) | ImageMagick
 SD0/SD1/SD2 | Atari ST Dali | NConvert
 SFW | [Seattle FilmWorks](https://en.wikipedia.org/wiki/Seattle_FilmWorks) | ImageMagick
@@ -136,6 +145,7 @@ XCF | GIMP [Experimental Computing Facility](https://en.wikipedia.org/wiki/XCF_(
 Ext. | Description | Program
 --- | --- | ---
 EPS | [Encapsulated PostScript](https://en.wikipedia.org/wiki/Encapsulated_PostScript) | Ghostscript
+PDX/MD | PageDraw/Mayura Draw (EPS files) | Ghostscript
 PES | Embroidery file | ImageMagick
 PS | Adobe [PostScript](https://en.wikipedia.org/wiki/PostScript) | Ghostscript
 SVG | [Scalable Vector Graphics](https://en.wikipedia.org/wiki/SVG) | ImageMagick
@@ -360,3 +370,33 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Kodak DC120 Digital Camera - fails on sample from https://telparia.com/fileFormatSamples/image/kodakKDC/
 * Kofax Group 4 - no samples
 * Konica KQP - failed on samples from http://fileformats.archiveteam.org/wiki/KQP
+* LSS16 - no samples
+* LView Pro - no samples
+* LaserData - no samples
+* Light Work Image - no samples
+* LucasFilm Format - failed on sample from http://ftp.funet.fi/index/graphics/packages/lff/lff.tar.gz
+* Lumena CEL - no samples
+* LuraDocument LDF - no samples
+* JPM
+* LuraWave
+* MAKIchan Graphics - failed on some samples from https://telparia.com/fileFormatSamples/image/makichan/
+* PhotoSuite Project - actually a Microsoft Compound File
+* MGR bitmap - only "yz" variant found
+* MTV - failed on samples from https://telparia.com/fileFormatSamples/image/mtv/ and header is tricky
+* MacPaint - some files are headerless
+* Mac icon - failed on some samples from https://telparia.com/fileFormatSamples/image/icns/
+* PICT - failed on many samples from https://telparia.com/fileFormatSamples/image/pict/
+* Maggi Hairstyles & Cosmetics - no samples
+* Male MRI/CT - no samples
+* MRF - no samples
+* Maw-Ware textures - no samples
+* MegaPaint - unhelpful header
+* Megalux - no samples
+* Micro Dynamics MARS - no samples
+* Micrografx Picture Publisher - no samples
+* Microsoft Image Composer - actually a Microsoft Compound File
+* Microsoft Paint - failed on most samples from https://telparia.com/fileFormatSamples/image/msp/
+* Microtek Eyestar - no samples
+* Mindjongg IPG - no samples
+* MonkeyCard/MonkeyLogo - failed on samples
+* MrSID

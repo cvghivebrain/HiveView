@@ -95,6 +95,10 @@ MPC+CACHE | ImageMagick Magick Pixel Cache | ImageMagick
 MPH | MonkeyPhoto (JPEG variant) | ImageMagick
 MRW | Minolta Raw | ImageMagick
 NEF | Nikon Electronic Format (TIFF variant) | ImageMagick
+NEO | Atari ST NEOchrome | NConvert
+NGG | Nokia Group Graphic | NConvert
+NLM | Nokia Logo Manager | NConvert
+NOL | Nokia Operator Logo | NConvert
 OCP | [Advanced OCP Art Studio](https://en.wikipedia.org/wiki/OCP_Art_Studio) | NConvert
 ORA | [OpenRaster](https://en.wikipedia.org/wiki/OpenRaster), actually a ZIP file containing PNGs | 7-Zip
 ORF | [Olympus Raw](https://en.wikipedia.org/wiki/ORF_format) | ImageMagick
@@ -399,4 +403,11 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Microtek Eyestar - no samples
 * Mindjongg IPG - no samples
 * MonkeyCard/MonkeyLogo - failed on samples
+* MonkeyPhoto - just a JPEG?
 * MrSID
+* NCR - no samples
+* NIST IHead - no samples
+* NTF - failed on most samples from http://download.osgeo.org/pub/gdal/data/nitf/
+* NeoBook Cartoon - no samples
+* NeoPaint mask/stamp - no samples
+* Newsroom - no samples

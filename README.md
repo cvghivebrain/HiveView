@@ -19,6 +19,7 @@ ATK/CMU | [CMU Andrew Toolkit](https://en.wikipedia.org/wiki/Andrew_Project) | N
 B&W/B_W | ImageLab/PrintTechnic | NConvert
 BFLI | C64 Big Flexible Line Interpretation | NConvert
 BLK/BSG | Prosoft Fontasy Block | NConvert
+BMP | OS/2 Bitmap | NConvert
 BMP | [Windows Bitmap](https://en.wikipedia.org/wiki/BMP_file_format) | ImageMagick
 BOB | Bob Ray Tracer Bitmap | NConvert
 CAL/CT1/RAS | DoD [CALS Raster](https://en.wikipedia.org/wiki/CALS_Raster_file_format) | ImageMagick
@@ -73,6 +74,7 @@ INFO | Amiga Icon | NConvert
 IPH/IPT | C64 Interpaint | NConvert
 ISH/ISM | C64 Image System | NConvert
 J2C/J2K/JPT | JPEG 2000 codestream | ImageMagick
+JBF | Jasc [PaintShop Pro](https://en.wikipedia.org/wiki/PaintShop_Pro) Browser File | NConvert
 JIF | Jeff's Image Format | NConvert
 JNG | [JPEG Network Graphics](https://en.wikipedia.org/wiki/JPEG_Network_Graphics) | ImageMagick
 JP2 | [JPEG 2000](https://en.wikipedia.org/wiki/JPEG_2000) | ImageMagick
@@ -114,12 +116,15 @@ PFM/PHM | Portable Float Map | ImageMagick
 PI | C64 Blazing Paddles | NConvert
 PI1/PI2/PI3 | Atari ST DEGAS | NConvert
 PI4/PI5 | Atari ST View ST/TT | NConvert
+PIC | [PCPaint](https://en.wikipedia.org/wiki/PCPaint) | NConvert
 PICON/XPM | [X PixMap Personal Icon](https://en.wikipedia.org/wiki/X_PixMap) | ImageMagick
 PICT/PIC | [QuickDraw](https://en.wikipedia.org/wiki/QuickDraw) [PICT](https://en.wikipedia.org/wiki/PICT) | NConvert
 PIX | Alias PIX | NConvert
 PIX | Esm Software PIX (JPEG with header) | Swiss File Knife
+PMG | C64 Paint Magic | NConvert
 PNG | [Portable Network Graphics](https://en.wikipedia.org/wiki/PNG) | n/a
 PSD/PSB | Adobe [Photoshop](https://en.wikipedia.org/wiki/Adobe_Photoshop) | ImageMagick
+PSP | Jasc [PaintShop Pro](https://en.wikipedia.org/wiki/PaintShop_Pro) | NConvert
 PWC | [Piecewise-Constant Image Model](http://www.caravian.com/research/index.htm) | pwcdecode
 QOI | [Quite OK Image Format](https://en.wikipedia.org/wiki/QOI_(image_format)) | ImageMagick
 RAF | Fujifilm Raw | ImageMagick
@@ -134,6 +139,7 @@ SFW | [Seattle FilmWorks](https://en.wikipedia.org/wiki/Seattle_FilmWorks) | Ima
 SGI/BW/RGB | Silicon Graphics IRIX RGB | ImageMagick
 SIR | [BYU-MERS SIR](https://scp.byu.edu/software/) | NConvert
 SUN/RAS | [Sun Raster](https://en.wikipedia.org/wiki/Sun_Raster) | ImageMagick
+TAP | Oric Hires Screen; Tape Format | NConvert
 TIFF/TIF | [Tag Image File Format](https://en.wikipedia.org/wiki/TIFF) | ImageMagick
 TIM | Sony PlayStation texture | ImageMagick
 TRP | Atari Falcon EggPaint | NConvert
@@ -411,3 +417,17 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * NeoBook Cartoon - no samples
 * NeoPaint mask/stamp - no samples
 * Newsroom - no samples
+* OAZ Fax - no samples
+* Olicom Fax - no samples
+* OIL - no samples
+* Optigraphics - no samples
+* Oric Hires - no samples
+* OS/2 Warp - failed on samples from https://telparia.com/fileFormatSamples/archive/os2BitmapArray/
+* PABX background - no samples
+* Pick Ax - no samples
+* PCO B16 - no samples
+* Penn PM - no samples
+* PCL - ?
+* PSP JBF - failed on some samples from https://telparia.com/fileFormatSamples/archive/paintShopProBrowserCache/
+* PSP Brush/Frame/Mask/Pattern/Texture/Tube - no samples
+* Panasonic DMC-LC1 Raw - no samples

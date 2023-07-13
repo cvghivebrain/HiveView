@@ -6,6 +6,7 @@ HiveView is an image viewer that can (potentially) open any image file, either b
 
 Ext. | Description | Program
 --- | --- | ---
+2BP | Pocket PC Bitmap | NConvert
 411 | [Sony Mavica](https://en.wikipedia.org/wiki/Sony_Mavica) Thumbnail | NConvert
 4BT/4BIT | C64 GoDot | NConvert
 A64 | C64 Wigmore Artist 64 | NConvert
@@ -14,6 +15,7 @@ ACE | [Train Simulator](https://en.wikipedia.org/wiki/Train_Simulator_series) te
 ACORN/BIN | Acorn RISC OS Sprite | NConvert
 AMI | C64 Amica Paint | NConvert
 ART | Atari ST Art Director | NConvert
+ART | PFS: First Publisher | NConvert
 ARW | Sony Digital Camera Alpha Raw (TIFF variant) | ImageMagick
 ATK/CMU | [CMU Andrew Toolkit](https://en.wikipedia.org/wiki/Andrew_Project) | NConvert
 B&W/B_W | ImageLab/PrintTechnic | NConvert
@@ -22,6 +24,7 @@ BLK/BSG | Prosoft Fontasy Block | NConvert
 BMP | OS/2 Bitmap | NConvert
 BMP | [Windows Bitmap](https://en.wikipedia.org/wiki/BMP_file_format) | ImageMagick
 BOB | Bob Ray Tracer Bitmap | NConvert
+BUM | Poser Bump Map (32bpp BMP) | NConvert
 CAL/CT1/RAS | DoD [CALS Raster](https://en.wikipedia.org/wiki/CALS_Raster_file_format) | ImageMagick
 CAM | Casio QV-10/100 Camera | NConvert
 CDU | C64 CDU-Paint | NConvert
@@ -89,6 +92,7 @@ MAC/PIC/PNTG | [MacPaint](https://en.wikipedia.org/wiki/MacPaint) | NConvert
 MAG | MAKIchan Graphics | NConvert
 MAP | DIV Games Studio | NConvert
 MAT | [MATLAB](https://en.wikipedia.org/wiki/MATLAB) data file | ImageMagick
+MBM | Psion Series 5 bitmap/EPOC [Multibitmap](https://en.wikipedia.org/wiki/MBM_(file_format)) | NConvert
 MGR | [ManaGeR](https://en.wikipedia.org/wiki/ManaGeR) bitmap | NConvert
 MIFF/MIF | Magick Multispectral Image File Format | NConvert
 MIL | C64 Micro Illustrator | NConvert
@@ -105,18 +109,22 @@ OCP | [Advanced OCP Art Studio](https://en.wikipedia.org/wiki/OCP_Art_Studio) | 
 ORA | [OpenRaster](https://en.wikipedia.org/wiki/OpenRaster), actually a ZIP file containing PNGs | 7-Zip
 ORF | [Olympus Raw](https://en.wikipedia.org/wiki/ORF_format) | ImageMagick
 OTB | Nokia [Over the Air Bitmap](https://en.wikipedia.org/wiki/OTA_bitmap) | ImageMagick
+P64 | C64 Picasso 64 | NConvert
 PAM | Portable Arbitrary Map | ImageMagick
 PAT | GIMP Pattern | NConvert
 PBM/PGM/PPM/PNM | [Netpbm Portable Bitmap](https://en.wikipedia.org/wiki/Netpbm) | ImageMagick
 PCD | Kodak [Photo CD](https://en.wikipedia.org/wiki/Photo_CD) | ImageMagick
 PCX | ZSoft [Picture Exchange](https://en.wikipedia.org/wiki/PCX) | ImageMagick
 PDB | Palm Database ImageViewer | ImageMagick
+PDD | Adobe [PhotoDeluxe](https://en.wikipedia.org/wiki/Adobe_PhotoDeluxe) (PSD variant) | NConvert
 PEF | Pentax Raw (TIFF variant) | ImageMagick
 PFM/PHM | Portable Float Map | ImageMagick
+PGC | Atari Portfolio Graphics Compressed | NConvert
 PI | C64 Blazing Paddles | NConvert
 PI1/PI2/PI3 | Atari ST DEGAS | NConvert
 PI4/PI5 | Atari ST View ST/TT | NConvert
 PIC | [PCPaint](https://en.wikipedia.org/wiki/PCPaint) | NConvert
+PIC | Psion Series 3 bitmap | NConvert
 PICON/XPM | [X PixMap Personal Icon](https://en.wikipedia.org/wiki/X_PixMap) | ImageMagick
 PICT/PIC | [QuickDraw](https://en.wikipedia.org/wiki/QuickDraw) [PICT](https://en.wikipedia.org/wiki/PICT) | NConvert
 PIX | Alias PIX | NConvert
@@ -124,8 +132,11 @@ PIX | Esm Software PIX (JPEG with header) | Swiss File Knife
 PMG | C64 Paint Magic | NConvert
 PNG | [Portable Network Graphics](https://en.wikipedia.org/wiki/PNG) | n/a
 PSD/PSB | Adobe [Photoshop](https://en.wikipedia.org/wiki/Adobe_Photoshop) | ImageMagick
+PSF | ArcSoft PhotoStudio | NConvert
 PSP | Jasc [PaintShop Pro](https://en.wikipedia.org/wiki/PaintShop_Pro) | NConvert
 PWC | [Piecewise-Constant Image Model](http://www.caravian.com/research/index.htm) | pwcdecode
+PXA | [Pixia](https://en.wikipedia.org/wiki/Pixia) | NConvert
+PZL | X11 Puzzle bitmap | NConvert
 QOI | [Quite OK Image Format](https://en.wikipedia.org/wiki/QOI_(image_format)) | ImageMagick
 RAF | Fujifilm Raw | ImageMagick
 RAW/HST | Image Alchemy HSI Raw | NConvert
@@ -184,7 +195,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 ## To do
 ### ImageMagick
 * APNG animation frames - doesn't work
-* ART (PFS: First Publisher) - tricky detection
 * AVI/AVIF/M2V/MPEG
 * AVS X image
 * BAYER
@@ -431,3 +441,32 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * PSP JBF - failed on some samples from https://telparia.com/fileFormatSamples/archive/paintShopProBrowserCache/
 * PSP Brush/Frame/Mask/Pattern/Texture/Tube - no samples
 * Panasonic DMC-LC1 Raw - no samples
+* Pegs - ?
+* PhotoDeluxe - same as PSD?
+* PhotoFantasy - no samples
+* PhotoFrame - no samples
+* PhotoStudio stamp - no samples
+* Photomatrix - no samples
+* Pic2
+* PictureGear - not supported?
+* Picture It! MIX - actually a Microsoft Compound File
+* Pixar PIC - no samples
+* Pixel Power Collage - no samples
+* Pixia - only displays JPEG thumbnail
+* Pixibox - no samples
+* Planetary Data System - failed on most samples from https://telparia.com/fileFormatSamples/image/pds/
+* Playback Bitmap Sequence - ?
+* Pocket PC Theme - just a CAB file?
+* Polychrome Recursive Format - no samples
+* PDF - document format
+* Portfolio Graphics - no samples
+* Portrait CVP - ?
+* Poser Bump Map - same as BMP?
+* Powercard - no samples
+* Powerpoint - document format, embedded images can be extracted
+* Print Master - no samples
+* Print Shop - no samples
+* Printfox - header is only 1 byte
+* PRISM CPA - no samples
+* Prisms - ?
+* Punk Productions - no samples

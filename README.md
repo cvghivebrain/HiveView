@@ -84,7 +84,7 @@ JP2 | [JPEG 2000](https://en.wikipedia.org/wiki/JPEG_2000) | ImageMagick
 JPEG/JPG | [Joint Photographic Experts Group](https://en.wikipedia.org/wiki/Joint_Photographic_Experts_Group) | ImageMagick
 K25 | Kodak DC25 Digital Camera (TIFF variant) | NConvert
 KDC | Kodak DC120 Digital Camera (TIFF variant) | NConvert
-KOA | C64 KoalaPainter | NConvert
+KOA/RPM | C64 KoalaPainter/RUN Paint | NConvert
 KPS | IBM KIPS Bitmap | NConvert
 KQP/PIC | Konica Picture Show/Pegasus PIC | NConvert
 M8 | [Heretic II](https://en.wikipedia.org/wiki/Heretic_II) Mipmap | NConvert
@@ -140,9 +140,11 @@ PZL | X11 Puzzle bitmap | NConvert
 QOI | [Quite OK Image Format](https://en.wikipedia.org/wiki/QOI_(image_format)) | ImageMagick
 RAF | Fujifilm Raw | ImageMagick
 RAW/HST | Image Alchemy HSI Raw | NConvert
+RAW/QRT/DIS | QRT Ray Tracer/DKB Ray Tracer | NConvert
 RGB | Sega RGB format, used in Sega Saturn games. | HiveView
 RIX | ColoRIX | NConvert
 RLE | Utah Raster Toolkit | ImageMagick
+RP | C64 Rainbow Painter | NConvert
 SC2 | MSX Screen 2 | NConvert
 SCT | [Scitex Continuous Tone](https://en.wikipedia.org/wiki/Scitex_CT) | ImageMagick
 SD0/SD1/SD2 | Atari ST Dali | NConvert
@@ -156,10 +158,12 @@ TIM | Sony PlayStation texture | ImageMagick
 TRP | Atari Falcon EggPaint | NConvert
 VICAR/IMG | NASA Video Image Communication And Retrieval | ImageMagick
 VIFF/XV | Khoros Visualization | ImageMagick
+WAL | [Quake II](https://en.wikipedia.org/wiki/Quake_II) Texture | NConvert
 WEBP | Google [WebP](https://en.wikipedia.org/wiki/WebP) | ImageMagick
 WPG | [WordPerfect Graphics](https://en.wikipedia.org/wiki/WordPerfect) | ImageMagick
 XBM | X Window System Bitmap | ImageMagick
 XCF | GIMP [Experimental Computing Facility](https://en.wikipedia.org/wiki/XCF_(file_format)) | ImageMagick
+XYZ | [RPG Maker 2000](https://en.wikipedia.org/wiki/RPG_Maker_2000) | NConvert
 
 ## Supported vector image formats
 
@@ -313,7 +317,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Nero CoverDesigner - no samples
 * Crayola ART - failed on sample from http://fileformats.archiveteam.org/wiki/Picture_Publisher
 * DBW Render - no samples
-* QRT Ray Tracer/DKB Ray Tracer - not supported?
 * Dali - failed on some samples from https://telparia.com/fileFormatSamples/image/dali/
 * Datacopy - ?
 * DEGAS compressed - header too vague
@@ -470,3 +473,14 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * PRISM CPA - no samples
 * Prisms - ?
 * Punk Productions - no samples
+* Q0 - no samples
+* QDV - no samples
+* Quantel VPB - inconsistent header; samples on https://github.com/GeoSpark/vpb-converter/tree/master/samples
+* QTIF - failed on most samples from https://telparia.com/fileFormatSamples/image/qtif/
+* RIPscrip icon - can't figure out format
+* Radiance PIC/RAD - failed on samples from https://radsite.lbl.gov/radiance/pub/pics/index.html
+* Rayshade PIC - same as MTV but doesn't work?
+* Red Storm RSB - no samples
+* Ricoh J6I - no samples
+* Ricoh fax - no samples
+* Ricoh IS30 PIG - no samples

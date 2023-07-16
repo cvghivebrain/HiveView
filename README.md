@@ -18,6 +18,7 @@ ART | Atari ST Art Director | NConvert
 ART | PFS: First Publisher | NConvert
 ARW | Sony Digital Camera Alpha Raw (TIFF variant) | ImageMagick
 ATK/CMU | [CMU Andrew Toolkit](https://en.wikipedia.org/wiki/Andrew_Project) | NConvert
+AVS/X | Stardent Application Visualization System | NConvert
 B&W/B_W | ImageLab/PrintTechnic | NConvert
 BFLI | C64 Big Flexible Line Interpretation | NConvert
 BLK/BSG | Prosoft Fontasy Block | NConvert
@@ -68,6 +69,7 @@ HRU | Unknown | NConvert
 HRZ | Slow-scan television | ImageMagick
 HTA | Hemera Thumbs | NConvert
 ICNS | Mac Icon | NConvert
+ICO | Sun Icon | NConvert
 ICO | [Windows Icon](https://en.wikipedia.org/wiki/ICO_(file_format)) | ImageMagick
 IFF/LBM | Amiga Interleaved Bitmap | NConvert
 IIM | Atari Falcon InShape Image | NConvert
@@ -82,6 +84,7 @@ JIF | Jeff's Image Format | NConvert
 JNG | [JPEG Network Graphics](https://en.wikipedia.org/wiki/JPEG_Network_Graphics) | ImageMagick
 JP2 | [JPEG 2000](https://en.wikipedia.org/wiki/JPEG_2000) | ImageMagick
 JPEG/JPG | [Joint Photographic Experts Group](https://en.wikipedia.org/wiki/Joint_Photographic_Experts_Group) | ImageMagick
+JPS | JPEG Stereoscopic (opens as JPEG) | ImageMagick
 K25 | Kodak DC25 Digital Camera (TIFF variant) | NConvert
 KDC | Kodak DC120 Digital Camera (TIFF variant) | NConvert
 KOA/RPM | C64 KoalaPainter/RUN Paint | NConvert
@@ -105,11 +108,12 @@ NEO | Atari ST NEOchrome | NConvert
 NGG | Nokia Group Graphic | NConvert
 NLM | Nokia Logo Manager | NConvert
 NOL | Nokia Operator Logo | NConvert
-OCP | [Advanced OCP Art Studio](https://en.wikipedia.org/wiki/OCP_Art_Studio) | NConvert
+OCP | C64 [Advanced OCP Art Studio](https://en.wikipedia.org/wiki/OCP_Art_Studio) | NConvert
 ORA | [OpenRaster](https://en.wikipedia.org/wiki/OpenRaster), actually a ZIP file containing PNGs | 7-Zip
 ORF | [Olympus Raw](https://en.wikipedia.org/wiki/ORF_format) | ImageMagick
 OTB | Nokia [Over the Air Bitmap](https://en.wikipedia.org/wiki/OTA_bitmap) | ImageMagick
 P64 | C64 Picasso 64 | NConvert
+PAC/SEQ | Atari ST STAD | NConvert
 PAM | Portable Arbitrary Map | ImageMagick
 PAT | GIMP Pattern | NConvert
 PBM/PGM/PPM/PNM | [Netpbm Portable Bitmap](https://en.wikipedia.org/wiki/Netpbm) | ImageMagick
@@ -123,6 +127,7 @@ PGC | Atari Portfolio Graphics Compressed | NConvert
 PI | C64 Blazing Paddles | NConvert
 PI1/PI2/PI3 | Atari ST DEGAS | NConvert
 PI4/PI5 | Atari ST View ST/TT | NConvert
+PIC | [Autodesk Softimage](https://en.wikipedia.org/wiki/Autodesk_Softimage) | NConvert
 PIC | [PCPaint](https://en.wikipedia.org/wiki/PCPaint) | NConvert
 PIC | Psion Series 3 bitmap | NConvert
 PICON/XPM | [X PixMap Personal Icon](https://en.wikipedia.org/wiki/X_PixMap) | ImageMagick
@@ -130,6 +135,7 @@ PICT/PIC | [QuickDraw](https://en.wikipedia.org/wiki/QuickDraw) [PICT](https://e
 PIX | Alias PIX | NConvert
 PIX | Esm Software PIX (JPEG with header) | Swiss File Knife
 PMG | C64 Paint Magic | NConvert
+PMP | Sony DSC-F1 | NConvert
 PNG | [Portable Network Graphics](https://en.wikipedia.org/wiki/PNG) | n/a
 PSD/PSB | Adobe [Photoshop](https://en.wikipedia.org/wiki/Adobe_Photoshop) | ImageMagick
 PSF | ArcSoft PhotoStudio | NConvert
@@ -145,6 +151,7 @@ RGB | Sega RGB format, used in Sega Saturn games. | HiveView
 RIX | ColoRIX | NConvert
 RLE | Utah Raster Toolkit | ImageMagick
 RP | C64 Rainbow Painter | NConvert
+SAR | C64 Saracen Paint | NConvert
 SC2 | MSX Screen 2 | NConvert
 SCT | [Scitex Continuous Tone](https://en.wikipedia.org/wiki/Scitex_CT) | ImageMagick
 SD0/SD1/SD2 | Atari ST Dali | NConvert
@@ -161,6 +168,7 @@ VIFF/XV | Khoros Visualization | ImageMagick
 WAL | [Quake II](https://en.wikipedia.org/wiki/Quake_II) Texture | NConvert
 WEBP | Google [WebP](https://en.wikipedia.org/wiki/WebP) | ImageMagick
 WPG | [WordPerfect Graphics](https://en.wikipedia.org/wiki/WordPerfect) | ImageMagick
+X3F | Sigma/Foveon Raw | x3f_extract
 XBM | X Window System Bitmap | ImageMagick
 XCF | GIMP [Experimental Computing Facility](https://en.wikipedia.org/wiki/XCF_(file_format)) | ImageMagick
 XYZ | [RPG Maker 2000](https://en.wikipedia.org/wiki/RPG_Maker_2000) | NConvert
@@ -195,12 +203,12 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * [NConvert](https://www.xnview.com/en/nconvert/)
 * [pwcdecode](http://www.caravian.com/research/index.htm)
 * [Swiss File Knife](http://stahlworks.com/swiss-file-knife.html)
+* [x3f_extract](https://github.com/rolkar/x3f)
 
 ## To do
 ### ImageMagick
 * APNG animation frames - doesn't work
 * AVI/AVIF/M2V/MPEG
-* AVS X image
 * BAYER
 * BPG - failed on samples from https://bellard.org/bpg/
 * BMP - failed on samples from https://people.math.sc.edu/Burkardt/data/bmp/bmp.html
@@ -248,7 +256,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * WBMP - unhelpful header
 * WMF
 * XWD - failed on samples from https://telparia.com/fileFormatSamples/image/xwd/
-* X3F - unsupported?, failed on samples from http://www.rawsamples.ch/index.php/en/sigma
 
 ### NConvert
 * 3DS Max thumbnails - stored in Microsoft Compound Format
@@ -484,3 +491,26 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Ricoh J6I - no samples
 * Ricoh fax - no samples
 * Ricoh IS30 PIG - no samples
+* SBIG CCD - no samples
+* SPOT - ?
+* Scifax - no samples
+* Secret Photos - no samples
+* Sega Digio - no samples
+* Sharp GPB - no samples
+* Siemens Mobile BMX - no sample
+* Skantek - ?
+* Smartdraw 6 - no samples
+* Smartfax - no samples
+* SmoothMove - no samples
+* Solitaire Image Recorder - no samples
+* Sony DSC-F828 - no samples
+* TIM2 - no samples
+* Spectrum 512 SPC/SPS - can't differentiate
+* Srisun SSI - no samples
+* StarOffice Gallery - failed on samples from https://newsgroup.xnview.com/viewtopic.php?f=36&t=39611
+* Starbase - no samples
+* Starlight Xpress SX 500x291 - no samples
+* SFF
+* Sun TAAC - no samples
+* Syberia SYJ - no samples
+* Synthetic Universe - no samples

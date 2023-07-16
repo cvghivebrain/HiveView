@@ -502,7 +502,11 @@ begin
           begin
           if (rec.Attr and faDirectory) = faDirectory then
             TDirectory.Delete(tempfolder+'\'+rec.Name,true) // Delete folder.
-          else DeleteFile(tempfolder+'\'+rec.Name); // Delete file.
+          else
+            begin
+            FileSetAttr(tempfolder+'\'+rec.Name,rec.Attr and $FE); // Set as not read only.
+            DeleteFile(tempfolder+'\'+rec.Name); // Delete file.
+            end;
           end;
         until FindNext(rec) <> 0; // Repeat for all items.
       finally

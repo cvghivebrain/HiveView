@@ -9,6 +9,7 @@ Ext. | Description | Program
 2BP | Pocket PC Bitmap | NConvert
 411 | [Sony Mavica](https://en.wikipedia.org/wiki/Sony_Mavica) Thumbnail | NConvert
 4BT/4BIT | C64 GoDot | NConvert
+92I/86I/83I/82I | Texas Instruments [TI-92 calculator](https://en.wikipedia.org/wiki/TI-92_series) and earlier | NConvert
 A64 | C64 Wigmore Artist 64 | NConvert
 AAI | Dune HD media player image | ImageMagick
 ACE | [Train Simulator](https://en.wikipedia.org/wiki/Train_Simulator_series) texture | NConvert
@@ -65,6 +66,7 @@ HBM/HIR | C64 Hires Bitmap | NConvert
 HDR | [Radiance RGBE](https://en.wikipedia.org/wiki/RGBE_image_format) | ImageMagick
 HED | C64 Hi-Eddi | NConvert
 HPI | Hemera Photo-Object | NConvert
+HR | [TRS-80](https://en.wikipedia.org/wiki/TRS-80) High Resolution | NConvert
 HRU | Unknown | NConvert
 HRZ | Slow-scan television | ImageMagick
 HTA | Hemera Thumbs | NConvert
@@ -162,6 +164,7 @@ SUN/RAS | [Sun Raster](https://en.wikipedia.org/wiki/Sun_Raster) | ImageMagick
 TAP | Oric Hires Screen; Tape Format | NConvert
 TIFF/TIF | [Tag Image File Format](https://en.wikipedia.org/wiki/TIFF) | ImageMagick
 TIM | Sony PlayStation texture | ImageMagick
+TNY/TN1/TN2/TN3 | Atari ST Tiny Stuff | NConvert
 TRP | Atari Falcon EggPaint | NConvert
 VICAR/IMG | NASA Video Image Communication And Retrieval | ImageMagick
 VIFF/XV | Khoros Visualization | ImageMagick
@@ -514,3 +517,18 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Sun TAAC - no samples
 * Syberia SYJ - no samples
 * Synthetic Universe - no samples
+* TG4 - ?
+* TI-xx - failed on some samples from https://telparia.com/fileFormatSamples/image/tiCalc/
+* TMSat IMI - no samples
+* TealPaint - no samples
+* Teli fax - no samples
+* Thumbnail TNL - ?
+* Tilepic - no samples
+* Tiny Stuff - can't detect padded files
+* TopDesign thumbnail - no samples
+* Total Annihilation GAF - no samples
+* TGA - tricky detection
+* Ulead PST - no samples
+* Ulead PhotoImpact UPI - no samples
+* Ulead PE4 thumbnail cache - failed on sample from https://archive.org/download/Ulead_Systems_iPhotoPlus_4_ULEAD_1996
+* Usenix FACE - failed on sample from http://fileformats.archiveteam.org/wiki/FaceSaver

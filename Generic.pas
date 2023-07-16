@@ -62,7 +62,7 @@ var
   HiveView: THiveView;
   bitspercolor, bytespercolor, bitsperindex, bytesperindex,
     palsize, imgw, imgh, iniformats: integer;
-  inicontent: array[0..200, 0..15] of string;
+  inicontent: array[0..10000, 0..15] of string;
   palarray: array[0..1024] of byte;
   thisfolder, tempfolder, tempfilepath: string;
 
@@ -143,13 +143,11 @@ begin
   memDebug.Lines.Add('Warning: Large images can take several seconds to load.');
   InitPNG(100,100); // Create blank 32-bit PNG.
   AssignPNG(imgMain); // Assign PNG to image on form.
-  for i := 0 to (PNG.Width*PNG.Height)-1 do PixelPNG(255,0,0,i div PNG.Width,i mod PNG.Width,i div PNG.Width); // Test pattern.
-  DisplayImage; // Display PNG on form.
 end;
 
 procedure THiveView.FormResize(Sender: TObject);
 begin
-  DisplayImage;
+  if imgMain.Visible then DisplayImage; // Adjust scale of image to fit screen.
 end;
 
 procedure THiveView.menuDrivesClick(Sender: TObject);
@@ -178,6 +176,7 @@ begin
   DefaultFormat; // Use default settings.
   CleanTempFolder;
   matchfound := false; // Assume no match.
+  imgMain.Visible := false;
   for i := 0 to iniformats do
     begin
     if Solve(inicontent[i,ini_if]) > 0 then // Check file with condition from ini.
@@ -398,6 +397,8 @@ end;
 
 procedure THiveView.DisplayImage;
 begin
+  if (HiveView.ClientWidth-imgMain.Left < 16) or (HiveView.ClientHeight-imgMain.Top < 16) then exit;
+  imgMain.Visible := true;
   ShowPNG(HiveView.ClientWidth-imgMain.Left,HiveView.ClientHeight-imgMain.Top);
 end;
 

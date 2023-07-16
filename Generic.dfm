@@ -20,6 +20,7 @@ object HiveView: THiveView
     Top = 0
     Width = 57
     Height = 57
+    Visible = False
   end
   object menuFolders: TDirectoryListBox
     Left = 0

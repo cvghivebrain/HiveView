@@ -167,7 +167,9 @@ TIM | Sony PlayStation texture | ImageMagick
 TNY/TN1/TN2/TN3 | Atari ST Tiny Stuff | NConvert
 TRP | Atari Falcon EggPaint | NConvert
 VICAR/IMG | NASA Video Image Communication And Retrieval | ImageMagick
+VID | C64 Vidcom 64 | NConvert
 VIFF/XV | Khoros Visualization | ImageMagick
+VOB | Vue d'Espirit thumbnail | NConvert
 WAL | [Quake II](https://en.wikipedia.org/wiki/Quake_II) Texture | NConvert
 WEBP | Google [WebP](https://en.wikipedia.org/wiki/WebP) | ImageMagick
 WPG | [WordPerfect Graphics](https://en.wikipedia.org/wiki/WordPerfect) | ImageMagick
@@ -532,3 +534,12 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Ulead PhotoImpact UPI - no samples
 * Ulead PE4 thumbnail cache - failed on sample from https://archive.org/download/Ulead_Systems_iPhotoPlus_4_ULEAD_1996
 * Usenix FACE - failed on sample from http://fileformats.archiveteam.org/wiki/FaceSaver
+* VIPS - no samples
+* VITec - no samples
+* VRML2 - no samples
+* Venta fax - no samples
+* Verity VIF - no samples
+* VDA/Vista VST - no samples; TGA variants?
+* Vivid IMG - no samples; same as Alias PIX?
+* VORT - no samples
+* Vue d'Espirit - only reads thumbnail

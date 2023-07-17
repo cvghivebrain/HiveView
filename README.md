@@ -15,6 +15,7 @@ AAI | Dune HD media player image | ImageMagick
 ACE | [Train Simulator](https://en.wikipedia.org/wiki/Train_Simulator_series) texture | NConvert
 ACORN/BIN | Acorn RISC OS Sprite | NConvert
 AMI | C64 Amica Paint | NConvert
+ANI | Windows Animated Cursor | NConvert
 ART | Atari ST Art Director | NConvert
 ART | PFS: First Publisher | NConvert
 ARW | Sony Digital Camera Alpha Raw (TIFF variant) | ImageMagick
@@ -46,6 +47,7 @@ DIB | Device-Independent Bitmap | ImageMagick
 DNG | Adobe [Digital Negative](https://en.wikipedia.org/wiki/Digital_Negative) (TIFF variant) | ImageMagick
 DPX | SMPTE Digital Moving Picture Exchange | ImageMagick
 DRZ/DRP | C64 Draz Paint | NConvert
+EMF | Enhanced Metafile | NConvert
 EPA | Award BIOS Logo | NConvert
 ESM | Atari ST Enhanced Simplex | NConvert
 EXR | Industrial Light & Magic [OpenEXR](https://en.wikipedia.org/wiki/OpenEXR) | ImageMagick
@@ -57,6 +59,7 @@ FLI/FLC | [Autodesk Animator](https://en.wikipedia.org/wiki/Autodesk_Animator) |
 FP2/FUN | C64 Funpaint II | NConvert
 FPG | DIV Games Studio, multi-page | NConvert
 FPT | C64 Face Painter | NConvert
+FXS | [WinFax](https://en.wikipedia.org/wiki/WinFax) | NConvert
 GBR | GIMP Brush | NConvert
 GEO/CVT | C64 [GEOS](https://en.wikipedia.org/wiki/GEOS_(8-bit_operating_system)) geoPaint | NConvert
 GIF | [Graphics Interchange Format](https://en.wikipedia.org/wiki/GIF) | ImageMagick
@@ -132,6 +135,7 @@ PI4/PI5 | Atari ST View ST/TT | NConvert
 PIC | [Autodesk Softimage](https://en.wikipedia.org/wiki/Autodesk_Softimage) | NConvert
 PIC | [PCPaint](https://en.wikipedia.org/wiki/PCPaint) | NConvert
 PIC | Psion Series 3 bitmap | NConvert
+PIC | WinMiPS | NConvert
 PICON/XPM | [X PixMap Personal Icon](https://en.wikipedia.org/wiki/X_PixMap) | ImageMagick
 PICT/PIC | [QuickDraw](https://en.wikipedia.org/wiki/QuickDraw) [PICT](https://en.wikipedia.org/wiki/PICT) | NConvert
 PIX | Alias PIX | NConvert
@@ -151,6 +155,7 @@ RAW/HST | Image Alchemy HSI Raw | NConvert
 RAW/QRT/DIS | QRT Ray Tracer/DKB Ray Tracer | NConvert
 RGB | Sega RGB format, used in Sega Saturn games. | HiveView
 RIX | ColoRIX | NConvert
+RLA | Wavefront Advanced Visualizer | ImageMagick
 RLE | Utah Raster Toolkit | ImageMagick
 RP | C64 Rainbow Painter | NConvert
 SAR | C64 Saracen Paint | NConvert
@@ -170,9 +175,14 @@ VICAR/IMG | NASA Video Image Communication And Retrieval | ImageMagick
 VID | C64 Vidcom 64 | NConvert
 VIFF/XV | Khoros Visualization | ImageMagick
 VOB | Vue d'Espirit thumbnail | NConvert
+WAD | [Half-Life](https://en.wikipedia.org/wiki/Half-Life_(video_game)) WAD3 | NConvert
 WAL | [Quake II](https://en.wikipedia.org/wiki/Quake_II) Texture | NConvert
+WBC/WB1 | Webshots | NConvert
+WBMP | [Wireless Application Protocol Bitmap](https://en.wikipedia.org/wiki/Wireless_Application_Protocol_Bitmap_Format) | NConvert
 WEBP | Google [WebP](https://en.wikipedia.org/wiki/WebP) | ImageMagick
+WMF | [Windows Metafile](https://en.wikipedia.org/wiki/Windows_Metafile) | NConvert
 WPG | [WordPerfect Graphics](https://en.wikipedia.org/wiki/WordPerfect) | ImageMagick
+WZL | Winzle Puzzle | NConvert
 X3F | Sigma/Foveon Raw | x3f_extract
 XBM | X Window System Bitmap | ImageMagick
 XCF | GIMP [Experimental Computing Facility](https://en.wikipedia.org/wiki/XCF_(file_format)) | ImageMagick
@@ -226,7 +236,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * DNG/NEF - loads as TIFF but better detection needed
 * DMR
 * DOT graph format
-* EMF
 * FAX/G3 - no header?
 * FLIF - failed on samples
 * FPX - inconsistent header?
@@ -254,12 +263,9 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * RAD
 * RAW/RGB/UYVY/YUV - no header
 * RGF - https://mattrajca.com/2016/01/06/legos-rgf-file-format.html
-* RLA - unhelpful header
 * SID
 * TGA - unhelpful header
 * TTF
-* WBMP - unhelpful header
-* WMF
 * XWD - failed on samples from https://telparia.com/fileFormatSamples/image/xwd/
 
 ### NConvert
@@ -543,3 +549,11 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Vivid IMG - no samples; same as Alias PIX?
 * VORT - no samples
 * Vue d'Espirit - only reads thumbnail
+* Half-Life WAD - file names not preserved
+* IWC
+* Webshots - no WBZ samples
+* Weekly Puzzle - no samples
+* WhyPic
+* Windows Clipboard - failed on most samples from https://telparia.com/fileFormatSamples/image/windowsClipboard/
+* WBMP - detection not the best; will fail if height/width are substancially different
+* Worldport fax - no samples

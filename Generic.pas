@@ -36,6 +36,7 @@ type
     procedure menuFilesClick(Sender: TObject);
     procedure DoConvert(i: integer; targetfile: string);
     procedure DoUnpack(i: integer);
+    procedure DoUnpackSub(i: integer; subfile: string);
     procedure DoRaw(i: integer);
     procedure DefaultFormat;
     procedure btnReloadClick(Sender: TObject);
@@ -207,10 +208,12 @@ begin
   if fs = 0 then exit; // Stop if file is 0 bytes.
   DefaultFormat; // Use default settings.
   matchfound := false; // Assume no match.
+  imgMain.Visible := false;
   for i := 0 to iniformats do
     begin
     if Solve(inicontent[i,ini_if]) > 0 then // Check file with condition from ini.
       begin
+      if inicontent[i,ini_unpack] <> '' then DoUnpackSub(i,subfilepath); // Check for unpack/decompress by external program.
       if inicontent[i,ini_convert] <> '' then DoConvert(i,subfilepath) // Check for conversion by external program.
         else DoRaw(i); // Load as raw using settings from ini.
       matchfound := true;
@@ -246,7 +249,7 @@ begin
     end;
   if not FileExists(tempfilepath) then
     begin
-    memDebug.Lines.Add('temp.png not found.');
+    memDebug.Lines.Add('Conversion failed.');
     exit;
     end;
   LoadPNG(tempfilepath);
@@ -275,10 +278,35 @@ begin
     RunCommand(c2); // Unpack to temp folder.
     Inc(j); // Next command.
     end;
-  ListFiles(tempfolder,true);
+  ListFiles(tempfolder,true); // Create list of files. See filelist array.
   for j := 0 to Length(filelist)-1 do lstSubfiles.Items.Add(filelist[j]);
-  if lstSubfiles.Count = 1 then memDebug.Lines.Add(IntToStr(lstSubfiles.Count)+' file extracted.')
-    else memDebug.Lines.Add(IntToStr(lstSubfiles.Count)+' files extracted.');
+  if Length(filelist) = 1 then memDebug.Lines.Add(IntToStr(Length(filelist))+' file extracted.')
+    else memDebug.Lines.Add(IntToStr(Length(filelist))+' files extracted.');
+end;
+
+procedure THiveView.DoUnpackSub(i: integer; subfile: string);
+var c, c2, subfolder: string;
+  j: integer;
+begin
+  subfolder := subfile+'_';
+  if SysUtils.DirectoryExists(subfolder) then exit // Do nothing if already unpacked.
+    else CreateDir(subfolder); // Create folder with same name as target file.
+  memDebug.Lines.Add('File format found: '+inicontent[i,ini_name]);
+  memDebug.Lines.Add('Unpacking with external program...');
+  c := inicontent[i,ini_unpack];
+  j := 0;
+  while Explode(c,'&&',j) <> '' do // Multiple commands separated by &&.
+    begin
+    c2 := Trim(Explode(c,'&&',j));
+    c2 := ReplaceStr(c2,'{file}',subfile);
+    c2 := ReplaceStr(c2,'{tempfolder}',subfolder);
+    RunCommand(c2); // Unpack to temp folder.
+    Inc(j); // Next command.
+    end;
+  ListFiles(subfolder,true); // Create list of files. See filelist array.
+  for j := 0 to Length(filelist)-1 do lstSubfiles.Items.Insert(lstSubfiles.ItemIndex+1,lstSubfiles.Items[lstSubfiles.ItemIndex]+'_'+filelist[j]);
+  if Length(filelist) = 1 then memDebug.Lines.Add(IntToStr(Length(filelist))+' file extracted.')
+    else memDebug.Lines.Add(IntToStr(Length(filelist))+' files extracted.');
 end;
 
 { Display file as raw image using menu settings. }

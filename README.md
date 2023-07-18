@@ -212,6 +212,7 @@ Ext. | Description | Program
 BZ2 | [bzip2](https://en.wikipedia.org/wiki/Bzip2) | 7-Zip
 CAB | Microsoft [Cabinet](https://en.wikipedia.org/wiki/Cabinet_(file_format)) | 7-Zip
 GZ | [gzip](https://en.wikipedia.org/wiki/Gzip) | 7-Zip
+RAR | [Roshal Archive/WinRAR](https://en.wikipedia.org/wiki/RAR_(file_format)) | 7-Zip
 TAR | [Tape Archive](https://en.wikipedia.org/wiki/Tar_(computing)) | 7-Zip
 XZ | Tukaani [XZ](https://tukaani.org/xz/format.html) | 7-Zip
 ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
@@ -224,6 +225,7 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * [NConvert](https://www.xnview.com/en/nconvert/)
 * [pwcdecode](http://www.caravian.com/research/index.htm)
 * [Swiss File Knife](http://stahlworks.com/swiss-file-knife.html)
+* [UnRAR](https://www.rarlab.com/)
 * [x3f_extract](https://github.com/rolkar/x3f)
 
 ## To do

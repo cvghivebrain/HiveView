@@ -118,6 +118,7 @@ ORA | [OpenRaster](https://en.wikipedia.org/wiki/OpenRaster), actually a ZIP fil
 ORF | [Olympus Raw](https://en.wikipedia.org/wiki/ORF_format) | ImageMagick
 OTB | Nokia [Over the Air Bitmap](https://en.wikipedia.org/wiki/OTA_bitmap) | ImageMagick
 P64 | C64 Picasso 64 | NConvert
+P7 | XV Visual Schnauzer thumbnail | NConvert
 PAC/SEQ | Atari ST STAD | NConvert
 PAM | Portable Arbitrary Map | ImageMagick
 PAT | GIMP Pattern | NConvert
@@ -136,7 +137,6 @@ PIC | [Autodesk Softimage](https://en.wikipedia.org/wiki/Autodesk_Softimage) | N
 PIC | [PCPaint](https://en.wikipedia.org/wiki/PCPaint) | NConvert
 PIC | Psion Series 3 bitmap | NConvert
 PIC | WinMiPS | NConvert
-PICON/XPM | [X PixMap Personal Icon](https://en.wikipedia.org/wiki/X_PixMap) | ImageMagick
 PICT/PIC | [QuickDraw](https://en.wikipedia.org/wiki/QuickDraw) [PICT](https://en.wikipedia.org/wiki/PICT) | NConvert
 PIX | Alias PIX | NConvert
 PIX | Esm Software PIX (JPEG with header) | Swiss File Knife
@@ -154,12 +154,14 @@ RAF | Fujifilm Raw | ImageMagick
 RAW/HST | Image Alchemy HSI Raw | NConvert
 RAW/QRT/DIS | QRT Ray Tracer/DKB Ray Tracer | NConvert
 RGB | Sega RGB format, used in Sega Saturn games. | HiveView
+RGH | Atari ST ZZ_ROUGH | NConvert
 RIX | ColoRIX | NConvert
 RLA | Wavefront Advanced Visualizer | ImageMagick
 RLE | Utah Raster Toolkit | ImageMagick
 RP | C64 Rainbow Painter | NConvert
 SAR | C64 Saracen Paint | NConvert
 SC2 | MSX Screen 2 | NConvert
+SCR | ZX Spectrum Screen | NConvert
 SCT | [Scitex Continuous Tone](https://en.wikipedia.org/wiki/Scitex_CT) | ImageMagick
 SD0/SD1/SD2 | Atari ST Dali | NConvert
 SFW | [Seattle FilmWorks](https://en.wikipedia.org/wiki/Seattle_FilmWorks) | ImageMagick
@@ -184,9 +186,13 @@ WMF | [Windows Metafile](https://en.wikipedia.org/wiki/Windows_Metafile) | NConv
 WPG | [WordPerfect Graphics](https://en.wikipedia.org/wiki/WordPerfect) | ImageMagick
 WZL | Winzle Puzzle | NConvert
 X3F | Sigma/Foveon Raw | x3f_extract
-XBM | X Window System Bitmap | ImageMagick
+XBM | [X Window System Bitmap](https://en.wikipedia.org/wiki/X_BitMap) | ImageMagick
 XCF | GIMP [Experimental Computing Facility](https://en.wikipedia.org/wiki/XCF_(file_format)) | ImageMagick
+XIF | Xerox Image File Format | NConvert
+XPM/PICON | [X Window System Pixmap](https://en.wikipedia.org/wiki/X_PixMap) | NConvert
+XWD | [X Window System Window Dump](https://en.wikipedia.org/wiki/Xwd) | NConvert
 XYZ | [RPG Maker 2000](https://en.wikipedia.org/wiki/RPG_Maker_2000) | NConvert
+ZBR | Zoner Zebra Metafile thumbnail | NConvert
 
 ## Supported vector image formats
 
@@ -251,7 +257,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * MPO - multi page, only first page is loaded
 * MTV - unusable header
 * MVG - failed on sample
-* P7 - crashed on samples from http://www.cs.ait.ac.th/images/.xvpics/
 * PALM - multi page
 * PCL
 * PCX - monochrome images are negative
@@ -266,7 +271,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * SID
 * TGA - unhelpful header
 * TTF
-* XWD - failed on samples from https://telparia.com/fileFormatSamples/image/xwd/
 
 ### NConvert
 * 3DS Max thumbnails - stored in Microsoft Compound Format
@@ -557,3 +561,14 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Windows Clipboard - failed on most samples from https://telparia.com/fileFormatSamples/image/windowsClipboard/
 * WBMP - detection not the best; will fail if height/width are substancially different
 * Worldport fax - no samples
+* XWD - DMP files look wrong from https://telparia.com/fileFormatSamples/image/xwd/
+* Xara - failed on samples from https://telparia.com/fileFormatSamples/image/xara/ and probably only reads embedded images
+* XIM - no samples
+* Xionics fax - no samples
+* YUV - raw files with no headers?
+* ZX Spectrum Hobeta - no samples
+* ZX Spectrum Snapshot - no samples
+* Zeiss BIVAS - no samples
+* Zoner ZMF - no samples, vector format and possibly just a ZIP file
+* Zoner ZBR - vector format; only loads thumbnail
+* byLight 20/20 - no samples

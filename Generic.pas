@@ -341,6 +341,7 @@ end;
 
 procedure THiveView.btnSaveClick(Sender: TObject);
 begin
+  if not imgMain.Visible then exit; // Do nothing if there is no image.
   if dlgSave.Execute then SavePNG(ChangeFileExt(dlgSave.FileName,'.png'));
 end;
 

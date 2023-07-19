@@ -11,6 +11,7 @@ object HiveView: THiveView
   Font.Name = 'MS Sans Serif'
   Font.Style = []
   OldCreateOrder = False
+  ShowHint = True
   OnCreate = FormCreate
   OnResize = FormResize
   PixelsPerInch = 96
@@ -21,6 +22,15 @@ object HiveView: THiveView
     Width = 57
     Height = 57
     Visible = False
+  end
+  object lstSubfiles: TListBox
+    Left = 370
+    Top = 0
+    Width = 186
+    Height = 353
+    ItemHeight = 13
+    TabOrder = 7
+    OnClick = lstSubfilesClick
   end
   object menuFolders: TDirectoryListBox
     Left = 0
@@ -50,6 +60,8 @@ object HiveView: THiveView
     Width = 186
     Height = 353
     ItemHeight = 13
+    ParentShowHint = False
+    ShowHint = True
     TabOrder = 3
     OnClick = menuFilesClick
   end
@@ -270,15 +282,6 @@ object HiveView: THiveView
     Width = 322
     Height = 239
     TabOrder = 2
-  end
-  object lstSubfiles: TListBox
-    Left = 370
-    Top = 0
-    Width = 186
-    Height = 353
-    ItemHeight = 13
-    TabOrder = 7
-    OnClick = lstSubfilesClick
   end
   object dlgSave: TSaveDialog
     Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]

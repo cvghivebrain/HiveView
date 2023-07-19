@@ -12,10 +12,13 @@ Ext. | Description | Program
 92I/86I/83I/82I | Texas Instruments [TI-92 calculator](https://en.wikipedia.org/wiki/TI-92_series) and earlier | NConvert
 A64 | C64 Wigmore Artist 64 | NConvert
 AAI | Dune HD media player image | ImageMagick
+ABK | AMOS Picture/Sprite/Icon Bank | Deark
 ACE | [Train Simulator](https://en.wikipedia.org/wiki/Train_Simulator_series) texture | NConvert
 ACORN/BIN | Acorn RISC OS Sprite | NConvert
 AMI | C64 Amica Paint | NConvert
 ANI | Windows Animated Cursor | NConvert
+ANIM | Amiga Animation | Deark
+ANS | ANSI Art | Deark
 ART | Atari ST Art Director | NConvert
 ART | PFS: First Publisher | NConvert
 ARW | Sony Digital Camera Alpha Raw (TIFF variant) | ImageMagick
@@ -48,7 +51,7 @@ DNG | Adobe [Digital Negative](https://en.wikipedia.org/wiki/Digital_Negative) (
 DPX | SMPTE Digital Moving Picture Exchange | ImageMagick
 DRZ/DRP | C64 Draz Paint | NConvert
 EMF | Enhanced Metafile | NConvert
-EPA | Award BIOS Logo | NConvert
+EPA | Award BIOS Logo | Deark
 ESM | Atari ST Enhanced Simplex | NConvert
 EXR | Industrial Light & Magic [OpenEXR](https://en.wikipedia.org/wiki/OpenEXR) | ImageMagick
 FBM | Fuzzy Bitmap | NConvert
@@ -56,6 +59,7 @@ FF | Farbfeld | ImageMagick
 FIT/FTS | Flexible Image Transport System | NConvert
 FL32 | [FilmLight](https://www.filmlight.ltd.uk/) | ImageMagick
 FLI/FLC | [Autodesk Animator](https://en.wikipedia.org/wiki/Autodesk_Animator) | NConvert
+FLM | Atari Animatic Film | Deark
 FP2/FUN | C64 Funpaint II | NConvert
 FPG | DIV Games Studio, multi-page | NConvert
 FPT | C64 Face Painter | NConvert
@@ -77,10 +81,10 @@ ICNS | Mac Icon | NConvert
 ICO | Sun Icon | NConvert
 ICO | [Windows Icon](https://en.wikipedia.org/wiki/ICO_(file_format)) | ImageMagick
 IFF/LBM | Amiga Interleaved Bitmap | NConvert
-IIM | Atari Falcon InShape Image | NConvert
 IFF/TDI | [Maya](https://en.wikipedia.org/wiki/Autodesk_Maya) Image File Format/Thompson Digital Image Explore | NConvert
+IIM | Atari Falcon InShape Image | NConvert
 IMG/XIMG | GEM Raster | NConvert
-INFO | Amiga Icon | NConvert
+INFO | Amiga Icon | Deark
 IPH/IPT | C64 Interpaint | NConvert
 ISH/ISM | C64 Image System | NConvert
 J2C/J2K/JPT | JPEG 2000 codestream | ImageMagick
@@ -177,6 +181,7 @@ VICAR/IMG | NASA Video Image Communication And Retrieval | ImageMagick
 VID | C64 Vidcom 64 | NConvert
 VIFF/XV | Khoros Visualization | ImageMagick
 VOB | Vue d'Espirit thumbnail | NConvert
+VOLLABEL | Apple Volume Label | Deark
 WAD | [Half-Life](https://en.wikipedia.org/wiki/Half-Life_(video_game)) WAD3 | NConvert
 WAL | [Quake II](https://en.wikipedia.org/wiki/Quake_II) Texture | NConvert
 WBC/WB1 | Webshots | NConvert
@@ -202,6 +207,7 @@ EPS | [Encapsulated PostScript](https://en.wikipedia.org/wiki/Encapsulated_PostS
 PDX/MD | PageDraw/Mayura Draw (EPS files) | Ghostscript
 PES | Embroidery file | ImageMagick
 PS | Adobe [PostScript](https://en.wikipedia.org/wiki/PostScript) | Ghostscript
+SLB | AutoCAD Slide Library | Deark
 SVG | [Scalable Vector Graphics](https://en.wikipedia.org/wiki/SVG) | ImageMagick
 
 ## Supported archive formats
@@ -220,6 +226,7 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 ## Credits
 
 * [7-Zip](https://7-zip.org/)
+* [Deark](https://entropymine.com/deark/)
 * [Ghostscript](https://ghostscript.com)
 * [ImageMagick](https://github.com/ImageMagick/ImageMagick)
 * [NConvert](https://www.xnview.com/en/nconvert/)
@@ -298,7 +305,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Alpha Microsystems BMP - no samples
 * Amapi 2D - no samples
 * Amiga IFF - most images load but some don't
-* Amiga INFO icon - doesn't work with NewIcons or GlowIcons formats
 * Amstrad CPC - no samples
 * Apollo HDRU - no samples
 * ArcInfo - no samples
@@ -310,7 +316,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * AutoCAD DWG/DXF/IMG
 * Autodesk QuickCAD/Sketch thumbnails - no samples
 * Autologic GM - actually a BMP inside an ARJ archive
-* Award BIOS - failed on AWBM files
 * Axialis Screensaver Producer - no samples
 * B3D
 * BIAS FringeProcessor - no samples
@@ -465,6 +470,7 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * PCO B16 - no samples
 * Penn PM - no samples
 * PCL - ?
+* PSP - layers & vectors not supported
 * PSP JBF - failed on some samples from https://telparia.com/fileFormatSamples/archive/paintShopProBrowserCache/
 * PSP Brush/Frame/Mask/Pattern/Texture/Tube - no samples
 * Panasonic DMC-LC1 Raw - no samples
@@ -574,3 +580,10 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Zoner ZMF - no samples, vector format and possibly just a ZIP file
 * Zoner ZBR - vector format; only loads thumbnail
 * byLight 20/20 - no samples
+
+### Deark
+* ADEX IMG - no samples
+* Alpha Microsystems BMP - no samples
+* Autodesk Animator PIC/CEL - no samples
+* ArtWorx Data Format - header is only 1 byte
+* AutoCAD Slide Library - the slides themselves aren't viewable

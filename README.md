@@ -26,9 +26,9 @@ ATK/CMU | [CMU Andrew Toolkit](https://en.wikipedia.org/wiki/Andrew_Project) | N
 AVS/X | Stardent Application Visualization System | NConvert
 B&W/B_W | ImageLab/PrintTechnic | NConvert
 BFLI | C64 Big Flexible Line Interpretation | NConvert
+BIN | Binary Text | Deark
 BLK/BSG | Prosoft Fontasy Block | NConvert
-BMP | OS/2 Bitmap | NConvert
-BMP | [Windows Bitmap](https://en.wikipedia.org/wiki/BMP_file_format) | ImageMagick
+BMP | [Windows & OS/2 Bitmap](https://en.wikipedia.org/wiki/BMP_file_format) | Deark
 BOB | Bob Ray Tracer Bitmap | NConvert
 BUM | Poser Bump Map (32bpp BMP) | NConvert
 CAL/CT1/RAS | DoD [CALS Raster](https://en.wikipedia.org/wiki/CALS_Raster_file_format) | ImageMagick
@@ -38,6 +38,7 @@ CEL+KCF | [Kisekae Set System](https://en.wikipedia.org/wiki/Kisekae_Set_System)
 CIN | Kodak [Cineon](https://en.wikipedia.org/wiki/Cineon) | ImageMagick
 CIP | Cisco IP Phone Image | NConvert
 CR2 | Canon Digital Camera Raw (TIFF variant) | ImageMagick
+CRG | Calamus Raster Graphic | Deark
 CRW | Canon Digital Camera Raw | ImageMagick
 CUR | Windows Cursor | ImageMagick
 DG2 | Sega Digitizer 2, used in Sega Saturn games. | HiveView
@@ -141,6 +142,7 @@ PIC | [Autodesk Softimage](https://en.wikipedia.org/wiki/Autodesk_Softimage) | N
 PIC | [PCPaint](https://en.wikipedia.org/wiki/PCPaint) | NConvert
 PIC | Psion Series 3 bitmap | NConvert
 PIC | WinMiPS | NConvert
+PIC/PCT/PIX | [BSAVE/BLOAD](https://en.wikipedia.org/wiki/BSAVE) | Deark
 PICT/PIC | [QuickDraw](https://en.wikipedia.org/wiki/QuickDraw) [PICT](https://en.wikipedia.org/wiki/PICT) | NConvert
 PIX | Alias PIX | NConvert
 PIX | Esm Software PIX (JPEG with header) | Swiss File Knife
@@ -241,7 +243,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * AVI/AVIF/M2V/MPEG
 * BAYER
 * BPG - failed on samples from https://bellard.org/bpg/
-* BMP - failed on samples from https://people.math.sc.edu/Burkardt/data/bmp/bmp.html
 * CALS Type 2 (CT2) - multi page, can't find any examples
 * CMYK/CMYKA - no header?
 * CUR - failed on some samples from https://telparia.com/fileFormatSamples/image/cur/
@@ -332,7 +333,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * CImage DSI
 * CMU Window Manager - no samples
 * CP8 256 Gray Scale
-* CRG - samples are inverted or distorted
 * Canon Navigator Fax - no samples
 * Cartes Michelin - ?
 * Chinon ES-1000 CMT - no samples
@@ -587,3 +587,8 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Autodesk Animator PIC/CEL - no samples
 * ArtWorx Data Format - header is only 1 byte
 * AutoCAD Slide Library - the slides themselves aren't viewable
+* BIN - can't detect files without SAUCE footer
+* MegaPaint BLD - unhelpful header
+* Zoner BMI - no samples
+* BPG - failed on samples from http://fileformats.archiveteam.org/wiki/BPG
+* BLOAD - wrong resolution sometimes

@@ -37,6 +37,7 @@ CDU | C64 CDU-Paint | NConvert
 CEL+KCF | [Kisekae Set System](https://en.wikipedia.org/wiki/Kisekae_Set_System) Cel | NConvert
 CIN | Kodak [Cineon](https://en.wikipedia.org/wiki/Cineon) | ImageMagick
 CIP | Cisco IP Phone Image | NConvert
+CLB | CorelMOSAIC Library | Deark
 CR2 | Canon Digital Camera Raw (TIFF variant) | ImageMagick
 CRG | Calamus Raster Graphic | Deark
 CRW | Canon Digital Camera Raw | ImageMagick
@@ -81,6 +82,7 @@ HTA | Hemera Thumbs | NConvert
 ICNS | Mac Icon | NConvert
 ICO | Sun Icon | NConvert
 ICO | [Windows Icon](https://en.wikipedia.org/wiki/ICO_(file_format)) | ImageMagick
+IFF | CD-i IFF IMAG | Deark
 IFF/LBM | Amiga Interleaved Bitmap | NConvert
 IFF/TDI | [Maya](https://en.wikipedia.org/wiki/Autodesk_Maya) Image File Format/Thompson Digital Image Explore | NConvert
 IIM | Atari Falcon InShape Image | NConvert
@@ -175,6 +177,7 @@ SGI/BW/RGB | Silicon Graphics IRIX RGB | ImageMagick
 SIR | [BYU-MERS SIR](https://scp.byu.edu/software/) | NConvert
 SUN/RAS | [Sun Raster](https://en.wikipedia.org/wiki/Sun_Raster) | ImageMagick
 TAP | Oric Hires Screen; Tape Format | NConvert
+TG1 | Atari Falcon COKE | Deark
 TIFF/TIF | [Tag Image File Format](https://en.wikipedia.org/wiki/TIFF) | ImageMagick
 TIM | Sony PlayStation texture | ImageMagick
 TNY/TN1/TN2/TN3 | Atari ST Tiny Stuff | NConvert
@@ -211,6 +214,12 @@ PES | Embroidery file | ImageMagick
 PS | Adobe [PostScript](https://en.wikipedia.org/wiki/PostScript) | Ghostscript
 SLB | AutoCAD Slide Library | Deark
 SVG | [Scalable Vector Graphics](https://en.wikipedia.org/wiki/SVG) | ImageMagick
+
+## Supported document formats
+
+Ext. | Description | Program
+--- | --- | ---
+CRD | [Windows Cardfile](https://en.wikipedia.org/wiki/Cardfile) (extracts embedded images only) | Deark
 
 ## Supported archive formats
 
@@ -592,3 +601,7 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Zoner BMI - no samples
 * BPG - failed on samples from http://fileformats.archiveteam.org/wiki/BPG
 * BLOAD - wrong resolution sometimes
+* Cardfile - failed on some samples from https://telparia.com/fileFormatSamples/document/cardfile/ and possibly only reads embedded images
+* Compface - no header
+* Corel CCX - decompresses to CMX; CMX viewer needed
+* CorelDraw CDR/Corel Gallery BMF - vector format; thumbnails only

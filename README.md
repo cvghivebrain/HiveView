@@ -63,9 +63,11 @@ FL32 | [FilmLight](https://www.filmlight.ltd.uk/) | ImageMagick
 FP2/FUN | C64 Funpaint II | NConvert
 FPG | DIV Games Studio, multi-page | NConvert
 FPT | C64 Face Painter | NConvert
+FTC | Atari Falcon True Color | Deark
 FXS | [WinFax](https://en.wikipedia.org/wiki/WinFax) | NConvert
 GBR | GIMP Brush | NConvert
 GEO/CVT | C64 [GEOS](https://en.wikipedia.org/wiki/GEOS_(8-bit_operating_system)) geoPaint | NConvert
+GOD | Atari Falcon GodPaint | Deark
 GRB/GRO | [HP-48](https://en.wikipedia.org/wiki/HP_48_series)/49 GROB | NConvert
 GUN | C64 Gunpaint | NConvert
 HBM/HIR | C64 Hires Bitmap | NConvert
@@ -83,7 +85,6 @@ IFF | CD-i IFF IMAG | Deark
 IFF/LBM | Amiga Interleaved Bitmap | NConvert
 IFF/TDI | [Maya](https://en.wikipedia.org/wiki/Autodesk_Maya) Image File Format/Thompson Digital Image Explore | NConvert
 IIM | Atari Falcon InShape Image | NConvert
-IMG/XIMG | GEM Raster | NConvert
 INFO | Amiga Icon | Deark
 IPH/IPT | C64 Interpaint | NConvert
 ISH/ISM | C64 Image System | NConvert
@@ -176,6 +177,7 @@ SIR | [BYU-MERS SIR](https://scp.byu.edu/software/) | NConvert
 SUN/RAS | [Sun Raster](https://en.wikipedia.org/wiki/Sun_Raster) | ImageMagick
 TAP | Oric Hires Screen; Tape Format | NConvert
 TG1 | Atari Falcon COKE | Deark
+THN | Graphic Workshop Thumbnail | Deark
 TIFF/TIF | [Tag Image File Format](https://en.wikipedia.org/wiki/TIFF) | ImageMagick
 TIM | Sony PlayStation texture | ImageMagick
 TNY/TN1/TN2/TN3 | Atari ST Tiny Stuff | NConvert
@@ -197,6 +199,7 @@ X3F | Sigma/Foveon Raw | x3f_extract
 XBM | [X Window System Bitmap](https://en.wikipedia.org/wiki/X_BitMap) | ImageMagick
 XCF | GIMP [Experimental Computing Facility](https://en.wikipedia.org/wiki/XCF_(file_format)) | ImageMagick
 XIF | Xerox Image File Format | NConvert
+XIMG/IMG | GEM Raster | NConvert
 XPM/PICON | [X Window System Pixmap](https://en.wikipedia.org/wiki/X_PixMap) | NConvert
 XWD | [X Window System Window Dump](https://en.wikipedia.org/wiki/Xwd) | NConvert
 XYZ | [RPG Maker 2000](https://en.wikipedia.org/wiki/RPG_Maker_2000) | NConvert
@@ -211,6 +214,7 @@ ANIM | Amiga Animation | Deark
 FLI/FLC | [Autodesk Animator](https://en.wikipedia.org/wiki/Autodesk_Animator) | NConvert
 FLM | Atari Animatic Film | Deark
 GIF | [Graphics Interchange Format](https://en.wikipedia.org/wiki/GIF) | ImageMagick
+GL | [Graphics Animation System for Professionals](https://en.wikipedia.org/wiki/Graphics_Animation_System_for_Professionals) | Deark
 MNG | [Multiple-image Network Graphics](https://en.wikipedia.org/wiki/Multiple-image_Network_Graphics) | ImageMagick
 
 ## Supported vector image formats
@@ -616,3 +620,4 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * DEGAS compressed - header too vague
 * DL MAKER - header only 1 byte
 * Dr Halo CUT - unhelpful header
+* GEM Raster IMG - failed on samples from https://telparia.com/fileFormatSamples/image/gem/

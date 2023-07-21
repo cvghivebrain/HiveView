@@ -114,14 +114,15 @@ end;
 
 function GetByte(a: integer): byte;
 begin
-  result := filearray[a];
+  if a < fs then result := filearray[a]
+  else result := 0;
 end;
 
 { Get bit from file array. }
 
 function GetBit(a, b: integer): byte;
 begin
-  result := (filearray[a] and (1 shl b)) shr b;;
+  result := (GetByte(a) and (1 shl b)) shr b;;
 end;
 
 { Get bit from integer. }
@@ -135,7 +136,7 @@ end;
 
 function GetWord(a: integer): word;
 begin
-  result := (filearray[a]*$100)+filearray[a+1];
+  result := (GetByte(a)*$100)+GetByte(a+1);
 end;
 
 { Get longword from file array. }
@@ -149,7 +150,7 @@ end;
 
 function GetWordRev(a: integer): word;
 begin
-  result := (filearray[a+1]*$100)+filearray[a];
+  result := (GetByte(a+1)*$100)+GetByte(a);
 end;
 
 { Get longword (little endian) from file array. }
@@ -167,7 +168,7 @@ begin
   while maxlength > 0 do
     begin
     Dec(maxlength);
-    if filearray[a] in [32..126] then result := result+Chr(filearray[a]) // Add character to string if valid.
+    if GetByte(a) in [32..126] then result := result+Chr(GetByte(a)) // Add character to string if valid.
     else maxlength := 0; // Otherwise end the string.
     Inc(a); // Next character.
     end;

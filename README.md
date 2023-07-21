@@ -16,8 +16,6 @@ ABK | AMOS Picture/Sprite/Icon Bank | Deark
 ACE | [Train Simulator](https://en.wikipedia.org/wiki/Train_Simulator_series) texture | NConvert
 ACORN/BIN | Acorn RISC OS Sprite | NConvert
 AMI | C64 Amica Paint | NConvert
-ANI | Windows Animated Cursor | NConvert
-ANIM | Amiga Animation | Deark
 ANS | ANSI Art | Deark
 ART | Atari ST Art Director | NConvert
 ART | PFS: First Publisher | NConvert
@@ -48,8 +46,10 @@ DCR | Kodak Digital Camera Raw (TIFF variant) | ImageMagick
 DCX | ZSoft Multi-page PCX | ImageMagick
 DD/JJ | C64 Doodle | NConvert
 DDS | Microsoft [DirectDraw Surface](https://en.wikipedia.org/wiki/DirectDraw_Surface) | ImageMagick
+DGI | Digi-Pic | Deark
 DIB | Device-Independent Bitmap | ImageMagick
 DNG | Adobe [Digital Negative](https://en.wikipedia.org/wiki/Digital_Negative) (TIFF variant) | ImageMagick
+DOO | Atari ST Doodle | Deark
 DPX | SMPTE Digital Moving Picture Exchange | ImageMagick
 DRZ/DRP | C64 Draz Paint | NConvert
 EMF | Enhanced Metafile | NConvert
@@ -60,15 +60,12 @@ FBM | Fuzzy Bitmap | NConvert
 FF | Farbfeld | ImageMagick
 FIT/FTS | Flexible Image Transport System | NConvert
 FL32 | [FilmLight](https://www.filmlight.ltd.uk/) | ImageMagick
-FLI/FLC | [Autodesk Animator](https://en.wikipedia.org/wiki/Autodesk_Animator) | NConvert
-FLM | Atari Animatic Film | Deark
 FP2/FUN | C64 Funpaint II | NConvert
 FPG | DIV Games Studio, multi-page | NConvert
 FPT | C64 Face Painter | NConvert
 FXS | [WinFax](https://en.wikipedia.org/wiki/WinFax) | NConvert
 GBR | GIMP Brush | NConvert
 GEO/CVT | C64 [GEOS](https://en.wikipedia.org/wiki/GEOS_(8-bit_operating_system)) geoPaint | NConvert
-GIF | [Graphics Interchange Format](https://en.wikipedia.org/wiki/GIF) | ImageMagick
 GRB/GRO | [HP-48](https://en.wikipedia.org/wiki/HP_48_series)/49 GROB | NConvert
 GUN | C64 Gunpaint | NConvert
 HBM/HIR | C64 Hires Bitmap | NConvert
@@ -111,7 +108,6 @@ MBM | Psion Series 5 bitmap/EPOC [Multibitmap](https://en.wikipedia.org/wiki/MBM
 MGR | [ManaGeR](https://en.wikipedia.org/wiki/ManaGeR) bitmap | NConvert
 MIFF/MIF | Magick Multispectral Image File Format | NConvert
 MIL | C64 Micro Illustrator | NConvert
-MNG | [Multiple-image Network Graphics](https://en.wikipedia.org/wiki/Multiple-image_Network_Graphics) | ImageMagick
 MPC+CACHE | ImageMagick Magick Pixel Cache | ImageMagick
 MPH | MonkeyPhoto (JPEG variant) | ImageMagick
 MRW | Minolta Raw | ImageMagick
@@ -141,6 +137,7 @@ PI | C64 Blazing Paddles | NConvert
 PI1/PI2/PI3 | Atari ST DEGAS | NConvert
 PI4/PI5 | Atari ST View ST/TT | NConvert
 PIC | [Autodesk Softimage](https://en.wikipedia.org/wiki/Autodesk_Softimage) | NConvert
+PIC | [Dr. Halo](https://en.wikipedia.org/wiki/Dr._Halo) | Deark
 PIC | [PCPaint](https://en.wikipedia.org/wiki/PCPaint) | NConvert
 PIC | Psion Series 3 bitmap | NConvert
 PIC | WinMiPS | NConvert
@@ -151,6 +148,7 @@ PIX | Esm Software PIX (JPEG with header) | Swiss File Knife
 PMG | C64 Paint Magic | NConvert
 PMP | Sony DSC-F1 | NConvert
 PNG | [Portable Network Graphics](https://en.wikipedia.org/wiki/PNG) | n/a
+PNT | [DeskMate Paint](https://en.wikipedia.org/wiki/DeskMate) | Deark
 PSD/PSB | Adobe [Photoshop](https://en.wikipedia.org/wiki/Adobe_Photoshop) | ImageMagick
 PSF | ArcSoft PhotoStudio | NConvert
 PSP | Jasc [PaintShop Pro](https://en.wikipedia.org/wiki/PaintShop_Pro) | NConvert
@@ -203,6 +201,17 @@ XPM/PICON | [X Window System Pixmap](https://en.wikipedia.org/wiki/X_PixMap) | N
 XWD | [X Window System Window Dump](https://en.wikipedia.org/wiki/Xwd) | NConvert
 XYZ | [RPG Maker 2000](https://en.wikipedia.org/wiki/RPG_Maker_2000) | NConvert
 ZBR | Zoner Zebra Metafile thumbnail | NConvert
+
+## Supported animation formats
+
+Ext. | Description | Program
+--- | --- | ---
+ANI | Windows Animated Cursor | NConvert
+ANIM | Amiga Animation | Deark
+FLI/FLC | [Autodesk Animator](https://en.wikipedia.org/wiki/Autodesk_Animator) | NConvert
+FLM | Atari Animatic Film | Deark
+GIF | [Graphics Interchange Format](https://en.wikipedia.org/wiki/GIF) | ImageMagick
+MNG | [Multiple-image Network Graphics](https://en.wikipedia.org/wiki/Multiple-image_Network_Graphics) | ImageMagick
 
 ## Supported vector image formats
 
@@ -363,7 +372,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Discorp CMP - no samples
 * DjVu - document with embedded images
 * C64 DolphinEd - no samples
-* Atari ST Doodle - failed on samples from https://telparia.com/fileFormatSamples/image/doodleAtari/
 * Draz Paint - failed on samples with "DRAZPAINT" header from https://telparia.com/fileFormatSamples/image/drazPaint/
 * EA Sports FSH - failed on samples from http://www.nba-live.com/jaosming/
 * ERI - no samples
@@ -605,3 +613,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Compface - no header
 * Corel CCX - decompresses to CMX; CMX viewer needed
 * CorelDraw CDR/Corel Gallery BMF - vector format; thumbnails only
+* DEGAS compressed - header too vague
+* DL MAKER - header only 1 byte
+* Dr Halo CUT - unhelpful header

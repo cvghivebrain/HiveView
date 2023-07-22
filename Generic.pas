@@ -104,6 +104,7 @@ begin
   dlgSave.InitialDir := menuFolders.Directory;
   memDebug.Lines.Add(thisfolder);
   DefaultFormat; // Fill in default values for format menu.
+  menuFiles.Height := menuFolders.Top+menuFolders.Height;
   i := -1; // Start at -1 so that first format is 0.
   if not FileExists('HiveView.ini') then // Check for ini file.
     begin
@@ -158,6 +159,7 @@ begin
   menuFolders.Directory := drive+':\'; // Show folders on drive.
   menuFiles.Directory := menuFolders.Directory; // Show files in root folder.
   memDebug.Lines.Add(menuFolders.Directory);
+  menuFiles.Height := menuFolders.Top+menuFolders.Height;
 end;
 
 procedure THiveView.menuFoldersClick(Sender: TObject);
@@ -165,12 +167,14 @@ begin
   menuFolders.Perform(WM_LBUTTONDBLCLK,0,0); // Simulate double click to load folder on single click.
   menuFiles.Directory := menuFolders.Directory; // Show files.
   memDebug.Lines.Add(menuFolders.Directory);
+  menuFiles.Height := menuFolders.Top+menuFolders.Height;
 end;
 
 procedure THiveView.menuFilesClick(Sender: TObject);
 var i: integer;
   matchfound: boolean;
 begin
+  if menuFiles.ItemIndex = -1 then exit; // Do nothing if not clicked on an item.
   LoadFile(menuFiles.FileName); // Load file to memory.
   memDebug.Lines.Add(menuFiles.FileName+' ('+IntToStr(fs)+' bytes)');
   if fs = 0 then exit; // Stop if file is 0 bytes.
@@ -201,6 +205,7 @@ var i: integer;
   subfilename, subfilepath: string;
   matchfound: boolean;
 begin
+  if lstSubfiles.ItemIndex = -1 then exit; // Do nothing if not clicked on an item.
   subfilename := lstSubfiles.Items[lstSubfiles.ItemIndex];
   subfilepath := tempfolder+subfilename;
   LoadFile(subfilepath); // Load file to memory.
@@ -282,6 +287,7 @@ begin
   for j := 0 to Length(filelist)-1 do lstSubfiles.Items.Add(filelist[j]);
   if Length(filelist) = 1 then memDebug.Lines.Add(IntToStr(Length(filelist))+' file extracted.')
     else memDebug.Lines.Add(IntToStr(Length(filelist))+' files extracted.');
+  if Length(filelist) > 0 then menuFiles.Height := (menuFolders.Top+menuFolders.Height) div 2;
 end;
 
 procedure THiveView.DoUnpackSub(i: integer; subfile: string);
@@ -546,6 +552,7 @@ begin
     end
   else CreateDir(tempfolder); // Create temp folder.
   lstSubfiles.Clear; // Empty list.
+  menuFiles.Height := menuFolders.Top+menuFolders.Height;
 end;
 
 end.

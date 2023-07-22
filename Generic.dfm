@@ -24,10 +24,10 @@ object HiveView: THiveView
     Visible = False
   end
   object lstSubfiles: TListBox
-    Left = 370
-    Top = 0
-    Width = 186
-    Height = 353
+    Left = 185
+    Top = 177
+    Width = 371
+    Height = 177
     ItemHeight = 13
     TabOrder = 7
     OnClick = lstSubfilesClick
@@ -36,7 +36,7 @@ object HiveView: THiveView
     Left = 0
     Top = 24
     Width = 186
-    Height = 329
+    Height = 330
     TabOrder = 0
     OnClick = menuFoldersClick
   end
@@ -57,8 +57,8 @@ object HiveView: THiveView
   object menuFiles: TFileListBox
     Left = 185
     Top = 0
-    Width = 186
-    Height = 353
+    Width = 371
+    Height = 177
     ItemHeight = 13
     ParentShowHint = False
     ShowHint = True

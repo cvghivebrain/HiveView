@@ -92,6 +92,7 @@ ISH/ISM | C64 Image System | NConvert
 J2C/J2K/JPT | JPEG 2000 codestream | ImageMagick
 JBF | Jasc [PaintShop Pro](https://en.wikipedia.org/wiki/PaintShop_Pro) Browser File | NConvert
 JIF | Jeff's Image Format | NConvert
+JLS | JPEG-LS | LOCO
 JNG | [JPEG Network Graphics](https://en.wikipedia.org/wiki/JPEG_Network_Graphics) | ImageMagick
 JP2 | [JPEG 2000](https://en.wikipedia.org/wiki/JPEG_2000) | ImageMagick
 JPEG/JPG | [Joint Photographic Experts Group](https://en.wikipedia.org/wiki/Joint_Photographic_Experts_Group) | ImageMagick
@@ -256,6 +257,7 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * [Deark](https://entropymine.com/deark/)
 * [Ghostscript](https://ghostscript.com)
 * [ImageMagick](https://github.com/ImageMagick/ImageMagick)
+* [LOCO](https://www.hpl.hp.com/loco/)
 * [NConvert](https://www.xnview.com/en/nconvert/)
 * [pwcdecode](http://www.caravian.com/research/index.htm)
 * [Swiss File Knife](http://stahlworks.com/swiss-file-knife.html)
@@ -434,7 +436,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * J Wavelet Image Codec
 * JBIG/JBIG2
 * JPEG 8BIM
-* JPEG-LS
 * Jigsaw 2 - samples from http://fileformats.archiveteam.org/wiki/Jigsaw_(Walter_A._Kuhn) look wrong
 * Jovian Logic VI - no samples
 * Just Buttons - only extracts embedded BMP
@@ -624,3 +625,4 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * GEM Raster IMG - failed on samples from https://telparia.com/fileFormatSamples/image/gem/
 * HS2 - no header
 * Amiga ILBM - failed on a few samples from https://telparia.com/fileFormatSamples/image/iffILBM/
+* JPEG XR - failed on samples from https://telparia.com/fileFormatSamples/image/jpegXR/

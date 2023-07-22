@@ -79,6 +79,7 @@ HRU | Unknown | NConvert
 HRZ | Slow-scan television | ImageMagick
 HTA | Hemera Thumbs | NConvert
 ICN | HP 100LX/200LX Icon | Deark
+ICN/TBI | Magic Desk/ToyBox Icon | Deark
 ICNS | Mac Icon | Deark
 ICO | Sun Icon | NConvert
 ICO | [Windows Icon](https://en.wikipedia.org/wiki/ICO_(file_format)) | ImageMagick
@@ -103,8 +104,8 @@ KOA/RPM | C64 KoalaPainter/RUN Paint | NConvert
 KPS | IBM KIPS Bitmap | NConvert
 KQP/PIC | Konica Picture Show/Pegasus PIC | NConvert
 M8 | [Heretic II](https://en.wikipedia.org/wiki/Heretic_II) Mipmap | NConvert
-MAC/PIC/PNTG | [MacPaint](https://en.wikipedia.org/wiki/MacPaint) | NConvert
-MAG | MAKIchan Graphics | NConvert
+MAC/PIC/PNTG | [MacPaint](https://en.wikipedia.org/wiki/MacPaint) | Deark
+MAG | MAKIchan Graphics | Deark
 MAP | DIV Games Studio | NConvert
 MAT | [MATLAB](https://en.wikipedia.org/wiki/MATLAB) data file | ImageMagick
 MBM | Psion Series 5 bitmap/EPOC [Multibitmap](https://en.wikipedia.org/wiki/MBM_(file_format)) | NConvert
@@ -114,11 +115,15 @@ MIL | C64 Micro Illustrator | NConvert
 MPC+CACHE | ImageMagick Magick Pixel Cache | ImageMagick
 MPH | MonkeyPhoto (JPEG variant) | ImageMagick
 MRW | Minolta Raw | ImageMagick
+MSP | [Microsoft Paint](https://en.wikipedia.org/wiki/Microsoft_Paint) | Deark
 NEF | Nikon Electronic Format (TIFF variant) | ImageMagick
 NEO | Atari ST NEOchrome | NConvert
 NGG | Nokia Group Graphic | NConvert
+NIE | Naïve Image Formats | Deark
 NLM | Nokia Logo Manager | NConvert
 NOL | Nokia Operator Logo | NConvert
+NPM | Nokia Picture Message | Deark
+NSL | Nokia Startup Logo | Deark
 OCP | C64 [Advanced OCP Art Studio](https://en.wikipedia.org/wiki/OCP_Art_Studio) | NConvert
 ORA | [OpenRaster](https://en.wikipedia.org/wiki/OpenRaster), actually a ZIP file containing PNGs | 7-Zip
 ORF | [Olympus Raw](https://en.wikipedia.org/wiki/ORF_format) | ImageMagick
@@ -128,6 +133,7 @@ P7 | XV Visual Schnauzer thumbnail | NConvert
 PAC/SEQ | Atari ST STAD | NConvert
 PAM | Portable Arbitrary Map | ImageMagick
 PAT | GIMP Pattern | NConvert
+PAT | MegaPaint Pattern | Deark
 PBM/PGM/PPM/PNM | [Netpbm Portable Bitmap](https://en.wikipedia.org/wiki/Netpbm) | ImageMagick
 PCD | Kodak [Photo CD](https://en.wikipedia.org/wiki/Photo_CD) | ImageMagick
 PCX | ZSoft [Picture Exchange](https://en.wikipedia.org/wiki/PCX) | ImageMagick
@@ -153,6 +159,7 @@ PMG | C64 Paint Magic | NConvert
 PMP | Sony DSC-F1 | NConvert
 PNG | [Portable Network Graphics](https://en.wikipedia.org/wiki/PNG) | n/a
 PNT | [DeskMate Paint](https://en.wikipedia.org/wiki/DeskMate) | Deark
+POG | [The New Print Shop](https://en.wikipedia.org/wiki/The_Print_Shop) | Deark
 PSD/PSB | Adobe [Photoshop](https://en.wikipedia.org/wiki/Adobe_Photoshop) | ImageMagick
 PSF | ArcSoft PhotoStudio | NConvert
 PSP | Jasc [PaintShop Pro](https://en.wikipedia.org/wiki/PaintShop_Pro) | NConvert
@@ -171,6 +178,7 @@ RLE | Utah Raster Toolkit | ImageMagick
 RP | C64 Rainbow Painter | NConvert
 SAR | C64 Saracen Paint | NConvert
 SC2 | MSX Screen 2 | NConvert
+SCR/MWG | [Microsoft Word](https://en.wikipedia.org/wiki/Microsoft_Word) Screen Capture | Deark
 SCR | ZX Spectrum Screen | NConvert
 SCT | [Scitex Continuous Tone](https://en.wikipedia.org/wiki/Scitex_CT) | ImageMagick
 SD0/SD1/SD2 | Atari ST Dali | NConvert
@@ -213,6 +221,7 @@ ZBR | Zoner Zebra Metafile thumbnail | NConvert
 
 Ext. | Description | Program
 --- | --- | ---
+ANI | Atari ST NEOchrome Animation | Deark
 ANI | Windows Animated Cursor | NConvert
 ANIM | Amiga Animation | Deark
 FLI/FLC | [Autodesk Animator](https://en.wikipedia.org/wiki/Autodesk_Animator) | NConvert
@@ -220,6 +229,7 @@ FLM | Atari Animatic Film | Deark
 GIF | [Graphics Interchange Format](https://en.wikipedia.org/wiki/GIF) | ImageMagick
 GL | [Graphics Animation System for Professionals](https://en.wikipedia.org/wiki/Graphics_Animation_System_for_Professionals) | Deark
 MNG | [Multiple-image Network Graphics](https://en.wikipedia.org/wiki/Multiple-image_Network_Graphics) | ImageMagick
+NIE/NII | Naïve Image Formats | Deark
 
 ## Supported vector image formats
 
@@ -455,7 +465,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * LuraDocument LDF - no samples
 * JPM
 * LuraWave
-* MAKIchan Graphics - failed on some samples from https://telparia.com/fileFormatSamples/image/makichan/
 * PhotoSuite Project - actually a Microsoft Compound File
 * MGR bitmap - only "yz" variant found
 * MTV - failed on samples from https://telparia.com/fileFormatSamples/image/mtv/ and header is tricky
@@ -470,7 +479,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Micro Dynamics MARS - no samples
 * Micrografx Picture Publisher - no samples
 * Microsoft Image Composer - actually a Microsoft Compound File
-* Microsoft Paint - failed on most samples from https://telparia.com/fileFormatSamples/image/msp/
 * Microtek Eyestar - no samples
 * Mindjongg IPG - no samples
 * MonkeyCard/MonkeyLogo - failed on samples
@@ -626,3 +634,9 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * HS2 - no header
 * Amiga ILBM - failed on a few samples from https://telparia.com/fileFormatSamples/image/iffILBM/
 * JPEG XR - failed on samples from https://telparia.com/fileFormatSamples/image/jpegXR/
+* Lotus Manuscript - no samples
+* LSS16 - no samples
+* Lumena CEL - no samples
+* MAKIchan Graphics - failed on some samples from https://telparia.com/fileFormatSamples/image/makichan/
+* MegaPaint Symbol Library - no samples
+* New Print Shop - PNM files not read

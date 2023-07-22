@@ -40,12 +40,12 @@ CR2 | Canon Digital Camera Raw (TIFF variant) | ImageMagick
 CRG | Calamus Raster Graphic | Deark
 CRW | Canon Digital Camera Raw | ImageMagick
 CUR | Windows Cursor | ImageMagick
-DG2 | Sega Digitizer 2, used in Sega Saturn games. | HiveView
 DCM | [DICOM](https://en.wikipedia.org/wiki/DICOM) medical image | ImageMagick
 DCR | Kodak Digital Camera Raw (TIFF variant) | ImageMagick
 DCX | ZSoft Multi-page PCX | ImageMagick
 DD/JJ | C64 Doodle | NConvert
 DDS | Microsoft [DirectDraw Surface](https://en.wikipedia.org/wiki/DirectDraw_Surface) | ImageMagick
+DG2 | Sega Digitizer 2, used in Sega Saturn games | HiveView
 DGI | Digi-Pic | Deark
 DIB | Device-Independent Bitmap | ImageMagick
 DNG | Adobe [Digital Negative](https://en.wikipedia.org/wiki/Digital_Negative) (TIFF variant) | ImageMagick
@@ -78,11 +78,12 @@ HR | [TRS-80](https://en.wikipedia.org/wiki/TRS-80) High Resolution | NConvert
 HRU | Unknown | NConvert
 HRZ | Slow-scan television | ImageMagick
 HTA | Hemera Thumbs | NConvert
-ICNS | Mac Icon | NConvert
+ICN | HP 100LX/200LX Icon | Deark
+ICNS | Mac Icon | Deark
 ICO | Sun Icon | NConvert
 ICO | [Windows Icon](https://en.wikipedia.org/wiki/ICO_(file_format)) | ImageMagick
 IFF | CD-i IFF IMAG | Deark
-IFF/LBM | Amiga Interleaved Bitmap | NConvert
+IFF/LBM | Amiga Interleaved Bitmap | Deark
 IFF/TDI | [Maya](https://en.wikipedia.org/wiki/Autodesk_Maya) Image File Format/Thompson Digital Image Explore | NConvert
 IIM | Atari Falcon InShape Image | NConvert
 INFO | Amiga Icon | Deark
@@ -146,6 +147,7 @@ PIC/PCT/PIX | [BSAVE/BLOAD](https://en.wikipedia.org/wiki/BSAVE) | Deark
 PICT/PIC | [QuickDraw](https://en.wikipedia.org/wiki/QuickDraw) [PICT](https://en.wikipedia.org/wiki/PICT) | NConvert
 PIX | Alias PIX | NConvert
 PIX | Esm Software PIX (JPEG with header) | Swiss File Knife
+PIX | Inset, a DOS program | Deark
 PMG | C64 Paint Magic | NConvert
 PMP | Sony DSC-F1 | NConvert
 PNG | [Portable Network Graphics](https://en.wikipedia.org/wiki/PNG) | n/a
@@ -160,7 +162,7 @@ QOI | [Quite OK Image Format](https://en.wikipedia.org/wiki/QOI_(image_format)) 
 RAF | Fujifilm Raw | ImageMagick
 RAW/HST | Image Alchemy HSI Raw | NConvert
 RAW/QRT/DIS | QRT Ray Tracer/DKB Ray Tracer | NConvert
-RGB | Sega RGB format, used in Sega Saturn games. | HiveView
+RGB | Sega RGB format, used in Sega Saturn games | HiveView
 RGH | Atari ST ZZ_ROUGH | NConvert
 RIX | ColoRIX | NConvert
 RLA | Wavefront Advanced Visualizer | ImageMagick
@@ -182,6 +184,7 @@ TIFF/TIF | [Tag Image File Format](https://en.wikipedia.org/wiki/TIFF) | ImageMa
 TIM | Sony PlayStation texture | ImageMagick
 TNY/TN1/TN2/TN3 | Atari ST Tiny Stuff | NConvert
 TRP | Atari Falcon EggPaint | NConvert
+TRU | Atari Falcon IndyPaint | Deark
 VICAR/IMG | NASA Video Image Communication And Retrieval | ImageMagick
 VID | C64 Vidcom 64 | NConvert
 VIFF/XV | Khoros Visualization | ImageMagick
@@ -267,7 +270,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * BPG - failed on samples from https://bellard.org/bpg/
 * CALS Type 2 (CT2) - multi page, can't find any examples
 * CMYK/CMYKA - no header?
-* CUR - failed on some samples from https://telparia.com/fileFormatSamples/image/cur/
 * CUT (Dr. Halo clip mask) - tricky detection
 * DCM - multi page sometimes?; failed on (some) samples from https://telparia.com/fileFormatSamples/image/dicom/
 * DJVU/EPDF/HTML/MAN/PDF/POCKETMOD - multi page/embedded images
@@ -457,7 +459,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * MGR bitmap - only "yz" variant found
 * MTV - failed on samples from https://telparia.com/fileFormatSamples/image/mtv/ and header is tricky
 * MacPaint - some files are headerless
-* Mac icon - failed on some samples from https://telparia.com/fileFormatSamples/image/icns/
 * PICT - failed on many samples from https://telparia.com/fileFormatSamples/image/pict/
 * Maggi Hairstyles & Cosmetics - no samples
 * Male MRI/CT - no samples
@@ -621,3 +622,5 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * DL MAKER - header only 1 byte
 * Dr Halo CUT - unhelpful header
 * GEM Raster IMG - failed on samples from https://telparia.com/fileFormatSamples/image/gem/
+* HS2 - no header
+* Amiga ILBM - failed on a few samples from https://telparia.com/fileFormatSamples/image/iffILBM/

@@ -35,6 +35,7 @@ type
     procedure menuFoldersClick(Sender: TObject);
     procedure menuFilesClick(Sender: TObject);
     procedure DoConvert(i: integer; targetfile: string);
+    function MakeCommand(s, targetfile, tempfolderlocal: string): string;
     procedure DoUnpack(i: integer);
     procedure DoUnpackSub(i: integer; subfile: string);
     procedure DoRaw(i: integer);
@@ -244,10 +245,7 @@ begin
   j := 0;
   while Explode(c,'&&',j) <> '' do // Multiple commands separated by &&.
     begin
-    c2 := Trim(Explode(c,'&&',j));
-    c2 := ReplaceStr(c2,'{file}',targetfile);
-    c2 := ReplaceStr(c2,'{tempfile}',tempfilepath);
-    c2 := ReplaceStr(c2,'{tempfolder}',tempfolder);
+    c2 := MakeCommand(Explode(c,'&&',j),targetfile,tempfolder);
     //memDebug.Lines.Add(c2);
     RunCommand(c2); // Create temp.png.
     Inc(j); // Next command.
@@ -265,6 +263,17 @@ begin
   ShowImageInfo;
 end;
 
+function THiveView.MakeCommand(s, targetfile, tempfolderlocal: string): string;
+begin
+  s := Trim(s); // Remove leading & trailing spaces.
+  s := ReplaceStr(s,'{file}',targetfile); // File to open.
+  s := ReplaceStr(s,'{filenoext}',ChangeFileExt(targetfile,'')); // File without '.ext'
+  s := ReplaceStr(s,'{filedir}',ExtractFileDir(targetfile)); // File's folder (no trailing '\')
+  s := ReplaceStr(s,'{tempfile}',tempfilepath); // temp.png
+  s := ReplaceStr(s,'{tempfolder}',tempfolderlocal);
+  result := s;
+end;
+
 { Unpack archive using external program. }
 
 procedure THiveView.DoUnpack(i: integer);
@@ -277,9 +286,7 @@ begin
   j := 0;
   while Explode(c,'&&',j) <> '' do // Multiple commands separated by &&.
     begin
-    c2 := Trim(Explode(c,'&&',j));
-    c2 := ReplaceStr(c2,'{file}',menuFiles.FileName);
-    c2 := ReplaceStr(c2,'{tempfolder}',tempfolder);
+    c2 := MakeCommand(Explode(c,'&&',j),menuFiles.FileName,tempfolder);
     RunCommand(c2); // Unpack to temp folder.
     Inc(j); // Next command.
     end;
@@ -303,9 +310,7 @@ begin
   j := 0;
   while Explode(c,'&&',j) <> '' do // Multiple commands separated by &&.
     begin
-    c2 := Trim(Explode(c,'&&',j));
-    c2 := ReplaceStr(c2,'{file}',subfile);
-    c2 := ReplaceStr(c2,'{tempfolder}',subfolder);
+    c2 := MakeCommand(Explode(c,'&&',j),subfile,subfolder);
     RunCommand(c2); // Unpack to temp folder.
     Inc(j); // Next command.
     end;

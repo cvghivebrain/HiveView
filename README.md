@@ -159,7 +159,7 @@ PMG | C64 Paint Magic | NConvert
 PMP | Sony DSC-F1 | NConvert
 PNG | [Portable Network Graphics](https://en.wikipedia.org/wiki/PNG) | n/a
 PNT | [DeskMate Paint](https://en.wikipedia.org/wiki/DeskMate) | Deark
-POG | [The New Print Shop](https://en.wikipedia.org/wiki/The_Print_Shop) | Deark
+POG+PNM | [The New Print Shop](https://en.wikipedia.org/wiki/The_Print_Shop) | Deark
 PSD/PSB | Adobe [Photoshop](https://en.wikipedia.org/wiki/Adobe_Photoshop) | ImageMagick
 PSF | ArcSoft PhotoStudio | NConvert
 PSP | Jasc [PaintShop Pro](https://en.wikipedia.org/wiki/PaintShop_Pro) | NConvert
@@ -639,4 +639,3 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Lumena CEL - no samples
 * MAKIchan Graphics - failed on some samples from https://telparia.com/fileFormatSamples/image/makichan/
 * MegaPaint Symbol Library - no samples
-* New Print Shop - PNM files not read

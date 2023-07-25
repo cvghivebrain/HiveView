@@ -26,6 +26,7 @@ B&W/B_W | ImageLab/PrintTechnic | NConvert
 BFLI | C64 Big Flexible Line Interpretation | NConvert
 BIN | Binary Text | Deark
 BLK/BSG | Prosoft Fontasy Block | NConvert
+BMP/ICO/PTR | OS/2 Bitmap Array | Deark
 BMP | [Windows & OS/2 Bitmap](https://en.wikipedia.org/wiki/BMP_file_format) | Deark
 BOB | Bob Ray Tracer Bitmap | NConvert
 BUM | Poser Bump Map (32bpp BMP) | NConvert
@@ -36,13 +37,14 @@ CEL+KCF | [Kisekae Set System](https://en.wikipedia.org/wiki/Kisekae_Set_System)
 CIN | Kodak [Cineon](https://en.wikipedia.org/wiki/Cineon) | ImageMagick
 CIP | Cisco IP Phone Image | NConvert
 CLB | CorelMOSAIC Library | Deark
+CLP | [PCPaint](https://en.wikipedia.org/wiki/PCPaint) | Deark
 CR2 | Canon Digital Camera Raw (TIFF variant) | ImageMagick
 CRG | Calamus Raster Graphic | Deark
 CRW | Canon Digital Camera Raw | ImageMagick
 CUR | Windows Cursor | ImageMagick
 DCM | [DICOM](https://en.wikipedia.org/wiki/DICOM) medical image | ImageMagick
 DCR | Kodak Digital Camera Raw (TIFF variant) | ImageMagick
-DCX | ZSoft Multi-page PCX | ImageMagick
+DCX/FAX | ZSoft Multi-page PCX | Deark
 DD/JJ | C64 Doodle | NConvert
 DDS | Microsoft [DirectDraw Surface](https://en.wikipedia.org/wiki/DirectDraw_Surface) | ImageMagick
 DG2 | Sega Digitizer 2, used in Sega Saturn games | HiveView
@@ -81,6 +83,7 @@ HTA | Hemera Thumbs | NConvert
 ICN | HP 100LX/200LX Icon | Deark
 ICN/TBI | Magic Desk/ToyBox Icon | Deark
 ICNS | Mac Icon | Deark
+ICO | OS/2 Icon | Deark
 ICO | Sun Icon | NConvert
 ICO | [Windows Icon](https://en.wikipedia.org/wiki/ICO_(file_format)) | ImageMagick
 IFF | CD-i IFF IMAG | Deark
@@ -91,7 +94,7 @@ INFO | Amiga Icon | Deark
 IPH/IPT | C64 Interpaint | NConvert
 ISH/ISM | C64 Image System | NConvert
 J2C/J2K/JPT | JPEG 2000 codestream | ImageMagick
-JBF | Jasc [PaintShop Pro](https://en.wikipedia.org/wiki/PaintShop_Pro) Browser File | NConvert
+JBF | Jasc [PaintShop Pro](https://en.wikipedia.org/wiki/PaintShop_Pro) Browser File | Deark
 JIF | Jeff's Image Format | NConvert
 JLS | JPEG-LS | LOCO
 JNG | [JPEG Network Graphics](https://en.wikipedia.org/wiki/JPEG_Network_Graphics) | ImageMagick
@@ -102,7 +105,8 @@ K25 | Kodak DC25 Digital Camera (TIFF variant) | NConvert
 KDC | Kodak DC120 Digital Camera (TIFF variant) | NConvert
 KOA/RPM | C64 KoalaPainter/RUN Paint | NConvert
 KPS | IBM KIPS Bitmap | NConvert
-KQP/PIC | Konica Picture Show/Pegasus PIC | NConvert
+KQP/PIC | Konica Picture Show/Pegasus PIC | Deark
+LGO | OS/2 Boot Logo | Deark
 M8 | [Heretic II](https://en.wikipedia.org/wiki/Heretic_II) Mipmap | NConvert
 MAC/PIC/PNTG | [MacPaint](https://en.wikipedia.org/wiki/MacPaint) | Deark
 MAG | MAKIchan Graphics | Deark
@@ -131,26 +135,28 @@ OTB | Nokia [Over the Air Bitmap](https://en.wikipedia.org/wiki/OTA_bitmap) | Im
 P64 | C64 Picasso 64 | NConvert
 P7 | XV Visual Schnauzer thumbnail | NConvert
 PAC/SEQ | Atari ST STAD | NConvert
+PALM | Palm Bitmap | Deark
 PAM | Portable Arbitrary Map | ImageMagick
 PAT | GIMP Pattern | NConvert
 PAT | MegaPaint Pattern | Deark
 PBM/PGM/PPM/PNM | [Netpbm Portable Bitmap](https://en.wikipedia.org/wiki/Netpbm) | ImageMagick
 PCD | Kodak [Photo CD](https://en.wikipedia.org/wiki/Photo_CD) | ImageMagick
-PCX | ZSoft [Picture Exchange](https://en.wikipedia.org/wiki/PCX) | ImageMagick
+PCX | ZSoft [Picture Exchange](https://en.wikipedia.org/wiki/PCX) | Deark
 PDB | Palm Database ImageViewer | ImageMagick
 PDD | Adobe [PhotoDeluxe](https://en.wikipedia.org/wiki/Adobe_PhotoDeluxe) (PSD variant) | NConvert
 PEF | Pentax Raw (TIFF variant) | ImageMagick
 PFM/PHM | Portable Float Map | ImageMagick
 PGC | Atari Portfolio Graphics Compressed | NConvert
+PGF | Atari Portfolio Graphics | Deark
 PI | C64 Blazing Paddles | NConvert
 PI1/PI2/PI3 | Atari ST DEGAS | NConvert
 PI4/PI5 | Atari ST View ST/TT | NConvert
 PIC | [Autodesk Softimage](https://en.wikipedia.org/wiki/Autodesk_Softimage) | NConvert
 PIC | [Dr. Halo](https://en.wikipedia.org/wiki/Dr._Halo) | Deark
-PIC | [PCPaint](https://en.wikipedia.org/wiki/PCPaint) | NConvert
+PIC | [PCPaint](https://en.wikipedia.org/wiki/PCPaint) | Deark
 PIC | Psion Series 3 bitmap | NConvert
 PIC | WinMiPS | NConvert
-PIC/PCT/PIX | [BSAVE/BLOAD](https://en.wikipedia.org/wiki/BSAVE) | Deark
+PIC/PCT/PIX | [BSAVE/BLOAD](https://en.wikipedia.org/wiki/BSAVE), including compressed files | Deark
 PICT/PIC | [QuickDraw](https://en.wikipedia.org/wiki/QuickDraw) [PICT](https://en.wikipedia.org/wiki/PICT) | NConvert
 PIX | Alias PIX | NConvert
 PIX | Esm Software PIX (JPEG with header) | Swiss File Knife
@@ -163,6 +169,7 @@ POG+PNM | [The New Print Shop](https://en.wikipedia.org/wiki/The_Print_Shop) | D
 PSD/PSB | Adobe [Photoshop](https://en.wikipedia.org/wiki/Adobe_Photoshop) | ImageMagick
 PSF | ArcSoft PhotoStudio | NConvert
 PSP | Jasc [PaintShop Pro](https://en.wikipedia.org/wiki/PaintShop_Pro) | NConvert
+PTR | OS/2 Mouse Pointer | Deark
 PWC | [Piecewise-Constant Image Model](http://www.caravian.com/research/index.htm) | pwcdecode
 PXA | [Pixia](https://en.wikipedia.org/wiki/Pixia) | NConvert
 PZL | X11 Puzzle bitmap | NConvert
@@ -230,6 +237,7 @@ GIF | [Graphics Interchange Format](https://en.wikipedia.org/wiki/GIF) | ImageMa
 GL | [Graphics Animation System for Professionals](https://en.wikipedia.org/wiki/Graphics_Animation_System_for_Professionals) | Deark
 MNG | [Multiple-image Network Graphics](https://en.wikipedia.org/wiki/Multiple-image_Network_Graphics) | ImageMagick
 NIE/NII | Naïve Image Formats | Deark
+PGX | Atari Portfolio Graphics Animation | Deark
 
 ## Supported vector image formats
 
@@ -303,9 +311,7 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * MPO - multi page, only first page is loaded
 * MTV - unusable header
 * MVG - failed on sample
-* PALM - multi page
 * PCL
-* PCX - monochrome images are negative
 * PFA/PFB
 * PICT - failed on samples from http://cd.textfiles.com/cdreview/cdreview66/PCT01_01/PC0101P/
 * PSD/PSB/TIFF/XCF layers
@@ -455,7 +461,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * KoalaPainter GG compressed - insufficient header
 * Kodak DC120 Digital Camera - fails on sample from https://telparia.com/fileFormatSamples/image/kodakKDC/
 * Kofax Group 4 - no samples
-* Konica KQP - failed on samples from http://fileformats.archiveteam.org/wiki/KQP
 * LSS16 - no samples
 * LView Pro - no samples
 * LaserData - no samples
@@ -502,7 +507,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Penn PM - no samples
 * PCL - ?
 * PSP - layers & vectors not supported
-* PSP JBF - failed on some samples from https://telparia.com/fileFormatSamples/archive/paintShopProBrowserCache/
 * PSP Brush/Frame/Mask/Pattern/Texture/Tube - no samples
 * Panasonic DMC-LC1 Raw - no samples
 * Pegs - ?
@@ -523,7 +527,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Pocket PC Theme - just a CAB file?
 * Polychrome Recursive Format - no samples
 * PDF - document format
-* Portfolio Graphics - no samples
 * Portrait CVP - ?
 * Poser Bump Map - same as BMP?
 * Powercard - no samples
@@ -639,3 +642,4 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Lumena CEL - no samples
 * MAKIchan Graphics - failed on some samples from https://telparia.com/fileFormatSamples/image/makichan/
 * MegaPaint Symbol Library - no samples
+* OLPC 565 - no samples

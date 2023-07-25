@@ -70,6 +70,7 @@ FXS | [WinFax](https://en.wikipedia.org/wiki/WinFax) | NConvert
 GBR | GIMP Brush | NConvert
 GEO/CVT | C64 [GEOS](https://en.wikipedia.org/wiki/GEOS_(8-bit_operating_system)) geoPaint | NConvert
 GOD | Atari Falcon GodPaint | Deark
+GPH | PrintPartner Graphics | Deark
 GRB/GRO | [HP-48](https://en.wikipedia.org/wiki/HP_48_series)/49 GROB | NConvert
 GUN | C64 Gunpaint | NConvert
 HBM/HIR | C64 Hires Bitmap | NConvert
@@ -151,19 +152,23 @@ PGF | Atari Portfolio Graphics | Deark
 PI | C64 Blazing Paddles | NConvert
 PI1/PI2/PI3 | Atari ST DEGAS | NConvert
 PI4/PI5 | Atari ST View ST/TT | NConvert
+PI4/PI9 | Atari Falcon Fuckpaint | Deark
+PI7 | Atari ST View ST/TT | Deark
 PIC | [Autodesk Softimage](https://en.wikipedia.org/wiki/Autodesk_Softimage) | NConvert
 PIC | [Dr. Halo](https://en.wikipedia.org/wiki/Dr._Halo) | Deark
 PIC | [PCPaint](https://en.wikipedia.org/wiki/PCPaint) | Deark
-PIC | Psion Series 3 bitmap | NConvert
+PIC | Psion Series 3 bitmap | Deark
 PIC | WinMiPS | NConvert
 PIC/PCT/PIX | [BSAVE/BLOAD](https://en.wikipedia.org/wiki/BSAVE), including compressed files | Deark
-PICT/PIC | [QuickDraw](https://en.wikipedia.org/wiki/QuickDraw) [PICT](https://en.wikipedia.org/wiki/PICT) | NConvert
+PICT/PIC | Apple Macintosh [QuickDraw](https://en.wikipedia.org/wiki/QuickDraw) [PICT](https://en.wikipedia.org/wiki/PICT) | NConvert
 PIX | Alias PIX | NConvert
 PIX | Esm Software PIX (JPEG with header) | Swiss File Knife
 PIX | Inset, a DOS program | Deark
+PKM | [GrafX2](https://en.wikipedia.org/wiki/GrafX2) | Deark
 PMG | C64 Paint Magic | NConvert
 PMP | Sony DSC-F1 | NConvert
 PNG | [Portable Network Graphics](https://en.wikipedia.org/wiki/PNG) | n/a
+PNT | Atari ST Prism Paint/TruePaint | Deark
 PNT | [DeskMate Paint](https://en.wikipedia.org/wiki/DeskMate) | Deark
 POG+PNM | [The New Print Shop](https://en.wikipedia.org/wiki/The_Print_Shop) | Deark
 PSD/PSB | Adobe [Photoshop](https://en.wikipedia.org/wiki/Adobe_Photoshop) | ImageMagick
@@ -191,6 +196,7 @@ SCT | [Scitex Continuous Tone](https://en.wikipedia.org/wiki/Scitex_CT) | ImageM
 SD0/SD1/SD2 | Atari ST Dali | NConvert
 SFW | [Seattle FilmWorks](https://en.wikipedia.org/wiki/Seattle_FilmWorks) | ImageMagick
 SGI/BW/RGB | Silicon Graphics IRIX RGB | ImageMagick
+SHP+SDR | [PrintMaster](https://en.wikipedia.org/wiki/PrintMaster) Shape | Deark
 SIR | [BYU-MERS SIR](https://scp.byu.edu/software/) | NConvert
 SUN/RAS | [Sun Raster](https://en.wikipedia.org/wiki/Sun_Raster) | ImageMagick
 TAP | Oric Hires Screen; Tape Format | NConvert
@@ -284,7 +290,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 
 ## To do
 ### ImageMagick
-* APNG animation frames - doesn't work
 * AVI/AVIF/M2V/MPEG
 * BAYER
 * BPG - failed on samples from https://bellard.org/bpg/
@@ -643,3 +648,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * MAKIchan Graphics - failed on some samples from https://telparia.com/fileFormatSamples/image/makichan/
 * MegaPaint Symbol Library - no samples
 * OLPC 565 - no samples
+* PICT - only extracts embedded files
+* APNG - only extracts frame diffs
+* Print Shop DAT/NAM - no header

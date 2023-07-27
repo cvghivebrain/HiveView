@@ -53,6 +53,7 @@ DIB | Device-Independent Bitmap | ImageMagick
 DNG | Adobe [Digital Negative](https://en.wikipedia.org/wiki/Digital_Negative) (TIFF variant) | ImageMagick
 DOO | Atari ST Doodle | Deark
 DPX | SMPTE Digital Moving Picture Exchange | ImageMagick
+DRAW | Acorn RISC OS Draw, embedded sprites only | Deark
 DRZ/DRP | C64 Draz Paint | NConvert
 EMF | Enhanced Metafile | NConvert
 EPA | Award BIOS Logo | Deark
@@ -83,6 +84,7 @@ HRZ | Slow-scan television | ImageMagick
 HTA | Hemera Thumbs | NConvert
 ICN | HP 100LX/200LX Icon | Deark
 ICN/TBI | Magic Desk/ToyBox Icon | Deark
+ICN | RIPscrip Icon | Deark
 ICNS | Mac Icon | Deark
 ICO | OS/2 Icon | Deark
 ICO | Sun Icon | NConvert
@@ -160,6 +162,7 @@ PIC | [PCPaint](https://en.wikipedia.org/wiki/PCPaint) | Deark
 PIC | Psion Series 3 bitmap | Deark
 PIC | WinMiPS | NConvert
 PIC/PCT/PIX | [BSAVE/BLOAD](https://en.wikipedia.org/wiki/BSAVE), including compressed files | Deark
+PIC/CAP/TEM | PC Storyboard | Deark
 PICT/PIC | Apple Macintosh [QuickDraw](https://en.wikipedia.org/wiki/QuickDraw) [PICT](https://en.wikipedia.org/wiki/PICT) | NConvert
 PIX | Alias PIX | NConvert
 PIX | Esm Software PIX (JPEG with header) | Swiss File Knife
@@ -179,6 +182,7 @@ PWC | [Piecewise-Constant Image Model](http://www.caravian.com/research/index.ht
 PXA | [Pixia](https://en.wikipedia.org/wiki/Pixia) | NConvert
 PZL | X11 Puzzle bitmap | NConvert
 QOI | [Quite OK Image Format](https://en.wikipedia.org/wiki/QOI_(image_format)) | ImageMagick
+QTIF/QIF | QuickTime Image Format | Deark
 RAF | Fujifilm Raw | ImageMagick
 RAW/HST | Image Alchemy HSI Raw | NConvert
 RAW/QRT/DIS | QRT Ray Tracer/DKB Ray Tracer | NConvert
@@ -188,6 +192,7 @@ RIX | ColoRIX | NConvert
 RLA | Wavefront Advanced Visualizer | ImageMagick
 RLE | Utah Raster Toolkit | ImageMagick
 RP | C64 Rainbow Painter | NConvert
+RSC | Atari ST GEM Resource, embedded images only | Deark
 SAR | C64 Saracen Paint | NConvert
 SC2 | MSX Screen 2 | NConvert
 SCR/MWG | [Microsoft Word](https://en.wikipedia.org/wiki/Microsoft_Word) Screen Capture | Deark
@@ -196,8 +201,10 @@ SCT | [Scitex Continuous Tone](https://en.wikipedia.org/wiki/Scitex_CT) | ImageM
 SD0/SD1/SD2 | Atari ST Dali | NConvert
 SFW | [Seattle FilmWorks](https://en.wikipedia.org/wiki/Seattle_FilmWorks) | ImageMagick
 SGI/BW/RGB | Silicon Graphics IRIX RGB | ImageMagick
+SHG/MRB | Segmented Hypergraphics/Multi Resolution Bitmap | Deark
 SHP+SDR | [PrintMaster](https://en.wikipedia.org/wiki/PrintMaster) Shape | Deark
 SIR | [BYU-MERS SIR](https://scp.byu.edu/software/) | NConvert
+SPU | Atari ST Spectrum 512 | NConvert
 SUN/RAS | [Sun Raster](https://en.wikipedia.org/wiki/Sun_Raster) | ImageMagick
 TAP | Oric Hires Screen; Tape Format | NConvert
 TG1 | Atari Falcon COKE | Deark
@@ -545,7 +552,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Q0 - no samples
 * QDV - no samples
 * Quantel VPB - inconsistent header; samples on https://github.com/GeoSpark/vpb-converter/tree/master/samples
-* QTIF - failed on most samples from https://telparia.com/fileFormatSamples/image/qtif/
 * RIPscrip icon - can't figure out format
 * Radiance PIC/RAD - failed on samples from https://radsite.lbl.gov/radiance/pub/pics/index.html
 * Rayshade PIC - same as MTV but doesn't work?
@@ -651,3 +657,8 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * PICT - only extracts embedded files
 * APNG - only extracts frame diffs
 * Print Shop DAT/NAM - no header
+* QDV - no samples
+* QTIF - only contains one image but can be of any type, so "unpack" had to be used
+* Acorn Draw - vector format, only extracts sprites
+* Spectrum 512 SPC/SPS - can't differentiate
+* STOS MBK - failed on samples from https://telparia.com/fileFormatSamples/image/stosBank/

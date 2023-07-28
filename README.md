@@ -61,6 +61,7 @@ EMF | Enhanced Metafile | NConvert
 EPA | Award BIOS Logo | Deark
 ESM | Atari ST Enhanced Simplex | NConvert
 EXR | Industrial Light & Magic [OpenEXR](https://en.wikipedia.org/wiki/OpenEXR) | ImageMagick
+FACE/XFACE | [X-Face](https://en.wikipedia.org/wiki/X-Face) | Deark
 FBM | Fuzzy Bitmap | NConvert
 FF | Farbfeld | ImageMagick
 FIT/FTS | Flexible Image Transport System | NConvert
@@ -231,13 +232,16 @@ WMF | [Windows Metafile](https://en.wikipedia.org/wiki/Windows_Metafile) | NConv
 WPG | [WordPerfect Graphics](https://en.wikipedia.org/wiki/WordPerfect) | ImageMagick
 WZL | Winzle Puzzle | NConvert
 X3F | Sigma/Foveon Raw | x3f_extract
+XB | [Extended Binary](https://en.wikipedia.org/wiki/XBin) | Deark
 XBM | [X Window System Bitmap](https://en.wikipedia.org/wiki/X_BitMap) | ImageMagick
 XCF | GIMP [Experimental Computing Facility](https://en.wikipedia.org/wiki/XCF_(file_format)) | ImageMagick
+XGA | Atari Falcon TrueColor Screen | Deark
 XIF | Xerox Image File Format | NConvert
 XIMG/IMG | GEM Raster | NConvert
 XPM/PICON | [X Window System Pixmap](https://en.wikipedia.org/wiki/X_PixMap) | NConvert
 XWD | [X Window System Window Dump](https://en.wikipedia.org/wiki/Xwd) | NConvert
 XYZ | [RPG Maker 2000](https://en.wikipedia.org/wiki/RPG_Maker_2000) | NConvert
+YP | Young Picasso | Deark
 ZBR | Zoner Zebra Metafile thumbnail | NConvert
 
 ## Supported animation formats
@@ -668,3 +672,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * TGA - tricky detection
 * VITec ELT - no samples
 * VORT - no samples
+* Windows 1.0 icon/cursor - no samples
+* X-Face - only works if header is present
+* YBM - no samples

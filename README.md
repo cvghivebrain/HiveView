@@ -277,6 +277,19 @@ Ext. | Description | Program
 --- | --- | ---
 CRD | [Windows Cardfile](https://en.wikipedia.org/wiki/Cardfile) (extracts embedded images only) | Deark
 
+## Supported font formats
+
+Ext. | Description | Program
+--- | --- | ---
+FNT | Windows Font | Deark
+FNT/GFT | GEM Bitmap Font | Deark
+PCF | X11 Portable Compiled Format | Deark
+PCR | OPTIKS Font | Deark
+PF2 | PUPA Font Format | Deark
+PK | Packed Font | Deark
+PSF | PC Screen Font | Deark
+SET | GRASP Font | Deark
+
 ## Supported archive formats
 
 Ext. | Description | Program
@@ -675,3 +688,9 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Windows 1.0 icon/cursor - no samples
 * X-Face - only works if header is present
 * YBM - no samples
+* FNT - vector fonts not supported
+* GRASP font - only detects 7-byte header version; failed on some samples from http://fileformats.archiveteam.org/wiki/GRASP_font
+* PSF - untested on v2
+* PFF2 - failed on sample from http://fileformats.archiveteam.org/wiki/PFF2
+* GNU Unifont HEX - failed on most samples from http://fileformats.archiveteam.org/wiki/HEX_(Unifont)
+* VGA font - no samples

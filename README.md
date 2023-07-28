@@ -9,7 +9,7 @@ Ext. | Description | Program
 2BP | Pocket PC Bitmap | NConvert
 411 | [Sony Mavica](https://en.wikipedia.org/wiki/Sony_Mavica) Thumbnail | NConvert
 4BT/4BIT | C64 GoDot | NConvert
-92I/86I/83I/82I | Texas Instruments [TI-92 calculator](https://en.wikipedia.org/wiki/TI-92_series) and earlier | NConvert
+73I/82I/83I/85I/86I/89I/92I | Texas Instruments [TI-92 calculator](https://en.wikipedia.org/wiki/TI-92_series) and earlier | Deark
 A64 | C64 Wigmore Artist 64 | NConvert
 AAI | Dune HD media player image | ImageMagick
 ABK | AMOS Picture/Sprite/Icon Bank | Deark
@@ -38,10 +38,12 @@ CIN | Kodak [Cineon](https://en.wikipedia.org/wiki/Cineon) | ImageMagick
 CIP | Cisco IP Phone Image | NConvert
 CLB | CorelMOSAIC Library | Deark
 CLP | [PCPaint](https://en.wikipedia.org/wiki/PCPaint) | Deark
+COM | TheDraw COM File Screen Save | Deark
 CR2 | Canon Digital Camera Raw (TIFF variant) | ImageMagick
 CRG | Calamus Raster Graphic | Deark
 CRW | Canon Digital Camera Raw | ImageMagick
 CUR | Windows Cursor | ImageMagick
+DB | [Windows Thumbs.db Cache](https://en.wikipedia.org/wiki/Windows_thumbnail_cache) (Microsoft Compound File variant) | Deark
 DCM | [DICOM](https://en.wikipedia.org/wiki/DICOM) medical image | ImageMagick
 DCR | Kodak Digital Camera Raw (TIFF variant) | ImageMagick
 DCX/FAX | ZSoft Multi-page PCX | Deark
@@ -214,6 +216,7 @@ TIM | Sony PlayStation texture | ImageMagick
 TNY/TN1/TN2/TN3 | Atari ST Tiny Stuff | NConvert
 TRP | Atari Falcon EggPaint | NConvert
 TRU | Atari Falcon IndyPaint | Deark
+VBM | C64/128 VDC Bitmap | Deark
 VICAR/IMG | NASA Video Image Communication And Retrieval | ImageMagick
 VID | C64 Vidcom 64 | NConvert
 VIFF/XV | Khoros Visualization | ImageMagick
@@ -246,6 +249,7 @@ ANI | Windows Animated Cursor | NConvert
 ANIM | Amiga Animation | Deark
 FLI/FLC | [Autodesk Animator](https://en.wikipedia.org/wiki/Autodesk_Animator) | NConvert
 FLM | Atari Animatic Film | Deark
+FLM/VID/VSQ | Atari ST/Amiga Video Master Film | Deark
 GIF | [Graphics Interchange Format](https://en.wikipedia.org/wiki/GIF) | ImageMagick
 GL | [Graphics Animation System for Professionals](https://en.wikipedia.org/wiki/Graphics_Animation_System_for_Professionals) | Deark
 MNG | [Multiple-image Network Graphics](https://en.wikipedia.org/wiki/Multiple-image_Network_Graphics) | ImageMagick
@@ -583,7 +587,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Syberia SYJ - no samples
 * Synthetic Universe - no samples
 * TG4 - ?
-* TI-xx - failed on some samples from https://telparia.com/fileFormatSamples/image/tiCalc/
 * TMSat IMI - no samples
 * TealPaint - no samples
 * Teli fax - no samples
@@ -662,3 +665,6 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * Acorn Draw - vector format, only extracts sprites
 * Spectrum 512 SPC/SPS - can't differentiate
 * STOS MBK - failed on samples from https://telparia.com/fileFormatSamples/image/stosBank/
+* TGA - tricky detection
+* VITec ELT - no samples
+* VORT - no samples

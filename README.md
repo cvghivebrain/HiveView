@@ -295,6 +295,10 @@ SET | GRASP Font | Deark
 Ext. | Description | Program
 --- | --- | ---
 7Z | [7-Zip](https://en.wikipedia.org/wiki/7-Zip) | 7-Zip
+A | [Unix Ar](https://en.wikipedia.org/wiki/Ar_(Unix)) | Deark
+ABK | AMOS AmBs Bank | Deark
+ARC | RISC OS ArcFS | Deark
+ARJ | [Archived by Robert Jung](https://en.wikipedia.org/wiki/ARJ) | Deark
 BZ2 | [bzip2](https://en.wikipedia.org/wiki/Bzip2) | 7-Zip
 CAB | Microsoft [Cabinet](https://en.wikipedia.org/wiki/Cabinet_(file_format)) | 7-Zip
 GZ | [gzip](https://en.wikipedia.org/wiki/Gzip) | 7-Zip
@@ -302,6 +306,14 @@ RAR | [Roshal Archive/WinRAR](https://en.wikipedia.org/wiki/RAR_(file_format)) |
 TAR | [Tape Archive](https://en.wikipedia.org/wiki/Tar_(computing)) | 7-Zip
 XZ | Tukaani [XZ](https://tukaani.org/xz/format.html) | 7-Zip
 ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
+
+## Supported disk/disc image formats
+
+Ext. | Description | Program
+--- | --- | ---
+ADF | [Amiga Disk File](https://en.wikipedia.org/wiki/Amiga_Disk_File) | Deark
+ATR | Atari Disk Image | Deark
+ISO | [Apple Partition Map](https://en.wikipedia.org/wiki/Apple_Partition_Map) | Deark
 
 ## Credits
 
@@ -694,3 +706,11 @@ ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 * PFF2 - failed on sample from http://fileformats.archiveteam.org/wiki/PFF2
 * GNU Unifont HEX - failed on most samples from http://fileformats.archiveteam.org/wiki/HEX_(Unifont)
 * VGA font - no samples
+* ADF - failed on some samples from https://telparia.com/fileFormatSamples/archive/adfOFS/
+* Apple II disk image - no samples
+* Apple Partition Map - toast format not supported
+* AppleSingle/AppleDouble - no samples
+* ar001 - no samples
+* ARC - tricky detection; most files don't end with $1A00 as they should
+* ArcMac - no samples
+* ARX - no samples

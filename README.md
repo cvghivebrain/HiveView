@@ -301,10 +301,14 @@ ARC | RISC OS ArcFS | Deark
 ARJ | [Archived by Robert Jung](https://en.wikipedia.org/wiki/ARJ) | Deark
 BZ2 | [bzip2](https://en.wikipedia.org/wiki/Bzip2) | 7-Zip
 CAB | Microsoft [Cabinet](https://en.wikipedia.org/wiki/Cabinet_(file_format)) | 7-Zip
+CPIO | [Unix cpio](https://en.wikipedia.org/wiki/cpio) | Deark
 GZ | [gzip](https://en.wikipedia.org/wiki/Gzip) | 7-Zip
+HQX | [BinHex](https://en.wikipedia.org/wiki/BinHex) | Deark
+LHA/LZH | [LHarc](https://en.wikipedia.org/wiki/LHA_(file_format)) | Lhasa
 RAR | [Roshal Archive/WinRAR](https://en.wikipedia.org/wiki/RAR_(file_format)) | 7-Zip
 TAR | [Tape Archive](https://en.wikipedia.org/wiki/Tar_(computing)) | 7-Zip
 XZ | Tukaani [XZ](https://tukaani.org/xz/format.html) | 7-Zip
+YYY/?Y? | CrLHZ | Deark
 ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 
 ## Supported disk/disc image formats
@@ -321,6 +325,7 @@ ISO | [Apple Partition Map](https://en.wikipedia.org/wiki/Apple_Partition_Map) |
 * [Deark](https://entropymine.com/deark/)
 * [Ghostscript](https://ghostscript.com)
 * [ImageMagick](https://github.com/ImageMagick/ImageMagick)
+* [Lhasa](http://fragglet.github.io/lhasa/)
 * [LOCO](https://www.hpl.hp.com/loco/)
 * [NConvert](https://www.xnview.com/en/nconvert/)
 * [pwcdecode](http://www.caravian.com/research/index.htm)
@@ -714,3 +719,9 @@ ISO | [Apple Partition Map](https://en.wikipedia.org/wiki/Apple_Partition_Map) |
 * ARC - tricky detection; most files don't end with $1A00 as they should
 * ArcMac - no samples
 * ARX - no samples
+* CAR - no samples; may be indistinguishable from LHA
+* CD/raw - ?
+* compress Z - no samples; 7-zip may work anyway
+* CP Shrink - no samples
+* Crunch - failed on most samples from https://telparia.com/fileFormatSamples/archive/crunch/
+* Crush - no samples

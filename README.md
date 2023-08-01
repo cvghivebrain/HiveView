@@ -303,15 +303,18 @@ ARJ | [Archived by Robert Jung](https://en.wikipedia.org/wiki/ARJ) | Deark
 BZ2 | [bzip2](https://en.wikipedia.org/wiki/Bzip2) | 7-Zip
 CAB | Microsoft [Cabinet](https://en.wikipedia.org/wiki/Cabinet_(file_format)) | 7-Zip
 CPIO | [Unix cpio](https://en.wikipedia.org/wiki/cpio) | Deark
+DSK | LoadDskF/SaveDskF | Deark
 GX | Genus Microprogramming GX Library | Deark
 GZ | [gzip](https://en.wikipedia.org/wiki/Gzip) | 7-Zip
 HQX | [BinHex](https://en.wikipedia.org/wiki/BinHex) | Deark
+LBR | Gary P. Novosielski [Library](https://en.wikipedia.org/wiki/LBR_(file_format)) | Deark
 LHA/LZH | [LHarc](https://en.wikipedia.org/wiki/LHA_(file_format)) | Lhasa
 RAR | [Roshal Archive/WinRAR](https://en.wikipedia.org/wiki/RAR_(file_format)) | 7-Zip
 TAR | [Tape Archive](https://en.wikipedia.org/wiki/Tar_(computing)) | 7-Zip
 WAD | [Doom](https://en.wikipedia.org/wiki/Doom_(1993_video_game)) WAD | Deark
 XZ | Tukaani [XZ](https://tukaani.org/xz/format.html) | 7-Zip
 YYY/?Y? | CrLHZ | Deark
+Z | InstallShield Z Archive | Deark
 ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 
 ## Supported disk/disc image formats
@@ -322,7 +325,9 @@ ADF | [Amiga Disk File](https://en.wikipedia.org/wiki/Amiga_Disk_File) | Deark
 ATR | Atari Disk Image | Deark
 D64 | C64 1541 Disk Image | Deark
 DMS | [Amiga Disk Masher System](https://en.wikipedia.org/wiki/Disk_Masher_System) | Deark
+HFS | [Apple Hierarchical File System](https://en.wikipedia.org/wiki/Hierarchical_File_System_(Apple)) | Deark
 ISO | [Apple Partition Map](https://en.wikipedia.org/wiki/Apple_Partition_Map) | Deark
+ISO | [ISO 9660](https://en.wikipedia.org/wiki/ISO_9660) CD-ROM | Deark
 
 ## Credits
 
@@ -734,3 +739,11 @@ ISO | [Apple Partition Map](https://en.wikipedia.org/wiki/Apple_Partition_Map) |
 * Deflate - no samples
 * EXEPACK - no samples
 * FAT - ?
+* InstallShield IBT/EX_ - not supported?
+* LHarc self extracting - no samples
+* LZEXE - no samples
+* LZHUF - no samples
+* LZ-Stac - no samples
+* LZS221 - no samples
+* LZSS Haruhiko Okumura - no samples
+* LZWCOM - no samples

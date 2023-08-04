@@ -267,8 +267,9 @@ function THiveView.MakeCommand(s, targetfile, tempfolderlocal: string): string;
 begin
   s := Trim(s); // Remove leading & trailing spaces.
   s := ReplaceStr(s,'{file}',targetfile); // File to open.
-  s := ReplaceStr(s,'{filenoext}',ChangeFileExt(targetfile,'')); // File without '.ext'
-  s := ReplaceStr(s,'{filedir}',ExtractFileDir(targetfile)); // File's folder (no trailing '\')
+  s := ReplaceStr(s,'{filenoext}',ChangeFileExt(targetfile,'')); // File and path without '.ext'.
+  s := ReplaceStr(s,'{filenameonly}',ChangeFileExt(ExtractFileName(targetfile),'')); // File without '.ext' or path.
+  s := ReplaceStr(s,'{filedir}',ExtractFileDir(targetfile)); // File's folder (no trailing '\').
   s := ReplaceStr(s,'{tempfile}',tempfilepath); // temp.png
   s := ReplaceStr(s,'{tempfolder}',tempfolderlocal);
   result := s;

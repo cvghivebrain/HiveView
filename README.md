@@ -295,6 +295,7 @@ SET | GRASP Font | Deark
 Ext. | Description | Program
 --- | --- | ---
 ??$/??_ | EDI Install Pack | Deark
+??$ | NPack | Deark
 ??_ | Microsoft Installation Compression | Deark
 7Z | [7-Zip](https://en.wikipedia.org/wiki/7-Zip) | 7-Zip
 A | [Unix Ar](https://en.wikipedia.org/wiki/Ar_(Unix)) | Deark
@@ -302,18 +303,24 @@ ABK | AMOS AmBs Bank | Deark
 ARC | RISC OS ArcFS | Deark
 ARJ | [Archived by Robert Jung](https://en.wikipedia.org/wiki/ARJ) | Deark
 BIN | [MacBinary](https://en.wikipedia.org/wiki/MacBinary) | Deark
+BIN | RISC OS PackDir | Deark
 BZ2 | [bzip2](https://en.wikipedia.org/wiki/Bzip2) | 7-Zip
 CAB | Microsoft [Cabinet](https://en.wikipedia.org/wiki/Cabinet_(file_format)) | 7-Zip
 CFB | Microsoft [Compound File Binary](https://en.wikipedia.org/wiki/Compound_File_Binary_Format) | Deark
 CPIO | [Unix cpio](https://en.wikipedia.org/wiki/cpio) | Deark
 DSK | LoadDskF/SaveDskF | Deark
+EXE | PKLITE | Deark
 GX | Genus Microprogramming GX Library | Deark
 GZ | [gzip](https://en.wikipedia.org/wiki/Gzip) | 7-Zip
 HQX | [BinHex](https://en.wikipedia.org/wiki/BinHex) | Deark
 LBR | Gary P. Novosielski [Library](https://en.wikipedia.org/wiki/LBR_(file_format)) | Deark
 LHA/LZH | [LHarc](https://en.wikipedia.org/wiki/LHA_(file_format)) | Lhasa
 MD | MDCD | Deark
+PCL | PCX Library | Deark
+PQA | Palm Query Application | Deark
+PRC | Palm Resource | Deark
 RAR | [Roshal Archive/WinRAR](https://en.wikipedia.org/wiki/RAR_(file_format)) | 7-Zip
+SHR | PC-Shrink | Deark
 TAR | [Tape Archive](https://en.wikipedia.org/wiki/Tar_(computing)) | 7-Zip
 WAD | [Doom](https://en.wikipedia.org/wiki/Doom_(1993_video_game)) WAD | Deark
 XZ | Tukaani [XZ](https://tukaani.org/xz/format.html) | 7-Zip
@@ -333,6 +340,8 @@ HFS | [Apple Hierarchical File System](https://en.wikipedia.org/wiki/Hierarchica
 ISO | [Apple Partition Map](https://en.wikipedia.org/wiki/Apple_Partition_Map) | Deark
 ISO | [ISO 9660](https://en.wikipedia.org/wiki/ISO_9660) CD-ROM | Deark
 MSA | Atari ST Magic Shadow Archiver | Deark
+NRG | [Nero Burning ROM](https://en.wikipedia.org/wiki/Nero_Burning_ROM) | Deark
+STX | Atari ST Pasti | Deark
 
 ## Credits
 
@@ -754,3 +763,5 @@ MSA | Atari ST Magic Shadow Archiver | Deark
 * LZWCOM - no samples
 * Microsoft Compound File Binary - might need some work
 * MOOF - doesn't extract files
+* pack - no samples
+* Pasti - failed on http://pasti.fxatari.com/downloads/UnionDemo.zip

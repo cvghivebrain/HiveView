@@ -304,6 +304,7 @@ ARC | RISC OS ArcFS | Deark
 ARJ | [Archived by Robert Jung](https://en.wikipedia.org/wiki/ARJ) | Deark
 BIN | [MacBinary](https://en.wikipedia.org/wiki/MacBinary) | Deark
 BIN | RISC OS PackDir | Deark
+BIN | RISC OS Squash | Deark
 BZ2 | [bzip2](https://en.wikipedia.org/wiki/Bzip2) | 7-Zip
 CAB | Microsoft [Cabinet](https://en.wikipedia.org/wiki/Cabinet_(file_format)) | 7-Zip
 CFB | Microsoft [Compound File Binary](https://en.wikipedia.org/wiki/Compound_File_Binary_Format) | Deark
@@ -315,17 +316,23 @@ GZ | [gzip](https://en.wikipedia.org/wiki/Gzip) | 7-Zip
 HQX | [BinHex](https://en.wikipedia.org/wiki/BinHex) | Deark
 LBR | Gary P. Novosielski [Library](https://en.wikipedia.org/wiki/LBR_(file_format)) | Deark
 LHA/LZH | [LHarc](https://en.wikipedia.org/wiki/LHA_(file_format)) | Lhasa
+LIB/CMP/??$/$$$/PAK | The Stirling Compressor | Deark
 MD | MDCD | Deark
 PCL | PCX Library | Deark
 PQA | Palm Query Application | Deark
 PRC | Palm Resource | Deark
+QIP | Quarterdeck Installation Package | Deark
+QQQ/?Q?/SQ | CP/M Squeeze | Deark
 RAR | [Roshal Archive/WinRAR](https://en.wikipedia.org/wiki/RAR_(file_format)) | 7-Zip
+RPM | [Red Hat Package Manager](https://en.wikipedia.org/wiki/RPM_Package_Manager) | Deark
 SHR | PC-Shrink | Deark
+SIS | EPOC/Symbian OS SOftware Installation Script | Deark
 TAR | [Tape Archive](https://en.wikipedia.org/wiki/Tar_(computing)) | 7-Zip
 WAD | [Doom](https://en.wikipedia.org/wiki/Doom_(1993_video_game)) WAD | Deark
 XZ | Tukaani [XZ](https://tukaani.org/xz/format.html) | 7-Zip
 YYY/?Y? | CrLHZ | Deark
 Z | InstallShield Z Archive | Deark
+Z | SCO Unix compress | Deark
 ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
 
 ## Supported disk/disc image formats
@@ -765,3 +772,5 @@ STX | Atari ST Pasti | Deark
 * MOOF - doesn't extract files
 * pack - no samples
 * Pasti - failed on http://pasti.fxatari.com/downloads/UnionDemo.zip
+* SparkFS - insufficient info
+* StuffIt - failed on samples from http://fileformats.archiveteam.org/wiki/Stuffit

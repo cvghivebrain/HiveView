@@ -334,6 +334,7 @@ YYY/?Y? | CrLHZ | Deark
 Z | InstallShield Z Archive | Deark
 Z | SCO Unix compress | Deark
 ZIP | PKWare [ZIP](https://en.wikipedia.org/wiki/ZIP_(file_format)) | 7-Zip
+ZOO | [Zoo](https://en.wikipedia.org/wiki/Zoo_(file_format)) | Deark
 
 ## Supported disk/disc image formats
 
@@ -774,3 +775,7 @@ STX | Atari ST Pasti | Deark
 * Pasti - failed on http://pasti.fxatari.com/downloads/UnionDemo.zip
 * SparkFS - insufficient info
 * StuffIt - failed on samples from http://fileformats.archiveteam.org/wiki/Stuffit
+* WOZ - doesn't extract anything
+* zlib raw - no samples
+* Zoo filter/Z formats - no samples
+* ZSQ - no samples

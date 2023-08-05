@@ -107,6 +107,7 @@ JNG | [JPEG Network Graphics](https://en.wikipedia.org/wiki/JPEG_Network_Graphic
 JP2 | [JPEG 2000](https://en.wikipedia.org/wiki/JPEG_2000) | ImageMagick
 JPEG/JPG | [Joint Photographic Experts Group](https://en.wikipedia.org/wiki/Joint_Photographic_Experts_Group) | ImageMagick
 JPS | JPEG Stereoscopic (opens as JPEG) | ImageMagick
+JXL | [JPEG XL](https://en.wikipedia.org/wiki/JPEG_XL) | libjxl
 K25 | Kodak DC25 Digital Camera (TIFF variant) | NConvert
 KDC | Kodak DC120 Digital Camera (TIFF variant) | NConvert
 KOA/RPM | C64 KoalaPainter/RUN Paint | NConvert
@@ -310,10 +311,12 @@ CAB | Microsoft [Cabinet](https://en.wikipedia.org/wiki/Cabinet_(file_format)) |
 CFB | Microsoft [Compound File Binary](https://en.wikipedia.org/wiki/Compound_File_Binary_Format) | Deark
 CPIO | [Unix cpio](https://en.wikipedia.org/wiki/cpio) | Deark
 DSK | LoadDskF/SaveDskF | Deark
+EX_ | [InstallShield](https://en.wikipedia.org/wiki/InstallShield) Installer | Deark
 EXE | PKLITE | Deark
 GX | Genus Microprogramming GX Library | Deark
 GZ | [gzip](https://en.wikipedia.org/wiki/Gzip) | 7-Zip
 HQX | [BinHex](https://en.wikipedia.org/wiki/BinHex) | Deark
+IBT | [InstallShield](https://en.wikipedia.org/wiki/InstallShield) | Deark
 LBR | Gary P. Novosielski [Library](https://en.wikipedia.org/wiki/LBR_(file_format)) | Deark
 LHA/LZH | [LHarc](https://en.wikipedia.org/wiki/LHA_(file_format)) | Lhasa
 LIB/CMP/??$/$$$/PAK | The Stirling Compressor | Deark
@@ -358,6 +361,7 @@ STX | Atari ST Pasti | Deark
 * [Ghostscript](https://ghostscript.com)
 * [ImageMagick](https://github.com/ImageMagick/ImageMagick)
 * [Lhasa](http://fragglet.github.io/lhasa/)
+* [libjxl](https://jpeg.org/jpegxl/software.html)
 * [LOCO](https://www.hpl.hp.com/loco/)
 * [NConvert](https://www.xnview.com/en/nconvert/)
 * [pwcdecode](http://www.caravian.com/research/index.htm)
@@ -388,7 +392,6 @@ STX | Atari ST Pasti | Deark
 * HPGL
 * JBIG
 * JXR/WDP
-* JXL
 * MONO - no header
 * MPO - multi page, only first page is loaded
 * MTV - unusable header
@@ -761,7 +764,6 @@ STX | Atari ST Pasti | Deark
 * Deflate - no samples
 * EXEPACK - no samples
 * FAT - ?
-* InstallShield IBT/EX_ - not supported?
 * LHarc self extracting - no samples
 * LZEXE - no samples
 * LZHUF - no samples

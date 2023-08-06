@@ -108,6 +108,7 @@ JP2 | [JPEG 2000](https://en.wikipedia.org/wiki/JPEG_2000) | ImageMagick
 JPEG/JPG | [Joint Photographic Experts Group](https://en.wikipedia.org/wiki/Joint_Photographic_Experts_Group) | ImageMagick
 JPS | JPEG Stereoscopic (opens as JPEG) | ImageMagick
 JXL | [JPEG XL](https://en.wikipedia.org/wiki/JPEG_XL) | libjxl
+JXR/WDP | [JPEG XR](https://en.wikipedia.org/wiki/JPEG_XR) | jxrlib
 K25 | Kodak DC25 Digital Camera (TIFF variant) | NConvert
 KDC | Kodak DC120 Digital Camera (TIFF variant) | NConvert
 KOA/RPM | C64 KoalaPainter/RUN Paint | NConvert
@@ -360,6 +361,7 @@ STX | Atari ST Pasti | Deark
 * [Deark](https://entropymine.com/deark/)
 * [Ghostscript](https://ghostscript.com)
 * [ImageMagick](https://github.com/ImageMagick/ImageMagick)
+* [jxrlib](https://github.com/4creators/jxrlib)
 * [Lhasa](http://fragglet.github.io/lhasa/)
 * [libjxl](https://jpeg.org/jpegxl/software.html)
 * [LOCO](https://www.hpl.hp.com/loco/)
@@ -391,7 +393,6 @@ STX | Atari ST Pasti | Deark
 * HEIC/HEIF
 * HPGL
 * JBIG
-* JXR/WDP
 * MONO - no header
 * MPO - multi page, only first page is loaded
 * MTV - unusable header

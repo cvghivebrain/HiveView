@@ -12,7 +12,6 @@ type
     imgMain: TImage;
     menuFolders: TDirectoryListBox;
     menuDrives: TDriveComboBox;
-    memDebug: TMemo;
     menuFiles: TFileListBox;
     grpFormat: TGroupBox;
     editW: TLabeledEdit;
@@ -31,6 +30,7 @@ type
     dlgSave: TSaveDialog;
     btnSave: TButton;
     lstSubfiles: TListBox;
+    memDebug: TRichEdit;
     procedure FormCreate(Sender: TObject);
     procedure menuFoldersClick(Sender: TObject);
     procedure menuFilesClick(Sender: TObject);
@@ -49,11 +49,13 @@ type
     procedure chkPaletteClick(Sender: TObject);
     procedure btnSaveClick(Sender: TObject);
     procedure ShowImageInfo;
+    procedure ShowFormat(s: string);
     procedure menuDrivesClick(Sender: TObject);
     procedure FormResize(Sender: TObject);
     procedure DisplayImage;
     procedure CleanTempFolder;
     procedure lstSubfilesClick(Sender: TObject);
+    procedure memDebugChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -105,7 +107,7 @@ begin
   dlgSave.InitialDir := menuFolders.Directory;
   memDebug.Lines.Add(thisfolder);
   DefaultFormat; // Fill in default values for format menu.
-  menuFiles.Height := menuFolders.Top+menuFolders.Height;
+  HiveView.Width := Round(Screen.WorkAreaWidth*0.8);
   i := -1; // Start at -1 so that first format is 0.
   if not FileExists('HiveView.ini') then // Check for ini file.
     begin
@@ -153,6 +155,14 @@ begin
   if imgMain.Visible then DisplayImage; // Adjust scale of image to fit screen.
 end;
 
+procedure THiveView.memDebugChange(Sender: TObject);
+begin
+  if HiveView.Visible and HiveView.Enabled then memDebug.SetFocus
+    else exit;
+  memDebug.SelStart := memDebug.GetTextLen;
+  SendMessage(memDebug.Handle,EM_SCROLLCARET,0,0); // Scroll to bottom of debug text.
+end;
+
 procedure THiveView.menuDrivesClick(Sender: TObject);
 var drive: string;
 begin
@@ -160,7 +170,6 @@ begin
   menuFolders.Directory := drive+':\'; // Show folders on drive.
   menuFiles.Directory := menuFolders.Directory; // Show files in root folder.
   memDebug.Lines.Add(menuFolders.Directory);
-  menuFiles.Height := menuFolders.Top+menuFolders.Height;
 end;
 
 procedure THiveView.menuFoldersClick(Sender: TObject);
@@ -168,7 +177,6 @@ begin
   menuFolders.Perform(WM_LBUTTONDBLCLK,0,0); // Simulate double click to load folder on single click.
   menuFiles.Directory := menuFolders.Directory; // Show files.
   memDebug.Lines.Add(menuFolders.Directory);
-  menuFiles.Height := menuFolders.Top+menuFolders.Height;
 end;
 
 procedure THiveView.menuFilesClick(Sender: TObject);
@@ -239,7 +247,7 @@ procedure THiveView.DoConvert(i: integer; targetfile: string);
 var c, c2: string;
   j: integer;
 begin
-  if inicontent[i,ini_unpack] = '' then memDebug.Lines.Add('File format found: '+inicontent[i,ini_name]);
+  if inicontent[i,ini_unpack] = '' then ShowFormat(inicontent[i,ini_name]);
   memDebug.Lines.Add('Converting with external program...');
   c := inicontent[i,ini_convert];
   j := 0;
@@ -281,7 +289,7 @@ procedure THiveView.DoUnpack(i: integer);
 var c, c2: string;
   j: integer;
 begin
-  memDebug.Lines.Add('File format found: '+inicontent[i,ini_name]);
+  ShowFormat(inicontent[i,ini_name]);
   memDebug.Lines.Add('Unpacking with external program...');
   c := inicontent[i,ini_unpack];
   j := 0;
@@ -295,7 +303,6 @@ begin
   for j := 0 to Length(filelist)-1 do lstSubfiles.Items.Add(filelist[j]);
   if Length(filelist) = 1 then memDebug.Lines.Add(IntToStr(Length(filelist))+' file extracted.')
     else memDebug.Lines.Add(IntToStr(Length(filelist))+' files extracted.');
-  if Length(filelist) > 0 then menuFiles.Height := (menuFolders.Top+menuFolders.Height) div 2;
 end;
 
 procedure THiveView.DoUnpackSub(i: integer; subfile: string);
@@ -305,7 +312,7 @@ begin
   subfolder := subfile+'_';
   if SysUtils.DirectoryExists(subfolder) then exit // Do nothing if already unpacked.
     else CreateDir(subfolder); // Create folder with same name as target file.
-  memDebug.Lines.Add('File format found: '+inicontent[i,ini_name]);
+  ShowFormat(inicontent[i,ini_name]);
   memDebug.Lines.Add('Unpacking with external program...');
   c := inicontent[i,ini_unpack];
   j := 0;
@@ -342,7 +349,7 @@ begin
   editPalLoc.Enabled := chkPalette.Checked;
   editPalSize.Enabled := chkPalette.Checked;
   editPalBits.Enabled := chkPalette.Checked;
-  memDebug.Lines.Add('File format found: '+inicontent[i,ini_name]);
+  ShowFormat(inicontent[i,ini_name]);
   LoadImage; // Load image as raw using parameters from ini.
 end;
 
@@ -432,6 +439,16 @@ end;
 procedure THiveView.ShowImageInfo;
 begin
   memDebug.Lines.Add('Image is '+IntToStr(PNG.Width)+' × '+IntToStr(PNG.Height)+' pixels.');
+end;
+
+procedure THiveView.ShowFormat(s: string);
+begin
+  memDebug.Lines.Add('File format found: '+s);
+  memDebug.SelStart := memDebug.GetTextLen;
+  memDebug.SelLength := -1-Length(s); // Select the format text itself.
+  memDebug.SelAttributes.Style := [fsBold]; // Make it bold.
+  memDebug.SelLength := 0;
+  memDebug.SelAttributes.Style := [];
 end;
 
 { Update window so image is actually displayed. }
@@ -558,7 +575,6 @@ begin
     end
   else CreateDir(tempfolder); // Create temp folder.
   lstSubfiles.Clear; // Empty list.
-  menuFiles.Height := menuFolders.Top+menuFolders.Height;
 end;
 
 end.

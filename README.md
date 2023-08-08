@@ -29,6 +29,7 @@ BLK/BSG | Prosoft Fontasy Block | NConvert
 BMP/ICO/PTR | OS/2 Bitmap Array | Deark
 BMP | [Windows & OS/2 Bitmap](https://en.wikipedia.org/wiki/BMP_file_format) | Deark
 BOB | Bob Ray Tracer Bitmap | NConvert
+BPG | [Better Portable Graphics](https://en.wikipedia.org/wiki/Better_Portable_Graphics) | libbpg
 BUM | Poser Bump Map (32bpp BMP) | NConvert
 CAL/CT1/RAS | DoD [CALS Raster](https://en.wikipedia.org/wiki/CALS_Raster_file_format) | ImageMagick
 CAM | Casio QV-10/100 Camera | NConvert
@@ -363,6 +364,7 @@ STX | Atari ST Pasti | Deark
 * [ImageMagick](https://github.com/ImageMagick/ImageMagick)
 * [jxrlib](https://github.com/4creators/jxrlib)
 * [Lhasa](http://fragglet.github.io/lhasa/)
+* [libbpg](https://bellard.org/bpg/)
 * [libjxl](https://jpeg.org/jpegxl/software.html)
 * [LOCO](https://www.hpl.hp.com/loco/)
 * [NConvert](https://www.xnview.com/en/nconvert/)
@@ -375,7 +377,6 @@ STX | Atari ST Pasti | Deark
 ### ImageMagick
 * AVI/AVIF/M2V/MPEG
 * BAYER
-* BPG - failed on samples from https://bellard.org/bpg/
 * CALS Type 2 (CT2) - multi page, can't find any examples
 * CMYK/CMYKA - no header?
 * CUT (Dr. Halo clip mask) - tricky detection
@@ -708,7 +709,6 @@ STX | Atari ST Pasti | Deark
 * BIN - can't detect files without SAUCE footer
 * MegaPaint BLD - unhelpful header
 * Zoner BMI - no samples
-* BPG - failed on samples from http://fileformats.archiveteam.org/wiki/BPG
 * BLOAD - wrong resolution sometimes
 * Cardfile - failed on some samples from https://telparia.com/fileFormatSamples/document/cardfile/ and possibly only reads embedded images
 * Compface - no header
@@ -782,3 +782,6 @@ STX | Atari ST Pasti | Deark
 * zlib raw - no samples
 * Zoo filter/Z formats - no samples
 * ZSQ - no samples
+
+### Other
+* BPG - animation frames not extracted by libbpg

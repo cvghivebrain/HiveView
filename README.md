@@ -67,6 +67,7 @@ FBM | Fuzzy Bitmap | NConvert
 FF | Farbfeld | ImageMagick
 FIT/FTS | Flexible Image Transport System | NConvert
 FL32 | [FilmLight](https://www.filmlight.ltd.uk/) | ImageMagick
+FLIF | [Free Lossless Image Format](https://en.wikipedia.org/wiki/Free_Lossless_Image_Format) | FLIF
 FP2/FUN | C64 Funpaint II | NConvert
 FPG | DIV Games Studio, multi-page | NConvert
 FPT | C64 Face Painter | NConvert
@@ -255,6 +256,7 @@ ANI | Atari ST NEOchrome Animation | Deark
 ANI | Windows Animated Cursor | NConvert
 ANIM | Amiga Animation | Deark
 FLI/FLC | [Autodesk Animator](https://en.wikipedia.org/wiki/Autodesk_Animator) | NConvert
+FLIF | [Free Lossless Image Format](https://en.wikipedia.org/wiki/Free_Lossless_Image_Format) | FLIF
 FLM | Atari Animatic Film | Deark
 FLM/VID/VSQ | Atari ST/Amiga Video Master Film | Deark
 GIF | [Graphics Interchange Format](https://en.wikipedia.org/wiki/GIF) | ImageMagick
@@ -360,6 +362,7 @@ STX | Atari ST Pasti | Deark
 
 * [7-Zip](https://7-zip.org/)
 * [Deark](https://entropymine.com/deark/)
+* [FLIF](http://flif.info/)
 * [Ghostscript](https://ghostscript.com)
 * [ImageMagick](https://github.com/ImageMagick/ImageMagick)
 * [jxrlib](https://github.com/4creators/jxrlib)
@@ -386,8 +389,7 @@ STX | Atari ST Pasti | Deark
 * DMR
 * DOT graph format
 * FAX/G3 - no header?
-* FLIF - failed on samples
-* FPX - inconsistent header?
+* FPX - unsupported
 * FTXT - failed on samples
 * GPLT
 * GRAY/GRAYA
@@ -502,7 +504,7 @@ STX | Atari ST Pasti | Deark
 * FileMagic MAG - no samples
 * Flash Image FI - no samples
 * FlashCam Frame - no samples
-* FlashPix FPX - actually a CFBF archive
+* FlashPix FPX - unsupported
 * FITS - failed on some samples from https://telparia.com/fileFormatSamples/image/fits/
 * Fremont Fax96 - no samples
 * Fugawi FX3 - no samples

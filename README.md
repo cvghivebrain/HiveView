@@ -103,6 +103,7 @@ IPH/IPT | C64 Interpaint | NConvert
 ISH/ISM | C64 Image System | NConvert
 J2C/J2K/JPT | JPEG 2000 codestream | ImageMagick
 JBF | Jasc [PaintShop Pro](https://en.wikipedia.org/wiki/PaintShop_Pro) Browser File | Deark
+JBIG/JBG/BIE | [Joint Bi-level Image Experts Group](https://en.wikipedia.org/wiki/JBIG) | JBIG-KIT
 JIF | Jeff's Image Format | NConvert
 JLS | JPEG-LS | LOCO
 JNG | [JPEG Network Graphics](https://en.wikipedia.org/wiki/JPEG_Network_Graphics) | ImageMagick
@@ -365,6 +366,7 @@ STX | Atari ST Pasti | Deark
 * [FLIF](http://flif.info/)
 * [Ghostscript](https://ghostscript.com)
 * [ImageMagick](https://github.com/ImageMagick/ImageMagick)
+* [JBIG-KIT](https://www.cl.cam.ac.uk/~mgk25/jbigkit/)
 * [jxrlib](https://github.com/4creators/jxrlib)
 * [Lhasa](http://fragglet.github.io/lhasa/)
 * [libbpg](https://bellard.org/bpg/)
@@ -395,7 +397,6 @@ STX | Atari ST Pasti | Deark
 * GRAY/GRAYA
 * HEIC/HEIF
 * HPGL
-* JBIG
 * MONO - no header
 * MPO - multi page, only first page is loaded
 * MTV - unusable header
@@ -539,7 +540,7 @@ STX | Atari ST Pasti | Deark
 * Iris CT - no samples
 * Iris Graphics - ?
 * J Wavelet Image Codec
-* JBIG/JBIG2
+* JBIG2
 * JPEG 8BIM
 * Jigsaw 2 - samples from http://fileformats.archiveteam.org/wiki/Jigsaw_(Walter_A._Kuhn) look wrong
 * Jovian Logic VI - no samples

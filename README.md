@@ -80,7 +80,7 @@ GPH | PrintPartner Graphics | Deark
 GRB/GRO | [HP-48](https://en.wikipedia.org/wiki/HP_48_series)/49 GROB | NConvert
 GUN | C64 Gunpaint | NConvert
 HBM/HIR | C64 Hires Bitmap | NConvert
-HDR | [Radiance RGBE](https://en.wikipedia.org/wiki/RGBE_image_format) | ImageMagick
+HDR/PIC | [Radiance RGBE](https://en.wikipedia.org/wiki/RGBE_image_format) | ImageMagick
 HED | C64 Hi-Eddi | NConvert
 HPI | Hemera Photo-Object | NConvert
 HR | [TRS-80](https://en.wikipedia.org/wiki/TRS-80) High Resolution | NConvert
@@ -409,9 +409,9 @@ STX | Atari ST Pasti | Deark
 * PSD/PSB/TIFF/XCF layers
 * PTIF - multi page
 * PWP - multi page
-* RAD
+* RAD - http://fileformats.archiveteam.org/wiki/Radiance_Scene_Description
 * RAW/RGB/UYVY/YUV - no header
-* RGF - https://mattrajca.com/2016/01/06/legos-rgf-file-format.html
+* RGF - no samples; see https://mattrajca.com/2016/01/06/legos-rgf-file-format.html
 * SID
 * TGA - unhelpful header
 * TTF
@@ -632,7 +632,6 @@ STX | Atari ST Pasti | Deark
 * QDV - no samples
 * Quantel VPB - inconsistent header; samples on https://github.com/GeoSpark/vpb-converter/tree/master/samples
 * RIPscrip icon - can't figure out format
-* Radiance PIC/RAD - failed on samples from https://radsite.lbl.gov/radiance/pub/pics/index.html
 * Rayshade PIC - same as MTV but doesn't work?
 * Red Storm RSB - no samples
 * Ricoh J6I - no samples

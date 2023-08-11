@@ -156,11 +156,14 @@ begin
 end;
 
 procedure THiveView.memDebugChange(Sender: TObject);
+var LastFocus: TWinControl;
 begin
+  LastFocus := Screen.ActiveControl as TWinControl; // Save previous focus.
   if HiveView.Visible and HiveView.Enabled then memDebug.SetFocus
     else exit;
   memDebug.SelStart := memDebug.GetTextLen;
   SendMessage(memDebug.Handle,EM_SCROLLCARET,0,0); // Scroll to bottom of debug text.
+  LastFocus.SetFocus; // Restore focus.
 end;
 
 procedure THiveView.menuDrivesClick(Sender: TObject);

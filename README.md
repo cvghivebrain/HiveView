@@ -281,7 +281,8 @@ SVG | [Scalable Vector Graphics](https://en.wikipedia.org/wiki/SVG) | ImageMagic
 
 Ext. | Description | Program
 --- | --- | ---
-CRD | [Windows Cardfile](https://en.wikipedia.org/wiki/Cardfile) (extracts embedded images only) | Deark
+CRD | [Windows Cardfile](https://en.wikipedia.org/wiki/Cardfile) (embedded images only) | Deark
+PDF | [Portable Document Format](https://en.wikipedia.org/wiki/PDF) (pages and embedded images) | Ghostscript & pdfimages
 
 ## Supported font formats
 
@@ -373,6 +374,7 @@ STX | Atari ST Pasti | Deark
 * [libjxl](https://jpeg.org/jpegxl/software.html)
 * [LOCO](https://www.hpl.hp.com/loco/)
 * [NConvert](https://www.xnview.com/en/nconvert/)
+* [pdfimages](https://www.xpdfreader.com/pdfimages-man.html)
 * [pwcdecode](http://www.caravian.com/research/index.htm)
 * [Swiss File Knife](http://stahlworks.com/swiss-file-knife.html)
 * [UnRAR](https://www.rarlab.com/)
@@ -386,7 +388,7 @@ STX | Atari ST Pasti | Deark
 * CMYK/CMYKA - no header?
 * CUT (Dr. Halo clip mask) - tricky detection
 * DCM - multi page sometimes?; failed on (some) samples from https://telparia.com/fileFormatSamples/image/dicom/
-* DJVU/EPDF/HTML/MAN/PDF/POCKETMOD - multi page/embedded images
+* DJVU/EPDF/HTML/MAN/POCKETMOD - multi page/embedded images
 * DNG/NEF - loads as TIFF but better detection needed
 * DMR
 * DOT graph format
@@ -616,7 +618,6 @@ STX | Atari ST Pasti | Deark
 * Playback Bitmap Sequence - ?
 * Pocket PC Theme - just a CAB file?
 * Polychrome Recursive Format - no samples
-* PDF - document format
 * Portrait CVP - ?
 * Poser Bump Map - same as BMP?
 * Powercard - no samples

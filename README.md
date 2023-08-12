@@ -129,6 +129,7 @@ MIFF/MIF | Magick Multispectral Image File Format | NConvert
 MIL | C64 Micro Illustrator | NConvert
 MPC+CACHE | ImageMagick Magick Pixel Cache | ImageMagick
 MPH | MonkeyPhoto (JPEG variant) | ImageMagick
+MPO | Multi Picture Object | Deark
 MRW | Minolta Raw | ImageMagick
 MSP | [Microsoft Paint](https://en.wikipedia.org/wiki/Microsoft_Paint) | Deark
 NEF | Nikon Electronic Format (TIFF variant) | ImageMagick
@@ -400,7 +401,6 @@ STX | Atari ST Pasti | Deark
 * HEIC/HEIF
 * HPGL
 * MONO - no header
-* MPO - multi page, only first page is loaded
 * MTV - unusable header
 * MVG - failed on sample
 * PCL

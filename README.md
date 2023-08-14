@@ -291,12 +291,16 @@ Ext. | Description | Program
 --- | --- | ---
 FNT | Windows Font | Deark
 FNT/GFT | GEM Bitmap Font | Deark
+OTF | [OpenType Font](https://en.wikipedia.org/wiki/OpenType) | ImageMagick
 PCF | X11 Portable Compiled Format | Deark
 PCR | OPTIKS Font | Deark
 PF2 | PUPA Font Format | Deark
+PFA | Adobe Type 1 ASCII | ImageMagick
+PFB | Adobe Type 1 Binary | ImageMagick
 PK | Packed Font | Deark
 PSF | PC Screen Font | Deark
 SET | GRASP Font | Deark
+TTF | [TrueType Font](https://en.wikipedia.org/wiki/TrueType) | ImageMagick
 
 ## Supported archive formats
 
@@ -404,17 +408,15 @@ STX | Atari ST Pasti | Deark
 * MTV - unusable header
 * MVG - failed on sample
 * PCL
-* PFA/PFB
 * PICT - failed on samples from http://cd.textfiles.com/cdreview/cdreview66/PCT01_01/PC0101P/
 * PSD/PSB/TIFF/XCF layers
-* PTIF - multi page
-* PWP - multi page
+* PTIF - multi page; no samples
+* PWP - multi page; no samples
 * RAD - http://fileformats.archiveteam.org/wiki/Radiance_Scene_Description
 * RAW/RGB/UYVY/YUV - no header
 * RGF - no samples; see https://mattrajca.com/2016/01/06/legos-rgf-file-format.html
-* SID
+* MrSID
 * TGA - unhelpful header
-* TTF
 
 ### NConvert
 * 3DS Max thumbnails - stored in Microsoft Compound Format

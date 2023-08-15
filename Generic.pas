@@ -5,7 +5,8 @@ interface
 uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StrUtils, ExtCtrls, StdCtrls, pngimage, PNGFunc, Vcl.ComCtrls,
-  Vcl.FileCtrl, IOUtils, CRCFunc, ExplodeFunc, FileFunc, SolveFunc;
+  Vcl.FileCtrl, IOUtils, CRCFunc, ExplodeFunc, FileFunc, SolveFunc,
+  Vcl.WinXCtrls;
 
 type
   THiveView = class(TForm)
@@ -31,13 +32,14 @@ type
     btnSave: TButton;
     lstSubfiles: TListBox;
     memDebug: TRichEdit;
+    searchFormat: TSearchBox;
+    lstFormat: TListBox;
     procedure FormCreate(Sender: TObject);
     procedure menuFoldersClick(Sender: TObject);
     procedure menuFilesClick(Sender: TObject);
-    procedure DoConvert(i: integer; targetfile: string);
+    procedure DoConvert(i: integer);
     function MakeCommand(s, targetfile, tempfolderlocal: string): string;
     procedure DoUnpack(i: integer);
-    procedure DoUnpackSub(i: integer; subfile: string);
     procedure DoRaw(i: integer);
     procedure DefaultFormat;
     procedure btnReloadClick(Sender: TObject);
@@ -56,6 +58,8 @@ type
     procedure CleanTempFolder;
     procedure lstSubfilesClick(Sender: TObject);
     procedure memDebugChange(Sender: TObject);
+    procedure searchFormatChange(Sender: TObject);
+    procedure lstFormatClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -69,6 +73,9 @@ var
   inicontent: array[0..10000, 0..15] of string;
   palarray: array[0..1024] of byte;
   thisfolder, tempfolder, tempfilepath: string;
+  formatmatch: array[0..10000] of integer;
+  submode: boolean;
+  currentfile: string;
 
 const
   ini_name: integer = 0;
@@ -178,6 +185,7 @@ end;
 procedure THiveView.menuFoldersClick(Sender: TObject);
 begin
   menuFolders.Perform(WM_LBUTTONDBLCLK,0,0); // Simulate double click to load folder on single click.
+  CleanTempFolder;
   menuFiles.Directory := menuFolders.Directory; // Show files.
   memDebug.Lines.Add(menuFolders.Directory);
 end;
@@ -187,24 +195,26 @@ var i: integer;
   matchfound: boolean;
 begin
   if menuFiles.ItemIndex = -1 then exit; // Do nothing if not clicked on an item.
-  LoadFile(menuFiles.FileName); // Load file to memory.
-  memDebug.Lines.Add(menuFiles.FileName+' ('+IntToStr(fs)+' bytes)');
+  submode := false;
+  currentfile := menuFiles.FileName;
+  LoadFile(currentfile); // Load file to memory.
+  memDebug.Lines.Add(currentfile+' ('+IntToStr(fs)+' bytes)');
   if fs = 0 then exit; // Stop if file is 0 bytes.
-  DefaultFormat; // Use default settings.
   CleanTempFolder;
+
+  DefaultFormat; // Use default settings.
   matchfound := false; // Assume no match.
   imgMain.Visible := false;
   for i := 0 to iniformats do
-    begin
-    if Solve(inicontent[i,ini_if]) > 0 then // Check file with condition from ini.
-      begin
-      if inicontent[i,ini_unpack] <> '' then DoUnpack(i); // Check for unpack/decompress by external program.
-      if inicontent[i,ini_convert] <> '' then DoConvert(i,menuFiles.FileName) // Check for conversion by external program.
-        else DoRaw(i); // Load as raw using settings from ini.
-      matchfound := true;
-      break; // Stop checking for format matches.
-      end;
-    end;
+    if inicontent[i,ini_if] <> '' then
+      if Solve(inicontent[i,ini_if]) > 0 then // Check file with condition from ini.
+        begin
+        if inicontent[i,ini_unpack] <> '' then DoUnpack(i); // Check for unpack/decompress by external program.
+        if inicontent[i,ini_convert] <> '' then DoConvert(i) // Check for conversion by external program.
+          else DoRaw(i); // Load as raw using settings from ini.
+        matchfound := true;
+        break; // Stop checking for format matches.
+        end;
   if not matchfound then
     begin
     memDebug.Lines.Add('File format not recognised. Using default settings.'); // No match found.
@@ -214,15 +224,17 @@ end;
 
 procedure THiveView.lstSubfilesClick(Sender: TObject);
 var i: integer;
-  subfilename, subfilepath: string;
+  subfilename: string;
   matchfound: boolean;
 begin
   if lstSubfiles.ItemIndex = -1 then exit; // Do nothing if not clicked on an item.
+  submode := true;
   subfilename := lstSubfiles.Items[lstSubfiles.ItemIndex];
-  subfilepath := tempfolder+subfilename;
-  LoadFile(subfilepath); // Load file to memory.
+  currentfile := tempfolder+subfilename;
+  LoadFile(currentfile); // Load file to memory.
   memDebug.Lines.Add(menuFiles.FileName+subfilename+' ('+IntToStr(fs)+' bytes)');
   if fs = 0 then exit; // Stop if file is 0 bytes.
+
   DefaultFormat; // Use default settings.
   matchfound := false; // Assume no match.
   imgMain.Visible := false;
@@ -230,8 +242,8 @@ begin
     begin
     if Solve(inicontent[i,ini_if]) > 0 then // Check file with condition from ini.
       begin
-      if inicontent[i,ini_unpack] <> '' then DoUnpackSub(i,subfilepath); // Check for unpack/decompress by external program.
-      if inicontent[i,ini_convert] <> '' then DoConvert(i,subfilepath) // Check for conversion by external program.
+      if inicontent[i,ini_unpack] <> '' then DoUnpack(i); // Check for unpack/decompress by external program.
+      if inicontent[i,ini_convert] <> '' then DoConvert(i) // Check for conversion by external program.
         else DoRaw(i); // Load as raw using settings from ini.
       matchfound := true;
       break; // Stop checking for format matches.
@@ -246,7 +258,7 @@ end;
 
 { Convert file to PNG using external program. }
 
-procedure THiveView.DoConvert(i: integer; targetfile: string);
+procedure THiveView.DoConvert(i: integer);
 var c, c2: string;
   j: integer;
 begin
@@ -256,7 +268,7 @@ begin
   j := 0;
   while Explode(c,'&&',j) <> '' do // Multiple commands separated by &&.
     begin
-    c2 := MakeCommand(Explode(c,'&&',j),targetfile,tempfolder);
+    c2 := MakeCommand(Explode(c,'&&',j),currentfile,tempfolder);
     //memDebug.Lines.Add(c2);
     RunCommand(c2); // Create temp.png.
     Inc(j); // Next command.
@@ -289,44 +301,32 @@ end;
 { Unpack archive using external program. }
 
 procedure THiveView.DoUnpack(i: integer);
-var c, c2: string;
+var c, c2, unpackto: string;
   j: integer;
 begin
+  if submode then // Check if this is a file within a file.
+    begin
+    unpackto := currentfile+'_';
+    if SysUtils.DirectoryExists(unpackto) then exit // Do nothing if already unpacked.
+      else CreateDir(unpackto); // Create folder with same name as target file.
+    end
+  else unpackto := tempfolder;
   ShowFormat(inicontent[i,ini_name]);
   memDebug.Lines.Add('Unpacking with external program...');
   c := inicontent[i,ini_unpack];
   j := 0;
   while Explode(c,'&&',j) <> '' do // Multiple commands separated by &&.
     begin
-    c2 := MakeCommand(Explode(c,'&&',j),menuFiles.FileName,tempfolder);
+    c2 := MakeCommand(Explode(c,'&&',j),currentfile,unpackto);
     RunCommand(c2); // Unpack to temp folder.
     Inc(j); // Next command.
     end;
-  ListFiles(tempfolder,true); // Create list of files. See filelist array.
-  for j := 0 to Length(filelist)-1 do lstSubfiles.Items.Add(filelist[j]);
-  if Length(filelist) = 1 then memDebug.Lines.Add(IntToStr(Length(filelist))+' file extracted.')
-    else memDebug.Lines.Add(IntToStr(Length(filelist))+' files extracted.');
-end;
-
-procedure THiveView.DoUnpackSub(i: integer; subfile: string);
-var c, c2, subfolder: string;
-  j: integer;
-begin
-  subfolder := subfile+'_';
-  if SysUtils.DirectoryExists(subfolder) then exit // Do nothing if already unpacked.
-    else CreateDir(subfolder); // Create folder with same name as target file.
-  ShowFormat(inicontent[i,ini_name]);
-  memDebug.Lines.Add('Unpacking with external program...');
-  c := inicontent[i,ini_unpack];
-  j := 0;
-  while Explode(c,'&&',j) <> '' do // Multiple commands separated by &&.
+  ListFiles(unpackto,true); // Create list of files. See filelist array.
+  for j := 0 to Length(filelist)-1 do
     begin
-    c2 := MakeCommand(Explode(c,'&&',j),subfile,subfolder);
-    RunCommand(c2); // Unpack to temp folder.
-    Inc(j); // Next command.
+    if not submode then lstSubfiles.Items.Add(filelist[j])
+      else lstSubfiles.Items.Insert(lstSubfiles.ItemIndex+1,lstSubfiles.Items[lstSubfiles.ItemIndex]+'_'+filelist[j]);
     end;
-  ListFiles(subfolder,true); // Create list of files. See filelist array.
-  for j := 0 to Length(filelist)-1 do lstSubfiles.Items.Insert(lstSubfiles.ItemIndex+1,lstSubfiles.Items[lstSubfiles.ItemIndex]+'_'+filelist[j]);
   if Length(filelist) = 1 then memDebug.Lines.Add(IntToStr(Length(filelist))+' file extracted.')
     else memDebug.Lines.Add(IntToStr(Length(filelist))+' files extracted.');
 end;
@@ -378,8 +378,8 @@ end;
 
 procedure THiveView.DefaultFormat;
 begin
-  editW.Text := '100'; // Set default values for image format.
-  editH.Text := '100';
+  editW.Text := '256'; // Set default values for image format.
+  editH.Text := '256';
   editPixLoc.Text := '0';
   editBPC.Text := '24';
   editR.Text := '{val}>>16';
@@ -578,6 +578,31 @@ begin
     end
   else CreateDir(tempfolder); // Create temp folder.
   lstSubfiles.Clear; // Empty list.
+end;
+
+procedure THiveView.searchFormatChange(Sender: TObject);
+var i: integer;
+begin
+  if searchFormat.Text = '' then exit; // Do nothing if search is empty.
+  if currentfile = '' then exit; // Do nothing if file isn't loaded.
+  lstFormat.Clear; // Clear list of matches.
+  for i := 0 to iniformats do
+    begin
+    if AnsiPos(AnsiLowerCase(searchFormat.Text),AnsiLowerCase(inicontent[i,ini_name])) <> 0 then
+      begin
+      lstFormat.Items.Add(inicontent[i,ini_name]); // Add format name to list.
+      formatmatch[lstFormat.Items.Count-1] := i; // Save format numerical id.
+      end;
+    end;
+end;
+
+procedure THiveView.lstFormatClick(Sender: TObject);
+var i: integer;
+begin
+  if lstFormat.ItemIndex = -1 then exit; // Do nothing if not clicked on an item.
+  i := formatmatch[lstFormat.ItemIndex];
+  if inicontent[i,ini_unpack] <> '' then DoUnpack(i); // Check for unpack/decompress by external program.
+  if inicontent[i,ini_convert] <> '' then DoConvert(i) // Check for conversion by external program.
 end;
 
 end.

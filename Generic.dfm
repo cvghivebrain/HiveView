@@ -292,6 +292,23 @@ object HiveView: THiveView
     Zoom = 100
     OnChange = memDebugChange
   end
+  object searchFormat: TSearchBox
+    Left = 455
+    Top = 635
+    Width = 253
+    Height = 21
+    TabOrder = 8
+    OnChange = searchFormatChange
+  end
+  object lstFormat: TListBox
+    Left = 455
+    Top = 656
+    Width = 253
+    Height = 101
+    ItemHeight = 13
+    TabOrder = 9
+    OnClick = lstFormatClick
+  end
   object dlgSave: TSaveDialog
     Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
     Left = 712

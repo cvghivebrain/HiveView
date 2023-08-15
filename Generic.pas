@@ -37,6 +37,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure menuFoldersClick(Sender: TObject);
     procedure menuFilesClick(Sender: TObject);
+    procedure CheckFormat;
     procedure DoConvert(i: integer);
     function MakeCommand(s, targetfile, tempfolderlocal: string): string;
     procedure DoUnpack(i: integer);
@@ -191,8 +192,6 @@ begin
 end;
 
 procedure THiveView.menuFilesClick(Sender: TObject);
-var i: integer;
-  matchfound: boolean;
 begin
   if menuFiles.ItemIndex = -1 then exit; // Do nothing if not clicked on an item.
   submode := false;
@@ -201,7 +200,13 @@ begin
   memDebug.Lines.Add(currentfile+' ('+IntToStr(fs)+' bytes)');
   if fs = 0 then exit; // Stop if file is 0 bytes.
   CleanTempFolder;
+  CheckFormat; // Find matching format and display image.
+end;
 
+procedure THiveView.CheckFormat;
+var i: integer;
+  matchfound: boolean;
+begin
   DefaultFormat; // Use default settings.
   matchfound := false; // Assume no match.
   imgMain.Visible := false;
@@ -210,8 +215,8 @@ begin
       if Solve(inicontent[i,ini_if]) > 0 then // Check file with condition from ini.
         begin
         if inicontent[i,ini_unpack] <> '' then DoUnpack(i); // Check for unpack/decompress by external program.
-        if inicontent[i,ini_convert] <> '' then DoConvert(i) // Check for conversion by external program.
-          else DoRaw(i); // Load as raw using settings from ini.
+        if inicontent[i,ini_convert] <> '' then DoConvert(i); // Check for conversion by external program.
+        if (inicontent[i,ini_unpack]+inicontent[i,ini_convert] = '') then DoRaw(i); // Load as raw using settings from ini.
         matchfound := true;
         break; // Stop checking for format matches.
         end;
@@ -223,9 +228,7 @@ begin
 end;
 
 procedure THiveView.lstSubfilesClick(Sender: TObject);
-var i: integer;
-  subfilename: string;
-  matchfound: boolean;
+var subfilename: string;
 begin
   if lstSubfiles.ItemIndex = -1 then exit; // Do nothing if not clicked on an item.
   submode := true;
@@ -234,26 +237,7 @@ begin
   LoadFile(currentfile); // Load file to memory.
   memDebug.Lines.Add(menuFiles.FileName+subfilename+' ('+IntToStr(fs)+' bytes)');
   if fs = 0 then exit; // Stop if file is 0 bytes.
-
-  DefaultFormat; // Use default settings.
-  matchfound := false; // Assume no match.
-  imgMain.Visible := false;
-  for i := 0 to iniformats do
-    begin
-    if Solve(inicontent[i,ini_if]) > 0 then // Check file with condition from ini.
-      begin
-      if inicontent[i,ini_unpack] <> '' then DoUnpack(i); // Check for unpack/decompress by external program.
-      if inicontent[i,ini_convert] <> '' then DoConvert(i) // Check for conversion by external program.
-        else DoRaw(i); // Load as raw using settings from ini.
-      matchfound := true;
-      break; // Stop checking for format matches.
-      end;
-    end;
-  if not matchfound then
-    begin
-    memDebug.Lines.Add('File format not recognised. Using default settings.'); // No match found.
-    LoadImage; // Load as raw using default settings.
-    end;
+  CheckFormat; // Find matching format and display image.
 end;
 
 { Convert file to PNG using external program. }
@@ -600,9 +584,11 @@ procedure THiveView.lstFormatClick(Sender: TObject);
 var i: integer;
 begin
   if lstFormat.ItemIndex = -1 then exit; // Do nothing if not clicked on an item.
+  DefaultFormat; // Use default settings.
   i := formatmatch[lstFormat.ItemIndex];
   if inicontent[i,ini_unpack] <> '' then DoUnpack(i); // Check for unpack/decompress by external program.
-  if inicontent[i,ini_convert] <> '' then DoConvert(i) // Check for conversion by external program.
+  if inicontent[i,ini_convert] <> '' then DoConvert(i); // Check for conversion by external program.
+  if (inicontent[i,ini_unpack]+inicontent[i,ini_convert] = '') then DoRaw(i); // Load as raw using settings from ini.
 end;
 
 end.

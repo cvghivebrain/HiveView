@@ -247,24 +247,28 @@ var c, c2: string;
   j: integer;
 begin
   if inicontent[i,ini_unpack] = '' then ShowFormat(inicontent[i,ini_name]);
-  memDebug.Lines.Add('Converting with external program...');
   c := inicontent[i,ini_convert];
-  j := 0;
-  while Explode(c,'&&',j) <> '' do // Multiple commands separated by &&.
+  if c = 'open' then LoadPNG(currentfile)
+  else
     begin
-    c2 := MakeCommand(Explode(c,'&&',j),currentfile,tempfolder);
-    //memDebug.Lines.Add(c2);
-    RunCommand(c2); // Create temp.png.
-    Inc(j); // Next command.
+    memDebug.Lines.Add('Converting with external program...');
+    j := 0;
+    while Explode(c,'&&',j) <> '' do // Multiple commands separated by &&.
+      begin
+      c2 := MakeCommand(Explode(c,'&&',j),currentfile,tempfolder);
+      //memDebug.Lines.Add(c2);
+      RunCommand(c2); // Create temp.png.
+      Inc(j); // Next command.
+      end;
+    if not FileExists(tempfilepath) then
+      begin
+      memDebug.Lines.Add('Conversion failed.');
+      exit;
+      end;
+    LoadPNG(tempfilepath);
+    DeleteFile(tempfilepath); // Delete temp.png.
     end;
-  if not FileExists(tempfilepath) then
-    begin
-    memDebug.Lines.Add('Conversion failed.');
-    exit;
-    end;
-  LoadPNG(tempfilepath);
   DisplayImage; // Display temp.png.
-  DeleteFile(tempfilepath); // Delete temp.png.
   imgw := PNG.Width; // Get image width.
   imgh := PNG.Height; // Get image height.
   ShowImageInfo;

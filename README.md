@@ -58,7 +58,6 @@ DOO | Atari ST Doodle | Deark
 DPX | SMPTE Digital Moving Picture Exchange | ImageMagick
 DRAW | Acorn RISC OS Draw, embedded sprites only | Deark
 DRZ/DRP | C64 Draz Paint | NConvert
-EMF | Enhanced Metafile | NConvert
 EPA | Award BIOS Logo | Deark
 ESM | Atari ST Enhanced Simplex | NConvert
 EXR | Industrial Light & Magic [OpenEXR](https://en.wikipedia.org/wiki/OpenEXR) | ImageMagick
@@ -141,7 +140,6 @@ NOL | Nokia Operator Logo | NConvert
 NPM | Nokia Picture Message | Deark
 NSL | Nokia Startup Logo | Deark
 OCP | C64 [Advanced OCP Art Studio](https://en.wikipedia.org/wiki/OCP_Art_Studio) | NConvert
-ORA | [OpenRaster](https://en.wikipedia.org/wiki/OpenRaster), actually a ZIP file containing PNGs | 7-Zip
 ORF | [Olympus Raw](https://en.wikipedia.org/wiki/ORF_format) | ImageMagick
 OTB | Nokia [Over the Air Bitmap](https://en.wikipedia.org/wiki/OTA_bitmap) | ImageMagick
 P64 | C64 Picasso 64 | NConvert
@@ -172,7 +170,6 @@ PIC | Psion Series 3 bitmap | Deark
 PIC | WinMiPS | NConvert
 PIC/PCT/PIX | [BSAVE/BLOAD](https://en.wikipedia.org/wiki/BSAVE), including compressed files | Deark
 PIC/CAP/TEM | PC Storyboard | Deark
-PICT/PIC | Apple Macintosh [QuickDraw](https://en.wikipedia.org/wiki/QuickDraw) [PICT](https://en.wikipedia.org/wiki/PICT) | NConvert
 PIX | Alias PIX | NConvert
 PIX | Esm Software PIX (JPEG with header) | Swiss File Knife
 PIX | Inset, a DOS program | Deark
@@ -183,9 +180,7 @@ PNG | [Portable Network Graphics](https://en.wikipedia.org/wiki/PNG) | n/a
 PNT | Atari ST Prism Paint/TruePaint | Deark
 PNT | [DeskMate Paint](https://en.wikipedia.org/wiki/DeskMate) | Deark
 POG+PNM | [The New Print Shop](https://en.wikipedia.org/wiki/The_Print_Shop) | Deark
-PSD/PSB | Adobe [Photoshop](https://en.wikipedia.org/wiki/Adobe_Photoshop) | ImageMagick
 PSF | ArcSoft PhotoStudio | NConvert
-PSP | Jasc [PaintShop Pro](https://en.wikipedia.org/wiki/PaintShop_Pro) | NConvert
 PTR | OS/2 Mouse Pointer | Deark
 PWC | [Piecewise-Constant Image Model](http://www.caravian.com/research/index.htm) | pwcdecode
 PXA | [Pixia](https://en.wikipedia.org/wiki/Pixia) | NConvert
@@ -234,13 +229,10 @@ WAL | [Quake II](https://en.wikipedia.org/wiki/Quake_II) Texture | NConvert
 WBC/WB1 | Webshots | NConvert
 WBMP | [Wireless Application Protocol Bitmap](https://en.wikipedia.org/wiki/Wireless_Application_Protocol_Bitmap_Format) | NConvert
 WEBP | Google [WebP](https://en.wikipedia.org/wiki/WebP) | ImageMagick
-WMF | [Windows Metafile](https://en.wikipedia.org/wiki/Windows_Metafile) | NConvert
-WPG | [WordPerfect Graphics](https://en.wikipedia.org/wiki/WordPerfect) | ImageMagick
 WZL | Winzle Puzzle | NConvert
 X3F | Sigma/Foveon Raw | x3f_extract
 XB | [Extended Binary](https://en.wikipedia.org/wiki/XBin) | Deark
 XBM | [X Window System Bitmap](https://en.wikipedia.org/wiki/X_BitMap) | ImageMagick
-XCF | GIMP [Experimental Computing Facility](https://en.wikipedia.org/wiki/XCF_(file_format)) | ImageMagick
 XGA | Atari Falcon TrueColor Screen | Deark
 XIF | Xerox Image File Format | NConvert
 XIMG/IMG | GEM Raster | NConvert
@@ -277,6 +269,19 @@ PES | Embroidery file | ImageMagick
 PS | Adobe [PostScript](https://en.wikipedia.org/wiki/PostScript) | Ghostscript
 SLB | AutoCAD Slide Library | Deark
 SVG | [Scalable Vector Graphics](https://en.wikipedia.org/wiki/SVG) | ImageMagick
+
+## Supported raster-vector image formats
+
+Ext. | Description | Program
+--- | --- | ---
+EMF | Enhanced Metafile | NConvert
+ORA | [OpenRaster](https://en.wikipedia.org/wiki/OpenRaster), actually a ZIP file containing PNGs | 7-Zip
+PICT/PIC | Apple Macintosh [QuickDraw](https://en.wikipedia.org/wiki/QuickDraw) [PICT](https://en.wikipedia.org/wiki/PICT) | NConvert
+PSD/PSB | Adobe [Photoshop](https://en.wikipedia.org/wiki/Adobe_Photoshop) | ImageMagick
+PSP | Jasc [PaintShop Pro](https://en.wikipedia.org/wiki/PaintShop_Pro) | NConvert
+WMF | [Windows Metafile](https://en.wikipedia.org/wiki/Windows_Metafile) | NConvert
+WPG | [WordPerfect Graphics](https://en.wikipedia.org/wiki/WordPerfect) | ImageMagick
+XCF | GIMP [Experimental Computing Facility](https://en.wikipedia.org/wiki/XCF_(file_format)) | ImageMagick
 
 ## Supported document formats
 

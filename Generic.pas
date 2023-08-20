@@ -34,6 +34,7 @@ type
     memDebug: TRichEdit;
     searchFormat: TSearchBox;
     lstFormat: TListBox;
+    editPalData: TLabeledEdit;
     procedure FormCreate(Sender: TObject);
     procedure menuFoldersClick(Sender: TObject);
     procedure menuFilesClick(Sender: TObject);
@@ -71,7 +72,7 @@ var
   HiveView: THiveView;
   bitspercolor, bytespercolor, bitsperindex, bytesperindex,
     palsize, imgw, imgh, iniformats: integer;
-  inicontent: array[0..10000, 0..15] of string;
+  inicontent: array[0..10000, 0..16] of string;
   palarray: array[0..1024] of byte;
   thisfolder, tempfolder, tempfilepath: string;
   formatmatch: array[0..10000] of integer;
@@ -95,6 +96,7 @@ const
   ini_palbits: integer = 13;
   ini_convert: integer = 14;
   ini_unpack: integer = 15;
+  ini_paldata: integer = 16;
 
 implementation
 
@@ -144,6 +146,7 @@ begin
     else if AnsiPos('palette=',s) = 1 then inicontent[i,ini_palenable] := Explode(s,'palette=',1)
     else if AnsiPos('palstart=',s) = 1 then inicontent[i,ini_palstart] := Explode(s,'palstart=',1)
     else if AnsiPos('palsize=',s) = 1 then inicontent[i,ini_palsize] := Explode(s,'palsize=',1)
+    else if AnsiPos('paldata=',s) = 1 then inicontent[i,ini_paldata] := Explode(s,'paldata=',1)
     else if AnsiPos('bitsperindex=',s) = 1 then inicontent[i,ini_palbits] := Explode(s,'bitsperindex=',1)
     else if AnsiPos('unpack=',s) = 1 then inicontent[i,ini_unpack] := Explode(s,'unpack=',1)
     else if AnsiPos('convert=',s) = 1 then inicontent[i,ini_convert] := Explode(s,'convert=',1);
@@ -335,11 +338,13 @@ begin
   if inicontent[i,ini_palstart] <> '' then editPalLoc.Text := inicontent[i,ini_palstart];
   if inicontent[i,ini_palsize] <> '' then editPalSize.Text := inicontent[i,ini_palsize];
   if inicontent[i,ini_palbits] <> '' then editPalBits.Text := inicontent[i,ini_palbits];
+  if inicontent[i,ini_paldata] <> '' then editPalData.Text := inicontent[i,ini_paldata];
   if inicontent[i,ini_palenable] = 'yes' then chkPalette.Checked := true
     else chkPalette.Checked := false;
   editPalLoc.Enabled := chkPalette.Checked;
   editPalSize.Enabled := chkPalette.Checked;
   editPalBits.Enabled := chkPalette.Checked;
+  editPalData.Enabled := chkPalette.Checked;
   ShowFormat(inicontent[i,ini_name]);
   LoadImage; // Load image as raw using parameters from ini.
 end;
@@ -360,6 +365,7 @@ begin
   editPalLoc.Enabled := chkPalette.Checked;
   editPalSize.Enabled := chkPalette.Checked;
   editPalBits.Enabled := chkPalette.Checked;
+  editPalData.Enabled := chkPalette.Checked;
 end;
 
 { Write default values to menu. }
@@ -381,6 +387,8 @@ begin
   editPalLoc.Enabled := false;
   editPalSize.Enabled := false;
   editPalBits.Enabled := false;
+  editPalData.Text := '';
+  editPalData.Enabled := false;
 end;
 
 { Check menu settings and load image using specified method. }
@@ -487,7 +495,8 @@ begin
     else fixedalpha := false; // Alpha value is different for each colour.
   for i := 0 to palsize-1 do
     begin
-    val := GetColorVal(pos,bytespercolor); // Get whole colour ("val" is SolveFunc variable).
+    if Explode(editPalData.Text,',',i) <> '' then val := Solve(Explode(editPalData.Text,',',i))
+      else val := GetColorVal(pos,bytespercolor); // Get whole colour ("val" is SolveFunc variable).
     r := Solve(editR.Text); // Get each colour channel.
     g := Solve(editG.Text);
     b := Solve(editB.Text);

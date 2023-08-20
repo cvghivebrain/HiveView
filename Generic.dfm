@@ -2,7 +2,7 @@ object HiveView: THiveView
   Left = 192
   Top = 124
   Caption = 'HiveView'
-  ClientHeight = 765
+  ClientHeight = 793
   ClientWidth = 1289
   Color = clBtnFace
   Font.Charset = DEFAULT_CHARSET
@@ -69,14 +69,14 @@ object HiveView: THiveView
     Left = 8
     Top = 499
     Width = 441
-    Height = 258
+    Height = 286
     Caption = 'Raw Image Format'
     TabOrder = 3
     object editW: TLabeledEdit
       Left = 11
-      Top = 40
+      Top = 32
       Width = 100
-      Height = 27
+      Height = 25
       EditLabel.Width = 28
       EditLabel.Height = 13
       EditLabel.Caption = 'Width'
@@ -90,9 +90,9 @@ object HiveView: THiveView
     end
     object editH: TLabeledEdit
       Left = 117
-      Top = 40
+      Top = 32
       Width = 100
-      Height = 27
+      Height = 25
       EditLabel.Width = 31
       EditLabel.Height = 13
       EditLabel.Caption = 'Height'
@@ -106,9 +106,9 @@ object HiveView: THiveView
     end
     object editPixLoc: TLabeledEdit
       Left = 223
-      Top = 40
+      Top = 32
       Width = 100
-      Height = 27
+      Height = 25
       EditLabel.Width = 63
       EditLabel.Height = 13
       EditLabel.Caption = 'Pixel Address'
@@ -122,9 +122,9 @@ object HiveView: THiveView
     end
     object editBPC: TLabeledEdit
       Left = 329
-      Top = 40
+      Top = 32
       Width = 100
-      Height = 27
+      Height = 25
       EditLabel.Width = 63
       EditLabel.Height = 13
       EditLabel.Caption = 'Bits Per Color'
@@ -138,9 +138,9 @@ object HiveView: THiveView
     end
     object editR: TLabeledEdit
       Left = 11
-      Top = 88
+      Top = 80
       Width = 206
-      Height = 27
+      Height = 25
       EditLabel.Width = 20
       EditLabel.Height = 13
       EditLabel.Caption = 'Red'
@@ -154,9 +154,9 @@ object HiveView: THiveView
     end
     object editG: TLabeledEdit
       Left = 223
-      Top = 88
+      Top = 80
       Width = 206
-      Height = 27
+      Height = 25
       EditLabel.Width = 29
       EditLabel.Height = 13
       EditLabel.Caption = 'Green'
@@ -170,9 +170,9 @@ object HiveView: THiveView
     end
     object editB: TLabeledEdit
       Left = 11
-      Top = 136
+      Top = 128
       Width = 206
-      Height = 27
+      Height = 25
       EditLabel.Width = 21
       EditLabel.Height = 13
       EditLabel.Caption = 'Blue'
@@ -186,9 +186,9 @@ object HiveView: THiveView
     end
     object editAlpha: TLabeledEdit
       Left = 223
-      Top = 136
+      Top = 128
       Width = 206
-      Height = 27
+      Height = 25
       EditLabel.Width = 27
       EditLabel.Height = 13
       EditLabel.Caption = 'Alpha'
@@ -202,7 +202,7 @@ object HiveView: THiveView
     end
     object chkPalette: TCheckBox
       Left = 14
-      Top = 178
+      Top = 162
       Width = 97
       Height = 17
       Caption = 'Use Palette'
@@ -211,9 +211,9 @@ object HiveView: THiveView
     end
     object editPalLoc: TLabeledEdit
       Left = 11
-      Top = 216
+      Top = 200
       Width = 100
-      Height = 27
+      Height = 25
       EditLabel.Width = 74
       EditLabel.Height = 13
       EditLabel.Caption = 'Palette Address'
@@ -227,9 +227,9 @@ object HiveView: THiveView
     end
     object editPalSize: TLabeledEdit
       Left = 117
-      Top = 216
+      Top = 200
       Width = 100
-      Height = 27
+      Height = 25
       EditLabel.Width = 69
       EditLabel.Height = 13
       EditLabel.Caption = 'Palette Length'
@@ -243,9 +243,9 @@ object HiveView: THiveView
     end
     object editPalBits: TLabeledEdit
       Left = 223
-      Top = 216
+      Top = 200
       Width = 100
-      Height = 27
+      Height = 25
       EditLabel.Width = 65
       EditLabel.Height = 13
       EditLabel.Caption = 'Bits Per Index'
@@ -256,6 +256,22 @@ object HiveView: THiveView
       Font.Style = []
       ParentFont = False
       TabOrder = 11
+    end
+    object editPalData: TLabeledEdit
+      Left = 11
+      Top = 248
+      Width = 312
+      Height = 27
+      EditLabel.Width = 59
+      EditLabel.Height = 13
+      EditLabel.Caption = 'Palette Data'
+      Font.Charset = ANSI_CHARSET
+      Font.Color = clWindowText
+      Font.Height = -16
+      Font.Name = 'Consolas'
+      Font.Style = []
+      ParentFont = False
+      TabOrder = 12
     end
   end
   object btnSave: TButton
@@ -269,7 +285,7 @@ object HiveView: THiveView
   end
   object btnReload: TButton
     Left = 337
-    Top = 684
+    Top = 716
     Width = 100
     Height = 58
     Caption = 'Reload as Raw'
@@ -294,7 +310,7 @@ object HiveView: THiveView
   end
   object searchFormat: TSearchBox
     Left = 455
-    Top = 635
+    Top = 647
     Width = 253
     Height = 21
     TabOrder = 8
@@ -302,9 +318,9 @@ object HiveView: THiveView
   end
   object lstFormat: TListBox
     Left = 455
-    Top = 656
+    Top = 668
     Width = 253
-    Height = 101
+    Height = 117
     ItemHeight = 13
     TabOrder = 9
     OnClick = lstFormatClick

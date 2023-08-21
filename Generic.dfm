@@ -23,6 +23,13 @@ object HiveView: THiveView
     Height = 57
     Visible = False
   end
+  object lblTime: TLabel
+    Left = 559
+    Top = 617
+    Width = 53
+    Height = 13
+    Caption = '0:00 / 0:00'
+  end
   object lstSubfiles: TListBox
     Left = 185
     Top = 177
@@ -76,7 +83,7 @@ object HiveView: THiveView
       Left = 11
       Top = 32
       Width = 100
-      Height = 25
+      Height = 27
       EditLabel.Width = 28
       EditLabel.Height = 13
       EditLabel.Caption = 'Width'
@@ -92,7 +99,7 @@ object HiveView: THiveView
       Left = 117
       Top = 32
       Width = 100
-      Height = 25
+      Height = 27
       EditLabel.Width = 31
       EditLabel.Height = 13
       EditLabel.Caption = 'Height'
@@ -108,7 +115,7 @@ object HiveView: THiveView
       Left = 223
       Top = 32
       Width = 100
-      Height = 25
+      Height = 27
       EditLabel.Width = 63
       EditLabel.Height = 13
       EditLabel.Caption = 'Pixel Address'
@@ -124,7 +131,7 @@ object HiveView: THiveView
       Left = 329
       Top = 32
       Width = 100
-      Height = 25
+      Height = 27
       EditLabel.Width = 63
       EditLabel.Height = 13
       EditLabel.Caption = 'Bits Per Color'
@@ -140,7 +147,7 @@ object HiveView: THiveView
       Left = 11
       Top = 80
       Width = 206
-      Height = 25
+      Height = 27
       EditLabel.Width = 20
       EditLabel.Height = 13
       EditLabel.Caption = 'Red'
@@ -156,7 +163,7 @@ object HiveView: THiveView
       Left = 223
       Top = 80
       Width = 206
-      Height = 25
+      Height = 27
       EditLabel.Width = 29
       EditLabel.Height = 13
       EditLabel.Caption = 'Green'
@@ -172,7 +179,7 @@ object HiveView: THiveView
       Left = 11
       Top = 128
       Width = 206
-      Height = 25
+      Height = 27
       EditLabel.Width = 21
       EditLabel.Height = 13
       EditLabel.Caption = 'Blue'
@@ -188,7 +195,7 @@ object HiveView: THiveView
       Left = 223
       Top = 128
       Width = 206
-      Height = 25
+      Height = 27
       EditLabel.Width = 27
       EditLabel.Height = 13
       EditLabel.Caption = 'Alpha'
@@ -213,7 +220,7 @@ object HiveView: THiveView
       Left = 11
       Top = 200
       Width = 100
-      Height = 25
+      Height = 27
       EditLabel.Width = 74
       EditLabel.Height = 13
       EditLabel.Caption = 'Palette Address'
@@ -229,7 +236,7 @@ object HiveView: THiveView
       Left = 117
       Top = 200
       Width = 100
-      Height = 25
+      Height = 27
       EditLabel.Width = 69
       EditLabel.Height = 13
       EditLabel.Caption = 'Palette Length'
@@ -245,7 +252,7 @@ object HiveView: THiveView
       Left = 223
       Top = 200
       Width = 100
-      Height = 25
+      Height = 27
       EditLabel.Width = 65
       EditLabel.Height = 13
       EditLabel.Caption = 'Bits Per Index'
@@ -294,7 +301,7 @@ object HiveView: THiveView
   end
   object memDebug: TRichEdit
     Left = 0
-    Top = 360
+    Top = 352
     Width = 708
     Height = 133
     Font.Charset = ANSI_CHARSET
@@ -324,6 +331,29 @@ object HiveView: THiveView
     ItemHeight = 13
     TabOrder = 9
     OnClick = lstFormatClick
+  end
+  object mediaPlayer: TMediaPlayer
+    Left = 714
+    Top = 608
+    Width = 65
+    Height = 33
+    Enabled = False
+    EnabledButtons = [btPlay, btPause]
+    VisibleButtons = [btPlay, btPause]
+    DoubleBuffered = True
+    Visible = False
+    ParentDoubleBuffered = False
+    TabOrder = 10
+  end
+  object btnPlayer: TButton
+    Left = 455
+    Top = 608
+    Width = 98
+    Height = 33
+    Caption = 'Play'
+    Enabled = False
+    TabOrder = 11
+    OnClick = btnPlayerClick
   end
   object dlgSave: TSaveDialog
     Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]

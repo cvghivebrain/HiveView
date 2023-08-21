@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StrUtils, ExtCtrls, StdCtrls, pngimage, PNGFunc, Vcl.ComCtrls,
   Vcl.FileCtrl, IOUtils, CRCFunc, ExplodeFunc, FileFunc, SolveFunc,
-  Vcl.WinXCtrls;
+  Vcl.WinXCtrls, Vcl.MPlayer;
 
 type
   THiveView = class(TForm)
@@ -35,6 +35,9 @@ type
     searchFormat: TSearchBox;
     lstFormat: TListBox;
     editPalData: TLabeledEdit;
+    mediaPlayer: TMediaPlayer;
+    btnPlayer: TButton;
+    lblTime: TLabel;
     procedure FormCreate(Sender: TObject);
     procedure menuFoldersClick(Sender: TObject);
     procedure menuFilesClick(Sender: TObject);
@@ -43,6 +46,10 @@ type
     function MakeCommand(s, targetfile, tempfolderlocal: string): string;
     procedure DoUnpack(i: integer);
     procedure DoRaw(i: integer);
+    procedure DoAudio(i: integer);
+    procedure LoadWAV(f: string);
+    procedure ClearWAV;
+    function GetMinSec(i: integer): string;
     procedure DefaultFormat;
     procedure btnReloadClick(Sender: TObject);
     procedure LoadImage;
@@ -62,6 +69,7 @@ type
     procedure memDebugChange(Sender: TObject);
     procedure searchFormatChange(Sender: TObject);
     procedure lstFormatClick(Sender: TObject);
+    procedure btnPlayerClick(Sender: TObject);
   private
     { Private declarations }
   public
@@ -72,9 +80,9 @@ var
   HiveView: THiveView;
   bitspercolor, bytespercolor, bitsperindex, bytesperindex,
     palsize, imgw, imgh, iniformats: integer;
-  inicontent: array[0..10000, 0..16] of string;
+  inicontent: array[0..10000, 0..17] of string;
   palarray: array[0..1024] of byte;
-  thisfolder, tempfolder, tempfilepath: string;
+  thisfolder, tempfolder, tempfilepath, tempwavpath: string;
   formatmatch: array[0..10000] of integer;
   submode: boolean;
   currentfile: string;
@@ -97,6 +105,7 @@ const
   ini_convert: integer = 14;
   ini_unpack: integer = 15;
   ini_paldata: integer = 16;
+  ini_audio: integer = 17;
 
 implementation
 
@@ -112,6 +121,7 @@ begin
   tempfolder := thisfolder+'\temp';
   CleanTempFolder; // Create/empty temp folder.
   tempfilepath := thisfolder+'\temp.png';
+  tempwavpath := thisfolder+'\temp.wav';
   DeleteFile(tempfilepath); // Delete temp file.
   menuFolders.Directory := thisfolder;
   dlgSave.InitialDir := menuFolders.Directory;
@@ -149,7 +159,8 @@ begin
     else if AnsiPos('paldata=',s) = 1 then inicontent[i,ini_paldata] := Explode(s,'paldata=',1)
     else if AnsiPos('bitsperindex=',s) = 1 then inicontent[i,ini_palbits] := Explode(s,'bitsperindex=',1)
     else if AnsiPos('unpack=',s) = 1 then inicontent[i,ini_unpack] := Explode(s,'unpack=',1)
-    else if AnsiPos('convert=',s) = 1 then inicontent[i,ini_convert] := Explode(s,'convert=',1);
+    else if AnsiPos('convert=',s) = 1 then inicontent[i,ini_convert] := Explode(s,'convert=',1)
+    else if AnsiPos('audio=',s) = 1 then inicontent[i,ini_audio] := Explode(s,'audio=',1);
     end;
   CloseFile(inifile);
 
@@ -203,6 +214,7 @@ begin
   memDebug.Lines.Add(currentfile+' ('+IntToStr(fs)+' bytes)');
   if fs = 0 then exit; // Stop if file is 0 bytes.
   CleanTempFolder;
+  ClearWAV;
   CheckFormat; // Find matching format and display image.
 end;
 
@@ -219,7 +231,8 @@ begin
         begin
         if inicontent[i,ini_unpack] <> '' then DoUnpack(i); // Check for unpack/decompress by external program.
         if inicontent[i,ini_convert] <> '' then DoConvert(i); // Check for conversion by external program.
-        if (inicontent[i,ini_unpack]+inicontent[i,ini_convert] = '') then DoRaw(i); // Load as raw using settings from ini.
+        if inicontent[i,ini_audio] <> '' then DoAudio(i); // Check for conversion by external program.
+        if (inicontent[i,ini_unpack]+inicontent[i,ini_convert]+inicontent[i,ini_audio] = '') then DoRaw(i); // Load as raw using settings from ini.
         matchfound := true;
         break; // Stop checking for format matches.
         end;
@@ -285,6 +298,7 @@ begin
   s := ReplaceStr(s,'{filenameonly}',ChangeFileExt(ExtractFileName(targetfile),'')); // File without '.ext' or path.
   s := ReplaceStr(s,'{filedir}',ExtractFileDir(targetfile)); // File's folder (no trailing '\').
   s := ReplaceStr(s,'{tempfile}',tempfilepath); // temp.png
+  s := ReplaceStr(s,'{tempwav}',tempwavpath); // temp.wav
   s := ReplaceStr(s,'{tempfolder}',tempfolderlocal);
   result := s;
 end;
@@ -347,6 +361,75 @@ begin
   editPalData.Enabled := chkPalette.Checked;
   ShowFormat(inicontent[i,ini_name]);
   LoadImage; // Load image as raw using parameters from ini.
+end;
+
+{ Convert and open an audio file. }
+
+procedure THiveView.DoAudio(i: integer);
+var c, c2: string;
+  j: integer;
+begin
+  if inicontent[i,ini_convert]+inicontent[i,ini_unpack] = '' then ShowFormat(inicontent[i,ini_name]);
+  c := inicontent[i,ini_audio];
+  if c = 'open' then LoadWAV(currentfile) // Load WAV file as-is.
+  else
+    begin
+    memDebug.Lines.Add('Converting with external program...');
+    j := 0;
+    while Explode(c,'&&',j) <> '' do // Multiple commands separated by &&.
+      begin
+      c2 := MakeCommand(Explode(c,'&&',j),currentfile,tempfolder);
+      //memDebug.Lines.Add(c2);
+      RunCommand(c2); // Create temp.wav.
+      Inc(j); // Next command.
+      end;
+    if not FileExists(tempwavpath) then
+      begin
+      memDebug.Lines.Add('Conversion failed.');
+      exit;
+      end;
+    LoadWAV(tempwavpath);
+    end;
+end;
+
+procedure THiveView.LoadWAV(f: string);
+begin
+  mediaPlayer.Close; // Clear previous WAV.
+  mediaPlayer.FileName := f; // Load file.
+  mediaPlayer.Open;
+  btnPlayer.Enabled := true; // Enable controls.
+  lblTime.Caption := GetMinSec(mediaPlayer.Length);
+end;
+
+procedure THiveView.ClearWAV;
+begin
+  mediaPlayer.Close; // Clear previous WAV.
+  btnPlayer.Enabled := false; // Disable controls.
+  btnPlayer.Caption := 'Play';
+  lblTime.Caption := '0:00 / 0:00';
+end;
+
+{ Convert time in milliseconds to M:SS format. }
+
+function THiveView.GetMinSec(i: integer): string;
+begin
+  result := IntToStr((i div 1000) mod 60); // Get seconds.
+  if Length(result) = 1 then result := '0'+result; // Add leading 0 if needed.
+  result := IntToStr(i div 60000)+':'+result; // Add minutes.
+end;
+
+procedure THiveView.btnPlayerClick(Sender: TObject);
+begin
+  if btnPlayer.Caption = 'Play' then
+    begin
+    btnPlayer.Caption := 'Pause';
+    mediaPlayer.Play;
+    end
+  else
+    begin
+    btnPlayer.Caption := 'Play';
+    mediaPlayer.Pause;
+    end;
 end;
 
 procedure THiveView.btnReloadClick(Sender: TObject);

@@ -374,6 +374,7 @@ STX | Atari ST Pasti | Deark
 
 Ext. | Description | Program
 --- | --- | ---
+MP3 | [MPEG-2 Audio Layer III](https://en.wikipedia.org/wiki/MP3) | HiveView
 WAV | [Waveform Audio](https://en.wikipedia.org/wiki/WAV) | HiveView
 
 ## Credits

@@ -39,7 +39,6 @@ type
     btnPlayer: TButton;
     lblTime: TLabel;
     timePlayer: TTimer;
-    trkVolume: TTrackBar;
     procedure FormCreate(Sender: TObject);
     procedure menuFoldersClick(Sender: TObject);
     procedure menuFilesClick(Sender: TObject);
@@ -407,6 +406,8 @@ end;
 
 procedure THiveView.ClearWAV;
 begin
+  if playingwav then mediaPlayer.Stop;
+  playingwav := false;
   mediaPlayer.Close; // Clear previous WAV.
   btnPlayer.Enabled := false; // Disable controls.
   btnPlayer.Caption := 'Play';

@@ -355,14 +355,6 @@ object HiveView: THiveView
     TabOrder = 11
     OnClick = btnPlayerClick
   end
-  object trkVolume: TTrackBar
-    Left = 619
-    Top = 611
-    Width = 90
-    Height = 30
-    Position = 10
-    TabOrder = 12
-  end
   object dlgSave: TSaveDialog
     Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
     Left = 712

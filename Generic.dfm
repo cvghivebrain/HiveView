@@ -335,7 +335,7 @@ object HiveView: THiveView
   object mediaPlayer: TMediaPlayer
     Left = 714
     Top = 608
-    Width = 65
+    Width = 57
     Height = 33
     Enabled = False
     EnabledButtons = [btPlay, btPause]
@@ -355,9 +355,23 @@ object HiveView: THiveView
     TabOrder = 11
     OnClick = btnPlayerClick
   end
+  object trkVolume: TTrackBar
+    Left = 619
+    Top = 611
+    Width = 90
+    Height = 30
+    Position = 10
+    TabOrder = 12
+  end
   object dlgSave: TSaveDialog
     Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
     Left = 712
     Top = 64
+  end
+  object timePlayer: TTimer
+    Interval = 100
+    OnTimer = timePlayerTimer
+    Left = 776
+    Top = 608
   end
 end

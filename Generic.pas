@@ -38,6 +38,8 @@ type
     mediaPlayer: TMediaPlayer;
     btnPlayer: TButton;
     lblTime: TLabel;
+    timePlayer: TTimer;
+    trkVolume: TTrackBar;
     procedure FormCreate(Sender: TObject);
     procedure menuFoldersClick(Sender: TObject);
     procedure menuFilesClick(Sender: TObject);
@@ -70,6 +72,7 @@ type
     procedure searchFormatChange(Sender: TObject);
     procedure lstFormatClick(Sender: TObject);
     procedure btnPlayerClick(Sender: TObject);
+    procedure timePlayerTimer(Sender: TObject);
   private
     { Private declarations }
   public
@@ -84,7 +87,7 @@ var
   palarray: array[0..1024] of byte;
   thisfolder, tempfolder, tempfilepath, tempwavpath: string;
   formatmatch: array[0..10000] of integer;
-  submode: boolean;
+  submode, playingwav: boolean;
   currentfile: string;
 
 const
@@ -122,6 +125,7 @@ begin
   CleanTempFolder; // Create/empty temp folder.
   tempfilepath := thisfolder+'\temp.png';
   tempwavpath := thisfolder+'\temp.wav';
+  playingwav := false;
   DeleteFile(tempfilepath); // Delete temp file.
   menuFolders.Directory := thisfolder;
   dlgSave.InitialDir := menuFolders.Directory;
@@ -398,7 +402,7 @@ begin
   mediaPlayer.FileName := f; // Load file.
   mediaPlayer.Open;
   btnPlayer.Enabled := true; // Enable controls.
-  lblTime.Caption := GetMinSec(mediaPlayer.Length);
+  lblTime.Caption := '0:00 / '+GetMinSec(mediaPlayer.Length);
 end;
 
 procedure THiveView.ClearWAV;
@@ -420,15 +424,29 @@ end;
 
 procedure THiveView.btnPlayerClick(Sender: TObject);
 begin
-  if btnPlayer.Caption = 'Play' then
-    begin
-    btnPlayer.Caption := 'Pause';
-    mediaPlayer.Play;
-    end
-  else
+  if playingwav then
     begin
     btnPlayer.Caption := 'Play';
     mediaPlayer.Pause;
+    playingwav := false;
+    end
+  else
+    begin
+    btnPlayer.Caption := 'Pause';
+    mediaPlayer.Play;
+    playingwav := true;
+    end;
+end;
+
+procedure THiveView.timePlayerTimer(Sender: TObject);
+begin
+  if not playingwav then exit; // Do nothing if not playing.
+  lblTime.Caption := GetMinSec(mediaPlayer.Position)+' / '+GetMinSec(mediaPlayer.Length); // Update timer.
+  if mediaPlayer.Length = mediaPlayer.Position then // Check if at end of file.
+    begin
+    mediaPlayer.Stop; // Stop playing.
+    btnPlayer.Caption := 'Play';
+    playingwav := false;
     end;
 end;
 

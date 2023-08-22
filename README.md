@@ -370,6 +370,12 @@ MSA | Atari ST Magic Shadow Archiver | Deark
 NRG | [Nero Burning ROM](https://en.wikipedia.org/wiki/Nero_Burning_ROM) | Deark
 STX | Atari ST Pasti | Deark
 
+## Supported audio formats
+
+Ext. | Description | Program
+--- | --- | ---
+WAV | [Waveform Audio](https://en.wikipedia.org/wiki/WAV) | HiveView
+
 ## Credits
 
 * [7-Zip](https://7-zip.org/)

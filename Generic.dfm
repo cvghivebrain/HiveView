@@ -332,19 +332,6 @@ object HiveView: THiveView
     TabOrder = 9
     OnClick = lstFormatClick
   end
-  object mediaPlayer: TMediaPlayer
-    Left = 714
-    Top = 608
-    Width = 57
-    Height = 33
-    Enabled = False
-    EnabledButtons = [btPlay, btPause]
-    VisibleButtons = [btPlay, btPause]
-    DoubleBuffered = True
-    Visible = False
-    ParentDoubleBuffered = False
-    TabOrder = 10
-  end
   object btnPlayer: TButton
     Left = 455
     Top = 608
@@ -352,7 +339,7 @@ object HiveView: THiveView
     Height = 33
     Caption = 'Play'
     Enabled = False
-    TabOrder = 11
+    TabOrder = 10
     OnClick = btnPlayerClick
   end
   object dlgSave: TSaveDialog

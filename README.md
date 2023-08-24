@@ -374,12 +374,13 @@ STX | Atari ST Pasti | Deark
 
 Ext. | Description | Program
 --- | --- | ---
-MP3 | [MPEG-2 Audio Layer III](https://en.wikipedia.org/wiki/MP3) | HiveView & MP3 Art Extractor
-WAV | [Waveform Audio](https://en.wikipedia.org/wiki/WAV) | HiveView
+MP3 | [MPEG-2 Audio Layer III](https://en.wikipedia.org/wiki/MP3) | BASS & MP3 Art Extractor
+WAV | [Waveform Audio](https://en.wikipedia.org/wiki/WAV) | BASS
 
 ## Credits
 
 * [7-Zip](https://7-zip.org/)
+* [BASS](https://www.un4seen.com/)
 * [Deark](https://entropymine.com/deark/)
 * [FFmpeg](http://ffmpeg.org/)
 * [FLIF](http://flif.info/)

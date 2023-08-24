@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StrUtils, ExtCtrls, StdCtrls, pngimage, PNGFunc, Vcl.ComCtrls,
   Vcl.FileCtrl, IOUtils, CRCFunc, ExplodeFunc, FileFunc, SolveFunc,
-  Vcl.WinXCtrls, Vcl.MPlayer;
+  Vcl.WinXCtrls, Vcl.MPlayer, Bass;
 
 type
   THiveView = class(TForm)
@@ -35,7 +35,6 @@ type
     searchFormat: TSearchBox;
     lstFormat: TListBox;
     editPalData: TLabeledEdit;
-    mediaPlayer: TMediaPlayer;
     btnPlayer: TButton;
     lblTime: TLabel;
     timePlayer: TTimer;
@@ -87,7 +86,8 @@ var
   thisfolder, tempfolder, tempfilepath, tempwavpath: string;
   formatmatch: array[0..10000] of integer;
   submode, playingwav: boolean;
-  currentfile: string;
+  currentfile, wavlength: string;
+  wav: HSTREAM;
 
 const
   ini_name: integer = 0;
@@ -125,6 +125,8 @@ begin
   tempfilepath := thisfolder+'\temp.png';
   tempwavpath := thisfolder+'\temp.wav';
   playingwav := false;
+  if not BASS_Init(-1, 44100, 0, Handle, nil) then // Initialize the BASS library.
+    ShowMessage('BASS library failed to load.');
   DeleteFile(tempfilepath); // Delete temp file.
   menuFolders.Directory := thisfolder;
   dlgSave.InitialDir := menuFolders.Directory;
@@ -397,30 +399,30 @@ end;
 
 procedure THiveView.LoadWAV(f: string);
 begin
-  mediaPlayer.Close; // Clear previous WAV.
-  mediaPlayer.FileName := f; // Load file.
-  mediaPlayer.Open;
+  wav := BASS_StreamCreateFile(false,PWideChar(f),0,0,BASS_UNICODE+BASS_STREAM_PRESCAN);
+  wavlength := GetMinSec(BASS_ChannelGetLength(wav,BASS_POS_BYTE)); // Get track length as M:SS.
+  lblTime.Caption := '0:00 / '+wavlength;
   btnPlayer.Enabled := true; // Enable controls.
-  lblTime.Caption := '0:00 / '+GetMinSec(mediaPlayer.Length);
 end;
 
 procedure THiveView.ClearWAV;
 begin
-  if playingwav then mediaPlayer.Stop;
+  if playingwav then BASS_ChannelStop(wav);//mediaPlayer.Stop;
   playingwav := false;
-  mediaPlayer.Close; // Clear previous WAV.
   btnPlayer.Enabled := false; // Disable controls.
   btnPlayer.Caption := 'Play';
   lblTime.Caption := '0:00 / 0:00';
 end;
 
-{ Convert time in milliseconds to M:SS format. }
+{ Convert time in bytes to M:SS format. }
 
 function THiveView.GetMinSec(i: integer): string;
+var secs: int64;
 begin
-  result := IntToStr((i div 1000) mod 60); // Get seconds.
+  secs := Round(BASS_ChannelBytes2Seconds(wav,i)); // Convert to seconds.
+  result := IntToStr(secs mod 60); // Get seconds.
   if Length(result) = 1 then result := '0'+result; // Add leading 0 if needed.
-  result := IntToStr(i div 60000)+':'+result; // Add minutes.
+  result := IntToStr(secs div 60)+':'+result; // Add minutes.
 end;
 
 procedure THiveView.btnPlayerClick(Sender: TObject);
@@ -428,13 +430,13 @@ begin
   if playingwav then
     begin
     btnPlayer.Caption := 'Play';
-    mediaPlayer.Pause;
+    BASS_ChannelPause(wav);
     playingwav := false;
     end
   else
     begin
     btnPlayer.Caption := 'Pause';
-    mediaPlayer.Play;
+    BASS_ChannelPlay(wav,false);
     playingwav := true;
     end;
 end;
@@ -442,10 +444,10 @@ end;
 procedure THiveView.timePlayerTimer(Sender: TObject);
 begin
   if not playingwav then exit; // Do nothing if not playing.
-  lblTime.Caption := GetMinSec(mediaPlayer.Position)+' / '+GetMinSec(mediaPlayer.Length); // Update timer.
-  if mediaPlayer.Length = mediaPlayer.Position then // Check if at end of file.
+  lblTime.Caption := GetMinSec(BASS_ChannelGetPosition(wav,BASS_POS_BYTE))+' / '+wavlength; // Update timer.
+  if BASS_ChannelGetPosition(wav,BASS_POS_BYTE) = BASS_ChannelGetLength(wav,BASS_POS_BYTE) then // Check if at end of file.
     begin
-    mediaPlayer.Stop; // Stop playing.
+    BASS_ChannelStop(wav); // Stop playing.
     btnPlayer.Caption := 'Play';
     playingwav := false;
     end;

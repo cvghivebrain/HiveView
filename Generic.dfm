@@ -30,6 +30,18 @@ object HiveView: THiveView
     Height = 13
     Caption = '0:00 / 0:00'
   end
+  object imgWavBG: TImage
+    Left = 455
+    Top = 563
+    Width = 253
+    Height = 42
+  end
+  object imgWavFG: TImage
+    Left = 455
+    Top = 563
+    Width = 218
+    Height = 42
+  end
   object lstSubfiles: TListBox
     Left = 185
     Top = 177

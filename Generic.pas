@@ -39,6 +39,8 @@ type
     lblTime: TLabel;
     timePlayer: TTimer;
     trkVolume: TTrackBar;
+    imgWavBG: TImage;
+    imgWavFG: TImage;
     procedure FormCreate(Sender: TObject);
     procedure menuFoldersClick(Sender: TObject);
     procedure menuFilesClick(Sender: TObject);
@@ -82,13 +84,13 @@ type
 var
   HiveView: THiveView;
   bitspercolor, bytespercolor, bitsperindex, bytesperindex,
-    palsize, imgw, imgh, iniformats: integer;
+    palsize, imgw, imgh, iniformats, wavlength: integer;
   inicontent: array[0..10000, 0..17] of string;
   palarray: array[0..1024] of byte;
   thisfolder, tempfolder, tempfilepath, tempwavpath: string;
   formatmatch: array[0..10000] of integer;
   submode, playingwav: boolean;
-  currentfile, wavlength: string;
+  currentfile, wavlengthstr: string;
   wav: HSTREAM;
 
 const
@@ -401,11 +403,23 @@ begin
 end;
 
 procedure THiveView.LoadWAV(f: string);
+var wfcmd, wf: string;
 begin
   wav := BASS_StreamCreateFile(false,PWideChar(f),0,0,BASS_UNICODE+BASS_STREAM_PRESCAN);
-  wavlength := GetMinSec(BASS_ChannelGetLength(wav,BASS_POS_BYTE)); // Get track length as M:SS.
-  lblTime.Caption := '0:00 / '+wavlength;
+  wavlength := BASS_ChannelGetLength(wav,BASS_POS_BYTE); // Get track length in bytes.
+  wavlengthstr := GetMinSec(wavlength); // Get track length as M:SS.
+  lblTime.Caption := '0:00 / '+wavlengthstr;
   btnPlayer.Enabled := true; // Enable controls.
+  wfcmd := '"bin\ffmpeg.exe" -i "'+f+'" -filter_complex "showwavespic=s='+IntToStr(imgWavBG.Width)+'x'+IntToStr(imgWavBG.Height)+':colors={color}" "';
+  wf := thisfolder+'\wf1.png';
+  RunCommand(ReplaceStr(wfcmd,'{color}','red')+wf+'"'); // Create waveform image.
+  RunCommand('"bin\magick.exe" mogrify -background black -alpha remove '+wf); // Set background colour.
+  imgWavBG.Picture.LoadFromFile(wf); // Show waveform.
+  wf := thisfolder+'\wf2.png';
+  RunCommand(ReplaceStr(wfcmd,'{color}','#00FFFF')+wf+'"'); // Create waveform image.
+  RunCommand('"bin\magick.exe" mogrify -background #004000 -alpha remove '+wf); // Set background colour.
+  imgWavFG.Picture.LoadFromFile(wf);
+  imgWavFG.Width := 0;
 end;
 
 procedure THiveView.ClearWAV;
@@ -415,6 +429,10 @@ begin
   btnPlayer.Enabled := false; // Disable controls.
   btnPlayer.Caption := 'Play';
   lblTime.Caption := '0:00 / 0:00';
+  imgWavFG.Picture := nil;
+  imgWavBG.Picture := nil;
+  DeleteFile(thisfolder+'\wf1.png');
+  DeleteFile(thisfolder+'\wf2.png');
 end;
 
 { Convert time in bytes to M:SS format. }
@@ -445,10 +463,13 @@ begin
 end;
 
 procedure THiveView.timePlayerTimer(Sender: TObject);
+var pos: integer;
 begin
   if not playingwav then exit; // Do nothing if not playing.
-  lblTime.Caption := GetMinSec(BASS_ChannelGetPosition(wav,BASS_POS_BYTE))+' / '+wavlength; // Update timer.
-  if BASS_ChannelGetPosition(wav,BASS_POS_BYTE) = BASS_ChannelGetLength(wav,BASS_POS_BYTE) then // Check if at end of file.
+  pos := BASS_ChannelGetPosition(wav,BASS_POS_BYTE);
+  lblTime.Caption := GetMinSec(pos)+' / '+wavlengthstr; // Update timer.
+  imgWavFG.Width := Round(imgWavBG.Width*(pos/wavlength)); // Update progress bar.
+  if pos = wavlength then // Check if at end of file.
     begin
     BASS_ChannelStop(wav); // Stop playing.
     btnPlayer.Caption := 'Play';

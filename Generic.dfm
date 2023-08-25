@@ -25,7 +25,7 @@ object HiveView: THiveView
   end
   object lblTime: TLabel
     Left = 559
-    Top = 617
+    Top = 628
     Width = 53
     Height = 13
     Caption = '0:00 / 0:00'
@@ -342,6 +342,24 @@ object HiveView: THiveView
     TabOrder = 10
     OnClick = btnPlayerClick
   end
+  object trkVolume: TTrackBar
+    Left = 621
+    Top = 608
+    Width = 87
+    Height = 36
+    Margins.Left = 0
+    Margins.Top = 0
+    Margins.Right = 0
+    Margins.Bottom = 0
+    DoubleBuffered = False
+    DragCursor = crArrow
+    ParentDoubleBuffered = False
+    PageSize = 1
+    Position = 1
+    PositionToolTip = ptTop
+    TabOrder = 11
+    OnChange = trkVolumeChange
+  end
   object dlgSave: TSaveDialog
     Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
     Left = 712
@@ -350,7 +368,7 @@ object HiveView: THiveView
   object timePlayer: TTimer
     Interval = 100
     OnTimer = timePlayerTimer
-    Left = 776
+    Left = 720
     Top = 608
   end
 end

@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StrUtils, ExtCtrls, StdCtrls, pngimage, PNGFunc, Vcl.ComCtrls,
   Vcl.FileCtrl, IOUtils, CRCFunc, ExplodeFunc, FileFunc, SolveFunc,
-  Vcl.WinXCtrls, Vcl.MPlayer, Bass;
+  Vcl.WinXCtrls, Bass;
 
 type
   THiveView = class(TForm)
@@ -38,6 +38,7 @@ type
     btnPlayer: TButton;
     lblTime: TLabel;
     timePlayer: TTimer;
+    trkVolume: TTrackBar;
     procedure FormCreate(Sender: TObject);
     procedure menuFoldersClick(Sender: TObject);
     procedure menuFilesClick(Sender: TObject);
@@ -71,6 +72,7 @@ type
     procedure lstFormatClick(Sender: TObject);
     procedure btnPlayerClick(Sender: TObject);
     procedure timePlayerTimer(Sender: TObject);
+    procedure trkVolumeChange(Sender: TObject);
   private
     { Private declarations }
   public
@@ -125,8 +127,9 @@ begin
   tempfilepath := thisfolder+'\temp.png';
   tempwavpath := thisfolder+'\temp.wav';
   playingwav := false;
-  if not BASS_Init(-1, 44100, 0, Handle, nil) then // Initialize the BASS library.
-    ShowMessage('BASS library failed to load.');
+  if BASS_Init(-1, 44100, 0, Handle, nil) then // Initialize the BASS library.
+    trkVolume.Position := Round(BASS_GetVolume()*trkVolume.Max) // Set volume control to default.
+    else ShowMessage('BASS library failed to load.');
   DeleteFile(tempfilepath); // Delete temp file.
   menuFolders.Directory := thisfolder;
   dlgSave.InitialDir := menuFolders.Directory;
@@ -451,6 +454,11 @@ begin
     btnPlayer.Caption := 'Play';
     playingwav := false;
     end;
+end;
+
+procedure THiveView.trkVolumeChange(Sender: TObject);
+begin
+  BASS_SetVolume(trkVolume.Position/trkVolume.Max);
 end;
 
 procedure THiveView.btnReloadClick(Sender: TObject);

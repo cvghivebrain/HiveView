@@ -35,12 +35,14 @@ object HiveView: THiveView
     Top = 563
     Width = 253
     Height = 42
+    OnMouseDown = imgWavBGMouseDown
   end
   object imgWavFG: TImage
     Left = 455
     Top = 563
     Width = 218
     Height = 42
+    OnMouseDown = imgWavFGMouseDown
   end
   object lstSubfiles: TListBox
     Left = 185

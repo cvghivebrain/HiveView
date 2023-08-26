@@ -75,6 +75,11 @@ type
     procedure btnPlayerClick(Sender: TObject);
     procedure timePlayerTimer(Sender: TObject);
     procedure trkVolumeChange(Sender: TObject);
+    procedure imgWavBGMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
+    procedure UpdateTime;
+    procedure imgWavFGMouseDown(Sender: TObject; Button: TMouseButton;
+      Shift: TShiftState; X, Y: Integer);
   private
     { Private declarations }
   public
@@ -463,9 +468,13 @@ begin
 end;
 
 procedure THiveView.timePlayerTimer(Sender: TObject);
+begin
+  if playingwav then UpdateTime; // Update time and progress bar.
+end;
+
+procedure THiveView.UpdateTime;
 var pos: integer;
 begin
-  if not playingwav then exit; // Do nothing if not playing.
   pos := BASS_ChannelGetPosition(wav,BASS_POS_BYTE);
   lblTime.Caption := GetMinSec(pos)+' / '+wavlengthstr; // Update timer.
   imgWavFG.Width := Round(imgWavBG.Width*(pos/wavlength)); // Update progress bar.
@@ -480,6 +489,20 @@ end;
 procedure THiveView.trkVolumeChange(Sender: TObject);
 begin
   BASS_SetVolume(trkVolume.Position/trkVolume.Max);
+end;
+
+procedure THiveView.imgWavBGMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  BASS_ChannelSetPosition(wav,Round(wavlength*(X/imgWavBG.Width)),BASS_POS_BYTE);
+  UpdateTime;
+end;
+
+procedure THiveView.imgWavFGMouseDown(Sender: TObject; Button: TMouseButton;
+  Shift: TShiftState; X, Y: Integer);
+begin
+  BASS_ChannelSetPosition(wav,Round(wavlength*(X/imgWavBG.Width)),BASS_POS_BYTE);
+  UpdateTime;
 end;
 
 procedure THiveView.btnReloadClick(Sender: TObject);

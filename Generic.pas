@@ -134,9 +134,7 @@ begin
   tempfilepath := thisfolder+'\temp.png';
   tempwavpath := thisfolder+'\temp.wav';
   playingwav := false;
-  if BASS_Init(-1, 44100, 0, Handle, nil) then // Initialize the BASS library.
-    trkVolume.Position := Round(BASS_GetVolume()*trkVolume.Max) // Set volume control to default.
-    else ShowMessage('BASS library failed to load.');
+  BASS_Init(-1,44100,0,Handle,nil); // Initialize the BASS library.
   DeleteFile(tempfilepath); // Delete temp file.
   menuFolders.Directory := thisfolder;
   dlgSave.InitialDir := menuFolders.Directory;
@@ -411,6 +409,7 @@ procedure THiveView.LoadWAV(f: string);
 var wfcmd, wf: string;
 begin
   wav := BASS_StreamCreateFile(false,PWideChar(f),0,0,BASS_UNICODE+BASS_STREAM_PRESCAN);
+  BASS_ChannelSetAttribute(wav,BASS_ATTRIB_VOL,trkVolume.Position/trkVolume.Max);
   wavlength := BASS_ChannelGetLength(wav,BASS_POS_BYTE); // Get track length in bytes.
   wavlengthstr := GetMinSec(wavlength); // Get track length as M:SS.
   lblTime.Caption := '0:00 / '+wavlengthstr;
@@ -434,6 +433,7 @@ begin
   btnPlayer.Enabled := false; // Disable controls.
   btnPlayer.Caption := 'Play';
   lblTime.Caption := '0:00 / 0:00';
+  wavlength := 0;
   imgWavFG.Picture := nil;
   imgWavBG.Picture := nil;
   DeleteFile(thisfolder+'\wf1.png');
@@ -488,12 +488,13 @@ end;
 
 procedure THiveView.trkVolumeChange(Sender: TObject);
 begin
-  BASS_SetVolume(trkVolume.Position/trkVolume.Max);
+  BASS_ChannelSetAttribute(wav,BASS_ATTRIB_VOL,trkVolume.Position/trkVolume.Max);
 end;
 
 procedure THiveView.imgWavBGMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
+  if wavlength = 0 then exit; // Do nothing if no audio.
   BASS_ChannelSetPosition(wav,Round(wavlength*(X/imgWavBG.Width)),BASS_POS_BYTE);
   UpdateTime;
 end;
@@ -501,6 +502,7 @@ end;
 procedure THiveView.imgWavFGMouseDown(Sender: TObject; Button: TMouseButton;
   Shift: TShiftState; X, Y: Integer);
 begin
+  if wavlength = 0 then exit; // Do nothing if no audio.
   BASS_ChannelSetPosition(wav,Round(wavlength*(X/imgWavBG.Width)),BASS_POS_BYTE);
   UpdateTime;
 end;

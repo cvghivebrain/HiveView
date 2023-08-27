@@ -21,6 +21,7 @@ ART | Atari ST Art Director | NConvert
 ART | PFS: First Publisher | NConvert
 ARW | Sony Digital Camera Alpha Raw (TIFF variant) | ImageMagick
 ATK/CMU | [CMU Andrew Toolkit](https://en.wikipedia.org/wiki/Andrew_Project) | NConvert
+AVIF | [AV1 Image File Format](https://en.wikipedia.org/wiki/AVIF) | libavif
 AVS/X | Stardent Application Visualization System | NConvert
 B&W/B_W | ImageLab/PrintTechnic | NConvert
 BFLI | C64 Big Flexible Line Interpretation | NConvert
@@ -249,6 +250,7 @@ Ext. | Description | Program
 ANI | Atari ST NEOchrome Animation | Deark
 ANI | Windows Animated Cursor | NConvert
 ANIM | Amiga Animation | Deark
+AVIF | [AV1 Image File Format](https://en.wikipedia.org/wiki/AVIF) | libavif
 FLI/FLC | [Autodesk Animator](https://en.wikipedia.org/wiki/Autodesk_Animator) | NConvert
 FLIF | [Free Lossless Image Format](https://en.wikipedia.org/wiki/Free_Lossless_Image_Format) | FLIF
 FLM | Atari Animatic Film | Deark
@@ -389,6 +391,7 @@ WAV | [Waveform Audio](https://en.wikipedia.org/wiki/WAV) | BASS
 * [JBIG-KIT](https://www.cl.cam.ac.uk/~mgk25/jbigkit/)
 * [jxrlib](https://github.com/4creators/jxrlib)
 * [Lhasa](http://fragglet.github.io/lhasa/)
+* [libavif](https://github.com/AOMediaCodec/libavif)
 * [libbpg](https://bellard.org/bpg/)
 * [libjxl](https://jpeg.org/jpegxl/software.html)
 * [LOCO](https://www.hpl.hp.com/loco/)
@@ -402,7 +405,7 @@ WAV | [Waveform Audio](https://en.wikipedia.org/wiki/WAV) | BASS
 
 ## To do
 ### ImageMagick
-* AVI/AVIF/M2V/MPEG
+* AVI/M2V/MPEG
 * BAYER
 * CALS Type 2 (CT2) - multi page, can't find any examples
 * CMYK/CMYKA - no header?
@@ -443,7 +446,6 @@ WAV | [Waveform Audio](https://en.wikipedia.org/wiki/WAV) | BASS
 * AT&T Group 4 - no samples
 * AT&T Multigen - no samples
 * AVHRR SST - no samples
-* AVIF - not actually supported?
 * AVT RAW - no samples
 * AWD
 * APX - not actually supported?

@@ -313,6 +313,7 @@ begin
   s := ReplaceStr(s,'{tempfile}',tempfilepath); // temp.png
   s := ReplaceStr(s,'{tempwav}',tempwavpath); // temp.wav
   s := ReplaceStr(s,'{tempfolder}',tempfolderlocal);
+  s := ReplaceStr(s,'{thisfolder}',thisfolder); // Folder containing HiveView.exe.
   result := s;
 end;
 
@@ -336,6 +337,7 @@ begin
   while Explode(c,'&&',j) <> '' do // Multiple commands separated by &&.
     begin
     c2 := MakeCommand(Explode(c,'&&',j),currentfile,unpackto);
+    //memDebug.Lines.Add(c2);
     RunCommand(c2); // Unpack to temp folder.
     Inc(j); // Next command.
     end;

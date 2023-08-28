@@ -285,6 +285,12 @@ WMF | [Windows Metafile](https://en.wikipedia.org/wiki/Windows_Metafile) | NConv
 WPG | [WordPerfect Graphics](https://en.wikipedia.org/wiki/WordPerfect) | ImageMagick
 XCF | GIMP [Experimental Computing Facility](https://en.wikipedia.org/wiki/XCF_(file_format)) | ImageMagick
 
+## Supported 3D model formats
+
+Ext. | Description | Program
+--- | --- | ---
+STL | [Stereolithography](https://en.wikipedia.org/wiki/STL_(file_format)) | STL-Thumb
+
 ## Supported document formats
 
 Ext. | Description | Program
@@ -399,6 +405,7 @@ WAV | [Waveform Audio](https://en.wikipedia.org/wiki/WAV) | BASS
 * [NConvert](https://www.xnview.com/en/nconvert/)
 * [pdfimages](https://www.xpdfreader.com/pdfimages-man.html)
 * [pwcdecode](http://www.caravian.com/research/index.htm)
+* [STL-Thumb](https://github.com/unlimitedbacon/stl-thumb)
 * [Swiss File Knife](http://stahlworks.com/swiss-file-knife.html)
 * [UnRAR](https://www.rarlab.com/)
 * [x3f_extract](https://github.com/rolkar/x3f)

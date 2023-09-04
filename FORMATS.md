@@ -379,6 +379,7 @@ STX | Atari ST Pasti | Deark
 Ext. | Description | Program
 --- | --- | ---
 FLAC | [Free Lossless Audio Codec](https://en.wikipedia.org/wiki/FLAC) | BASS & MP3 Art Extractor
+MOD | [Amiga Module](https://en.wikipedia.org/wiki/MOD_(file_format)) | BASS
 MP3 | [MPEG-2 Audio Layer III](https://en.wikipedia.org/wiki/MP3) | BASS & MP3 Art Extractor
 OGG | [Ogg Audio](https://en.wikipedia.org/wiki/Ogg) | BASS
 WAV | [Waveform Audio](https://en.wikipedia.org/wiki/WAV) | BASS

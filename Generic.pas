@@ -92,10 +92,10 @@ var
     palsize, imgw, imgh, iniformats, wavlength: integer;
   inicontent: array[0..10000, 0..17] of string;
   palarray: array[0..1024] of byte;
-  thisfolder, tempfolder, tempfilepath, tempwavpath: string;
+  thisfolder, tempfolder, tempfilepath, tempwavpath, currentfile,
+    wavlengthstr, wfcreate, wfchange, wfcolors: string;
   formatmatch: array[0..10000] of integer;
   submode, playingwav: boolean;
-  currentfile, wavlengthstr: string;
   wav: HSTREAM;
 
 const
@@ -173,7 +173,10 @@ begin
     else if AnsiPos('bitsperindex=',s) = 1 then inicontent[i,ini_palbits] := Explode(s,'bitsperindex=',1)
     else if AnsiPos('unpack=',s) = 1 then inicontent[i,ini_unpack] := Explode(s,'unpack=',1)
     else if AnsiPos('convert=',s) = 1 then inicontent[i,ini_convert] := Explode(s,'convert=',1)
-    else if AnsiPos('audio=',s) = 1 then inicontent[i,ini_audio] := Explode(s,'audio=',1);
+    else if AnsiPos('audio=',s) = 1 then inicontent[i,ini_audio] := Explode(s,'audio=',1)
+    else if AnsiPos('wfcreate=',s) = 1 then wfcreate := Explode(s,'wfcreate=',1)
+    else if AnsiPos('wfchange=',s) = 1 then wfchange := Explode(s,'wfchange=',1)
+    else if AnsiPos('wfcolors=',s) = 1 then wfcolors := Explode(s,'wfcolors=',1);
     end;
   CloseFile(inifile);
 
@@ -408,22 +411,48 @@ begin
 end;
 
 procedure THiveView.LoadWAV(f: string);
-var wfcmd, wf: string;
+var wfcmd, wfcmd2, wf: string;
 begin
-  wav := BASS_StreamCreateFile(false,PWideChar(f),0,0,BASS_UNICODE+BASS_STREAM_PRESCAN);
-  BASS_ChannelSetAttribute(wav,BASS_ATTRIB_VOL,trkVolume.Position/trkVolume.Max);
+  wav := BASS_StreamCreateFile(false,PWideChar(f),0,0,BASS_UNICODE+BASS_STREAM_PRESCAN); // Try loading as wav/mp3 etc.
   wavlength := BASS_ChannelGetLength(wav,BASS_POS_BYTE); // Get track length in bytes.
+  if wavlength = -1 then wav := BASS_MusicLoad(false,PWideChar(f),0,0,BASS_UNICODE+BASS_STREAM_PRESCAN,0); // Try loading as mod.
+  wavlength := BASS_ChannelGetLength(wav,BASS_POS_BYTE);
+  if wavlength = -1 then // File was neither wav nor mod.
+    begin
+    memDebug.Lines.Add('Failed to load audio file.');
+    exit;
+    end;
+  BASS_ChannelSetAttribute(wav,BASS_ATTRIB_VOL,trkVolume.Position/trkVolume.Max);
   wavlengthstr := GetMinSec(wavlength); // Get track length as M:SS.
   lblTime.Caption := '0:00 / '+wavlengthstr;
   btnPlayer.Enabled := true; // Enable controls.
-  wfcmd := '"bin\ffmpeg.exe" -i "'+f+'" -filter_complex "showwavespic=s='+IntToStr(imgWavBG.Width)+'x'+IntToStr(imgWavBG.Height)+':colors={color}" "';
+  wfcmd := ReplaceStr(wfcreate,'{file}',f);
+  wfcmd := ReplaceStr(wfcmd,'{dim}',IntToStr(imgWavBG.Width)+'x'+IntToStr(imgWavBG.Height));
   wf := thisfolder+'\wf1.png';
-  RunCommand(ReplaceStr(wfcmd,'{color}','red')+wf+'"'); // Create waveform image.
-  RunCommand('"bin\magick.exe" mogrify -background black -alpha remove '+wf); // Set background colour.
+  wfcmd2 := ReplaceStr(wfcmd,'{wfimage}',wf);
+  wfcmd2 := ReplaceStr(wfcmd2,'{fgcolor}',Explode(wfcolors,',',0));
+  wfcmd2 := ReplaceStr(wfcmd2,'{bgcolor}',Explode(wfcolors,',',1));
+  RunCommand(wfcmd2); // Create waveform image.
+  if wfchange <> '' then
+    begin
+    wfcmd2 := ReplaceStr(wfchange,'{wfimage}',wf);
+    wfcmd2 := ReplaceStr(wfcmd2,'{fgcolor}',Explode(wfcolors,',',0));
+    wfcmd2 := ReplaceStr(wfcmd2,'{bgcolor}',Explode(wfcolors,',',1));
+    RunCommand(wfcmd2); // Set background colour.
+    end;
   imgWavBG.Picture.LoadFromFile(wf); // Show waveform.
   wf := thisfolder+'\wf2.png';
-  RunCommand(ReplaceStr(wfcmd,'{color}','#00FFFF')+wf+'"'); // Create waveform image.
-  RunCommand('"bin\magick.exe" mogrify -background #004000 -alpha remove '+wf); // Set background colour.
+  wfcmd2 := ReplaceStr(wfcmd,'{wfimage}',wf);
+  wfcmd2 := ReplaceStr(wfcmd2,'{fgcolor}',Explode(wfcolors,',',2));
+  wfcmd2 := ReplaceStr(wfcmd2,'{bgcolor}',Explode(wfcolors,',',3));
+  RunCommand(wfcmd2); // Create waveform image.
+  if wfchange <> '' then
+    begin
+    wfcmd2 := ReplaceStr(wfchange,'{wfimage}',wf);
+    wfcmd2 := ReplaceStr(wfcmd2,'{fgcolor}',Explode(wfcolors,',',2));
+    wfcmd2 := ReplaceStr(wfcmd2,'{bgcolor}',Explode(wfcolors,',',3));
+    RunCommand(wfcmd2); // Set background colour.
+    end;
   imgWavFG.Picture.LoadFromFile(wf);
   imgWavFG.Width := 0;
 end;

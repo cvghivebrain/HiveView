@@ -384,31 +384,6 @@ MP3 | [MPEG-2 Audio Layer III](https://en.wikipedia.org/wiki/MP3) | BASS & MP3 A
 OGG | [Ogg Audio](https://en.wikipedia.org/wiki/Ogg) | BASS
 WAV | [Waveform Audio](https://en.wikipedia.org/wiki/WAV) | BASS
 
-## Credits
-
-* [7-Zip](https://7-zip.org/)
-* [BASS](https://www.un4seen.com/)
-* [Deark](https://entropymine.com/deark/)
-* [FFmpeg](http://ffmpeg.org/)
-* [FLIF](http://flif.info/)
-* [Ghostscript](https://ghostscript.com)
-* [ImageMagick](https://github.com/ImageMagick/ImageMagick)
-* [JBIG-KIT](https://www.cl.cam.ac.uk/~mgk25/jbigkit/)
-* [jxrlib](https://github.com/4creators/jxrlib)
-* [Lhasa](http://fragglet.github.io/lhasa/)
-* [libavif](https://github.com/AOMediaCodec/libavif)
-* [libbpg](https://bellard.org/bpg/)
-* [libjxl](https://jpeg.org/jpegxl/software.html)
-* [LOCO](https://www.hpl.hp.com/loco/)
-* [MP3 Art Extractor](https://github.com/cvghivebrain/MP3-Art-Extractor)
-* [NConvert](https://www.xnview.com/en/nconvert/)
-* [pdfimages](https://www.xpdfreader.com/pdfimages-man.html)
-* [pwcdecode](http://www.caravian.com/research/index.htm)
-* [STL-Thumb](https://github.com/unlimitedbacon/stl-thumb)
-* [Swiss File Knife](http://stahlworks.com/swiss-file-knife.html)
-* [UnRAR](https://www.rarlab.com/)
-* [x3f_extract](https://github.com/rolkar/x3f)
-
 ## To do
 ### ImageMagick
 * AVI/M2V/MPEG

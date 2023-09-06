@@ -469,6 +469,7 @@ begin
   imgWavBG.Picture := nil;
   DeleteFile(thisfolder+'\wf1.png');
   DeleteFile(thisfolder+'\wf2.png');
+  DeleteFile(tempwavpath);
 end;
 
 { Convert time in bytes to M:SS format. }

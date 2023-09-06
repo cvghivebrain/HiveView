@@ -378,11 +378,16 @@ STX | Atari ST Pasti | Deark
 
 Ext. | Description | Program
 --- | --- | ---
+AIFF/AIF/AFF | [Audio Interchange File Format](https://en.wikipedia.org/wiki/Audio_Interchange_File_Format) | BASS
 FLAC | [Free Lossless Audio Codec](https://en.wikipedia.org/wiki/FLAC) | BASS & MP3 Art Extractor
+IT | [Impulse Tracker Module](https://en.wikipedia.org/wiki/Impulse_Tracker) | BASS
 MOD | [Amiga Module](https://en.wikipedia.org/wiki/MOD_(file_format)) | BASS
 MP3 | [MPEG-2 Audio Layer III](https://en.wikipedia.org/wiki/MP3) | BASS & MP3 Art Extractor
-OGG | [Ogg Audio](https://en.wikipedia.org/wiki/Ogg) | BASS
+MTM | Multi Track Module | BASS
+OGG | [Ogg Audio](https://en.wikipedia.org/wiki/Ogg) | BASS & MP3 Art Extractor
+S3M | [Scream Tracker 3 Module](https://en.wikipedia.org/wiki/Scream_Tracker) | FFmpeg
 WAV | [Waveform Audio](https://en.wikipedia.org/wiki/WAV) | BASS
+XM | [Extended Module](https://en.wikipedia.org/wiki/XM_(file_format)) | BASS
 
 ## To do
 ### ImageMagick
@@ -788,3 +793,4 @@ WAV | [Waveform Audio](https://en.wikipedia.org/wiki/WAV) | BASS
 
 ### Other
 * BPG - animation frames not extracted by libbpg
+* AIFC - ffmpeg doesn't work

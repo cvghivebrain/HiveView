@@ -380,14 +380,19 @@ STX | Atari ST Pasti | Deark
 Ext. | Description | Program
 --- | --- | ---
 AIFF/AIF/AFF | [Audio Interchange File Format](https://en.wikipedia.org/wiki/Audio_Interchange_File_Format) | BASS
+DSF/DFF | [Sony/Philips Direct Stream Digital](https://en.wikipedia.org/wiki/Direct_Stream_Digital) | FFmpeg
 FLAC | [Free Lossless Audio Codec](https://en.wikipedia.org/wiki/FLAC) | BASS & MP3 Art Extractor
 IT | [Impulse Tracker Module](https://en.wikipedia.org/wiki/Impulse_Tracker) | BASS
 MOD | [Amiga Module](https://en.wikipedia.org/wiki/MOD_(file_format)) | BASS
+MP1 | [MPEG-1/2 Audio Layer I](https://en.wikipedia.org/wiki/MPEG-1_Audio_Layer_I) | BASS
+MP2/MPA | [MPEG-1/2 Audio Layer II](https://en.wikipedia.org/wiki/MPEG-1_Audio_Layer_II) | BASS & MP3 Art Extractor
 MP3 | [MPEG-2 Audio Layer III](https://en.wikipedia.org/wiki/MP3) | BASS & MP3 Art Extractor
 MTM | Multi Track Module | BASS
 OGG | [Ogg Audio](https://en.wikipedia.org/wiki/Ogg) | BASS & MP3 Art Extractor
+OPUS | [Opus](https://en.wikipedia.org/wiki/Opus_(audio_format)) | FFmpeg & MP3 Art Extractor
 S3M | [Scream Tracker 3 Module](https://en.wikipedia.org/wiki/Scream_Tracker) | FFmpeg
 WAV | [Waveform Audio](https://en.wikipedia.org/wiki/WAV) | BASS
+WV | [WavPack](https://en.wikipedia.org/wiki/WavPack) | FFmpeg
 XM | [Extended Module](https://en.wikipedia.org/wiki/XM_(file_format)) | BASS
 
 ## To do

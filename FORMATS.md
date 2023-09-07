@@ -365,6 +365,7 @@ Ext. | Description | Program
 --- | --- | ---
 ADF | [Amiga Disk File](https://en.wikipedia.org/wiki/Amiga_Disk_File) | Deark
 ATR | Atari Disk Image | Deark
+BIN/IMG | Raw Binary CD-ROM Image | Deark
 D64 | C64 1541 Disk Image | Deark
 DMS | [Amiga Disk Masher System](https://en.wikipedia.org/wiki/Disk_Masher_System) | Deark
 HFS | [Apple Hierarchical File System](https://en.wikipedia.org/wiki/Hierarchical_File_System_(Apple)) | Deark
@@ -764,7 +765,6 @@ XM | [Extended Module](https://en.wikipedia.org/wiki/XM_(file_format)) | BASS
 * ArcMac - no samples
 * ARX - no samples
 * CAR - no samples; may be indistinguishable from LHA
-* CD/raw - ?
 * compress Z - no samples; 7-zip may work anyway
 * CP Shrink - no samples
 * Crunch - failed on most samples from https://telparia.com/fileFormatSamples/archive/crunch/

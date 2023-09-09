@@ -12,6 +12,7 @@ object HiveView: THiveView
   Font.Style = []
   OldCreateOrder = False
   ShowHint = True
+  OnClose = FormClose
   OnCreate = FormCreate
   OnResize = FormResize
   PixelsPerInch = 96

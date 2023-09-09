@@ -80,6 +80,7 @@ type
     procedure UpdateTime;
     procedure imgWavFGMouseDown(Sender: TObject; Button: TMouseButton;
       Shift: TShiftState; X, Y: Integer);
+    procedure FormClose(Sender: TObject; var Action: TCloseAction);
   private
     { Private declarations }
   public
@@ -186,6 +187,12 @@ begin
   memDebug.Lines.Add('Warning: Large images can take several seconds to load.');
   InitPNG(100,100); // Create blank 32-bit PNG.
   AssignPNG(imgMain); // Assign PNG to image on form.
+end;
+
+procedure THiveView.FormClose(Sender: TObject; var Action: TCloseAction);
+begin
+  CleanTempFolder; // Empty temp folder.
+  ClearWAV; // Delete temp.wav and waveform images.
 end;
 
 procedure THiveView.FormResize(Sender: TObject);

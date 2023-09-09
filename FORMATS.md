@@ -380,6 +380,7 @@ STX | Atari ST Pasti | Deark
 Ext. | Description | Program
 --- | --- | ---
 AIFF/AIF/AFF | [Audio Interchange File Format](https://en.wikipedia.org/wiki/Audio_Interchange_File_Format) | BASS
+APE | [Monkey's Audio](https://en.wikipedia.org/wiki/Monkey's_Audio) | FFmpeg
 DSF/DFF | [Sony/Philips Direct Stream Digital](https://en.wikipedia.org/wiki/Direct_Stream_Digital) | FFmpeg
 FLAC | [Free Lossless Audio Codec](https://en.wikipedia.org/wiki/FLAC) | BASS & MP3 Art Extractor
 IT | [Impulse Tracker Module](https://en.wikipedia.org/wiki/Impulse_Tracker) | BASS
@@ -799,3 +800,4 @@ XM | [Extended Module](https://en.wikipedia.org/wiki/XM_(file_format)) | BASS
 ### Other
 * BPG - animation frames not extracted by libbpg
 * AIFC - ffmpeg doesn't work
+* WMA/WMV - tricky to tell them apart

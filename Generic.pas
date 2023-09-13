@@ -44,6 +44,7 @@ type
     procedure FormCreate(Sender: TObject);
     procedure menuFoldersClick(Sender: TObject);
     procedure menuFilesClick(Sender: TObject);
+    function IntToStrSep(i: integer): string;
     procedure CheckFormat;
     procedure DoConvert(i: integer);
     function MakeCommand(s, targetfile, tempfolderlocal: string): string;
@@ -94,7 +95,7 @@ var
   inicontent: array[0..10000, 0..17] of string;
   palarray: array[0..1024] of byte;
   thisfolder, tempfolder, tempfilepath, tempwavpath, currentfile,
-    wavlengthstr, wfcreate, wfchange, wfcolors: string;
+    wavlengthstr, wfcreate, wfchange, wfcolors, thousep: string;
   formatmatch: array[0..10000] of integer;
   submode, playingwav: boolean;
   wav: HSTREAM;
@@ -177,7 +178,8 @@ begin
     else if AnsiPos('audio=',s) = 1 then inicontent[i,ini_audio] := Explode(s,'audio=',1)
     else if AnsiPos('wfcreate=',s) = 1 then wfcreate := Explode(s,'wfcreate=',1)
     else if AnsiPos('wfchange=',s) = 1 then wfchange := Explode(s,'wfchange=',1)
-    else if AnsiPos('wfcolors=',s) = 1 then wfcolors := Explode(s,'wfcolors=',1);
+    else if AnsiPos('wfcolors=',s) = 1 then wfcolors := Explode(s,'wfcolors=',1)
+    else if AnsiPos('thousandseparator=',s) = 1 then thousep := Explode(s,'thousandseparator=',1);
     end;
   CloseFile(inifile);
 
@@ -234,11 +236,17 @@ begin
   submode := false;
   currentfile := menuFiles.FileName;
   LoadFile(currentfile); // Load file to memory.
-  memDebug.Lines.Add(currentfile+' ('+IntToStr(fs)+' bytes)');
+  memDebug.Lines.Add(currentfile+' ('+IntToStrSep(fs)+' bytes)');
   if fs = 0 then exit; // Stop if file is 0 bytes.
   CleanTempFolder;
   ClearWAV;
   CheckFormat; // Find matching format and display image.
+end;
+
+function THiveView.IntToStrSep(i: integer): string;
+begin
+  result := FormatFloat('#,###',i); // Convert to number with commas.
+  result := ReplaceStr(result,',',thousep); // Replace comma with custom string.
 end;
 
 procedure THiveView.CheckFormat;

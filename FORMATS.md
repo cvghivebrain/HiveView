@@ -379,10 +379,12 @@ STX | Atari ST Pasti | Deark
 
 Ext. | Description | Program
 --- | --- | ---
+8SVX/IFF | [Amiga 8-Bit Sampled Voice Interchange File Format](https://en.wikipedia.org/wiki/8SVX) | FFmpeg
 AIFF/AIF/AFF | [Audio Interchange File Format](https://en.wikipedia.org/wiki/Audio_Interchange_File_Format) | BASS
 APE | [Monkey's Audio](https://en.wikipedia.org/wiki/Monkey's_Audio) | FFmpeg
 DSF/DFF | [Sony/Philips Direct Stream Digital](https://en.wikipedia.org/wiki/Direct_Stream_Digital) | FFmpeg
 FLAC | [Free Lossless Audio Codec](https://en.wikipedia.org/wiki/FLAC) | BASS & MP3 Art Extractor
+ISS | Funcom IMA ADPCM | FFmpeg
 IT | [Impulse Tracker Module](https://en.wikipedia.org/wiki/Impulse_Tracker) | BASS
 MOD | [Amiga Module](https://en.wikipedia.org/wiki/MOD_(file_format)) | BASS
 MP1 | [MPEG-1/2 Audio Layer I](https://en.wikipedia.org/wiki/MPEG-1_Audio_Layer_I) | BASS
@@ -803,7 +805,10 @@ Ext. | Description | Program
 * Zoo filter/Z formats - no samples
 * ZSQ - no samples
 
-### Other
-* BPG - animation frames not extracted by libbpg
+### FFmpeg
 * AIFC - ffmpeg doesn't work
 * WMA/WMV - tricky to tell them apart
+* 4XM - video not screenshottable
+
+### Other
+* BPG - animation frames not extracted by libbpg

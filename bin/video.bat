@@ -23,7 +23,7 @@ set /p duration=<"%TEMP_FOLDER%\temp.txt"
 set /a "duration=!duration!/1"
 
 set /a "TIME=!duration! / 4"
-"ffmpeg.exe" -ss !TIME! -i "%INPUT_VIDEO%" -frames:v 1 "%TEMP_FOLDER%\screenshot_25.png"
+"ffmpeg.exe" -noaccurate_seek -ss !TIME! -i "%INPUT_VIDEO%" -frames:v 1 "%TEMP_FOLDER%\screenshot_25.png"
 set /a "TIME=!duration! / 2"
 "ffmpeg.exe" -ss !TIME! -i "%INPUT_VIDEO%" -frames:v 1 "%TEMP_FOLDER%\screenshot_50.png"
 set /a "TIME=(!duration! / 4) * 3"

@@ -403,6 +403,8 @@ XM | [Extended Module](https://en.wikipedia.org/wiki/XM_(file_format)) | BASS
 Ext. | Description | Program
 --- | --- | ---
 3GP/3G2 | [Third Generation Partnership Project](https://en.wikipedia.org/wiki/3GP_and_3G2) | FFmpeg
+AMV | [Actions Media Video](https://en.wikipedia.org/wiki/AMV_video_format) | FFmpeg
+MTV | MTV Movie | FFmpeg
 
 ## To do
 ### ImageMagick
@@ -809,6 +811,7 @@ Ext. | Description | Program
 * AIFC - ffmpeg doesn't work
 * WMA/WMV - tricky to tell them apart
 * 4XM - video not screenshottable
+* ROQ - no samples
 
 ### Other
 * BPG - animation frames not extracted by libbpg

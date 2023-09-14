@@ -14,7 +14,7 @@ HiveView is an image viewer that can (potentially) open any image file, either b
 * [7-Zip](https://7-zip.org/)
 * [BASS](https://www.un4seen.com/)
 * [Deark](https://entropymine.com/deark/)
-* [FFmpeg](http://ffmpeg.org/)
+* [FFmpeg & ffprobe](http://ffmpeg.org/)
 * [FLIF](http://flif.info/)
 * [Ghostscript](https://ghostscript.com)
 * [ImageMagick](https://github.com/ImageMagick/ImageMagick)

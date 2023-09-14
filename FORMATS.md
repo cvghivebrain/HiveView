@@ -396,6 +396,12 @@ WAV | [Waveform Audio](https://en.wikipedia.org/wiki/WAV) | BASS
 WV | [WavPack](https://en.wikipedia.org/wiki/WavPack) | FFmpeg
 XM | [Extended Module](https://en.wikipedia.org/wiki/XM_(file_format)) | BASS
 
+## Supported video formats
+
+Ext. | Description | Program
+--- | --- | ---
+3GP/3G2 | [Third Generation Partnership Project](https://en.wikipedia.org/wiki/3GP_and_3G2) | FFmpeg
+
 ## To do
 ### ImageMagick
 * AVI/M2V/MPEG

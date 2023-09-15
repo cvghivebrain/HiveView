@@ -375,6 +375,14 @@ object HiveView: THiveView
     TabOrder = 11
     OnChange = trkVolumeChange
   end
+  object chkDebug: TCheckBox
+    Left = 8
+    Top = 791
+    Width = 97
+    Height = 17
+    Caption = 'Debug Mode'
+    TabOrder = 12
+  end
   object dlgSave: TSaveDialog
     Options = [ofOverwritePrompt, ofHideReadOnly, ofEnableSizing]
     Left = 712

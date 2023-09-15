@@ -41,6 +41,7 @@ type
     trkVolume: TTrackBar;
     imgWavBG: TImage;
     imgWavFG: TImage;
+    chkDebug: TCheckBox;
     procedure FormCreate(Sender: TObject);
     procedure menuFoldersClick(Sender: TObject);
     procedure menuFilesClick(Sender: TObject);
@@ -94,7 +95,7 @@ var
     palsize, imgw, imgh, iniformats, wavlength: integer;
   inicontent: array[0..10000, 0..17] of string;
   palarray: array[0..1024] of byte;
-  thisfolder, tempfolder, tempfilepath, tempwavpath, currentfile,
+  thisfolder, tempfolder, tempfilepath, tempwavpath, currentfile, currentext,
     wavlengthstr, wfcreate, wfchange, wfcolors, thousep: string;
   formatmatch: array[0..10000] of integer;
   submode, playingwav: boolean;
@@ -235,6 +236,9 @@ begin
   if menuFiles.ItemIndex = -1 then exit; // Do nothing if not clicked on an item.
   submode := false;
   currentfile := menuFiles.FileName;
+  currentext := ExtractFileExt(currentfile); // Get file extension.
+  if currentext[1] = '.' then Delete(currentext,1,1); // Remove dot.
+  searchFormat.Text := currentext;
   LoadFile(currentfile); // Load file to memory.
   memDebug.Lines.Add(currentfile+' ('+IntToStrSep(fs)+' bytes)');
   if fs = 0 then exit; // Stop if file is 0 bytes.
@@ -281,6 +285,9 @@ begin
   submode := true;
   subfilename := lstSubfiles.Items[lstSubfiles.ItemIndex];
   currentfile := tempfolder+subfilename;
+  currentext := ExtractFileExt(currentfile); // Get file extension.
+  if currentext[1] = '.' then Delete(currentext,1,1); // Remove dot.
+  searchFormat.Text := currentext;
   LoadFile(currentfile); // Load file to memory.
   memDebug.Lines.Add(menuFiles.FileName+subfilename+' ('+IntToStr(fs)+' bytes)');
   if fs = 0 then exit; // Stop if file is 0 bytes.
@@ -303,7 +310,7 @@ begin
     while Explode(c,'&&',j) <> '' do // Multiple commands separated by &&.
       begin
       c2 := MakeCommand(Explode(c,'&&',j),currentfile,tempfolder);
-      //memDebug.Lines.Add(c2);
+      if chkDebug.Checked then memDebug.Lines.Add(c2);
       RunCommand(c2); // Create temp.png.
       Inc(j); // Next command.
       end;
@@ -355,7 +362,7 @@ begin
   while Explode(c,'&&',j) <> '' do // Multiple commands separated by &&.
     begin
     c2 := MakeCommand(Explode(c,'&&',j),currentfile,unpackto);
-    //memDebug.Lines.Add(c2);
+    if chkDebug.Checked then memDebug.Lines.Add(c2);
     RunCommand(c2); // Unpack to temp folder.
     Inc(j); // Next command.
     end;
@@ -412,7 +419,7 @@ begin
     while Explode(c,'&&',j) <> '' do // Multiple commands separated by &&.
       begin
       c2 := MakeCommand(Explode(c,'&&',j),currentfile,tempfolder);
-      //memDebug.Lines.Add(c2);
+      if chkDebug.Checked then memDebug.Lines.Add(c2);
       RunCommand(c2); // Create temp.wav.
       Inc(j); // Next command.
       end;

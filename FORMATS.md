@@ -380,7 +380,10 @@ STX | Atari ST Pasti | Deark
 Ext. | Description | Program
 --- | --- | ---
 8SVX/IFF | [Amiga 8-Bit Sampled Voice Interchange File Format](https://en.wikipedia.org/wiki/8SVX) | FFmpeg
+AAC/M4A | [Advanced Audio Coding](https://en.wikipedia.org/wiki/Advanced_Audio_Coding) | FFmpeg & MP3 Art Extractor
+AC3 | Dolby Digital Audio Codec 3 | FFmpeg
 AIFF/AIF/AFF | [Audio Interchange File Format](https://en.wikipedia.org/wiki/Audio_Interchange_File_Format) | BASS
+AMR/3GA | [Adaptive Multi-Rate Audio](https://en.wikipedia.org/wiki/Adaptive_Multi-Rate_audio_codec) | FFmpeg
 APE | [Monkey's Audio](https://en.wikipedia.org/wiki/Monkey's_Audio) | FFmpeg
 DSF/DFF | [Sony/Philips Direct Stream Digital](https://en.wikipedia.org/wiki/Direct_Stream_Digital) | FFmpeg
 FLAC | [Free Lossless Audio Codec](https://en.wikipedia.org/wiki/FLAC) | BASS & MP3 Art Extractor
@@ -813,6 +816,9 @@ MTV | MTV Movie | FFmpeg
 * WMA/WMV - tricky to tell them apart
 * 4XM - video not screenshottable
 * ROQ - no samples
+* ALAW - no samples
+* ALSA - no samples
+* Cryo APC - no samples
 
 ### Other
 * BPG - animation frames not extracted by libbpg

@@ -385,6 +385,7 @@ AC3 | Dolby Digital Audio Codec 3 | FFmpeg
 AIFF/AIF/AFF | [Audio Interchange File Format](https://en.wikipedia.org/wiki/Audio_Interchange_File_Format) | BASS
 AMR/3GA | [Adaptive Multi-Rate Audio](https://en.wikipedia.org/wiki/Adaptive_Multi-Rate_audio_codec) | FFmpeg
 APE | [Monkey's Audio](https://en.wikipedia.org/wiki/Monkey's_Audio) | FFmpeg
+AU/SND | [Sun Microsystems Audio](https://en.wikipedia.org/wiki/Au_file_format) | FFmpeg
 DSF/DFF | [Sony/Philips Direct Stream Digital](https://en.wikipedia.org/wiki/Direct_Stream_Digital) | FFmpeg
 FLAC | [Free Lossless Audio Codec](https://en.wikipedia.org/wiki/FLAC) | BASS & MP3 Art Extractor
 ISS | Funcom IMA ADPCM | FFmpeg
@@ -406,13 +407,20 @@ XM | [Extended Module](https://en.wikipedia.org/wiki/XM_(file_format)) | BASS
 Ext. | Description | Program
 --- | --- | ---
 3GP/3G2 | [Third Generation Partnership Project](https://en.wikipedia.org/wiki/3GP_and_3G2) | FFmpeg
+4XM | 4X Technologies Movie | FFmpeg
 AMV | [Actions Media Video](https://en.wikipedia.org/wiki/AMV_video_format) | FFmpeg
+ASF | [Advanced Systems Format](https://en.wikipedia.org/wiki/Advanced_Systems_Format) | FFmpeg
+AVI/DIVX | [Audio Video Interleave](https://en.wikipedia.org/wiki/Audio_Video_Interleave) | FFmpeg
+BFI | Tsunami Games Brute Force & Ignorance, used in Blue Force | FFmpeg
+CIN | Delphine CIN, used in Fade to Black | FFmpeg
+DXA | Runesoft Dexa Video, used in The Feeble Files | FFmpeg
 MP4/M4A/M4P/M4B/M4R/M4V | [MPEG-4 Part 14](https://en.wikipedia.org/wiki/MP4_file_format) | FFmpeg
 MTV | MTV Movie | FFmpeg
+VID | Bethesda Softworks Video | FFmpeg
 
 ## To do
 ### ImageMagick
-* AVI/M2V/MPEG
+* M2V/MPEG
 * BAYER
 * CALS Type 2 (CT2) - multi page, can't find any examples
 * CMYK/CMYKA - no header?
@@ -814,11 +822,20 @@ MTV | MTV Movie | FFmpeg
 ### FFmpeg
 * AIFC - ffmpeg doesn't work
 * WMA/WMV - tricky to tell them apart
-* 4XM - video not screenshottable
 * ROQ - no samples
 * ALAW - no samples
 * ALSA - no samples
 * Cryo APC - no samples
+* AVM2 - no samples
+* AVS - no samples
+* C93 - unsure how to detect
+* Chinese AVS - ?
+* D-Cinema - ?
+* Dirac - no samples
+* DNxHD - no samples
+* DTS - no samples
+* DV - no samples
+* DV1394 - no samples
 
 ### Other
 * BPG - animation frames not extracted by libbpg

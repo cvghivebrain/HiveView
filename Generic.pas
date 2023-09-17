@@ -244,6 +244,7 @@ begin
   if fs = 0 then exit; // Stop if file is 0 bytes.
   CleanTempFolder;
   ClearWAV;
+  imgMain.Visible := false;
   CheckFormat; // Find matching format and display image.
 end;
 
@@ -259,7 +260,6 @@ var i: integer;
 begin
   DefaultFormat; // Use default settings.
   matchfound := false; // Assume no match.
-  imgMain.Visible := false;
   for i := 0 to iniformats do
     if inicontent[i,ini_if] <> '' then
       if Solve(inicontent[i,ini_if]) > 0 then // Check file with condition from ini.
@@ -446,6 +446,7 @@ begin
     end;
   BASS_ChannelSetAttribute(wav,BASS_ATTRIB_VOL,trkVolume.Position/trkVolume.Max);
   wavlengthstr := GetMinSec(wavlength); // Get track length as M:SS.
+  memDebug.Lines.Add('Audio is '+wavlengthstr+' long.');
   lblTime.Caption := '0:00 / '+wavlengthstr;
   btnPlayer.Enabled := true; // Enable controls.
   wfcmd := ReplaceStr(wfcreate,'{file}',f);

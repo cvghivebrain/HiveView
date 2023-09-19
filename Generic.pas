@@ -435,6 +435,7 @@ end;
 procedure THiveView.LoadWAV(f: string);
 var wfcmd, wfcmd2, wf: string;
 begin
+  ClearWAV;
   wav := BASS_StreamCreateFile(false,PWideChar(f),0,0,BASS_UNICODE+BASS_STREAM_PRESCAN); // Try loading as wav/mp3 etc.
   wavlength := BASS_ChannelGetLength(wav,BASS_POS_BYTE); // Get track length in bytes.
   if wavlength = -1 then wav := BASS_MusicLoad(false,PWideChar(f),0,0,BASS_UNICODE+BASS_STREAM_PRESCAN,0); // Try loading as mod.

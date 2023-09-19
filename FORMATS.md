@@ -386,7 +386,7 @@ AIFF/AIF/AFF | [Audio Interchange File Format](https://en.wikipedia.org/wiki/Aud
 AMR/3GA | [Adaptive Multi-Rate Audio](https://en.wikipedia.org/wiki/Adaptive_Multi-Rate_audio_codec) | FFmpeg
 APE | [Monkey's Audio](https://en.wikipedia.org/wiki/Monkey's_Audio) | FFmpeg
 AU/SND | [Sun Microsystems Audio](https://en.wikipedia.org/wiki/Au_file_format) | FFmpeg
-CDATA | Electronic Arts, used in Command & Conquer 3 | FFmpeg
+CDATA | Electronic Arts, used in _Command & Conquer 3_ | FFmpeg
 DSF/DFF | [Sony/Philips Direct Stream Digital](https://en.wikipedia.org/wiki/Direct_Stream_Digital) | FFmpeg
 FLAC | [Free Lossless Audio Codec](https://en.wikipedia.org/wiki/FLAC) | BASS & MP3 Art Extractor
 ISS | Funcom IMA ADPCM | FFmpeg
@@ -412,13 +412,13 @@ Ext. | Description | Program
 AMV | [Actions Media Video](https://en.wikipedia.org/wiki/AMV_video_format) | FFmpeg
 ASF | [Advanced Systems Format](https://en.wikipedia.org/wiki/Advanced_Systems_Format) | FFmpeg
 AVI/DIVX | [Audio Video Interleave](https://en.wikipedia.org/wiki/Audio_Video_Interleave) | FFmpeg
-BFI | Tsunami Games Brute Force & Ignorance, used in Blue Force | FFmpeg
+BFI | Tsunami Games Brute Force & Ignorance, used in _Blue Force_ | FFmpeg
 CDXL/XL | [Amiga CDXL](https://en.wikipedia.org/wiki/CDXL) | FFmpeg
-CIN | Delphine CIN, used in Fade to Black | FFmpeg
+CIN | Delphine CIN, used in _Fade to Black_ | FFmpeg
 CMV | Electronic Arts | FFmpeg
 CPK/CAK/FILM | Sega FILM [Cinepak Video](https://en.wikipedia.org/wiki/Cinepak) | FFmpeg
 DCT/TGQ/TGV/UV/WVE | Electronic Arts | FFmpeg
-DXA | Runesoft Dexa Video, used in The Feeble Files | FFmpeg
+DXA | Runesoft Dexa Video, used in _The Feeble Files_ | FFmpeg
 F4V/MP4 | Adobe [Flash Video](https://en.wikipedia.org/wiki/Flash_Video) | FFmpeg
 FLV | Adobe [Flash Video](https://en.wikipedia.org/wiki/Flash_Video) | FFmpeg
 GXF | [General Exchange Format](https://en.wikipedia.org/wiki/General_Exchange_Format) | FFmpeg

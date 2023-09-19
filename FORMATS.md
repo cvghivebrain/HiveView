@@ -386,6 +386,7 @@ AIFF/AIF/AFF | [Audio Interchange File Format](https://en.wikipedia.org/wiki/Aud
 AMR/3GA | [Adaptive Multi-Rate Audio](https://en.wikipedia.org/wiki/Adaptive_Multi-Rate_audio_codec) | FFmpeg
 APE | [Monkey's Audio](https://en.wikipedia.org/wiki/Monkey's_Audio) | FFmpeg
 AU/SND | [Sun Microsystems Audio](https://en.wikipedia.org/wiki/Au_file_format) | FFmpeg
+CDATA | Electronic Arts, used in Command & Conquer 3 | FFmpeg
 DSF/DFF | [Sony/Philips Direct Stream Digital](https://en.wikipedia.org/wiki/Direct_Stream_Digital) | FFmpeg
 FLAC | [Free Lossless Audio Codec](https://en.wikipedia.org/wiki/FLAC) | BASS & MP3 Art Extractor
 ISS | Funcom IMA ADPCM | FFmpeg
@@ -415,8 +416,12 @@ BFI | Tsunami Games Brute Force & Ignorance, used in Blue Force | FFmpeg
 CDXL/XL | [Amiga CDXL](https://en.wikipedia.org/wiki/CDXL) | FFmpeg
 CIN | Delphine CIN, used in Fade to Black | FFmpeg
 CMV | Electronic Arts | FFmpeg
+CPK/CAK/FILM | Sega FILM [Cinepak Video](https://en.wikipedia.org/wiki/Cinepak) | FFmpeg
 DCT/TGQ/TGV/UV/WVE | Electronic Arts | FFmpeg
 DXA | Runesoft Dexa Video, used in The Feeble Files | FFmpeg
+F4V/MP4 | Adobe [Flash Video](https://en.wikipedia.org/wiki/Flash_Video) | FFmpeg
+FLV | Adobe [Flash Video](https://en.wikipedia.org/wiki/Flash_Video) | FFmpeg
+GXF | [General Exchange Format](https://en.wikipedia.org/wiki/General_Exchange_Format) | FFmpeg
 MP4/M4A/M4P/M4B/M4R/M4V | [MPEG-4 Part 14](https://en.wikipedia.org/wiki/MP4_file_format) | FFmpeg
 MAD | Electronic Arts Madcow Movie | FFmpeg
 MPC | Electronic Arts | FFmpeg
@@ -842,6 +847,10 @@ VP6 | Electronic Arts VP6 | FFmpeg
 * DTS - no samples
 * DV - no samples
 * DV1394 - no samples
+* Raw EAC3 - unsure how to detect
+* f32be/f32le/f64be/f64le - raw unheadered formats?
+* FFM - no samples
+* GSM - no header?
 
 ### Other
 * BPG - animation frames not extracted by libbpg

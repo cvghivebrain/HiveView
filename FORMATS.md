@@ -412,11 +412,17 @@ AMV | [Actions Media Video](https://en.wikipedia.org/wiki/AMV_video_format) | FF
 ASF | [Advanced Systems Format](https://en.wikipedia.org/wiki/Advanced_Systems_Format) | FFmpeg
 AVI/DIVX | [Audio Video Interleave](https://en.wikipedia.org/wiki/Audio_Video_Interleave) | FFmpeg
 BFI | Tsunami Games Brute Force & Ignorance, used in Blue Force | FFmpeg
+CDXL/XL | [Amiga CDXL](https://en.wikipedia.org/wiki/CDXL) | FFmpeg
 CIN | Delphine CIN, used in Fade to Black | FFmpeg
+CMV | Electronic Arts | FFmpeg
+DCT/TGQ/TGV/UV/WVE | Electronic Arts | FFmpeg
 DXA | Runesoft Dexa Video, used in The Feeble Files | FFmpeg
 MP4/M4A/M4P/M4B/M4R/M4V | [MPEG-4 Part 14](https://en.wikipedia.org/wiki/MP4_file_format) | FFmpeg
+MAD | Electronic Arts Madcow Movie | FFmpeg
+MPC | Electronic Arts | FFmpeg
 MTV | MTV Movie | FFmpeg
 VID | Bethesda Softworks Video | FFmpeg
+VP6 | Electronic Arts VP6 | FFmpeg
 
 ## To do
 ### ImageMagick

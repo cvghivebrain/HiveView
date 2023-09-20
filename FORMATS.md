@@ -415,6 +415,7 @@ AVI/DIVX | [Audio Video Interleave](https://en.wikipedia.org/wiki/Audio_Video_In
 BFI | Tsunami Games Brute Force & Ignorance, used in _Blue Force_ | FFmpeg
 CDXL/XL | [Amiga CDXL](https://en.wikipedia.org/wiki/CDXL) | FFmpeg
 CIN | Delphine CIN, used in _Fade to Black_ | FFmpeg
+CIN | id Software Cinematic, used in _Quake II_ | FFmpeg
 CMV | Electronic Arts | FFmpeg
 CPK/CAK/FILM | Sega FILM [Cinepak Video](https://en.wikipedia.org/wiki/Cinepak) | FFmpeg
 DCT/TGQ/TGV/UV/WVE | Electronic Arts | FFmpeg
@@ -422,10 +423,13 @@ DXA | Runesoft Dexa Video, used in _The Feeble Files_ | FFmpeg
 F4V/MP4 | Adobe [Flash Video](https://en.wikipedia.org/wiki/Flash_Video) | FFmpeg
 FLV | Adobe [Flash Video](https://en.wikipedia.org/wiki/Flash_Video) | FFmpeg
 GXF | [General Exchange Format](https://en.wikipedia.org/wiki/General_Exchange_Format) | FFmpeg
+H263 | Raw [H.263](https://en.wikipedia.org/wiki/H.263) | FFmpeg
+H264 | Raw [H.264/Advanced Video Coding](https://en.wikipedia.org/wiki/Advanced_Video_Coding) | FFmpeg
 MP4/M4A/M4P/M4B/M4R/M4V | [MPEG-4 Part 14](https://en.wikipedia.org/wiki/MP4_file_format) | FFmpeg
 MAD | Electronic Arts Madcow Movie | FFmpeg
 MPC | Electronic Arts | FFmpeg
 MTV | MTV Movie | FFmpeg
+MVE | Interplay MVE | FFmpeg
 VID | Bethesda Softworks Video | FFmpeg
 VP6 | Electronic Arts VP6 | FFmpeg
 
@@ -851,6 +855,8 @@ VP6 | Electronic Arts VP6 | FFmpeg
 * f32be/f32le/f64be/f64le - raw unheadered formats?
 * FFM - no samples
 * GSM - no header?
+* H261 - unsure how to detect
+* Ingenient MJPEG - no samples
 
 ### Other
 * BPG - animation frames not extracted by libbpg

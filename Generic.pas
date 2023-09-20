@@ -409,6 +409,7 @@ procedure THiveView.DoAudio(i: integer);
 var c, c2: string;
   j: integer;
 begin
+  ClearWAV;
   if inicontent[i,ini_convert]+inicontent[i,ini_unpack] = '' then ShowFormat(inicontent[i,ini_name]);
   c := inicontent[i,ini_audio];
   if c = 'open' then LoadWAV(currentfile) // Load WAV file as-is.
@@ -435,7 +436,6 @@ end;
 procedure THiveView.LoadWAV(f: string);
 var wfcmd, wfcmd2, wf: string;
 begin
-  ClearWAV;
   wav := BASS_StreamCreateFile(false,PWideChar(f),0,0,BASS_UNICODE+BASS_STREAM_PRESCAN); // Try loading as wav/mp3 etc.
   wavlength := BASS_ChannelGetLength(wav,BASS_POS_BYTE); // Get track length in bytes.
   if wavlength = -1 then wav := BASS_MusicLoad(false,PWideChar(f),0,0,BASS_UNICODE+BASS_STREAM_PRESCAN,0); // Try loading as mod.

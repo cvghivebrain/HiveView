@@ -6,7 +6,7 @@ uses
   Windows, Messages, SysUtils, Variants, Classes, Graphics, Controls, Forms,
   Dialogs, StrUtils, ExtCtrls, StdCtrls, pngimage, PNGFunc, Vcl.ComCtrls,
   Vcl.FileCtrl, IOUtils, CRCFunc, ExplodeFunc, FileFunc, SolveFunc,
-  Vcl.WinXCtrls, Bass;
+  Vcl.WinXCtrls, Bass, MiscFunc;
 
 type
   THiveView = class(TForm)
@@ -45,7 +45,6 @@ type
     procedure FormCreate(Sender: TObject);
     procedure menuFoldersClick(Sender: TObject);
     procedure menuFilesClick(Sender: TObject);
-    function IntToStrSep(i: integer): string;
     procedure CheckFormat;
     procedure DoConvert(i: integer);
     function MakeCommand(s, targetfile, tempfolderlocal: string): string;
@@ -54,7 +53,6 @@ type
     procedure DoAudio(i: integer);
     procedure LoadWAV(f: string);
     procedure ClearWAV;
-    function GetMinSec(i: integer): string;
     procedure DefaultFormat;
     procedure btnReloadClick(Sender: TObject);
     procedure LoadImage;
@@ -96,7 +94,7 @@ var
   inicontent: array[0..10000, 0..17] of string;
   palarray: array[0..1024] of byte;
   thisfolder, tempfolder, tempfilepath, tempwavpath, currentfile, currentext,
-    wavlengthstr, wfcreate, wfchange, wfcolors, thousep: string;
+    wavlengthstr, wfcreate, wfchange, wfcolors: string;
   formatmatch: array[0..10000] of integer;
   submode, playingwav: boolean;
   wav: HSTREAM;
@@ -180,7 +178,7 @@ begin
     else if AnsiPos('wfcreate=',s) = 1 then wfcreate := Explode(s,'wfcreate=',1)
     else if AnsiPos('wfchange=',s) = 1 then wfchange := Explode(s,'wfchange=',1)
     else if AnsiPos('wfcolors=',s) = 1 then wfcolors := Explode(s,'wfcolors=',1)
-    else if AnsiPos('thousandseparator=',s) = 1 then thousep := Explode(s,'thousandseparator=',1);
+    else if AnsiPos('thousandseparator=',s) = 1 then thousandsep := Explode(s,'thousandseparator=',1);
     end;
   CloseFile(inifile);
 
@@ -215,10 +213,8 @@ begin
 end;
 
 procedure THiveView.menuDrivesClick(Sender: TObject);
-var drive: string;
 begin
-  drive := AnsiUpperCase(Explode(menuDrives.Items[menuDrives.ItemIndex],':',0));
-  menuFolders.Directory := drive+':\'; // Show folders on drive.
+  menuFolders.Directory := GetDriveRoot(menuDrives.Items[menuDrives.ItemIndex]); // Show folders on drive.
   menuFiles.Directory := menuFolders.Directory; // Show files in root folder.
   memDebug.Lines.Add(menuFolders.Directory);
 end;
@@ -236,22 +232,15 @@ begin
   if menuFiles.ItemIndex = -1 then exit; // Do nothing if not clicked on an item.
   submode := false;
   currentfile := menuFiles.FileName;
-  currentext := ExtractFileExt(currentfile); // Get file extension.
-  if currentext[1] = '.' then Delete(currentext,1,1); // Remove dot.
+  currentext := GetExtOnly(currentfile); // Get file extension.
   searchFormat.Text := currentext;
   LoadFile(currentfile); // Load file to memory.
   memDebug.Lines.Add(currentfile+' ('+IntToStrSep(fs)+' bytes)');
+  imgMain.Visible := false;
   if fs = 0 then exit; // Stop if file is 0 bytes.
   CleanTempFolder;
   ClearWAV;
-  imgMain.Visible := false;
   CheckFormat; // Find matching format and display image.
-end;
-
-function THiveView.IntToStrSep(i: integer): string;
-begin
-  result := FormatFloat('#,###',i); // Convert to number with commas.
-  result := ReplaceStr(result,',',thousep); // Replace comma with custom string.
 end;
 
 procedure THiveView.CheckFormat;
@@ -285,8 +274,7 @@ begin
   submode := true;
   subfilename := lstSubfiles.Items[lstSubfiles.ItemIndex];
   currentfile := tempfolder+subfilename;
-  currentext := ExtractFileExt(currentfile); // Get file extension.
-  if currentext[1] = '.' then Delete(currentext,1,1); // Remove dot.
+  currentext := GetExtOnly(currentfile); // Get file extension.
   searchFormat.Text := currentext;
   LoadFile(currentfile); // Load file to memory.
   memDebug.Lines.Add(menuFiles.FileName+subfilename+' ('+IntToStr(fs)+' bytes)');
@@ -446,7 +434,7 @@ begin
     exit;
     end;
   BASS_ChannelSetAttribute(wav,BASS_ATTRIB_VOL,trkVolume.Position/trkVolume.Max);
-  wavlengthstr := GetMinSec(wavlength); // Get track length as M:SS.
+  wavlengthstr := GetMinSec(wav,wavlength); // Get track length as M:SS.
   memDebug.Lines.Add('Audio is '+wavlengthstr+' long.');
   lblTime.Caption := '0:00 / '+wavlengthstr;
   btnPlayer.Enabled := true; // Enable controls.
@@ -496,17 +484,6 @@ begin
   DeleteFile(tempwavpath);
 end;
 
-{ Convert time in bytes to M:SS format. }
-
-function THiveView.GetMinSec(i: integer): string;
-var secs: int64;
-begin
-  secs := Round(BASS_ChannelBytes2Seconds(wav,i)); // Convert to seconds.
-  result := IntToStr(secs mod 60); // Get seconds.
-  if Length(result) = 1 then result := '0'+result; // Add leading 0 if needed.
-  result := IntToStr(secs div 60)+':'+result; // Add minutes.
-end;
-
 procedure THiveView.btnPlayerClick(Sender: TObject);
 begin
   if playingwav then
@@ -532,7 +509,7 @@ procedure THiveView.UpdateTime;
 var pos: integer;
 begin
   pos := BASS_ChannelGetPosition(wav,BASS_POS_BYTE);
-  lblTime.Caption := GetMinSec(pos)+' / '+wavlengthstr; // Update timer.
+  lblTime.Caption := GetMinSec(wav,pos)+' / '+wavlengthstr; // Update timer.
   imgWavFG.Width := Round(imgWavBG.Width*(pos/wavlength)); // Update progress bar.
   if pos = wavlength then // Check if at end of file.
     begin
@@ -763,40 +740,17 @@ end;
 { Empty temp folder and clear list of subfiles. }
 
 procedure THiveView.CleanTempFolder;
-var rec: TSearchRec;
 begin
-  if SysUtils.DirectoryExists(tempfolder) then // Check if temp folder exists.
-    begin
-    if FindFirst(tempfolder+'\*',faAnyFile,rec) = 0 then // First item in temp folder.
-      begin
-      try
-        repeat
-          if (rec.Name <> '.') and (rec.Name <> '..') then // Exclude current and parent folder.
-          begin
-          if (rec.Attr and faDirectory) = faDirectory then
-            TDirectory.Delete(tempfolder+'\'+rec.Name,true) // Delete folder.
-          else
-            begin
-            FileSetAttr(tempfolder+'\'+rec.Name,rec.Attr and $FE); // Set as not read only.
-            DeleteFile(tempfolder+'\'+rec.Name); // Delete file.
-            end;
-          end;
-        until FindNext(rec) <> 0; // Repeat for all items.
-      finally
-        FindClose(rec);
-      end;
-      end;
-    end
-  else CreateDir(tempfolder); // Create temp folder.
+  CleanFolder(tempfolder,true); // Empty/create temp folder.
   lstSubfiles.Clear; // Empty list.
 end;
 
 procedure THiveView.searchFormatChange(Sender: TObject);
 var i: integer;
 begin
+  lstFormat.Clear; // Clear list of matches.
   if searchFormat.Text = '' then exit; // Do nothing if search is empty.
   if currentfile = '' then exit; // Do nothing if file isn't loaded.
-  lstFormat.Clear; // Clear list of matches.
   for i := 0 to iniformats do
     begin
     if AnsiPos(AnsiLowerCase(searchFormat.Text),AnsiLowerCase(inicontent[i,ini_name])) <> 0 then
@@ -811,11 +765,17 @@ procedure THiveView.lstFormatClick(Sender: TObject);
 var i: integer;
 begin
   if lstFormat.ItemIndex = -1 then exit; // Do nothing if not clicked on an item.
+  if fs = 0 then // Check if file has been loaded.
+    begin
+    memDebug.Lines.Add('No file loaded.');
+    exit;
+    end;
   DefaultFormat; // Use default settings.
   i := formatmatch[lstFormat.ItemIndex];
   if inicontent[i,ini_unpack] <> '' then DoUnpack(i); // Check for unpack/decompress by external program.
   if inicontent[i,ini_convert] <> '' then DoConvert(i); // Check for conversion by external program.
-  if (inicontent[i,ini_unpack]+inicontent[i,ini_convert] = '') then DoRaw(i); // Load as raw using settings from ini.
+  if inicontent[i,ini_audio] <> '' then DoAudio(i); // Check for audio.
+  if (inicontent[i,ini_unpack]+inicontent[i,ini_convert]+inicontent[i,ini_audio] = '') then DoRaw(i); // Load as raw using settings from ini.
 end;
 
 end.

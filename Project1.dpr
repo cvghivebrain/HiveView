@@ -8,7 +8,8 @@ uses
   ExplodeFunc in 'ExplodeFunc.pas',
   FileFunc in 'FileFunc.pas',
   SolveFunc in 'SolveFunc.pas',
-  bass in 'bass.pas';
+  bass in 'bass.pas',
+  MiscFunc in 'MiscFunc.pas';
 
 {$R *.res}
 

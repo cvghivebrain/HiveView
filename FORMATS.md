@@ -391,6 +391,9 @@ DSF/DFF | [Sony/Philips Direct Stream Digital](https://en.wikipedia.org/wiki/Dir
 FLAC | [Free Lossless Audio Codec](https://en.wikipedia.org/wiki/FLAC) | BASS & MP3 Art Extractor
 ISS | Funcom IMA ADPCM | FFmpeg
 IT | [Impulse Tracker Module](https://en.wikipedia.org/wiki/Impulse_Tracker) | BASS
+MKA | [Matroska](https://en.wikipedia.org/wiki/Matroska) | FFmpeg
+MLP | [Meridian Lossless Packing/Packed PCM](https://en.wikipedia.org/wiki/Meridian_Lossless_Packing) | FFmpeg
+MMF | Yamaha ADPCM/SMAF | FFmpeg
 MOD | [Amiga Module](https://en.wikipedia.org/wiki/MOD_(file_format)) | BASS
 MP1 | [MPEG-1/2 Audio Layer I](https://en.wikipedia.org/wiki/MPEG-1_Audio_Layer_I) | BASS
 MP2/MPA | [MPEG-1/2 Audio Layer II](https://en.wikipedia.org/wiki/MPEG-1_Audio_Layer_II) | BASS & MP3 Art Extractor
@@ -427,6 +430,8 @@ H263 | Raw [H.263](https://en.wikipedia.org/wiki/H.263) | FFmpeg
 H264 | Raw [H.264/Advanced Video Coding](https://en.wikipedia.org/wiki/Advanced_Video_Coding) | FFmpeg
 MP4/M4A/M4P/M4B/M4R/M4V | [MPEG-4 Part 14](https://en.wikipedia.org/wiki/MP4_file_format) | FFmpeg
 MAD | Electronic Arts Madcow Movie | FFmpeg
+MKV/MK3D | [Matroska](https://en.wikipedia.org/wiki/Matroska) | FFmpeg
+MM | American Laser Games MM | FFmpeg
 MPC | Electronic Arts | FFmpeg
 MTV | MTV Movie | FFmpeg
 MVE | Interplay MVE | FFmpeg
@@ -857,6 +862,8 @@ VP6 | Electronic Arts VP6 | FFmpeg
 * GSM - no header?
 * H261 - unsure how to detect
 * Ingenient MJPEG - no samples
+* LMLM4 - unsure how to detect; samples on http://web.archive.org/web/20070628100422/http://www.linuxmedialabs.com/LML_downloads.php?dl=SA
+* MJPEG - just a bunch of JPEGs stuck together?
 
 ### Other
 * BPG - animation frames not extracted by libbpg

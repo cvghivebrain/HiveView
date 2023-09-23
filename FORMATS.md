@@ -428,13 +428,20 @@ FLV | Adobe [Flash Video](https://en.wikipedia.org/wiki/Flash_Video) | FFmpeg
 GXF | [General Exchange Format](https://en.wikipedia.org/wiki/General_Exchange_Format) | FFmpeg
 H263 | Raw [H.263](https://en.wikipedia.org/wiki/H.263) | FFmpeg
 H264 | Raw [H.264/Advanced Video Coding](https://en.wikipedia.org/wiki/Advanced_Video_Coding) | FFmpeg
-MP4/M4A/M4P/M4B/M4R/M4V | [MPEG-4 Part 14](https://en.wikipedia.org/wiki/MP4_file_format) | FFmpeg
 MAD | Electronic Arts Madcow Movie | FFmpeg
+MJ2/MJP2 | Motion JPEG 2000 | FFmpeg
 MKV/MK3D | [Matroska](https://en.wikipedia.org/wiki/Matroska) | FFmpeg
 MM | American Laser Games MM | FFmpeg
+MOV/QT | [QuickTime](https://en.wikipedia.org/wiki/QuickTime_File_Format) | FFmpeg
+MP4/M4A/M4P/M4B/M4R/M4V | [MPEG-4 Part 14](https://en.wikipedia.org/wiki/MP4_file_format) | FFmpeg
 MPC | Electronic Arts | FFmpeg
+MPEG/MPG | [Moving Picture Experts Group](https://en.wikipedia.org/wiki/Moving_Picture_Experts_Group) | FFmpeg
 MTV | MTV Movie | FFmpeg
 MVE | Interplay MVE | FFmpeg
+MFX | [Material Exchange Format](https://en.wikipedia.org/wiki/Material_Exchange_Format) | FFmpeg
+NSV | [Nullsoft Streaming Video](https://en.wikipedia.org/wiki/Nullsoft_Streaming_Video) | FFmpeg
+NUT | [NUT Open Container Format](http://ffmpeg.org/~michael/nut.txt) | FFmpeg
+NUV | NuppelVideo | FFmpeg
 VID | Bethesda Softworks Video | FFmpeg
 VP6 | Electronic Arts VP6 | FFmpeg
 
@@ -864,6 +871,11 @@ VP6 | Electronic Arts VP6 | FFmpeg
 * Ingenient MJPEG - no samples
 * LMLM4 - unsure how to detect; samples on http://web.archive.org/web/20070628100422/http://www.linuxmedialabs.com/LML_downloads.php?dl=SA
 * MJPEG - just a bunch of JPEGs stuck together?
+* MPC - no samples
+* MSN TCP Webcam stream - is this a file?
+* ULAW/mu-law - headerless
+* MVI - no samples; always in AVI container?
+* NC camera feed format - no samples
 
 ### Other
 * BPG - animation frames not extracted by libbpg

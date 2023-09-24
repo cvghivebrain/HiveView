@@ -402,7 +402,11 @@ MTM | Multi Track Module | BASS
 OGG/OGA | [Ogg Audio](https://en.wikipedia.org/wiki/Ogg) | FFmpeg & MP3 Art Extractor
 OMA | [Sony OpenMG Audio](https://en.wikipedia.org/wiki/OpenMG) | FFmpeg
 OPUS | [Opus](https://en.wikipedia.org/wiki/Opus_(audio_format)) | FFmpeg & MP3 Art Extractor
+RA | [RealAudio](https://en.wikipedia.org/wiki/RealAudio) | FFmpeg
 S3M | [Scream Tracker 3 Module](https://en.wikipedia.org/wiki/Scream_Tracker) | FFmpeg
+SHN | SoftSound [Shorten](https://en.wikipedia.org/wiki/Shorten_(codec)) | FFmpeg
+SOL | Sierra On-Line Audio | FFmpeg
+TTA | [AMD TrueAudio](https://en.wikipedia.org/wiki/AMD_TrueAudio) | FFmpeg & MP3 Art Extractor
 WAV | [Waveform Audio](https://en.wikipedia.org/wiki/WAV) | BASS
 WV | [WavPack](https://en.wikipedia.org/wiki/WavPack) | FFmpeg
 XM | [Extended Module](https://en.wikipedia.org/wiki/XM_(file_format)) | BASS
@@ -445,6 +449,10 @@ NUT | [NUT Open Container Format](http://ffmpeg.org/~michael/nut.txt) | FFmpeg
 NUV | NuppelVideo | FFmpeg
 OGV | [Ogg Video](https://en.wikipedia.org/wiki/Ogg) | FFmpeg & MP3 Art Extractor
 PVA | TechnoTrend AV | FFmpeg
+RL2 | Philips CD-i RLE Video, used in _Voyeur_ | FFmpeg
+RM/RAM/RMA/RV/RMVB | [RealMedia](https://en.wikipedia.org/wiki/RealMedia) | FFmpeg
+RPL | Acorn RISC OS ARMovie | FFmpeg
+SMK | RAD Game Tools Smacker | FFmpeg
 STR/XA | Sony PlayStation CDXA | FFmpeg
 VID | Bethesda Softworks Video | FFmpeg
 VP6 | Electronic Arts VP6 | FFmpeg
@@ -881,6 +889,12 @@ VP6 | Electronic Arts VP6 | FFmpeg
 * MVI - no samples; always in AVI container?
 * NC camera feed format - no samples
 * OSS - is this a file type?
+* R3D - failed on samples from https://blog.raw.film/sample-red-r3d-files-download-free/
+* SIFF - 12-bit PCM sounds distorted (works on 8-bit PCM)
+* THP - failed/audio distorted on some samples from http://samples.mplayerhq.hu/game-formats/thp/
+* SEQ - no header
+* TXD - not a video/audio format?
+* VC1 - always in container?
 
 ### Other
 * BPG - animation frames not extracted by libbpg

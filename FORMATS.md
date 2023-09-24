@@ -399,7 +399,8 @@ MP1 | [MPEG-1/2 Audio Layer I](https://en.wikipedia.org/wiki/MPEG-1_Audio_Layer_
 MP2/MPA | [MPEG-1/2 Audio Layer II](https://en.wikipedia.org/wiki/MPEG-1_Audio_Layer_II) | BASS & MP3 Art Extractor
 MP3 | [MPEG-2 Audio Layer III](https://en.wikipedia.org/wiki/MP3) | BASS & MP3 Art Extractor
 MTM | Multi Track Module | BASS
-OGG | [Ogg Audio](https://en.wikipedia.org/wiki/Ogg) | BASS & MP3 Art Extractor
+OGG/OGA | [Ogg Audio](https://en.wikipedia.org/wiki/Ogg) | FFmpeg & MP3 Art Extractor
+OMA | [Sony OpenMG Audio](https://en.wikipedia.org/wiki/OpenMG) | FFmpeg
 OPUS | [Opus](https://en.wikipedia.org/wiki/Opus_(audio_format)) | FFmpeg & MP3 Art Extractor
 S3M | [Scream Tracker 3 Module](https://en.wikipedia.org/wiki/Scream_Tracker) | FFmpeg
 WAV | [Waveform Audio](https://en.wikipedia.org/wiki/WAV) | BASS
@@ -442,6 +443,9 @@ MFX | [Material Exchange Format](https://en.wikipedia.org/wiki/Material_Exchange
 NSV | [Nullsoft Streaming Video](https://en.wikipedia.org/wiki/Nullsoft_Streaming_Video) | FFmpeg
 NUT | [NUT Open Container Format](http://ffmpeg.org/~michael/nut.txt) | FFmpeg
 NUV | NuppelVideo | FFmpeg
+OGV | [Ogg Video](https://en.wikipedia.org/wiki/Ogg) | FFmpeg & MP3 Art Extractor
+PVA | TechnoTrend AV | FFmpeg
+STR/XA | Sony PlayStation CDXA | FFmpeg
 VID | Bethesda Softworks Video | FFmpeg
 VP6 | Electronic Arts VP6 | FFmpeg
 
@@ -876,6 +880,7 @@ VP6 | Electronic Arts VP6 | FFmpeg
 * ULAW/mu-law - headerless
 * MVI - no samples; always in AVI container?
 * NC camera feed format - no samples
+* OSS - is this a file type?
 
 ### Other
 * BPG - animation frames not extracted by libbpg

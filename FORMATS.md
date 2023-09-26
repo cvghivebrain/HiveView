@@ -386,6 +386,7 @@ AIFF/AIF/AFF | [Audio Interchange File Format](https://en.wikipedia.org/wiki/Aud
 AMR/3GA | [Adaptive Multi-Rate Audio](https://en.wikipedia.org/wiki/Adaptive_Multi-Rate_audio_codec) | FFmpeg
 APE | [Monkey's Audio](https://en.wikipedia.org/wiki/Monkey's_Audio) | FFmpeg
 AU/SND | [Sun Microsystems Audio](https://en.wikipedia.org/wiki/Au_file_format) | FFmpeg
+AUD | Westwood Studios Audio | FFmpeg
 CDATA | Electronic Arts, used in _Command & Conquer 3_ | FFmpeg
 DSF/DFF | [Sony/Philips Direct Stream Digital](https://en.wikipedia.org/wiki/Direct_Stream_Digital) | FFmpeg
 FLAC | [Free Lossless Audio Codec](https://en.wikipedia.org/wiki/FLAC) | BASS & MP3 Art Extractor
@@ -409,6 +410,8 @@ SOL | Sierra On-Line Audio | FFmpeg
 TTA | [AMD TrueAudio](https://en.wikipedia.org/wiki/AMD_TrueAudio) | FFmpeg & MP3 Art Extractor
 WAV | [Waveform Audio](https://en.wikipedia.org/wiki/WAV) | BASS
 WV | [WavPack](https://en.wikipedia.org/wiki/WavPack) | FFmpeg
+VOC | Creative Voice | FFmpeg
+XA | Maxis XA | FFmpeg
 XM | [Extended Module](https://en.wikipedia.org/wiki/XM_(file_format)) | BASS
 
 ## Supported video formats
@@ -421,6 +424,7 @@ AMV | [Actions Media Video](https://en.wikipedia.org/wiki/AMV_video_format) | FF
 ASF | [Advanced Systems Format](https://en.wikipedia.org/wiki/Advanced_Systems_Format) | FFmpeg
 AVI/DIVX | [Audio Video Interleave](https://en.wikipedia.org/wiki/Audio_Video_Interleave) | FFmpeg
 BFI | Tsunami Games Brute Force & Ignorance, used in _Blue Force_ | FFmpeg
+BIK/BK2 | RAD Game Tools/Epic Games [Bink Video](https://en.wikipedia.org/wiki/Bink_Video) | FFmpeg
 CDXL/XL | [Amiga CDXL](https://en.wikipedia.org/wiki/CDXL) | FFmpeg
 CIN | Delphine CIN, used in _Fade to Black_ | FFmpeg
 CIN | id Software Cinematic, used in _Quake II_ | FFmpeg
@@ -443,6 +447,7 @@ MPC | Electronic Arts | FFmpeg
 MPEG/MPG | [Moving Picture Experts Group](https://en.wikipedia.org/wiki/Moving_Picture_Experts_Group) | FFmpeg
 MTV | MTV Movie | FFmpeg
 MVE | Interplay MVE | FFmpeg
+MVE | Wing Commander III MVE | FFmpeg
 MFX | [Material Exchange Format](https://en.wikipedia.org/wiki/Material_Exchange_Format) | FFmpeg
 NSV | [Nullsoft Streaming Video](https://en.wikipedia.org/wiki/Nullsoft_Streaming_Video) | FFmpeg
 NUT | [NUT Open Container Format](http://ffmpeg.org/~michael/nut.txt) | FFmpeg
@@ -455,7 +460,10 @@ RPL | Acorn RISC OS ARMovie | FFmpeg
 SMK | RAD Game Tools Smacker | FFmpeg
 STR/XA | Sony PlayStation CDXA | FFmpeg
 VID | Bethesda Softworks Video | FFmpeg
+VMD | Sierra Video and Music Data | FFmpeg
 VP6 | Electronic Arts VP6 | FFmpeg
+VQA | Westwood Studios Vector Quantized Animation | FFmpeg
+Y4M | YUV4MPEG2 | FFmpeg
 
 ## To do
 ### ImageMagick
@@ -895,6 +903,7 @@ VP6 | Electronic Arts VP6 | FFmpeg
 * SEQ - no header
 * TXD - not a video/audio format?
 * VC1 - always in container?
+* VOB - detected as MPEG
 
 ### Other
 * BPG - animation frames not extracted by libbpg

@@ -22,6 +22,7 @@ AVS/X | Stardent Application Visualization System | NConvert
 B&W/B_W | ImageLab/PrintTechnic | NConvert
 BFLI | C64 Big Flexible Line Interpretation | NConvert
 BIN | Binary Text | Deark
+BIN | _Guardian Heroes_ menu background | HiveView
 BLK/BSG | Prosoft Fontasy Block | NConvert
 BMP/ICO/PTR | OS/2 Bitmap Array | Deark
 BMP | [Windows & OS/2 Bitmap](https://en.wikipedia.org/wiki/BMP_file_format) | Deark
@@ -444,7 +445,7 @@ MM | American Laser Games MM | FFmpeg
 MOV/QT | [QuickTime](https://en.wikipedia.org/wiki/QuickTime_File_Format) | FFmpeg
 MP4/M4A/M4P/M4B/M4R/M4V | [MPEG-4 Part 14](https://en.wikipedia.org/wiki/MP4_file_format) | FFmpeg
 MPC | Electronic Arts | FFmpeg
-MPEG/MPG | [Moving Picture Experts Group](https://en.wikipedia.org/wiki/Moving_Picture_Experts_Group) | FFmpeg
+MPEG/MPG/M2V | [Moving Picture Experts Group](https://en.wikipedia.org/wiki/Moving_Picture_Experts_Group) | FFmpeg
 MTV | MTV Movie | FFmpeg
 MVE | Interplay MVE | FFmpeg
 MVE | Wing Commander III MVE | FFmpeg
@@ -467,7 +468,6 @@ Y4M | YUV4MPEG2 | FFmpeg
 
 ## To do
 ### ImageMagick
-* M2V/MPEG
 * BAYER
 * CALS Type 2 (CT2) - multi page, can't find any examples
 * CMYK/CMYKA - no header?

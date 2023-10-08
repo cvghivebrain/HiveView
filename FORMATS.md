@@ -21,8 +21,9 @@ AVIF | [AV1 Image File Format](https://en.wikipedia.org/wiki/AVIF) | libavif
 AVS/X | Stardent Application Visualization System | NConvert
 B&W/B_W | ImageLab/PrintTechnic | NConvert
 BFLI | C64 Big Flexible Line Interpretation | NConvert
+BIN | Sega Saturn _Andretti Racing_ Raw | HiveView
 BIN | Binary Text | Deark
-BIN | _Guardian Heroes_ menu background | HiveView
+BIN | Sega Saturn 15bpp Raw | HiveView
 BLK/BSG | Prosoft Fontasy Block | NConvert
 BMP/ICO/PTR | OS/2 Bitmap Array | Deark
 BMP | [Windows & OS/2 Bitmap](https://en.wikipedia.org/wiki/BMP_file_format) | Deark

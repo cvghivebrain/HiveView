@@ -342,6 +342,7 @@ LBR | Gary P. Novosielski [Library](https://en.wikipedia.org/wiki/LBR_(file_form
 LHA/LZH | [LHarc](https://en.wikipedia.org/wiki/LHA_(file_format)) | Lhasa
 LIB/CMP/??$/$$$/PAK | The Stirling Compressor | Deark
 MD | MDCD | Deark
+PAK | _Alone in the Dark 2_ PAK | Depak
 PCL | PCX Library | Deark
 PQA | Palm Query Application | Deark
 PRC | Palm Resource | Deark

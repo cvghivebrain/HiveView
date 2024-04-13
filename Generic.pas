@@ -91,7 +91,7 @@ var
   HiveView: THiveView;
   bitspercolor, bytespercolor, bitsperindex, bytesperindex,
     palsize, imgw, imgh, iniformats, wavlength: integer;
-  inicontent: array[0..10000, 0..17] of string;
+  inicontent: array of string;
   palarray: array[0..1024] of byte;
   thisfolder, tempfolder, tempfilepath, tempwavpath, currentfile, currentext,
     wavlengthstr, wfcreate, wfchange, wfcolors: string;
@@ -118,6 +118,7 @@ const
   ini_unpack: integer = 15;
   ini_paldata: integer = 16;
   ini_audio: integer = 17;
+  inisize: integer = 18;
 
 implementation
 
@@ -156,25 +157,26 @@ begin
     if AnsiPos('[',s) = 1 then
       begin
       Inc(i); // Next format.
-      inicontent[i,ini_name] := Explode(Explode(s,'[',1),']',0);
+      SetLength(inicontent,Length(inicontent)+inisize);
+      inicontent[(i*inisize)+ini_name] := Explode(Explode(s,'[',1),']',0);
       end
-    else if AnsiPos('if:',s) = 1 then inicontent[i,ini_if] := Explode(s,'if:',1)
-    else if AnsiPos('width=',s) = 1 then inicontent[i,ini_width] := Explode(s,'width=',1)
-    else if AnsiPos('height=',s) = 1 then inicontent[i,ini_height] := Explode(s,'height=',1)
-    else if AnsiPos('pixelstart=',s) = 1 then inicontent[i,ini_pixelstart] := Explode(s,'pixelstart=',1)
-    else if AnsiPos('bitspercolor=',s) = 1 then inicontent[i,ini_bpc] := Explode(s,'bitspercolor=',1)
-    else if AnsiPos('red=',s) = 1 then inicontent[i,ini_r] := Explode(s,'red=',1)
-    else if AnsiPos('green=',s) = 1 then inicontent[i,ini_g] := Explode(s,'green=',1)
-    else if AnsiPos('blue=',s) = 1 then inicontent[i,ini_b] := Explode(s,'blue=',1)
-    else if AnsiPos('alpha=',s) = 1 then inicontent[i,ini_alpha] := Explode(s,'alpha=',1)
-    else if AnsiPos('palette=',s) = 1 then inicontent[i,ini_palenable] := Explode(s,'palette=',1)
-    else if AnsiPos('palstart=',s) = 1 then inicontent[i,ini_palstart] := Explode(s,'palstart=',1)
-    else if AnsiPos('palsize=',s) = 1 then inicontent[i,ini_palsize] := Explode(s,'palsize=',1)
-    else if AnsiPos('paldata=',s) = 1 then inicontent[i,ini_paldata] := Explode(s,'paldata=',1)
-    else if AnsiPos('bitsperindex=',s) = 1 then inicontent[i,ini_palbits] := Explode(s,'bitsperindex=',1)
-    else if AnsiPos('unpack=',s) = 1 then inicontent[i,ini_unpack] := Explode(s,'unpack=',1)
-    else if AnsiPos('convert=',s) = 1 then inicontent[i,ini_convert] := Explode(s,'convert=',1)
-    else if AnsiPos('audio=',s) = 1 then inicontent[i,ini_audio] := Explode(s,'audio=',1)
+    else if AnsiPos('if:',s) = 1 then inicontent[(i*inisize)+ini_if] := Explode(s,'if:',1)
+    else if AnsiPos('width=',s) = 1 then inicontent[(i*inisize)+ini_width] := Explode(s,'width=',1)
+    else if AnsiPos('height=',s) = 1 then inicontent[(i*inisize)+ini_height] := Explode(s,'height=',1)
+    else if AnsiPos('pixelstart=',s) = 1 then inicontent[(i*inisize)+ini_pixelstart] := Explode(s,'pixelstart=',1)
+    else if AnsiPos('bitspercolor=',s) = 1 then inicontent[(i*inisize)+ini_bpc] := Explode(s,'bitspercolor=',1)
+    else if AnsiPos('red=',s) = 1 then inicontent[(i*inisize)+ini_r] := Explode(s,'red=',1)
+    else if AnsiPos('green=',s) = 1 then inicontent[(i*inisize)+ini_g] := Explode(s,'green=',1)
+    else if AnsiPos('blue=',s) = 1 then inicontent[(i*inisize)+ini_b] := Explode(s,'blue=',1)
+    else if AnsiPos('alpha=',s) = 1 then inicontent[(i*inisize)+ini_alpha] := Explode(s,'alpha=',1)
+    else if AnsiPos('palette=',s) = 1 then inicontent[(i*inisize)+ini_palenable] := Explode(s,'palette=',1)
+    else if AnsiPos('palstart=',s) = 1 then inicontent[(i*inisize)+ini_palstart] := Explode(s,'palstart=',1)
+    else if AnsiPos('palsize=',s) = 1 then inicontent[(i*inisize)+ini_palsize] := Explode(s,'palsize=',1)
+    else if AnsiPos('paldata=',s) = 1 then inicontent[(i*inisize)+ini_paldata] := Explode(s,'paldata=',1)
+    else if AnsiPos('bitsperindex=',s) = 1 then inicontent[(i*inisize)+ini_palbits] := Explode(s,'bitsperindex=',1)
+    else if AnsiPos('unpack=',s) = 1 then inicontent[(i*inisize)+ini_unpack] := Explode(s,'unpack=',1)
+    else if AnsiPos('convert=',s) = 1 then inicontent[(i*inisize)+ini_convert] := Explode(s,'convert=',1)
+    else if AnsiPos('audio=',s) = 1 then inicontent[(i*inisize)+ini_audio] := Explode(s,'audio=',1)
     else if AnsiPos('wfcreate=',s) = 1 then wfcreate := Explode(s,'wfcreate=',1)
     else if AnsiPos('wfchange=',s) = 1 then wfchange := Explode(s,'wfchange=',1)
     else if AnsiPos('wfcolors=',s) = 1 then wfcolors := Explode(s,'wfcolors=',1)
@@ -250,13 +252,13 @@ begin
   DefaultFormat; // Use default settings.
   matchfound := false; // Assume no match.
   for i := 0 to iniformats do
-    if inicontent[i,ini_if] <> '' then
-      if Solve(inicontent[i,ini_if]) > 0 then // Check file with condition from ini.
+    if inicontent[(i*inisize)+ini_if] <> '' then
+      if Solve(inicontent[(i*inisize)+ini_if]) > 0 then // Check file with condition from ini.
         begin
-        if inicontent[i,ini_unpack] <> '' then DoUnpack(i); // Check for unpack/decompress by external program.
-        if inicontent[i,ini_convert] <> '' then DoConvert(i); // Check for conversion by external program.
-        if inicontent[i,ini_audio] <> '' then DoAudio(i); // Check for conversion by external program.
-        if (inicontent[i,ini_unpack]+inicontent[i,ini_convert]+inicontent[i,ini_audio] = '') then DoRaw(i); // Load as raw using settings from ini.
+        if inicontent[(i*inisize)+ini_unpack] <> '' then DoUnpack(i); // Check for unpack/decompress by external program.
+        if inicontent[(i*inisize)+ini_convert] <> '' then DoConvert(i); // Check for conversion by external program.
+        if inicontent[(i*inisize)+ini_audio] <> '' then DoAudio(i); // Check for conversion by external program.
+        if (inicontent[(i*inisize)+ini_unpack]+inicontent[(i*inisize)+ini_convert]+inicontent[(i*inisize)+ini_audio] = '') then DoRaw(i); // Load as raw using settings from ini.
         matchfound := true;
         break; // Stop checking for format matches.
         end;
@@ -288,8 +290,8 @@ procedure THiveView.DoConvert(i: integer);
 var c, c2: string;
   j: integer;
 begin
-  if inicontent[i,ini_unpack] = '' then ShowFormat(inicontent[i,ini_name]);
-  c := inicontent[i,ini_convert];
+  if inicontent[(i*inisize)+ini_unpack] = '' then ShowFormat(inicontent[(i*inisize)+ini_name]);
+  c := inicontent[(i*inisize)+ini_convert];
   if c = 'open' then LoadPNG(currentfile)
   else
     begin
@@ -343,9 +345,9 @@ begin
       else CreateDir(unpackto); // Create folder with same name as target file.
     end
   else unpackto := tempfolder;
-  ShowFormat(inicontent[i,ini_name]);
+  ShowFormat(inicontent[(i*inisize)+ini_name]);
   memDebug.Lines.Add('Unpacking with external program...');
-  c := inicontent[i,ini_unpack];
+  c := inicontent[(i*inisize)+ini_unpack];
   j := 0;
   while Explode(c,'&&',j) <> '' do // Multiple commands separated by &&.
     begin
@@ -368,26 +370,26 @@ end;
 
 procedure THiveView.DoRaw(i: integer);
 begin
-  if inicontent[i,ini_unpack] <> '' then exit; // Don't load as raw if file is an archive.
-  if inicontent[i,ini_width] <> '' then editW.Text := inicontent[i,ini_width];
-  if inicontent[i,ini_height] <> '' then editH.Text := inicontent[i,ini_height];
-  if inicontent[i,ini_pixelstart] <> '' then editPixLoc.Text := inicontent[i,ini_pixelstart];
-  if inicontent[i,ini_bpc] <> '' then editBPC.Text := inicontent[i,ini_bpc];
-  if inicontent[i,ini_r] <> '' then editR.Text := inicontent[i,ini_r];
-  if inicontent[i,ini_g] <> '' then editG.Text := inicontent[i,ini_g];
-  if inicontent[i,ini_b] <> '' then editB.Text := inicontent[i,ini_b];
-  if inicontent[i,ini_alpha] <> '' then editAlpha.Text := inicontent[i,ini_alpha];
-  if inicontent[i,ini_palstart] <> '' then editPalLoc.Text := inicontent[i,ini_palstart];
-  if inicontent[i,ini_palsize] <> '' then editPalSize.Text := inicontent[i,ini_palsize];
-  if inicontent[i,ini_palbits] <> '' then editPalBits.Text := inicontent[i,ini_palbits];
-  if inicontent[i,ini_paldata] <> '' then editPalData.Text := inicontent[i,ini_paldata];
-  if inicontent[i,ini_palenable] = 'yes' then chkPalette.Checked := true
+  if inicontent[(i*inisize)+ini_unpack] <> '' then exit; // Don't load as raw if file is an archive.
+  if inicontent[(i*inisize)+ini_width] <> '' then editW.Text := inicontent[(i*inisize)+ini_width];
+  if inicontent[(i*inisize)+ini_height] <> '' then editH.Text := inicontent[(i*inisize)+ini_height];
+  if inicontent[(i*inisize)+ini_pixelstart] <> '' then editPixLoc.Text := inicontent[(i*inisize)+ini_pixelstart];
+  if inicontent[(i*inisize)+ini_bpc] <> '' then editBPC.Text := inicontent[(i*inisize)+ini_bpc];
+  if inicontent[(i*inisize)+ini_r] <> '' then editR.Text := inicontent[(i*inisize)+ini_r];
+  if inicontent[(i*inisize)+ini_g] <> '' then editG.Text := inicontent[(i*inisize)+ini_g];
+  if inicontent[(i*inisize)+ini_b] <> '' then editB.Text := inicontent[(i*inisize)+ini_b];
+  if inicontent[(i*inisize)+ini_alpha] <> '' then editAlpha.Text := inicontent[(i*inisize)+ini_alpha];
+  if inicontent[(i*inisize)+ini_palstart] <> '' then editPalLoc.Text := inicontent[(i*inisize)+ini_palstart];
+  if inicontent[(i*inisize)+ini_palsize] <> '' then editPalSize.Text := inicontent[(i*inisize)+ini_palsize];
+  if inicontent[(i*inisize)+ini_palbits] <> '' then editPalBits.Text := inicontent[(i*inisize)+ini_palbits];
+  if inicontent[(i*inisize)+ini_paldata] <> '' then editPalData.Text := inicontent[(i*inisize)+ini_paldata];
+  if inicontent[(i*inisize)+ini_palenable] = 'yes' then chkPalette.Checked := true
     else chkPalette.Checked := false;
   editPalLoc.Enabled := chkPalette.Checked;
   editPalSize.Enabled := chkPalette.Checked;
   editPalBits.Enabled := chkPalette.Checked;
   editPalData.Enabled := chkPalette.Checked;
-  ShowFormat(inicontent[i,ini_name]);
+  ShowFormat(inicontent[(i*inisize)+ini_name]);
   LoadImage; // Load image as raw using parameters from ini.
 end;
 
@@ -398,8 +400,8 @@ var c, c2: string;
   j: integer;
 begin
   ClearWAV;
-  if inicontent[i,ini_convert]+inicontent[i,ini_unpack] = '' then ShowFormat(inicontent[i,ini_name]);
-  c := inicontent[i,ini_audio];
+  if inicontent[(i*inisize)+ini_convert]+inicontent[(i*inisize)+ini_unpack] = '' then ShowFormat(inicontent[(i*inisize)+ini_name]);
+  c := inicontent[(i*inisize)+ini_audio];
   if c = 'open' then LoadWAV(currentfile) // Load WAV file as-is.
   else
     begin
@@ -753,9 +755,9 @@ begin
   if currentfile = '' then exit; // Do nothing if file isn't loaded.
   for i := 0 to iniformats do
     begin
-    if AnsiPos(AnsiLowerCase(searchFormat.Text),AnsiLowerCase(inicontent[i,ini_name])) <> 0 then
+    if AnsiPos(AnsiLowerCase(searchFormat.Text),AnsiLowerCase(inicontent[(i*inisize)+ini_name])) <> 0 then
       begin
-      lstFormat.Items.Add(inicontent[i,ini_name]); // Add format name to list.
+      lstFormat.Items.Add(inicontent[(i*inisize)+ini_name]); // Add format name to list.
       formatmatch[lstFormat.Items.Count-1] := i; // Save format numerical id.
       end;
     end;
@@ -772,10 +774,10 @@ begin
     end;
   DefaultFormat; // Use default settings.
   i := formatmatch[lstFormat.ItemIndex];
-  if inicontent[i,ini_unpack] <> '' then DoUnpack(i); // Check for unpack/decompress by external program.
-  if inicontent[i,ini_convert] <> '' then DoConvert(i); // Check for conversion by external program.
-  if inicontent[i,ini_audio] <> '' then DoAudio(i); // Check for audio.
-  if (inicontent[i,ini_unpack]+inicontent[i,ini_convert]+inicontent[i,ini_audio] = '') then DoRaw(i); // Load as raw using settings from ini.
+  if inicontent[(i*inisize)+ini_unpack] <> '' then DoUnpack(i); // Check for unpack/decompress by external program.
+  if inicontent[(i*inisize)+ini_convert] <> '' then DoConvert(i); // Check for conversion by external program.
+  if inicontent[(i*inisize)+ini_audio] <> '' then DoAudio(i); // Check for audio.
+  if (inicontent[(i*inisize)+ini_unpack]+inicontent[(i*inisize)+ini_convert]+inicontent[(i*inisize)+ini_audio] = '') then DoRaw(i); // Load as raw using settings from ini.
 end;
 
 end.
